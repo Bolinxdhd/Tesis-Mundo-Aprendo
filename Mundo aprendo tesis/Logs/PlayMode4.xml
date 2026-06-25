@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:58Z" duration="3.6814025">
+  <test-suite type="TestSuite" id="1012" name="Mundo aprendo tesis" fullname="Mundo aprendo tesis" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:58Z" duration="3.681403" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1006" name="MundoAprendo.PlayModeTests.dll" fullname="F:/PUN/Mundo aprendo tesis/Library/ScriptAssemblies/MundoAprendo.PlayModeTests.dll" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:58Z" duration="3.673619" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2208" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1007" name="MundoAprendo" fullname="MundoAprendo" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:58Z" duration="3.673103" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1008" name="PlayModeTests" fullname="MundoAprendo.PlayModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:58Z" duration="3.672841" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="ProjectPlayModeSmokeTests" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:58Z" duration="3.671904" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1002" name="EveryConfiguredScene_LoadsWithCoreUi" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests.EveryConfiguredScene_LoadsWithCoreUi" methodname="EveryConfiguredScene_LoadsWithCoreUi" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" seed="1753178839" result="Passed" start-time="2026-06-21 08:44:55Z" end-time="2026-06-21 08:44:57Z" duration="2.108099" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[VoiceRecognitionTest: falta asignar Support Mode Panel. Crealo en la escena y arrastralo desde el Inspector.
+VoiceRecognitionTest: falta asignar Support Input Field. Crealo en la escena para usar entrada manual.
+]]></output>
+            </test-case>
+            <test-case id="1004" name="PanelTransition_OpensClosesAndRestoresInteraction" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests.PanelTransition_OpensClosesAndRestoresInteraction" methodname="PanelTransition_OpensClosesAndRestoresInteraction" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" seed="1466652889" result="Passed" start-time="2026-06-21 08:44:57Z" end-time="2026-06-21 08:44:57Z" duration="0.250576" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="ProgressRepository_KeepsBestStarsInPlayMode" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests.ProgressRepository_KeepsBestStarsInPlayMode" methodname="ProgressRepository_KeepsBestStarsInPlayMode" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" seed="418698286" result="Passed" start-time="2026-06-21 08:44:57Z" end-time="2026-06-21 08:44:57Z" duration="0.050112" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="StarDisplay_UpdatesThreeExistingImages" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests.StarDisplay_UpdatesThreeExistingImages" methodname="StarDisplay_UpdatesThreeExistingImages" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" seed="780157799" result="Passed" start-time="2026-06-21 08:44:57Z" end-time="2026-06-21 08:44:58Z" duration="1.249953" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/Boloxdhd/AppData/LocalLow/DefaultCompany/Mundo aprendo tesis\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

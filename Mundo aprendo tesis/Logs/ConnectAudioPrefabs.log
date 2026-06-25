@@ -1,0 +1,648 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32690 MB
+[Licensing::IpcConnector] Channel LicenseClient-Boloxdhd doesn't exist
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-06-21T08:47:26Z
+[Licensing::Module] Successfully launched the LicensingClient (PId: 7088)
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+F:\PUN\Mundo aprendo tesis
+-executeMethod
+Bolin.Editor.MundoAprendoPolishSetup.ApplyProjectPolish
+-logFile
+F:\PUN\Mundo aprendo tesis\Logs\ConnectAudioPrefabs.log
+Successfully changed project path to: F:\PUN\Mundo aprendo tesis
+F:/PUN/Mundo aprendo tesis
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Player connection [4404]  Target information:
+
+Player connection [4404]  * "[IP] 192.168.1.23 [Port] 55504 [Flags] 2 [Guid] 1202915061 [EditorId] 1202915061 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NF6H5UD) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [4404] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [4404] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-06-21T08:47:27.3360792Z"
+[Package Manager] Connected to IPC stream "Upm-2864" after 0.4 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              2bac0e201238498eafc24c9c127c2e31
+  Correlation Id:          b2485672d8e83c550c32d412b97d20d4
+  External correlation Id: 7302794135195217290
+  Machine Id:              CFi18PVxujarsjnwWQVdFlBCSK4=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Boloxdhd" (connect: 0.37s, validation: 0.05s, handshake: 0.99s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-notifications" at "2026-06-21T08:47:28.3667752Z"
+[Licensing::Module] Connected to LicensingClient (PId: 7088, launch time: 0.00, total connection time: 1.40s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 1.43s
+[Licensing::Module] Licensing is initialized (took 0.96s).
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 1 unused hashed content files
+Initialize engine version: 6000.4.0f1 (8cf496087c8f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/PUN/Mundo aprendo tesis/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56864
+CodeReloadManager initialized
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.004803 seconds.
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 2151 ms
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.605 seconds
+Domain Reload Profiling: 3074ms
+	BeginReloadAssembly (128ms)
+		CreateAndSetChildDomain (7ms)
+	RebuildCommonClasses (41ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (68ms)
+	LoadAllAssembliesAndSetupDomain (218ms)
+		LoadAssemblies (118ms)
+		AnalyzeDomain (209ms)
+			TypeCache.Refresh (207ms)
+				TypeCache.ScanAssembly (191ms)
+	FinalizeReload (2606ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (2237ms)
+			BeforeProcessingInitializeOnLoad (92ms)
+			ProcessInitializeOnLoadAttributes (117ms)
+			ProcessInitializeOnLoadMethodAttributes (93ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 57 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.39 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.rider@4504839d03f7)
+    com.unity.ide.visualstudio@2.0.27 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.visualstudio@dc1ddd4f09b6)
+    com.unity.inputsystem@1.19.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.timeline@1.8.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.2.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.1 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.multiplayer.center@f01f4ba8d00a)
+    com.unity.render-pipelines.universal@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal@0c5162adfb45)
+    com.unity.test-framework@1.6.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework@629486125cfc)
+    com.unity.ugui@2.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ugui@3dd2fbd8c1f1)
+    com.unity.modules.accessibility@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.core@6a60abc179f8)
+    com.unity.shadergraph@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.shadergraph@c6e5f4d3afa5)
+    com.unity.render-pipelines.universal-config@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal-config@0db4263b9e6b)
+    com.unity.collections@6.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collections@538ace9075bc)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: F:/PUN/Mundo aprendo tesis
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 2s826ms
+[721/918    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[914/918    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+[915/918    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 137 defines and 345 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[916/918    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[917/918    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (2.80 seconds), 5 items updated, 918 evaluated
+AssetDatabase: script compilation time: 3.225652s
+Begin MonoManager ReloadAssembly
+Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.056 seconds
+Domain Reload Profiling: 4423ms
+	BeginReloadAssembly (325ms)
+		DisableScriptedObjects (11ms)
+		CreateAndSetChildDomain (165ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (472ms)
+	LoadAllAssembliesAndSetupDomain (518ms)
+		LoadAssemblies (345ms)
+		AnalyzeDomain (268ms)
+			TypeCache.Refresh (190ms)
+				TypeCache.ScanAssembly (176ms)
+			BuildScriptInfoCaches (64ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (3056ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			BeforeProcessingInitializeOnLoad (173ms)
+			ProcessInitializeOnLoadAttributes (2443ms)
+			ProcessInitializeOnLoadMethodAttributes (141ms)
+			AfterProcessingInitializeOnLoad (7ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+Start importing Packages/com.unity.render-pipelines.core/Tests/Editor/UnifiedRayTracing/TraceRays.urtshader using Guid(1142bbad8b9e8c44c83a9775ff120d37) (ScriptedImporter)Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+
+Compiling Ray Tracing Shader "TraceRays.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'b61a11853fc2b01c85b821ba8aaf5c7e') in 0.0345012 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=46687cccdc33168fce57c46918914a0e DependenciesID=ba78a0469f42bfec0b01e12118e1a492 StaticDependenciesID=b7859538b7c8061be2c1df0681a26cec 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Lighting/SurfaceCache/RisEstimation.urtshader using Guid(713f6141bd66a134383b787f2eaa7c11) (ScriptedImporter)
+Compiling Ray Tracing Shader "RisEstimation.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'd7ac51d7078c9d0f4518515a4bd89058') in 0.0108491 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e10568ab6bce9a97b28d8c885dc887c9 DependenciesID=7bda994a1075ee45a05df5fd39078a40 StaticDependenciesID=1251c416255850dca778d66927462604 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapShadowMaskIntegration.urtshader using Guid(d19f4f8a13b6edb48b986a47ec96402e) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapShadowMaskIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '6206f4b63d9d1dd6323401f03425e922') in 0.0222658 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2b95ef19d50b21f939236f8de4f3b7c4 DependenciesID=3a4c5a758997883cb2c7a4dad415ebe1 StaticDependenciesID=dddefbaa39ba5d51a386df5433e82fa1 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapGBufferDebug.urtshader using Guid(737a1597422c12547a8714d76a9406ec) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapGBufferDebug.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'babf3e30592708beedda850f6a16aa60') in 0.0111065 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=091ab5fc811d0bb32fd83d24c76e3ade DependenciesID=a74f3d1e9dc51cb077ba856b7eab9889 StaticDependenciesID=62194a0448f2b8616e1214fb593272db 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapNormalIntegration.urtshader using Guid(1451d029813b192429211be28181beab) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapNormalIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '791a469038e49731e268afc65adafb0e') in 0.0109551 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ceb98ab71ac413b56190ee84e02cff03 DependenciesID=c40fff4210f4795126824cb6cbd960bd StaticDependenciesID=cbe3820d9825e61936c3967ec27e4e90 
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/RenderingLayerMask/TraceRenderingLayerMask.urtshader using Guid(94a070d33e408384bafc1dea4a565df9) (ScriptedImporter)
+Compiling Ray Tracing Shader "TraceRenderingLayerMask.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '86f5f30a5cada56579762dd325614ad9') in 0.0101777 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1a05fb70609584037b92ffb7bbfa4513 DependenciesID=e4c04546dd7334f19deb336f5df7647d StaticDependenciesID=83d03f1fcc976b11b697d3bab0b97d8c 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Lighting/SurfaceCache/UniformEstimation.urtshader using Guid(94a39d12848d8d64ca962a72b74e7c50) (ScriptedImporter)
+Compiling Ray Tracing Shader "UniformEstimation.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '294fe8c4e2b40974f52434bf1a3e50d3') in 0.0087095 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=63829e09c8421943158a5c8e22d7fb1c DependenciesID=a3615acec63a8869e35ea1a076121cb4 StaticDependenciesID=f100dc97879ef35876f7ad5427566dd9 
+Start importing Packages/com.unity.render-pipelines.core/Tests/Editor/UnifiedRayTracing/TraceTransparentRays.urtshader using Guid(6513c3b892e933c4f8d00c19d5c47532) (ScriptedImporter)
+Compiling Ray Tracing Shader "TraceTransparentRays.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'ce98530d50922e273fe691dd13c2666f') in 0.0049387 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=9a4f92c4b834443772f57e904b7b5318 DependenciesID=e2b5d4de0ad804a3b9ecae2a1ed8ba57 StaticDependenciesID=5e41b194f27d8b70c797e75555e2b1f0 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapIndirectIntegration.urtshader using Guid(7624adbeb148b5c48ab5ab660cc2602a) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapIndirectIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '7636fca688e599403be3d3b12c440c22') in 0.0112654 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=331a21b109ee676710cbf634c8ef4c64 DependenciesID=a013b62f44319fe9498c0e871d3829fb StaticDependenciesID=6d19372de11b03798f093933090e79bb 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapGBufferIntegration.urtshader using Guid(e9f4de6d1e07fb94f9a60d35b618f724) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapGBufferIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '6b095755af600b25dba257b1420adcfa') in 0.0074825 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=88abca16d66a7184f4c4b47027b43f11 DependenciesID=7e07fd4aeea28b90cf80df010e477915 StaticDependenciesID=66dc06979910318021783fcb4ccd3ecc 
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/DynamicGI/DynamicGISkyOcclusion.urtshader using Guid(5a2a534753fbdb44e96c3c78b5a6999d) (ScriptedImporter)
+Compiling Ray Tracing Shader "DynamicGISkyOcclusion.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '6f054e61c1371e27dad04f659288b92e') in 0.0156456 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d00095a4a55ff2ec22e939f29df9180b DependenciesID=ff1535c0e2997a6039c548982004dd93 StaticDependenciesID=18974378deb0e4fc540e6b2321b0ff13 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapDirectIntegration.urtshader using Guid(5bbebdef5916845478fcef13fa10d89f) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapDirectIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '16a5e83c3e0e5009ab394ab2b951fdd6') in 0.0103576 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a922f61de12ed04fdf9509350b340e48 DependenciesID=57ccbabcf65c829f2817a591a3ce9914 StaticDependenciesID=63188f79534be5f4b9e074ad4af5bfb7 
+Start importing Packages/com.unity.render-pipelines.core/Tests/Editor/UnifiedRayTracing/TraceRaysAndFetchAttributes.urtshader using Guid(fbc59f55df2416344b008dc23753cae2) (ScriptedImporter)
+Compiling Ray Tracing Shader "TraceRaysAndFetchAttributes.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'b176c8e4b623a9b1bca035cc8a457f3e') in 0.0055346 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3b313a6c864bac4a92bdbdf353437986 DependenciesID=d21a282b89a2e496dfcce7cde4fed2ac StaticDependenciesID=aa8291e86ea82085a643681c1c779d39 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapAOIntegration.urtshader using Guid(1c410815c01ce1d4d82c645c0cd45747) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapAOIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '9df1e187d4190f9957b2b561b03a969c') in 0.0099638 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5103f96431e842f7259bb0177de5374a DependenciesID=149050e4eae14bbf0824943226fef567 StaticDependenciesID=bcaf3aac9727a2ca27155e619d011e5f 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationValidity.urtshader using Guid(2c32233d92a2d0745930664c087c5c9a) (ScriptedImporter)
+Compiling Ray Tracing Shader "ProbeIntegrationValidity.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'bcf9a3db43d96e62931481948649ec6d') in 0.0083129 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7382f6ebace9db409d45bbf3f67db551 DependenciesID=c362f229ed9d3f4e8329bf893a13639b StaticDependenciesID=4aea10376946a8225ccdfdec15a70dac 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LightmapValidityIntegration.urtshader using Guid(ace95ac84e213794891b4bd7c9b3c158) (ScriptedImporter)
+Compiling Ray Tracing Shader "LightmapValidityIntegration.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '9cfefd2467c2f392ccaf70284f81d86a') in 0.0101062 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1e4e1f52bf9adcad13f0bcdba75cec3b DependenciesID=57d9d38cd2a047f8b92a9651c6724631 StaticDependenciesID=46d905dacc01197a8e043a8ad4f9d21d 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/Lighting/SurfaceCache/RestirCandidateTemporal.urtshader using Guid(ad3a9f9982f8c4f4a839a78955e78458) (ScriptedImporter)
+Compiling Ray Tracing Shader "RestirCandidateTemporal.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'ee1f626977a9995fa6dc3fe2cae85133') in 0.0073961 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0ee7e16793f63ad4fa9bacccbdab596d DependenciesID=a54e69929afed86f408abe0f3a11f5a4 StaticDependenciesID=2beaac54fac463ee5ee15c00b0990d01 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationIndirect.urtshader using Guid(5ecdabd800f05984696f22ba95284516) (ScriptedImporter)
+Compiling Ray Tracing Shader "ProbeIntegrationIndirect.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '889fc6615150a45fc63538a9546c0e35') in 0.0105336 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7b342ad6fce78607d4cb85fc02d9d19a DependenciesID=e68919762ba0a9e0f238cb17c5dcbebb StaticDependenciesID=83ecbbd61911181b4944eb7ac9eabee5 
+Start importing Packages/com.unity.render-pipelines.core/Tests/Runtime/PathTracing/PathIteratorTest.urtshader using Guid(6e0b547bab30a804c8123974120d583f) (ScriptedImporter)
+Compiling Ray Tracing Shader "PathIteratorTest.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '57d947cae0e8003fbc981ad74169efaa') in 0.0119214 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=07420bf6446c0c205e272929d6eb81ee DependenciesID=594f11d35b7aba65962c7886d27a4981 StaticDependenciesID=cf2a33ce9b71ea08a4459556694e1323 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/LiveGI.urtshader using Guid(ceb7a31b84722d144bbeff1c8cd88769) (ScriptedImporter)
+Compiling Ray Tracing Shader "LiveGI.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '12f1f33770683c6d22725c2f237e83ab') in 0.0106203 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c58ef83ec50830e9bfe040e930b3537e DependenciesID=efbcc06b527755efc51f17180af96016 StaticDependenciesID=628001b751fe9fddf64a203b1446575e 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationOcclusion.urtshader using Guid(de3013e16d99f2746ab1735ec06a660b) (ScriptedImporter)
+Compiling Ray Tracing Shader "ProbeIntegrationOcclusion.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'b8fb97ca364825a954794a7a33584bbe') in 0.0100743 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=34ea5cef2db8063219dc8fd537498cc0 DependenciesID=b4bdf7721efc399300aba8c6c0cc6ced StaticDependenciesID=183f3d853e4af89ec08f4e79696e167d 
+Start importing Packages/com.unity.render-pipelines.core/Runtime/PathTracing/Shaders/ProbeIntegrationDirect.urtshader using Guid(1f9bfe60b4ad75943a5281839c1a4e5c) (ScriptedImporter)
+Compiling Ray Tracing Shader "ProbeIntegrationDirect.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: 'f9e05b28fe00eb70f1cbd312b7b9c80e') in 0.0100881 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4cedefe6725f61ebfce8197635258855 DependenciesID=e4ee24474e83bb9a6d47c033a5149289 StaticDependenciesID=d3f99f9cc1ae2c0c0147c2fa8da668fc 
+Start importing Packages/com.unity.render-pipelines.core/Editor/Lighting/ProbeVolume/VirtualOffset/TraceVirtualOffset.urtshader using Guid(ff2cbab5da58bf04d82c5f34037ed123) (ScriptedImporter)
+Compiling Ray Tracing Shader "TraceVirtualOffset.urtshader", keywords = <no keywords>
+    finished in 0.00 seconds. Local cache hits 1, remote cache hits 0, compiled 0 platform variants
+ -> (Import Result ID: '6f29081014305158ffc1f553fe9ac97c') in 0.0086049 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7915af89c97778059399f61159182492 DependenciesID=4529efd1d999f927776004ba32005281 StaticDependenciesID=f51ff46b48d84884c883ac486ebfd7f9 
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=058def35dbf006547ae27326f4e2f917): Total: 8.874 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=4 ms, native=3820 ms
+		Asset DB Callback time: managed=253 ms, native=132 ms
+		Scripting: domain reloads=1, domain reload time=1371 ms, compile time=3227 ms, other=62 ms
+		Project Asset Count: scripts=1372, non-scripts=2596
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 18.704ms
+	ApplyChangesToAssetFolders: 0.635ms
+	Scan: 166.072ms
+	OnSourceAssetsModified: 1.068ms
+	CategorizeScriptCompilationAssets: 61.587ms
+	ProcessAssetsWithTransientArtifactChanges: 72.885ms
+	CategorizeAssets: 48.556ms
+	CompileScripts: 3227.013ms
+	ImportOutOfDateAssets: 3336.491ms (3064.134ms without children)
+		ImportManagerImport: 269.942ms (1.369ms without children)
+		UnloadImportedAssets: 1.018ms
+		ReloadImportedAssets: 0.873ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.948ms
+		OnDemandSchedulerStart: 0.400ms
+	PostProcessAllAssets: 365.393ms
+		RaytracingShaderImportPostprocess 55.416ms
+		ComputeShaderImportPostprocess 54.277ms
+		VCAutoAddAssetPostprocess 1.393ms
+		XRBuildSystem.XRAssetImported 0.299ms
+		PostProcessCallbackCreateDeferredMaterials 0.061ms
+		MonoPostProcessAllAssets: 252.783ms
+			AssetPostprocessor.OnPostprocessAllAssets 170.682ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 22.342ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 10.364ms
+			SyncVS.PostprocessSyncProject 9.560ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 9.325ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 2.091ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.947ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.890ms
+			AssetChangedListener.OnPostprocessAllAssets 1.495ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.173ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.826ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.796ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.673ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.480ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.463ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.449ms
+			PostProcessor.OnPostprocessAllAssets 0.447ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.425ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.409ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.406ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.383ms
+			AssetEvents.OnPostprocessAllAssets 0.264ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.210ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.202ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.182ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.178ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.165ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.137ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.121ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.108ms
+	PostAssetChangesProfiler: 3.323ms
+	UnloadStreamsBegin: 3.044ms
+	PersistCurrentRevisions: 0.248ms
+	GenerateScriptTypeHashes: 2.576ms
+	GenerateScriptTypeSerializationHashes: 4.836ms
+	Untracked: 1566.910ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 2.734ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Mundo aprendo tesis
+Unloading 47 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6670 unused Assets / (3.8 MB). Loaded Objects now: 7480.
+Memory consumption went from 208.7 MB to 204.9 MB.
+Total: 9.769500 ms (FindLiveObjects: 0.754300 ms CreateObjectMapping: 1.264900 ms MarkObjects: 5.460700 ms  DeleteObjects: 2.288000 ms)
+
+Opening scene 'Assets/Scenes/Menu.unity'
+Unloading 21 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/Menu.unity'
+	Deserialize:            46.778 ms
+	Integration:            252.384 ms
+	Integration of assets:  2.422 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   301.618 ms
+Unloading 3 unused Assets / (1.1 KB). Loaded Objects now: 8234.
+Memory consumption went from 201.7 MB to 201.7 MB.
+Total: 6.571000 ms (FindLiveObjects: 0.605800 ms CreateObjectMapping: 0.380700 ms MarkObjects: 5.555600 ms  DeleteObjects: 0.028000 ms)
+
+Start importing Assets/Mundo Aprendo/Prefabs/Systems/AudioManager.prefab using Guid(0a5739c634f7a3445ba29a9c15405674) (PrefabImporter) -> (Import Result ID: 'de3333e00e33a4cc4e39da80f4728692') in 0.0031965 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b000af25dce8dd805c96e4405b81b851 DependenciesID=4782a1fe67d4f07d285ab9220bd22fb4 StaticDependenciesID=0fe77bc9b6e14990067904e411b28bbe 
+Asset Pipeline Refresh (id=392d2d949c814ce4d876579fcef1f247): Total: 0.083 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Fuente de Letra/Supersonic Rocketship SDF.asset using Guid(1b14be28849fd6c498e87f629f19ce92) (NativeFormatImporter) -> (Import Result ID: '272a9109abcbe45bbe67cfdafa65b2fc') in 0.0048014 seconds [static dependencies only]. Details - ImportResultOutputID=8bbf97985c7f871718d52536ae4a7ad7 DependenciesID=0cd6c48eadaf3d02f47c37e1cf6635e4 StaticDependenciesID=5e1f77d0d7e358a38e14f5db0412ec3f 
+Asset Pipeline Refresh (id=142c240eab63da745b82b4c295eb04c4): Total: 0.042 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Scenes/Menu.unity using Guid(0a30dc9e534a4324ab7c3475af5151ec) (DefaultImporter) -> (Import Result ID: '36bed7ecba4726275dceaa95334d7f1c') in 0.0008262 seconds [static dependencies only]. Details - ImportResultOutputID=b8537c70be77753828ecd5233c8772f5 DependenciesID=deb2b89003a987dd64fa939ba13c68c6 StaticDependenciesID=af072c2ec037948c95040cdc664907a1 
+Asset Pipeline Refresh (id=cc3cc1e8cce42754bba33249a7e750f3): Total: 0.035 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/SeleccionMundos.unity'
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/SeleccionMundos.unity'
+	Deserialize:            12.188 ms
+	Integration:            178.476 ms
+	Integration of assets:  0.338 ms
+	Thread Wait Time:       0.002 ms
+	Total Operation Time:   191.004 ms
+Unloading 254 unused Assets / (9.8 MB). Loaded Objects now: 8103.
+Memory consumption went from 216.9 MB to 207.1 MB.
+Total: 7.600100 ms (FindLiveObjects: 0.627500 ms CreateObjectMapping: 0.419300 ms MarkObjects: 5.935300 ms  DeleteObjects: 0.617400 ms)
+
+Start importing Assets/Scenes/SeleccionMundos.unity using Guid(1573d5a0267709b45a301ffda98e1fe8) (DefaultImporter) -> (Import Result ID: '21bd34b4bd77cc55f495a8c63cf7fcc4') in 0.0007434 seconds [static dependencies only]. Details - ImportResultOutputID=78d91bf60aac1876ab5a70ed958d191c DependenciesID=a84cb3eeb6fee5a155b8da4dd702e7e4 StaticDependenciesID=902d9f71c68069b9f25523d19025ea13 
+Asset Pipeline Refresh (id=e0153bd6dbc2b1b4ab33c65b969bdf6e): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/MundoMusical.unity'
+Unloading 26 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/MundoMusical.unity'
+	Deserialize:            9.034 ms
+	Integration:            179.486 ms
+	Integration of assets:  0.351 ms
+	Thread Wait Time:       0.034 ms
+	Total Operation Time:   188.904 ms
+Unloading 163 unused Assets / (9.8 MB). Loaded Objects now: 7852.
+Memory consumption went from 212.1 MB to 202.3 MB.
+Total: 7.226400 ms (FindLiveObjects: 0.474300 ms CreateObjectMapping: 0.417400 ms MarkObjects: 5.792900 ms  DeleteObjects: 0.541200 ms)
+
+Start importing Assets/Scenes/MundoMusical.unity using Guid(3f6c4386a3a044d19c80c07a1b58c85e) (DefaultImporter) -> (Import Result ID: '319f58e7431bab0d172e2b1a3f680193') in 0.0012103 seconds [static dependencies only]. Details - ImportResultOutputID=fa1607080b451a56afdda71ccf73d1ba DependenciesID=4309c8b5c10ce7c431f2d79362fe1a13 StaticDependenciesID=308255829492e42e62ddb0cb6d0088ef 
+Asset Pipeline Refresh (id=fa71f0ab310097940b0612aba17da2a2): Total: 0.037 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/MundoCuentos_VozTest.unity'
+Unloading 25 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/MundoCuentos_VozTest.unity'
+	Deserialize:            5.846 ms
+	Integration:            177.473 ms
+	Integration of assets:  0.352 ms
+	Thread Wait Time:       0.007 ms
+	Total Operation Time:   183.678 ms
+Unloading 165 unused Assets / (9.3 MB). Loaded Objects now: 7762.
+Memory consumption went from 211.3 MB to 202.0 MB.
+Total: 7.131400 ms (FindLiveObjects: 0.463100 ms CreateObjectMapping: 0.329300 ms MarkObjects: 5.978900 ms  DeleteObjects: 0.359400 ms)
+
+Start importing Assets/Scenes/MundoCuentos_VozTest.unity using Guid(fe78397ebc833764983c91fdbdc87212) (DefaultImporter) -> (Import Result ID: 'cf98f0b51ca376eda8a63566f310fa5e') in 0.0007386 seconds [static dependencies only]. Details - ImportResultOutputID=9d598c3d92fd2cc4bf3114ab33571991 DependenciesID=0a8f8099bc3bc71bef6dc46171eb8ca3 StaticDependenciesID=5126c9c43b32abf5eb7d8ee653e1d37d 
+Asset Pipeline Refresh (id=f9b308ab0b05fcf42a47ef4d404089b3): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/MundoTamanos.unity'
+Unloading 38 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/MundoTamanos.unity'
+	Deserialize:            9.599 ms
+	Integration:            177.920 ms
+	Integration of assets:  0.463 ms
+	Thread Wait Time:       0.008 ms
+	Total Operation Time:   187.989 ms
+Unloading 159 unused Assets / (9.1 MB). Loaded Objects now: 7774.
+Memory consumption went from 212.5 MB to 203.4 MB.
+Total: 7.539500 ms (FindLiveObjects: 0.455100 ms CreateObjectMapping: 0.323500 ms MarkObjects: 6.429900 ms  DeleteObjects: 0.330400 ms)
+
+Start importing Assets/Scenes/MundoTamanos.unity using Guid(af7c037977634694aaacfb010d89d78b) (DefaultImporter) -> (Import Result ID: 'b70b0ff0def858443c369561c4f08310') in 0.0007242 seconds [static dependencies only]. Details - ImportResultOutputID=12d6a3db28b4fa74f299c90f3b37669f DependenciesID=c37455ae2b5cef394135a6f80431a31f StaticDependenciesID=ccf5b310fac9da5869783b7a024b1144 
+Asset Pipeline Refresh (id=efa5dd4c58eee884ca77f197aef21c91): Total: 0.021 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/Mundos/MundoEmociones.unity'
+Unloading 32 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/Mundos/MundoEmociones.unity'
+	Deserialize:            10.775 ms
+	Integration:            181.867 ms
+	Integration of assets:  0.373 ms
+	Thread Wait Time:       0.035 ms
+	Total Operation Time:   193.050 ms
+Unloading 177 unused Assets / (9.1 MB). Loaded Objects now: 7975.
+Memory consumption went from 214.4 MB to 205.3 MB.
+Total: 7.307200 ms (FindLiveObjects: 0.489600 ms CreateObjectMapping: 0.327300 ms MarkObjects: 6.157100 ms  DeleteObjects: 0.332600 ms)
+
+Start importing Assets/Scenes/Mundos/MundoEmociones.unity using Guid(6b56f69df0d5ca647a296cab90545e42) (DefaultImporter) -> (Import Result ID: 'a7ed3b4d4f567ca5c6107e0f55b782ed') in 0.0007447 seconds [static dependencies only]. Details - ImportResultOutputID=f1fcdccfac37ee37a090bc4bbded634a DependenciesID=f2a06dd936aa21d3e2f0c9920574f7b7 StaticDependenciesID=cadc9672cdced4255700df902901bbd4 
+Asset Pipeline Refresh (id=f263186a236bbd543a02b54c9430d1cd): Total: 0.038 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=2535334d74e880949b9c28d20fdfcdbd): Total: 0.009 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/Menu.unity'
+Unloading 11 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/Menu.unity'
+	Deserialize:            15.005 ms
+	Integration:            185.875 ms
+	Integration of assets:  0.264 ms
+	Thread Wait Time:       0.044 ms
+	Total Operation Time:   201.188 ms
+Unloading 181 unused Assets / (5.6 MB). Loaded Objects now: 8247.
+Memory consumption went from 215.5 MB to 209.9 MB.
+Total: 8.557400 ms (FindLiveObjects: 0.574900 ms CreateObjectMapping: 0.411500 ms MarkObjects: 7.145400 ms  DeleteObjects: 0.424600 ms)
+
+Mejoras visuales y tecnicas aplicadas de forma idempotente a las seis escenas.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Bolin.Editor.MundoAprendoPolishSetup:ApplyProjectPolish () (at Assets/Mundo Aprendo/Editor/MundoAprendoPolishSetup.cs:62)
+
+(Filename: Assets/Mundo Aprendo/Editor/MundoAprendoPolishSetup.cs Line: 62)
+
+Batchmode quit successfully invoked - shutting down!
+Clearing [Supersonic Rocketship SDF] dynamic font asset data.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+TMPro.EditorEventCallbacks/<>c:<InitializeFontAssetResourceChangeCallBacks>b__0_0 () (at ./Library/PackageCache/com.unity.ugui@3dd2fbd8c1f1/Editor/TMP/TMP_EditorResourceManager.cs:36)
+UnityEditor.EditorApplication:Internal_EditorApplicationQuit ()
+
+(Filename: ./Library/PackageCache/com.unity.ugui@3dd2fbd8c1f1/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
+
+Killing ADB server in 0.0262881 seconds.
+Start importing Assets/Mundo Aprendo/Fuente de Letra/Supersonic Rocketship SDF.asset using Guid(1b14be28849fd6c498e87f629f19ce92) (NativeFormatImporter) -> (Import Result ID: 'ceb0f9f1318bf80093eb317b37eae98d') in 0.0018243 seconds [static dependencies only]. Details - ImportResultOutputID=8bbf97985c7f871718d52536ae4a7ad7 DependenciesID=3c694437a2ffedfeaab87860a75b5a4a StaticDependenciesID=91c8e08a29d993ddd072ff4e21720e64 
+Asset Pipeline Refresh (id=1141151d911b45347846c715cb48f312): Total: 0.036 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

@@ -1,0 +1,494 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32690 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-06-21T14:01:55.9996399Z"
+System  architecture: x64
+Process architecture: x64
+Date: 2026-06-21T14:01:55Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
+-batchmode
+-nographics
+-quit
+-projectPath
+F:\PUN\Mundo aprendo tesis
+-executeMethod
+Bolin.Editor.MundoAprendoWorldDesignSetup.DumpLayouts
+-logFile
+F:\PUN\Mundo aprendo tesis\Logs\WorldLayoutAfter.log
+Successfully changed project path to: F:\PUN\Mundo aprendo tesis
+F:/PUN/Mundo aprendo tesis
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Player connection [20180]  Target information:
+
+Player connection [20180]  * "[IP] 192.168.1.23 [Port] 55504 [Flags] 2 [Guid] 845387289 [EditorId] 845387289 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NF6H5UD) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [20180] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [20180] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-19948" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Boloxdhd"
+[Licensing::IpcConnector] LicenseClient-Boloxdhd channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-Boloxdhd-6000.4.0 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 1496)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0" at "2026-06-21T14:01:57.2603145Z"
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              76af4d3831524523b004b33cb96dac15
+  Correlation Id:          4023f8399aee2629ba7875ef6c1fa180
+  External correlation Id: 6478995596634960627
+  Machine Id:              CFi18PVxujarsjnwWQVdFlBCSK4=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Boloxdhd-6000.4.0" (connect: 0.25s, validation: 0.04s, handshake: 0.96s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0-notifications" at "2026-06-21T14:01:58.2555462Z"
+[Licensing::Module] Connected to LicensingClient (PId: 1496, launch time: 0.00, total connection time: 1.24s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 2.28s
+[Licensing::Module] Licensing is initialized (took 1.87s).
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.4.0f1 (8cf496087c8f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/PUN/Mundo aprendo tesis/Assets
+Forcing GfxDevice: Null
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Shader Hidden/ChartRasterizerHardware is not supported: GPU does not support conservative rasterization
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56948
+CodeReloadManager initialized
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.004241 seconds.
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 2139 ms
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.560 seconds
+Domain Reload Profiling: 3019ms
+	BeginReloadAssembly (128ms)
+		CreateAndSetChildDomain (5ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (216ms)
+		LoadAssemblies (120ms)
+		AnalyzeDomain (207ms)
+			TypeCache.Refresh (205ms)
+				TypeCache.ScanAssembly (190ms)
+	FinalizeReload (2561ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (2223ms)
+			BeforeProcessingInitializeOnLoad (93ms)
+			ProcessInitializeOnLoadAttributes (105ms)
+			ProcessInitializeOnLoadMethodAttributes (75ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 57 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.39 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.rider@4504839d03f7)
+    com.unity.ide.visualstudio@2.0.27 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.visualstudio@dc1ddd4f09b6)
+    com.unity.inputsystem@1.19.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.timeline@1.8.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.2.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.1 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.multiplayer.center@f01f4ba8d00a)
+    com.unity.render-pipelines.universal@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal@0c5162adfb45)
+    com.unity.test-framework@1.6.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework@629486125cfc)
+    com.unity.ugui@2.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ugui@3dd2fbd8c1f1)
+    com.unity.modules.accessibility@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.core@6a60abc179f8)
+    com.unity.shadergraph@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.shadergraph@c6e5f4d3afa5)
+    com.unity.render-pipelines.universal-config@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal-config@0db4263b9e6b)
+    com.unity.collections@6.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collections@538ace9075bc)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: F:/PUN/Mundo aprendo tesis
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s180ms
+[722/918    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.16 seconds), 1 items updated, 918 evaluated
+AssetDatabase: script compilation time: 0.539904s
+Begin MonoManager ReloadAssembly
+Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.935 seconds
+Domain Reload Profiling: 3833ms
+	BeginReloadAssembly (292ms)
+		DisableScriptedObjects (10ms)
+		CreateAndSetChildDomain (143ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (58ms)
+	LoadAllAssembliesAndSetupDomain (495ms)
+		LoadAssemblies (321ms)
+		AnalyzeDomain (263ms)
+			TypeCache.Refresh (188ms)
+				TypeCache.ScanAssembly (174ms)
+			BuildScriptInfoCaches (62ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (2936ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			BeforeProcessingInitializeOnLoad (168ms)
+			ProcessInitializeOnLoadAttributes (2368ms)
+			ProcessInitializeOnLoadMethodAttributes (113ms)
+			AfterProcessingInitializeOnLoad (7ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=1174e7a115bbd9a4b9e6a59065eedce1): Total: 4.887 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3339 ms
+		Asset DB Callback time: managed=38 ms, native=15 ms
+		Scripting: domain reloads=1, domain reload time=901 ms, compile time=541 ms, other=49 ms
+		Project Asset Count: scripts=1372, non-scripts=2596
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 17.211ms
+	ApplyChangesToAssetFolders: 0.607ms
+	Scan: 112.500ms
+	CategorizeScriptCompilationAssets: 46.520ms
+	ProcessAssetsWithTransientArtifactChanges: 70.496ms
+	CategorizeAssets: 44.875ms
+	CompileScripts: 541.040ms
+	ImportOutOfDateAssets: 2945.593ms (2943.584ms without children)
+		UnloadImportedAssets: 0.906ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.646ms
+		OnDemandSchedulerStart: 0.433ms
+	PostProcessAllAssets: 38.791ms
+		MonoPostProcessAllAssets: 38.729ms
+			SyncVS.PostprocessSyncProject 13.527ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 10.274ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 2.087ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.928ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.678ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.359ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.273ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.212ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.171ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.160ms
+	UnloadStreamsBegin: 2.878ms
+	PersistCurrentRevisions: 0.108ms
+	GenerateScriptTypeHashes: 2.595ms
+	GenerateScriptTypeSerializationHashes: 4.928ms
+	Untracked: 1064.834ms
+
+Application.AssetDatabase Initial Refresh End
+Scanning for USB devices : 2.783ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Mundo aprendo tesis
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6631 unused Assets / (3.2 MB). Loaded Objects now: 7479.
+Memory consumption went from 194.0 MB to 190.8 MB.
+Total: 9.650800 ms (FindLiveObjects: 0.797300 ms CreateObjectMapping: 1.133900 ms MarkObjects: 5.305600 ms  DeleteObjects: 2.412100 ms)
+
+Opening scene 'Assets/Scenes/MundoCuentos_VozTest.unity'
+Unloading 8 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/MundoCuentos_VozTest.unity'
+	Deserialize:            45.032 ms
+	Integration:            329.952 ms
+	Integration of assets:  5.370 ms
+	Thread Wait Time:       0.006 ms
+	Total Operation Time:   380.359 ms
+Unloading 2 unused Assets / (1.0 KB). Loaded Objects now: 7846.
+Memory consumption went from 184.7 MB to 184.7 MB.
+Total: 6.777000 ms (FindLiveObjects: 0.521400 ms CreateObjectMapping: 0.475300 ms MarkObjects: 5.751000 ms  DeleteObjects: 0.028600 ms)
+
+Opening scene 'Assets/Scenes/MundoTamanos.unity'
+Unloading 25 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/MundoTamanos.unity'
+	Deserialize:            11.590 ms
+	Integration:            214.853 ms
+	Integration of assets:  0.674 ms
+	Thread Wait Time:       0.011 ms
+	Total Operation Time:   227.129 ms
+Unloading 1 unused Assets / (1.0 KB). Loaded Objects now: 7803.
+Memory consumption went from 185.3 MB to 185.3 MB.
+Total: 6.653200 ms (FindLiveObjects: 0.537600 ms CreateObjectMapping: 0.509500 ms MarkObjects: 5.578400 ms  DeleteObjects: 0.026900 ms)
+
+=== MundoCuentos_VozTest ===
+Canvas - Mundo Cuentos Voz Test active=True pos=(320.00, 240.00) size=(1662.77, 1247.08) anchors=(0.00, 0.00)/(0.00, 0.00)
+  Fondo active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) image=RGBA(0.580, 0.800, 0.870, 1.000) sprite=null
+  StoryVisualDesign active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00)
+    CloudTopLeft active=True pos=(0.00, -75.00) size=(360.00, 120.00) anchors=(0.00, 1.00)/(0.00, 1.00) image=RGBA(0.940, 0.980, 1.000, 0.500) sprite=UISprite
+    CloudBottomRight active=True pos=(-20.00, 45.00) size=(460.00, 150.00) anchors=(1.00, 0.00)/(1.00, 0.00) image=RGBA(0.950, 0.860, 0.720, 0.360) sprite=UISprite
+    StoryHeader active=True pos=(0.00, -52.00) size=(1080.00, 92.00) anchors=(0.50, 1.00)/(0.50, 1.00) image=RGBA(0.120, 0.480, 0.620, 0.980) sprite=UISprite
+      Title active=True pos=(0.00, 12.00) size=(980.00, 50.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='MUNDO DE LOS CUENTOS' font=42
+      Subtitle active=True pos=(0.00, -27.00) size=(760.00, 30.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='Lee, escucha y descubre' font=21
+  Contenido active=True pos=(0.00, -45.00) size=(1660.00, 790.00) anchors=(0.50, 0.50)/(0.50, 0.50)
+    PanelHistoria active=True pos=(0.00, 0.00) size=(780.00, 820.00) anchors=(0.00, 0.00)/(0.00, 0.00) image=RGBA(1.000, 0.960, 0.840, 0.990) sprite=UISprite
+      StorySectionBadge active=True pos=(0.00, 0.00) size=(100.00, 100.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(0.940, 0.420, 0.360, 1.000) sprite=UISprite
+      TituloCuento active=True pos=(0.00, 0.00) size=(700.00, 72.00) anchors=(0.00, 0.00)/(0.00, 0.00) text='Los tres cerditos' font=42
+      StoryTextCard active=True pos=(0.00, 0.00) size=(100.00, 100.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 0.990, 0.940, 0.820) sprite=UISprite
+    PanelReconocimientoVoz active=True pos=(0.00, 0.00) size=(780.00, 820.00) anchors=(0.00, 0.00)/(0.00, 0.00) image=RGBA(0.900, 0.980, 0.980, 0.990) sprite=UISprite
+      VoiceSectionBadge active=True pos=(0.00, 0.00) size=(100.00, 100.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(0.120, 0.580, 0.620, 1.000) sprite=UISprite
+      ReadingProgressBar active=True pos=(0.00, -150.00) size=(700.00, 46.00) anchors=(0.50, 1.00)/(0.50, 1.00) image=RGBA(0.140, 0.170, 0.240, 0.720) sprite=UISprite
+      Titulo active=True pos=(0.00, 0.00) size=(700.00, 66.00) anchors=(0.00, 0.00)/(0.00, 0.00) text='Escucha tu lectura' font=36
+      RecognizedTextCard active=True pos=(0.00, 0.00) size=(100.00, 100.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 1.000, 1.000, 0.880) sprite=UISprite
+      TextoPorcentaje active=True pos=(0.00, 0.00) size=(700.00, 42.00) anchors=(0.00, 0.00)/(0.00, 0.00) text='Coincidencia: 0%' font=24
+      TextoResultadoLectura active=True pos=(0.00, 0.00) size=(700.00, 58.00) anchors=(0.00, 0.00)/(0.00, 0.00) text='Tu resultado aparecera aqui.' font=24
+      PanelEstrellas active=True pos=(0.00, 0.00) size=(700.00, 54.00) anchors=(0.00, 0.00)/(0.00, 0.00)
+      TextoContador active=True pos=(0.00, 0.00) size=(700.00, 46.00) anchors=(0.00, 0.00)/(0.00, 0.00) text='LISTO PARA LEER' font=28
+      TextoEstado active=True pos=(0.00, 0.00) size=(700.00, 84.00) anchors=(0.00, 0.00)/(0.00, 0.00) text='Presiona INICIAR cuando estes listo.' font=21
+      SupportModePanel active=True pos=(0.00, 0.00) size=(100.00, 100.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 0.940, 0.720, 0.980) sprite=UISprite
+      FilaBotonesVoz active=True pos=(0.00, 68.00) size=(700.00, 58.00) anchors=(0.50, 0.00)/(0.50, 0.00)
+      BotonVolver active=True pos=(0.00, 0.00) size=(152.00, 56.00) anchors=(0.00, 0.00)/(0.00, 0.00) image=RGBA(0.340, 0.300, 0.580, 1.000) sprite=UISprite
+      MicrophoneListeningIndicator active=True pos=(-125.00, -25.00) size=(220.00, 44.00) anchors=(1.00, 1.00)/(1.00, 1.00) image=RGBA(0.220, 0.620, 0.660, 0.960) sprite=UISprite
+  SceneTransitionOverlay active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) image=RGBA(0.055, 0.075, 0.120, 1.000) sprite=null
+=== MundoTamanos ===
+Canvas - Mundo Tamanos active=True pos=(320.00, 240.00) size=(1662.77, 1247.08) anchors=(0.00, 0.00)/(0.00, 0.00)
+  Fondo-habitat active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) image=RGBA(1.000, 1.000, 1.000, 1.000) sprite=Habitat_Selva
+  HabitatDesignOverlay active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) image=RGBA(0.040, 0.120, 0.160, 0.100) sprite=null
+  Panel-superior active=True pos=(0.00, -92.00) size=(0.00, 166.00) anchors=(0.11, 1.00)/(0.89, 1.00) image=RGBA(0.960, 1.000, 1.000, 0.960) sprite=UISprite
+    Titulo active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.08, 0.44)/(0.92, 0.90) text='MUNDO DE LOS TAMANOS' font=32
+    Pregunta active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.08, 0.08)/(0.92, 0.50) text='Elige el animal correcto' font=36
+    Estrellas active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.78, 0.20)/(0.97, 0.78)
+      Estrella-1 active=True pos=(0.00, 0.00) size=(64.00, 64.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 1.000, 1.000, 1.000) sprite=Star_Full
+      Estrella-2 active=True pos=(0.00, 0.00) size=(64.00, 64.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 1.000, 1.000, 1.000) sprite=Star_Full
+      Estrella-3 active=True pos=(0.00, 0.00) size=(64.00, 64.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 1.000, 1.000, 1.000) sprite=Star_Full
+  Area-animales-segura active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.05, 0.23)/(0.95, 0.81)
+    AnimalStageLeft active=True pos=(0.00, 0.00) size=(510.00, 440.00) anchors=(0.27, 0.55)/(0.27, 0.55) image=RGBA(1.000, 1.000, 1.000, 0.200) sprite=UISprite
+      BadgeBackground active=True pos=(0.00, 180.00) size=(210.00, 48.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(0.180, 0.580, 0.780, 1.000) sprite=UISprite
+      OptionBadge active=True pos=(0.00, 180.00) size=(190.00, 44.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='OPCION 1' font=22
+    AnimalStageRight active=True pos=(0.00, 0.00) size=(510.00, 440.00) anchors=(0.73, 0.55)/(0.73, 0.55) image=RGBA(1.000, 1.000, 1.000, 0.200) sprite=UISprite
+      BadgeBackground active=True pos=(0.00, 180.00) size=(210.00, 48.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(0.940, 0.420, 0.360, 1.000) sprite=UISprite
+      OptionBadge active=True pos=(0.00, 180.00) size=(190.00, 44.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='OPCION 2' font=22
+    Animal-izquierdo active=True pos=(-420.00, 0.00) size=(320.00, 320.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 1.000, 1.000, 1.000) sprite=Animal_Elefante
+    Animal-derecho active=True pos=(420.00, 0.00) size=(280.00, 280.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 1.000, 1.000, 1.000) sprite=Animal_Conejo
+    LeftAnimalName active=True pos=(0.00, 0.00) size=(340.00, 62.00) anchors=(0.28, 0.10)/(0.28, 0.10) image=RGBA(0.160, 0.520, 0.760, 0.980) sprite=UISprite
+      Text active=True pos=(0.00, 0.00) size=(380.00, 64.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='ELEFANTE' font=28
+    RightAnimalName active=True pos=(0.00, 0.00) size=(340.00, 62.00) anchors=(0.72, 0.10)/(0.72, 0.10) image=RGBA(0.920, 0.430, 0.380, 0.980) sprite=UISprite
+      Text active=True pos=(0.00, 0.00) size=(380.00, 64.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='CONEJO' font=28
+  Panel-botones-inferior active=True pos=(0.00, 82.00) size=(0.00, 142.00) anchors=(0.15, 0.00)/(0.85, 0.00) image=RGBA(0.080, 0.180, 0.270, 0.910) sprite=UISprite
+    Boton-animal-izquierdo active=True pos=(0.00, 0.00) size=(420.00, 118.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(0.140, 0.560, 0.760, 1.000) sprite=UISprite
+      Texto active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) text='ELEGIR IZQUIERDA' font=27
+    Boton-animal-derecho active=True pos=(0.00, 0.00) size=(420.00, 118.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(0.940, 0.420, 0.360, 1.000) sprite=UISprite
+      Texto active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) text='ELEGIR DERECHA' font=27
+  Boton-volver active=True pos=(120.00, -53.00) size=(190.00, 64.00) anchors=(0.00, 1.00)/(0.00, 1.00) image=RGBA(0.340, 0.300, 0.580, 1.000) sprite=UISprite
+    Texto active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) text='VOLVER' font=27
+  Panel-resultado active=False pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) image=RGBA(0.030, 0.080, 0.130, 0.780) sprite=null
+    Contenido active=True pos=(0.00, 0.00) size=(760.00, 430.00) anchors=(0.50, 0.50)/(0.50, 0.50) image=RGBA(1.000, 0.970, 0.840, 1.000) sprite=UISprite
+      Texto-resultado active=True pos=(0.00, 0.00) size=(200.00, 50.00) anchors=(0.50, 0.50)/(0.50, 0.50) text='Actividad completada' font=38
+      Botones-resultado active=True pos=(0.00, 0.00) size=(100.00, 100.00) anchors=(0.50, 0.50)/(0.50, 0.50)
+  Texto-feedback active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.22, 0.15)/(0.78, 0.23) text='Elige con calma' font=34
+  FeedbackCard active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.35, 0.16)/(0.65, 0.23) image=RGBA(1.000, 1.000, 1.000, 0.940) sprite=UISprite
+  SceneTransitionOverlay active=True pos=(0.00, 0.00) size=(0.00, 0.00) anchors=(0.00, 0.00)/(1.00, 1.00) image=RGBA(0.055, 0.075, 0.120, 1.000) sprite=null
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Bolin.Editor.MundoAprendoWorldDesignSetup:DumpLayouts () (at Assets/Mundo Aprendo/Editor/MundoAprendoWorldDesignSetup.cs:52)
+
+(Filename: Assets/Mundo Aprendo/Editor/MundoAprendoWorldDesignSetup.cs Line: 52)
+
+Batchmode quit successfully invoked - shutting down!
+Killing ADB server in 0.0277763 seconds.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-6000.4.0-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-6000.4.0 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

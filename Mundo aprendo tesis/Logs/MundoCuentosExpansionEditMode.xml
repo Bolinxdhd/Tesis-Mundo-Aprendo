@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="33" result="Passed" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.6485111">
+  <test-suite type="TestSuite" id="1000" name="Mundo aprendo tesis" fullname="Mundo aprendo tesis" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.648511" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1040" name="Assembly-CSharp-Editor.dll" fullname="F:/PUN/Mundo aprendo tesis/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.640591" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="16712" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1041" name="Bolin" fullname="Bolin" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.639672" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1042" name="Editor" fullname="Bolin.Editor" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.639212" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="1043" name="Tests" fullname="Bolin.Editor.Tests" runstate="Runnable" testcasecount="33" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.638744" total="33" passed="33" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestFixture" id="1001" name="SceneConfigurationTests" fullname="Bolin.Editor.Tests.SceneConfigurationTests" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:52Z" duration="5.598813" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1002" name="BuildSettings_ContainEveryRequiredSceneOnceAndEnabled" fullname="Bolin.Editor.Tests.SceneConfigurationTests.BuildSettings_ContainEveryRequiredSceneOnceAndEnabled" methodname="BuildSettings_ContainEveryRequiredSceneOnceAndEnabled" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="381240614" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:47Z" duration="0.016298" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1015" name="CorrectedScenes_HaveNoBrokenPersistentButtonListeners" fullname="Bolin.Editor.Tests.SceneConfigurationTests.CorrectedScenes_HaveNoBrokenPersistentButtonListeners" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:48Z" duration="1.030261" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1012" name="CorrectedScenes_HaveNoBrokenPersistentButtonListeners(&quot;Assets/Scenes/Menu.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.CorrectedScenes_HaveNoBrokenPersistentButtonListeners(&quot;Assets/Scenes/Menu.unity&quot;)" methodname="CorrectedScenes_HaveNoBrokenPersistentButtonListeners" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="188724584" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:47Z" duration="0.429774" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1013" name="CorrectedScenes_HaveNoBrokenPersistentButtonListeners(&quot;Assets/Scenes/MundoCuentos_VozTest.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.CorrectedScenes_HaveNoBrokenPersistentButtonListeners(&quot;Assets/Scenes/MundoCuentos_VozTest.unity&quot;)" methodname="CorrectedScenes_HaveNoBrokenPersistentButtonListeners" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="592125494" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:47Z" duration="0.310008" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1014" name="CorrectedScenes_HaveNoBrokenPersistentButtonListeners(&quot;Assets/Scenes/MundoTamanos.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.CorrectedScenes_HaveNoBrokenPersistentButtonListeners(&quot;Assets/Scenes/MundoTamanos.unity&quot;)" methodname="CorrectedScenes_HaveNoBrokenPersistentButtonListeners" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1058002853" result="Passed" start-time="2026-06-25 00:38:47Z" end-time="2026-06-25 00:38:48Z" duration="0.287928" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1016" name="EmotionWorld_HasFivePreparedViewsWithFearDisabled" fullname="Bolin.Editor.Tests.SceneConfigurationTests.EmotionWorld_HasFivePreparedViewsWithFearDisabled" methodname="EmotionWorld_HasFivePreparedViewsWithFearDisabled" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1207846168" result="Passed" start-time="2026-06-25 00:38:48Z" end-time="2026-06-25 00:38:48Z" duration="0.310589" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1011" name="Menu_HasNoAutomaticAnimationComponents" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Menu_HasNoAutomaticAnimationComponents" methodname="Menu_HasNoAutomaticAnimationComponents" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="286282776" result="Passed" start-time="2026-06-25 00:38:48Z" end-time="2026-06-25 00:38:48Z" duration="0.290215" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1010" name="MusicalWorld_UsesOnlyTextMeshProAndKeepsGameplayReferences" fullname="Bolin.Editor.Tests.SceneConfigurationTests.MusicalWorld_UsesOnlyTextMeshProAndKeepsGameplayReferences" methodname="MusicalWorld_UsesOnlyTextMeshProAndKeepsGameplayReferences" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1772621137" result="Passed" start-time="2026-06-25 00:38:48Z" end-time="2026-06-25 00:38:49Z" duration="0.353677" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1009" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-06-25 00:38:49Z" end-time="2026-06-25 00:38:51Z" duration="1.884702" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1003" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/Menu.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/Menu.unity&quot;)" methodname="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="2098989885" result="Passed" start-time="2026-06-25 00:38:49Z" end-time="2026-06-25 00:38:49Z" duration="0.316250" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1004" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/SeleccionMundos.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/SeleccionMundos.unity&quot;)" methodname="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1475881653" result="Passed" start-time="2026-06-25 00:38:49Z" end-time="2026-06-25 00:38:49Z" duration="0.286127" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1005" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/MundoMusical.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/MundoMusical.unity&quot;)" methodname="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1297448391" result="Passed" start-time="2026-06-25 00:38:49Z" end-time="2026-06-25 00:38:50Z" duration="0.305542" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1006" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/MundoCuentos_VozTest.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/MundoCuentos_VozTest.unity&quot;)" methodname="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1166242706" result="Passed" start-time="2026-06-25 00:38:50Z" end-time="2026-06-25 00:38:50Z" duration="0.278984" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1007" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/MundoTamanos.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/MundoTamanos.unity&quot;)" methodname="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1368189766" result="Passed" start-time="2026-06-25 00:38:50Z" end-time="2026-06-25 00:38:50Z" duration="0.277093" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1008" name="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/Mundos/MundoEmociones.unity&quot;)" fullname="Bolin.Editor.Tests.SceneConfigurationTests.Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback(&quot;Assets/Scenes/Mundos/MundoEmociones.unity&quot;)" methodname="Scene_HasResponsiveCanvasTransitionsAccessibilityAndButtonFeedback" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="680216477" result="Passed" start-time="2026-06-25 00:38:50Z" end-time="2026-06-25 00:38:51Z" duration="0.268555" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1020" name="SelectionWorld_HasResetConfirmationAndFourStarDisplays" fullname="Bolin.Editor.Tests.SceneConfigurationTests.SelectionWorld_HasResetConfirmationAndFourStarDisplays" methodname="SelectionWorld_HasResetConfirmationAndFourStarDisplays" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="2011248570" result="Passed" start-time="2026-06-25 00:38:51Z" end-time="2026-06-25 00:38:51Z" duration="0.273567" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1017" name="SizeWorld_HasThreeHabitatsAndValidAnimalPairs" fullname="Bolin.Editor.Tests.SceneConfigurationTests.SizeWorld_HasThreeHabitatsAndValidAnimalPairs" methodname="SizeWorld_HasThreeHabitatsAndValidAnimalPairs" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1772967187" result="Passed" start-time="2026-06-25 00:38:51Z" end-time="2026-06-25 00:38:51Z" duration="0.280865" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="StoryAndSizeDesigns_ArePersistedAndVisibleInHierarchy" fullname="Bolin.Editor.Tests.SceneConfigurationTests.StoryAndSizeDesigns_ArePersistedAndVisibleInHierarchy" methodname="StoryAndSizeDesigns_ArePersistedAndVisibleInHierarchy" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="1918339826" result="Passed" start-time="2026-06-25 00:38:51Z" end-time="2026-06-25 00:38:52Z" duration="0.571181" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1018" name="StoryWorld_HasStorySelectionReaderResultAndMicrophoneIndicator" fullname="Bolin.Editor.Tests.SceneConfigurationTests.StoryWorld_HasStorySelectionReaderResultAndMicrophoneIndicator" methodname="StoryWorld_HasStorySelectionReaderResultAndMicrophoneIndicator" classname="Bolin.Editor.Tests.SceneConfigurationTests" runstate="Runnable" seed="947973812" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.277792" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="TestFixture" id="1021" name="WorldProgressRepositoryTests" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.038663" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1031" name="ResetAll_RemovesStarsAndCompletedState" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.ResetAll_RemovesStarsAndCompletedState" methodname="ResetAll_RemovesStarsAndCompletedState" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="366253690" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.010509" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1027" name="SaveBestResult_ClampsStars" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_ClampsStars" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.003459" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1022" name="SaveBestResult_ClampsStars(-5,0)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_ClampsStars(-5,0)" methodname="SaveBestResult_ClampsStars" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1783277403" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000782" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1023" name="SaveBestResult_ClampsStars(0,0)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_ClampsStars(0,0)" methodname="SaveBestResult_ClampsStars" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1975962615" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000464" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1024" name="SaveBestResult_ClampsStars(1,1)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_ClampsStars(1,1)" methodname="SaveBestResult_ClampsStars" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1469844928" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000454" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1025" name="SaveBestResult_ClampsStars(3,3)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_ClampsStars(3,3)" methodname="SaveBestResult_ClampsStars" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1467372478" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000450" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1026" name="SaveBestResult_ClampsStars(8,3)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_ClampsStars(8,3)" methodname="SaveBestResult_ClampsStars" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="37184198" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000443" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1028" name="SaveBestResult_DoesNotReplaceHigherScore" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_DoesNotReplaceHigherScore" methodname="SaveBestResult_DoesNotReplaceHigherScore" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="287566464" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000549" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1029" name="SaveBestResult_MarksWorldCompleted" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.SaveBestResult_MarksWorldCompleted" methodname="SaveBestResult_MarksWorldCompleted" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="924769163" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000515" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-suite type="ParameterizedMethod" id="1039" name="StarRatingCalculator_UsesConfiguredThresholds" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.004082" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-case id="1032" name="StarRatingCalculator_UsesConfiguredThresholds(0,3)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(0,3)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1428685230" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000668" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1033" name="StarRatingCalculator_UsesConfiguredThresholds(1,3)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(1,3)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="99613070" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000446" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1034" name="StarRatingCalculator_UsesConfiguredThresholds(2,2)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(2,2)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1166557004" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000403" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1035" name="StarRatingCalculator_UsesConfiguredThresholds(3,2)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(3,2)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1339699210" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000394" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1036" name="StarRatingCalculator_UsesConfiguredThresholds(4,1)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(4,1)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1281661494" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000393" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1037" name="StarRatingCalculator_UsesConfiguredThresholds(5,1)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(5,1)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="1687243093" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000394" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+                <test-case id="1038" name="StarRatingCalculator_UsesConfiguredThresholds(6,0)" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.StarRatingCalculator_UsesConfiguredThresholds(6,0)" methodname="StarRatingCalculator_UsesConfiguredThresholds" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="91594440" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000392" asserts="0">
+                  <properties>
+                    <property name="retryIteration" value="0" />
+                    <property name="repeatIteration" value="0" />
+                  </properties>
+                </test-case>
+              </test-suite>
+              <test-case id="1030" name="Unlocking_IsLinear" fullname="Bolin.Editor.Tests.WorldProgressRepositoryTests.Unlocking_IsLinear" methodname="Unlocking_IsLinear" classname="Bolin.Editor.Tests.WorldProgressRepositoryTests" runstate="Runnable" seed="303255616" result="Passed" start-time="2026-06-25 00:38:52Z" end-time="2026-06-25 00:38:52Z" duration="0.000637" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Saving results to: C:/Users/Boloxdhd/AppData/LocalLow/DefaultCompany/Mundo aprendo tesis\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

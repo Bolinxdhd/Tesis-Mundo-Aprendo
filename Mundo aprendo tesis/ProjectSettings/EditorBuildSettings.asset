@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 0a30dc9e534a4324ab7c3475af5151ec
+  - enabled: 1
+    path: Assets/Scenes/SeleccionMundos.unity
+    guid: 1573d5a0267709b45a301ffda98e1fe8
+  - enabled: 1
+    path: Assets/Scenes/MundoMusical.unity
+    guid: 3f6c4386a3a044d19c80c07a1b58c85e
+  - enabled: 1
+    path: Assets/Scenes/MundoCuentos_VozTest.unity
+    guid: fe78397ebc833764983c91fdbdc87212
+  - enabled: 1
+    path: Assets/Scenes/MundoTamanos.unity
+    guid: af7c037977634694aaacfb010d89d78b
+  - enabled: 1
+    path: Assets/Scenes/Mundos/MundoEmociones.unity
+    guid: 6b56f69df0d5ca647a296cab90545e42
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

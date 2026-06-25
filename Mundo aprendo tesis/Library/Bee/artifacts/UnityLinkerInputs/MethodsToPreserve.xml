@@ -1,0 +1,106 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="Assets.SurpriseBox.Scripts.MundoMusicalSequenceGame">
+			<method name="ReturnToWorldSelection"/>
+			<method name="StartActivity"/>
+		</type>
+		<type fullname="Bolin.ButtonClickSound">
+			<method name="PlayClick"/>
+			<method name="PlayClick"/>
+		</type>
+		<type fullname="Bolin.ButtonUI">
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+			<method name="OnClick"/>
+		</type>
+		<type fullname="Bolin.DeseleccionarBoton">
+			<method name="QuitarSeleccion"/>
+			<method name="QuitarSeleccion"/>
+		</type>
+		<type fullname="Bolin.EmotionAnswerButton">
+			<method name="Submit"/>
+			<method name="Submit"/>
+			<method name="Submit"/>
+			<method name="Submit"/>
+			<method name="Submit"/>
+		</type>
+		<type fullname="Bolin.EmotionGameManager">
+			<method name="RestartActivity"/>
+			<method name="StartActivity"/>
+		</type>
+		<type fullname="Bolin.ManagerVideo">
+			<method name="SetLimitFps"/>
+			<method name="SetV_Sync"/>
+		</type>
+		<type fullname="Bolin.SceneButtonLoader">
+			<method name="LoadAssignedScene"/>
+		</type>
+		<type fullname="Bolin.SceneNavigation">
+			<method name="LoadWorldSelection"/>
+			<method name="LoadWorldSelection"/>
+		</type>
+		<type fullname="Bolin.SizeWorldController">
+			<method name="ReturnToWorldSelection"/>
+			<method name="StartActivity"/>
+		</type>
+		<type fullname="Bolin.VoiceRecognitionTest">
+			<method name="ClearRecognizedText"/>
+			<method name="ReturnToMenu"/>
+			<method name="StartListening"/>
+			<method name="StopListening"/>
+			<method name="ValidateReading"/>
+			<method name="ValidateSupportInput"/>
+		</type>
+		<type fullname="Bolin.VoiceSetupOpener">
+			<method name="OpenVoiceSetupWindows"/>
+		</type>
+		<type fullname="Bolin.WorldSelectionManager">
+			<method name="CancelResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="RequestResetProgress"/>
+			<method name="ResetProgress"/>
+			<method name="ResetProgress"/>
+			<method name="ReturnToMenu"/>
+			<method name="SelectWorld"/>
+			<method name="SelectWorld"/>
+			<method name="SelectWorld"/>
+			<method name="SelectWorld"/>
+		</type>
+	</assembly>
+	<assembly fullname="Unity.RenderPipelines.Core.Runtime" ignoreIfMissing="1">
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerButton">
+			<method name="OnAction"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerIntField">
+			<method name="OnDecrement"/>
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+			<method name="OnIncrement"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerObjectPopupField">
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerPanel">
+			<method name="OnScrollbarClicked"/>
+			<method name="OnScrollbarClicked"/>
+			<method name="ResetDebugManager"/>
+		</type>
+		<type fullname="UnityEngine.Rendering.UI.DebugUIHandlerUIntField">
+			<method name="OnDecrement"/>
+			<method name="OnDecrement"/>
+			<method name="OnIncrement"/>
+			<method name="OnIncrement"/>
+		</type>
+	</assembly>
+</linker>

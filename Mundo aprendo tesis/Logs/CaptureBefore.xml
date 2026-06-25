@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Failed(Child)" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.4137164">
+  <test-suite type="TestSuite" id="1014" name="Mundo aprendo tesis" fullname="Mundo aprendo tesis" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.413716" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1008" name="MundoAprendo.PlayModeTests.dll" fullname="F:/PUN/Mundo aprendo tesis/Library/ScriptAssemblies/MundoAprendo.PlayModeTests.dll" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.406281" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="11980" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1009" name="MundoAprendo" fullname="MundoAprendo" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.405673" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1010" name="PlayModeTests" fullname="MundoAprendo.PlayModeTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.405320" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1001" name="ProjectPlayModeSmokeTests" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.404247" total="1" passed="0" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1007" name="CaptureStoryAndSizeScenePreviews" fullname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests.CaptureStoryAndSizeScenePreviews" methodname="CaptureStoryAndSizeScenePreviews" classname="MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests" runstate="Runnable" seed="584807666" result="Failed" start-time="2026-06-21 13:53:00Z" end-time="2026-06-21 13:53:02Z" duration="2.392000" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  No se pudo capturar MundoCuentos_VozTest.
+  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at MundoAprendo.PlayModeTests.ProjectPlayModeSmokeTests+<CaptureStoryAndSizeScenePreviews>d__6.MoveNext () [0x00131] in F:\PUN\Mundo aprendo tesis\Assets\Tests\PlayMode\ProjectPlayModeSmokeTests.cs:190
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@629486125cfc\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[VoiceRecognitionTest: falta asignar Support Mode Panel. Crealo en la escena y arrastralo desde el Inspector.
+VoiceRecognitionTest: falta asignar Support Input Field. Crealo en la escena para usar entrada manual.
+Saving results to: C:/Users/Boloxdhd/AppData/LocalLow/DefaultCompany/Mundo aprendo tesis\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

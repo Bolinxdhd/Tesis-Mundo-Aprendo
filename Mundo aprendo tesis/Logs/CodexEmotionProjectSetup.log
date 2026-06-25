@@ -1,0 +1,795 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32690 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-06-21T07:58:02.5232108Z"
+System  architecture: x64
+Process architecture: x64
+Date: 2026-06-21T07:58:02Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+F:\PUN\Mundo aprendo tesis
+-executeMethod
+Bolin.Editor.MundoAprendoProjectSetup.ConfigureProject
+-logFile
+F:\PUN\Mundo aprendo tesis\Logs\CodexEmotionProjectSetup.log
+Successfully changed project path to: F:\PUN\Mundo aprendo tesis
+F:/PUN/Mundo aprendo tesis
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Player connection [2320]  Target information:
+
+Player connection [2320]  * "[IP] 192.168.1.23 [Port] 55504 [Flags] 2 [Guid] 47030893 [EditorId] 47030893 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NF6H5UD) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [2320] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [2320] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-20288" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Boloxdhd"
+[Licensing::IpcConnector] LicenseClient-Boloxdhd channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-Boloxdhd-6000.4.0 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 10540)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0" at "2026-06-21T07:58:03.8298115Z"
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              06a12fcf7f4b4f0daeb1cb13e3e7eb43
+  Correlation Id:          fbf89870ac7db1e9c6ef8561ea2fd8d4
+  External correlation Id: 3112045900749022431
+  Machine Id:              CFi18PVxujarsjnwWQVdFlBCSK4=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Boloxdhd-6000.4.0" (connect: 0.24s, validation: 0.04s, handshake: 0.97s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0-notifications" at "2026-06-21T07:58:04.8398028Z"
+[Licensing::Module] Connected to LicensingClient (PId: 10540, launch time: 0.00, total connection time: 1.25s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 2.34s
+[Licensing::Module] Licensing is initialized (took 1.91s).
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Initialize engine version: 6000.4.0f1 (8cf496087c8f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/PUN/Mundo aprendo tesis/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x220a)
+    Vendor:   NVIDIA
+    VRAM:     12093 MB
+    Driver:   32.0.16.1047
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56288
+CodeReloadManager initialized
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.004361 seconds.
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 2145 ms
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.604 seconds
+Domain Reload Profiling: 3067ms
+	BeginReloadAssembly (123ms)
+	RebuildCommonClasses (40ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (65ms)
+	LoadAllAssembliesAndSetupDomain (219ms)
+		LoadAssemblies (118ms)
+		AnalyzeDomain (210ms)
+			TypeCache.Refresh (208ms)
+				TypeCache.ScanAssembly (194ms)
+	FinalizeReload (2605ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (2227ms)
+			BeforeProcessingInitializeOnLoad (88ms)
+			ProcessInitializeOnLoadAttributes (112ms)
+			ProcessInitializeOnLoadMethodAttributes (113ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 57 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.39 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.rider@4504839d03f7)
+    com.unity.ide.visualstudio@2.0.27 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.visualstudio@dc1ddd4f09b6)
+    com.unity.inputsystem@1.19.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.timeline@1.8.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.2.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.1 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.multiplayer.center@f01f4ba8d00a)
+    com.unity.render-pipelines.universal@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal@0c5162adfb45)
+    com.unity.test-framework@1.6.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework@629486125cfc)
+    com.unity.ugui@2.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ugui@3dd2fbd8c1f1)
+    com.unity.modules.accessibility@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.core@6a60abc179f8)
+    com.unity.shadergraph@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.shadergraph@c6e5f4d3afa5)
+    com.unity.render-pipelines.universal-config@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal-config@0db4263b9e6b)
+    com.unity.collections@6.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collections@538ace9075bc)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+Starting: C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: F:/PUN/Mundo aprendo tesis
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 0s193ms
+[715/908    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.17 seconds), 1 items updated, 908 evaluated
+AssetDatabase: script compilation time: 0.577745s
+Begin MonoManager ReloadAssembly
+Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.978 seconds
+Domain Reload Profiling: 3906ms
+	BeginReloadAssembly (323ms)
+		DisableScriptedObjects (11ms)
+		CreateAndSetChildDomain (162ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (59ms)
+	LoadAllAssembliesAndSetupDomain (493ms)
+		LoadAssemblies (324ms)
+		AnalyzeDomain (266ms)
+			TypeCache.Refresh (191ms)
+				TypeCache.ScanAssembly (177ms)
+			BuildScriptInfoCaches (62ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (2978ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			BeforeProcessingInitializeOnLoad (180ms)
+			ProcessInitializeOnLoadAttributes (2389ms)
+			ProcessInitializeOnLoadMethodAttributes (112ms)
+			AfterProcessingInitializeOnLoad (7ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=a05fc16fd67c7ae46ade020bcf1a2848): Total: 5.103 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3483 ms
+		Asset DB Callback time: managed=37 ms, native=15 ms
+		Scripting: domain reloads=1, domain reload time=932 ms, compile time=579 ms, other=53 ms
+		Project Asset Count: scripts=1360, non-scripts=2581
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 17.476ms
+	ApplyChangesToAssetFolders: 0.660ms
+	Scan: 191.901ms
+	CategorizeScriptCompilationAssets: 54.694ms
+	ProcessAssetsWithTransientArtifactChanges: 69.952ms
+	CategorizeAssets: 43.998ms
+	CompileScripts: 578.914ms
+	ImportOutOfDateAssets: 2987.278ms (2985.318ms without children)
+		UnloadImportedAssets: 0.834ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.622ms
+		OnDemandSchedulerStart: 0.481ms
+	PostProcessAllAssets: 37.517ms
+		MonoPostProcessAllAssets: 37.425ms
+			SyncVS.PostprocessSyncProject 10.615ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 10.115ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.972ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.780ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.637ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.329ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.273ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.210ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.196ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.156ms
+	UnloadStreamsBegin: 3.902ms
+	PersistCurrentRevisions: 0.107ms
+	GenerateScriptTypeHashes: 2.525ms
+	GenerateScriptTypeSerializationHashes: 4.853ms
+	Untracked: 1114.695ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Scanning for USB devices : 3.057ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Mundo aprendo tesis
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6617 unused Assets / (6.5 MB). Loaded Objects now: 7465.
+Memory consumption went from 202.8 MB to 196.3 MB.
+Total: 11.597800 ms (FindLiveObjects: 0.829600 ms CreateObjectMapping: 1.572200 ms MarkObjects: 5.563000 ms  DeleteObjects: 3.630900 ms)
+
+Start importing Assets/Scenes/Mundos using Guid(792b35c54ea2bbc45b6af6f23fba7d7f) (DefaultImporter) -> (Import Result ID: '738cbcc502cd37bd5f030096ef262f58') in 0.032322 seconds [static dependencies only]. Details - ImportResultOutputID=d6227e3fec9b436208364f09f4ba1ed7 DependenciesID=f397431ae0943d15f020350e49da0123 StaticDependenciesID=b19bbfc81f17984f8e642c431c93bf35 
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=f8554bcfd3c6e9e49b84ff1385d499cd): Total: 0.307 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+	Summary:
+		Imports: total=1 (actual=1, local cache=0, cache server=0)
+		Asset DB Process Time: managed=14 ms, native=96 ms
+		Asset DB Callback time: managed=189 ms, native=5 ms
+		Scripting: domain reloads=0, domain reload time=0 ms, compile time=0 ms, other=0 ms
+		Project Asset Count: scripts=1361, non-scripts=2581
+		Asset File Changes: new=1, changed=1, moved=0, deleted=0
+		Scan Filter Count: 3
+	ApplyChangesToAssetFolders: 0.207ms
+	Scan: 30.970ms
+	OnSourceAssetsModified: 1.243ms
+	ProcessAssetsWithTransientArtifactChanges: 0.202ms
+	CategorizeAssets: 32.423ms
+	ImportOutOfDateAssets: 36.028ms (0.358ms without children)
+		ImportManagerImport: 34.536ms (1.785ms without children)
+		UnloadImportedAssets: 0.150ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.559ms
+		OnDemandSchedulerStart: 0.389ms
+	PostProcessAllAssets: 190.231ms
+		XRBuildSystem.XRAssetImported 2.572ms
+		MonoPostProcessAllAssets: 187.147ms
+			AssetPostprocessor.OnPostprocessAllAssets 139.859ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 29.112ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 6.484ms
+			SyncVS.PostprocessSyncProject 1.532ms
+			AssetChangedListener.OnPostprocessAllAssets 1.313ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.276ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.232ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.720ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.653ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.573ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.455ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.402ms
+			AssetEvents.OnPostprocessAllAssets 0.312ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.303ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.300ms
+			PostProcessor.OnPostprocessAllAssets 0.293ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.168ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.163ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.155ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.144ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.135ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.074ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.067ms
+	PostAssetChangesProfiler: 3.164ms
+	GatherAllCurrentPrimaryImportResultRevisions: 0.236ms
+	UnloadStreamsBegin: 1.754ms
+	PersistCurrentRevisions: 0.177ms
+	Untracked: 6.442ms
+
+Start importing Assets/Mundo Aprendo/Art using Guid(4e9db27e6b3b4534b9a89d255b33148c) (DefaultImporter) -> (Import Result ID: '342027dc85db0794cb83b90ffd137041') in 0.0071822 seconds [static dependencies only]. Details - ImportResultOutputID=577a453241f6d7b19ec43f2e66b0e622 DependenciesID=d83bd034e717d806329e8d6cb82c3dc4 StaticDependenciesID=ebb9269def1d0c7d6146e0bddf3d2089 
+Asset Pipeline Refresh (id=4a8d6d8d20027e748bd979111fc22fef): Total: 0.043 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders using Guid(f686b338c059b28489b6c268f9bd6dce) (DefaultImporter) -> (Import Result ID: '7cf4bc688f10ee7b18cf20e5348c439c') in 0.0073926 seconds [static dependencies only]. Details - ImportResultOutputID=3f46208366703039a6dd472186aee305 DependenciesID=a98d2ed8b15f8ee1f29a275b0bc39797 StaticDependenciesID=e0364b4bc0c2f465726a1cea72ad28a7 
+Asset Pipeline Refresh (id=60f0027f583df5843831924c3828a121): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones using Guid(71b0f241ec8b34d43bea2e53576a6e7d) (DefaultImporter) -> (Import Result ID: '5b4d069f1e225d65c6e7f9e999df2837') in 0.0073251 seconds [static dependencies only]. Details - ImportResultOutputID=f9cacd38b87335e66b3f6f736544ed8d DependenciesID=d8d7a2ed34402cc5af07617a2593ec80 StaticDependenciesID=239506d43927258e42544afd312c746c 
+Asset Pipeline Refresh (id=aea58079360af7a4eb42a1eef21f385f): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Background_Sky.png using Guid(378601e131d2b204e809d0ef68d8ff57) (TextureImporter) -> (Import Result ID: '69c7b5a05e7b7c2cb000a73fc191f679') in 0.0387988 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3b9040fe02f8cf6ad33242d1fb4c9a1e DependenciesID=dc88485b2ad4d1be1073d7c5f2204360 StaticDependenciesID=3efa100fd7dd80a1415b6ed4296a79b3 
+Asset Pipeline Refresh (id=d09fdb753db39ab458f64fd9048102c5): Total: 0.075 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Background_Sky.png using Guid(378601e131d2b204e809d0ef68d8ff57) (TextureImporter) -> (Import Result ID: '7653f1717449ef125564867b06f9026f') in 0.026647 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6b15e4c7a4303cd148109f2d576efa4e DependenciesID=ae236526373603216181d527783bebb2 StaticDependenciesID=317903e4fa9bba26ccc93094c68c5f54 
+Asset Pipeline Refresh (id=2516cda4cfbc0724f9f31cf3a76d6080): Total: 0.073 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/DecorativeCloud.png using Guid(968bc56ee4f26f54090d05247d07b331) (TextureImporter) -> (Import Result ID: 'bdc34af2ba939c805c25c1d92a60610d') in 0.0117286 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8aa0a03a79f886a7bebf6e42fbbd738c DependenciesID=d25ceb0ba706fe281d9841082a9590ed StaticDependenciesID=4d8b9f115c901b949ffd9c7f067a98d6 
+Asset Pipeline Refresh (id=5339585d139b05a4fb53635e42f3546e): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/DecorativeCloud.png using Guid(968bc56ee4f26f54090d05247d07b331) (TextureImporter) -> (Import Result ID: 'b3a714eb27470b2732be28c35b85aaf5') in 0.0148657 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a7504900b66e888e57637b60dc2cec2c DependenciesID=60eadab9fc239e5418a58285fab01255 StaticDependenciesID=4048979cac4301c60de0affcded0f1f8 
+Asset Pipeline Refresh (id=2d37522ac372a2548a4c6d9180c16101): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Rainbow.png using Guid(05f0a814aabfc314281bae8892a06c60) (TextureImporter) -> (Import Result ID: '590a7e3b1997315b52cb6c4efc408162') in 0.0122358 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8f972974c5059dc2ce95ba30070c4587 DependenciesID=4b8a48da072926979b36b6b4c29674fe StaticDependenciesID=e0390e46b39d29fc2a8c235943b0cc5a 
+Asset Pipeline Refresh (id=21561b905aed4e04fb498ec33f32415b): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Rainbow.png using Guid(05f0a814aabfc314281bae8892a06c60) (TextureImporter) -> (Import Result ID: 'be35d4f259a6f24c74af6846b3397481') in 0.0166615 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=38b251d55d20aa548e61367518f62f06 DependenciesID=61ad5c01acfb1888436014fa7c01938e StaticDependenciesID=f612e42cced11bf6c35854c1e372710e 
+Asset Pipeline Refresh (id=35f42f5f39fe8234d832462aac2d7af4): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/FloatingIsland.png using Guid(d2ad7b1775f46bd44ad5dcdfb44fe967) (TextureImporter) -> (Import Result ID: '4b9eae995c12aaf71e05791a30d60163') in 0.0113933 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=84636f5cbe166920a11b158f357d9bfe DependenciesID=8a795991cd80bd55c84ce23b379eb772 StaticDependenciesID=3f99e6dfc883a715e7c8e952d961c6fb 
+Asset Pipeline Refresh (id=dd46dfe715a670d4d8dabe6c8bc177f0): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/FloatingIsland.png using Guid(d2ad7b1775f46bd44ad5dcdfb44fe967) (TextureImporter) -> (Import Result ID: '4cb83c15645ebecf653f3f390bf8e580') in 0.0146073 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=25b650b3ee7a8cdd609e1ff86df26ee2 DependenciesID=166f29343bf896d15550515fe2823cd1 StaticDependenciesID=352bf59fbc66a982d045631d6ef0fbda 
+Asset Pipeline Refresh (id=dc4c9dc59dafbbb4a9107fd05085145b): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/NunaBody.png using Guid(aa0bb7c25cdf8774085983fafa6b77cf) (TextureImporter) -> (Import Result ID: '607dbd917ed6cf0f9f0f0cecdc5f2553') in 0.0116054 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d17cc40d833c020c49d487347a543117 DependenciesID=553cf2a4a76b13955cba731defd064e9 StaticDependenciesID=64aafd867acbccf0ee48cdfc940331e3 
+Asset Pipeline Refresh (id=0859cfea5393e074ebe8b05324632e43): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/NunaBody.png using Guid(aa0bb7c25cdf8774085983fafa6b77cf) (TextureImporter) -> (Import Result ID: '7f8a27aebe3c64262fadee15eed2e06e') in 0.0139455 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=361a26ff37816ec3b8ba66194e0edfa0 DependenciesID=77711c94631a8ec9237badb7bdaa529c StaticDependenciesID=989479fe032c6757a680c6845b332b31 
+Asset Pipeline Refresh (id=1270aafaa9c0e734cb8d9fa180864558): Total: 0.061 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/NunaFace.png using Guid(426702defee4d6c46a2a58d5ded3ccd8) (TextureImporter) -> (Import Result ID: '0665893500f46ba3ace7b66392c99196') in 0.0114582 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=297601de4abaafbec5edf05c3cfd2da5 DependenciesID=695aded82798f81e01552314b9f2cc6f StaticDependenciesID=5a4516f07c602bbffec2498430d9a2cd 
+Asset Pipeline Refresh (id=0c62cd356148cda448639b983a8b944a): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/NunaFace.png using Guid(426702defee4d6c46a2a58d5ded3ccd8) (TextureImporter) -> (Import Result ID: '686bf0f75eab6d88d90f645ea7e5d480') in 0.0130312 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=699b74f604d682fc2b79a760eb500484 DependenciesID=153d4cde6c30c81824bdd63861e0abb9 StaticDependenciesID=8c10e63d3137ce72750d7e7dabd28805 
+Asset Pipeline Refresh (id=3f3288deebfd87442ae9cfa827da53cc): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Joy.png using Guid(d64961a62132743438536a5d02291596) (TextureImporter) -> (Import Result ID: '86f44bc65812342e5acc395cfadc7590') in 0.0130208 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=961cdef8e4b2b815037b1f08e180d7af DependenciesID=63146391027efa96c91c41bd01ef9a13 StaticDependenciesID=050dca4fcafa01292bf4b8463c7ed05c 
+Asset Pipeline Refresh (id=c8405e5adc4693245b87ac455eff9238): Total: 0.052 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Joy.png using Guid(d64961a62132743438536a5d02291596) (TextureImporter) -> (Import Result ID: '5066ec2060c53d43060df6c4c37d28b9') in 0.0167404 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2b5e21b6ec221c6bdde4fb0b331f061e DependenciesID=303e1232bf7c00db066d8ba94931976b StaticDependenciesID=9dfb7bfc8602f874eaed2fad8ae25e70 
+Asset Pipeline Refresh (id=e53160276727820428880074f2fe02e4): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Sadness.png using Guid(248442611926dd243af6506ca9616162) (TextureImporter) -> (Import Result ID: 'c4f565b008d3a84b3a85ac0a4bca2355') in 0.0124454 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=71d6744bd94cd365461a354a4804cd12 DependenciesID=62d6e227c77e3c271efd01c497665d5d StaticDependenciesID=c6722289dcd1cffbbded6c9495fe13da 
+Asset Pipeline Refresh (id=e6be498083b2fd24b8d214aa47c6da99): Total: 0.047 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Sadness.png using Guid(248442611926dd243af6506ca9616162) (TextureImporter) -> (Import Result ID: '002e441dc4075c720bddcbc46b6e8746') in 0.0160988 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e767286311a7d0768f8ebe0eb74f0de5 DependenciesID=c47548dd61c59772184a36cd8d62eb9f StaticDependenciesID=a8e0a0227d61ae1356bf7e2234576751 
+Asset Pipeline Refresh (id=28720092d7a1ea44c9a777d4d0e102f0): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Anger.png using Guid(13e4c66b8cb061447813b688a362aae3) (TextureImporter) -> (Import Result ID: '2b5a6e9d158c41b692c7d81630908535') in 0.0121755 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a81f1ae4ffd57c31efb6ce4a69d63743 DependenciesID=17b98b84175b2bceb03cdee2f42dbb39 StaticDependenciesID=401bd87d88dd89bf4a8590f18f8f2c72 
+Asset Pipeline Refresh (id=544880a5422559a45b5ae92867fd6154): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Anger.png using Guid(13e4c66b8cb061447813b688a362aae3) (TextureImporter) -> (Import Result ID: '79124826580241bb4cf03c6c94053142') in 0.0162934 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e1925afbb78f14252ab33186e3408796 DependenciesID=6493cb5c729ffb40fb01c726c3211eca StaticDependenciesID=53335528bbb9a222e256efb86228e344 
+Asset Pipeline Refresh (id=f1fbe8f4eec9bdd4b8175275f39331f7): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Surprise.png using Guid(eae2f7170f79d1b4cbbe1a32ca90fba9) (TextureImporter) -> (Import Result ID: '97e7ffd8c3dbd4f78cd8f3df2a224a12') in 0.0127738 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=974a6f7f18f1946bd56986c9faac561b DependenciesID=32ee85f2a28618da1742541556a88605 StaticDependenciesID=aad1a7bb2178253aa4856dd6f5e3adf5 
+Asset Pipeline Refresh (id=c53c89a6d07ce0643b71fd70e7c4e9cc): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Surprise.png using Guid(eae2f7170f79d1b4cbbe1a32ca90fba9) (TextureImporter) -> (Import Result ID: '5fc2f18da18a382ff6ee3b5d496101d6') in 0.0187082 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=07db31a63a08224dad464de81547b6fd DependenciesID=050f563cbefc063f2ee7cf72e5179192 StaticDependenciesID=b9eb45a64a0caa33d71b1608a1e771d7 
+Asset Pipeline Refresh (id=34bd45dbc7508b140ba9fb45a80a3f4e): Total: 0.067 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Fear.png using Guid(796c790e67441654980fe6375878961f) (TextureImporter) -> (Import Result ID: '20175bff42af9a482db7ab88180082e8') in 0.012264 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a544270321a248b8eec23d2ef14608a0 DependenciesID=77a7bbaae03bf0013042bf9a0042f1ca StaticDependenciesID=bc5df5e41514e118ff015f70cf8f8977 
+Asset Pipeline Refresh (id=5f8b496b9a1404c47b438f1bbc7540b8): Total: 0.046 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Emotion_Fear.png using Guid(796c790e67441654980fe6375878961f) (TextureImporter) -> (Import Result ID: 'b0d9fc7726b2b2b37c4e6ed9df311dda') in 0.016404 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e1657030bfc550621585d265c925341f DependenciesID=0d8244f3971a612ede56fd0b8a5b12ad StaticDependenciesID=9e745afd59e92ae103068c5a19777f5a 
+Asset Pipeline Refresh (id=1647b5c2b1ebddd418c0bd0dbfe84405): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Icon_Correct.png using Guid(1428093730e813f478314b0d0755d101) (TextureImporter) -> (Import Result ID: 'd37cb77aa8c3a15d33b87f54e9bb011c') in 0.0105298 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e17ddc7afe53eb777739786eec3dc04a DependenciesID=c169d7b54f3ca70363e6638573114212 StaticDependenciesID=01519c0dcdd95a11453818421745a4c8 
+Asset Pipeline Refresh (id=13d9893fc1a77154ea3ea3a57ee0a70c): Total: 0.045 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Icon_Correct.png using Guid(1428093730e813f478314b0d0755d101) (TextureImporter) -> (Import Result ID: '40376341c0d5dd687f7deea1b7009697') in 0.0108183 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=138cddd840a7089f65b1b92189d3e057 DependenciesID=c3dd00f252c67a21860885fdcabfb3e7 StaticDependenciesID=f6fe0116d95aa3dc9ae33ca80e9db052 
+Asset Pipeline Refresh (id=41c73aa1a0eb18c4fb3cd01ee281c21f): Total: 0.058 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Icon_Retry.png using Guid(0d5df075534de444189c000b5c353aac) (TextureImporter) -> (Import Result ID: '730f66ea8960e42666db907df5b46314') in 0.0098158 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6ea933d546388ad77f5bb02c510b27f6 DependenciesID=cea74d2e0d660da7b941d8b036e8e8c7 StaticDependenciesID=ebe8c99df5c4076b9fa966fc706e134a 
+Asset Pipeline Refresh (id=f101f97fd62b56d48b0d326c58996358): Total: 0.044 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/Art/Placeholders/Emociones/Icon_Retry.png using Guid(0d5df075534de444189c000b5c353aac) (TextureImporter) -> (Import Result ID: '4bc4a0a0c64dbba3d408c831bf59a7de') in 0.0101994 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5f0769e49db436f69c9ff84f021d07ce DependenciesID=92706f084e81ce26fa84ef12d6af833d StaticDependenciesID=062bdf84c877210366e7ac2139f09bc1 
+Asset Pipeline Refresh (id=ee7bc9c7a38cd854b98ff390eb5c66cf): Total: 0.056 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 55 unused Assets / (34.5 KB). Loaded Objects now: 7472.
+Memory consumption went from 208.0 MB to 208.0 MB.
+Total: 6.616900 ms (FindLiveObjects: 0.463700 ms CreateObjectMapping: 0.327700 ms MarkObjects: 5.635500 ms  DeleteObjects: 0.189400 ms)
+
+EmotionGameManager: falta StartPanel.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionGameManager:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionGameManager.cs:479)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Bolin.EmotionGameManager> ()
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:86)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionGameManager.cs Line: 479)
+
+EmotionGameManager: falta GamePanel.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionGameManager:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionGameManager.cs:480)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Bolin.EmotionGameManager> ()
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:86)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionGameManager.cs Line: 480)
+
+EmotionGameManager: falta EmotionResultPanel.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionGameManager:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionGameManager.cs:481)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Bolin.EmotionGameManager> ()
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:86)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionGameManager.cs Line: 481)
+
+Button_Alegria: falta asignar Button.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:89)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:299)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 89)
+
+Button_Alegria: falta asignar EmotionGameManager.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:90)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:299)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 90)
+
+Button_Tristeza: falta asignar Button.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:89)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:300)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 89)
+
+Button_Tristeza: falta asignar EmotionGameManager.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:90)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:300)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 90)
+
+Button_Enojo: falta asignar Button.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:89)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:301)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 89)
+
+Button_Enojo: falta asignar EmotionGameManager.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:90)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:301)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 90)
+
+Button_Sorpresa: falta asignar Button.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:89)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:302)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 89)
+
+Button_Sorpresa: falta asignar EmotionGameManager.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:90)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:302)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 90)
+
+Button_Miedo: falta asignar Button.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:89)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:303)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 89)
+
+Button_Miedo: falta asignar EmotionGameManager.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionAnswerButton:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs:90)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+Bolin.Editor.MundoAprendoProjectSetup:CreateUiObject (string,UnityEngine.Transform,System.Type[]) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:981)
+Bolin.Editor.MundoAprendoProjectSetup:CreateEmotionAnswerButton (string,string,Bolin.EmotionType,UnityEngine.Transform,Bolin.EmotionGameManager,UnityEngine.Sprite,UnityEngine.Color) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:344)
+Bolin.Editor.MundoAprendoProjectSetup:CreateGamePanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:303)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:102)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionAnswerButton.cs Line: 90)
+
+ResultPanel: falta asignar Root Object del resultado.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object,UnityEngine.Object)
+UnityEngine.Debug:LogWarning (object,UnityEngine.Object)
+Bolin.EmotionResultPanel:OnValidate () (at Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionResultPanel.cs:93)
+UnityEngine.GameObject:Internal_AddComponentWithType (System.Type)
+UnityEngine.GameObject:AddComponent (System.Type)
+UnityEngine.GameObject:AddComponent<Bolin.EmotionResultPanel> ()
+Bolin.Editor.MundoAprendoProjectSetup:CreateResultPanel (UnityEngine.RectTransform,Bolin.EmotionGameManager,Bolin.SceneNavigation,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:386)
+Bolin.Editor.MundoAprendoProjectSetup:BuildEmotionScene (UnityEngine.SceneManagement.Scene,Bolin.Editor.MundoAprendoProjectSetup/EmotionPlaceholderAssets) (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:103)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:49)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoEmociones/EmotionResultPanel.cs Line: 93)
+
+Start importing Assets/Scenes/Mundos/MundoEmociones.unity using Guid(6b56f69df0d5ca647a296cab90545e42) (DefaultImporter) -> (Import Result ID: '125c4ff8dd898b2b78b698486fa30e1e') in 0.0009349 seconds [static dependencies only]. Details - ImportResultOutputID=f1fcdccfac37ee37a090bc4bbded634a DependenciesID=370629c77e675bde8c36623ae5082754 StaticDependenciesID=5878d1f6e8cf35af72cdc7f39d619078 
+Asset Pipeline Refresh (id=7affd4ed2fe5da64d921529aa2f3de31): Total: 0.041 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/SeleccionMundos.unity'
+Unloading 25 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/SeleccionMundos.unity'
+	Deserialize:            13.464 ms
+	Integration:            211.015 ms
+	Integration of assets:  0.004 ms
+	Thread Wait Time:       0.047 ms
+	Total Operation Time:   224.530 ms
+Unloading 211 unused Assets / (17.8 MB). Loaded Objects now: 7988.
+Memory consumption went from 226.5 MB to 208.7 MB.
+Total: 7.959200 ms (FindLiveObjects: 0.506800 ms CreateObjectMapping: 0.397000 ms MarkObjects: 6.534800 ms  DeleteObjects: 0.519900 ms)
+
+Start importing Assets/Scenes/SeleccionMundos.unity using Guid(1573d5a0267709b45a301ffda98e1fe8) (DefaultImporter) -> (Import Result ID: 'd0c04267ffdefe473c4acc896d4b1eaa') in 0.0061546 seconds [static dependencies only]. Details - ImportResultOutputID=78d91bf60aac1876ab5a70ed958d191c DependenciesID=8f102cdbf841922cf9fa30100263500c StaticDependenciesID=44e153ecb9364711d7371278d23c5b20 
+Asset Pipeline Refresh (id=ae7acd535d329954c8d72e94c2160d7d): Total: 0.049 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/Mundos/MundoEmociones.unity'
+Unloading 37 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/Mundos/MundoEmociones.unity'
+	Deserialize:            8.950 ms
+	Integration:            178.469 ms
+	Integration of assets:  0.400 ms
+	Thread Wait Time:       0.009 ms
+	Total Operation Time:   187.829 ms
+Unloading 164 unused Assets / (66.1 KB). Loaded Objects now: 7884.
+Memory consumption went from 208.5 MB to 208.4 MB.
+Total: 8.386800 ms (FindLiveObjects: 0.503000 ms CreateObjectMapping: 0.374500 ms MarkObjects: 7.125800 ms  DeleteObjects: 0.382800 ms)
+
+Start importing ProjectSettings/EditorBuildSettings.asset using Guid(0000000000000000b000000000000000) (LibraryAssetImporter) -> (Import Result ID: '28bf110c085d9221d61e6d3d1bec9738') in 0.0017252 seconds [static dependencies only]. Details - ImportResultOutputID=d777934f36c664454d62eda103573334 DependenciesID=304185d10e5c8f60b9960f5493ec8f50 StaticDependenciesID=62a2e0585547b70d4e461fd17335560d 
+Asset Pipeline Refresh (id=0a74547548e23144381e0a8154cd6217): Total: 0.034 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=99e6fae3f94d15a4aa4951547e5bc47a): Total: 0.009 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Mundo Aprendo configurado. MundoEmociones, navegacion y Build Settings estan listos.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Bolin.Editor.MundoAprendoProjectSetup:ConfigureProject () (at Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs:62)
+
+(Filename: Assets/Mundo Aprendo/Editor/MundoAprendoProjectSetup.cs Line: 62)
+
+Batchmode quit successfully invoked - shutting down!
+Killing ADB server in 0.0267844 seconds.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-6000.4.0-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-6000.4.0 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0

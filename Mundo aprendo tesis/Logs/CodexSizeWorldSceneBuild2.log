@@ -1,0 +1,528 @@
+[Licensing::Module] Trying to connect to existing licensing client channel...
+Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32690 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-06-12T19:03:02.7222568Z"
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
+System  architecture: x64
+Process architecture: x64
+Date: 2026-06-12T19:03:02Z
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
+-batchmode
+-quit
+-projectPath
+F:\PUN\Mundo aprendo tesis
+-executeMethod
+Bolin.Editor.SizeWorldSceneBuilder.Build
+-logFile
+F:\PUN\Mundo aprendo tesis\Logs\CodexSizeWorldSceneBuild2.log
+Successfully changed project path to: F:\PUN\Mundo aprendo tesis
+F:/PUN/Mundo aprendo tesis
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gfx=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+Player connection [17136]  Target information:
+
+Player connection [17136]  * "[IP] 192.168.1.23 [Port] 55504 [Flags] 2 [Guid] 3825612562 [EditorId] 3825612562 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NF6H5UD) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [17136] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [17136] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Input System module state changed to: Initialized.
+[Physics::Module] Initialized fallback backend.
+[Physics::Module] Id: 0xdecafbad
+[Package Manager] Connected to IPC stream "Upm-15128" after 0.3 seconds.
+[Licensing::Module] Licensing is not yet initialized.
+[Licensing::Client] Error: HandshakeResponse reported an error:
+	ResponseCode: 505
+	ResponseStatus: Unsupported protocol version '1.18.1'.
+[Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Boloxdhd"
+[Licensing::IpcConnector] LicenseClient-Boloxdhd channel disconnected successfully.
+[Licensing::IpcConnector] Channel LicenseClient-Boloxdhd-6000.4.0 doesn't exist
+[Licensing::Module] Successfully launched the LicensingClient (PId: 1644)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0" at "2026-06-12T19:03:03.9671283Z"
+[Licensing::Client] Handshaking with LicensingClient:
+  Version:                 1.18.1+9fbee8e
+  Session Id:              9923b5cd36e6450d9e2e39dcb2e6123d
+  Correlation Id:          1be475e42ca8ca0b82d4d05819af4112
+  External correlation Id: 1002957258336945443
+  Machine Id:              CFi18PVxujarsjnwWQVdFlBCSK4=
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Boloxdhd-6000.4.0" (connect: 0.24s, validation: 0.04s, handshake: 0.99s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0-notifications" at "2026-06-12T19:03:04.9984057Z"
+[Licensing::Module] Connected to LicensingClient (PId: 1644, launch time: 0.00, total connection time: 1.28s)
+[Licensing::Module] Error: Access token is unavailable; failed to update
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+[Licensing::Module] Licensing Background thread has ended after 2.30s
+[Licensing::Module] Licensing is initialized (took 1.90s).
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Library Redirect Path: Library/
+[Physics::Module] Selected backend.
+[Physics::Module] Name: PhysX
+[Physics::Module] Id: 0xf2b8ea05
+[Physics::Module] SDK Version: 4.1.2
+[Physics::Module] Integration Version: 1.0.0
+[Physics::Module] Threading Mode: Multi-Threaded
+Artifact Garbage Collection - Removed 16 unused hashed content files
+Initialize engine version: 6000.4.0f1 (8cf496087c8f)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path F:/PUN/Mundo aprendo tesis/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3080 (ID=0x220a)
+    Vendor:   NVIDIA
+    VRAM:     12093 MB
+    Driver:   32.0.16.1047
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56128
+CodeReloadManager initialized
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
+ImportWorker Server TCP listen port: 0
+AcceleratorClientConnectionCallback - disconnected - :0
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Registered in 0.004237 seconds.
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 2156 ms
+Native extension for WindowsStandalone target not found
+Package Manager log level set to [2]
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.602 seconds
+Domain Reload Profiling: 3076ms
+	BeginReloadAssembly (139ms)
+		CreateAndSetChildDomain (18ms)
+	RebuildCommonClasses (38ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (64ms)
+	LoadAllAssembliesAndSetupDomain (218ms)
+		LoadAssemblies (118ms)
+		AnalyzeDomain (209ms)
+			TypeCache.Refresh (208ms)
+				TypeCache.ScanAssembly (193ms)
+	FinalizeReload (2603ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (2246ms)
+			BeforeProcessingInitializeOnLoad (95ms)
+			ProcessInitializeOnLoadAttributes (110ms)
+			ProcessInitializeOnLoadMethodAttributes (81ms)
+[Licensing::Client] Successfully resolved entitlement details
+[Licensing::Module] License group:
+  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
+  Product: Unity Personal
+  Type: ULF
+  Expiration: Unlimited
+[Licensing::Module] License group:
+  Id: 4673397952068-UnityPersXXXX
+  Product: Unity Personal
+  Type: Assigned
+  Expiration: Unlimited
+Application.AssetDatabase Initial Refresh Start
+[Package Manager] Restoring resolved packages state from cache
+[Licensing::Client] Successfully resolved entitlement details
+[Package Manager] Registered 57 packages:
+  Packages from [https://packages.unity.com]:
+    com.unity.ai.navigation@2.0.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ai.navigation@734c2c4c5591)
+    com.unity.collab-proxy@2.12.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collab-proxy@0b1559bcd34e)
+    com.unity.ide.rider@3.0.39 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.rider@4504839d03f7)
+    com.unity.ide.visualstudio@2.0.27 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ide.visualstudio@dc1ddd4f09b6)
+    com.unity.inputsystem@1.19.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.inputsystem@21a28c3a6c83)
+    com.unity.timeline@1.8.12 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.timeline@8cd8509afae5)
+    com.unity.visualscripting@1.9.11 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.visualscripting@8bed5ad90189)
+    com.unity.searcher@4.9.4 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.searcher@d45a78918735)
+    com.unity.burst@1.8.28 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.burst@07790c2d06d9)
+    com.unity.mathematics@1.3.3 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.mathematics@19a9377c4ffa)
+    com.unity.nuget.mono-cecil@1.11.6 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff)
+    com.unity.test-framework.performance@3.2.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework.performance@0840f58e4562)
+  Built-in packages:
+    com.unity.multiplayer.center@1.0.1 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.multiplayer.center@f01f4ba8d00a)
+    com.unity.render-pipelines.universal@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal@0c5162adfb45)
+    com.unity.test-framework@1.6.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.test-framework@629486125cfc)
+    com.unity.ugui@2.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ugui@3dd2fbd8c1f1)
+    com.unity.modules.accessibility@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.accessibility)
+    com.unity.modules.adaptiveperformance@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.adaptiveperformance)
+    com.unity.modules.ai@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ai)
+    com.unity.modules.androidjni@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.androidjni)
+    com.unity.modules.animation@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.animation)
+    com.unity.modules.assetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.assetbundle)
+    com.unity.modules.audio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.audio)
+    com.unity.modules.cloth@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.cloth)
+    com.unity.modules.director@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.director)
+    com.unity.modules.imageconversion@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imageconversion)
+    com.unity.modules.imgui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.imgui)
+    com.unity.modules.jsonserialize@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.jsonserialize)
+    com.unity.modules.particlesystem@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.particlesystem)
+    com.unity.modules.physics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics)
+    com.unity.modules.physics2d@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.physics2d)
+    com.unity.modules.screencapture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.screencapture)
+    com.unity.modules.terrain@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrain)
+    com.unity.modules.terrainphysics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.terrainphysics)
+    com.unity.modules.tilemap@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.tilemap)
+    com.unity.modules.ui@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.ui)
+    com.unity.modules.uielements@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.uielements)
+    com.unity.modules.umbra@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.umbra)
+    com.unity.modules.unityanalytics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unityanalytics)
+    com.unity.modules.unitywebrequest@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequest)
+    com.unity.modules.unitywebrequestassetbundle@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestassetbundle)
+    com.unity.modules.unitywebrequestaudio@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestaudio)
+    com.unity.modules.unitywebrequesttexture@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequesttexture)
+    com.unity.modules.unitywebrequestwww@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.unitywebrequestwww)
+    com.unity.modules.vectorgraphics@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vectorgraphics)
+    com.unity.modules.vehicles@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vehicles)
+    com.unity.modules.video@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.video)
+    com.unity.modules.vr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.vr)
+    com.unity.modules.wind@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.wind)
+    com.unity.modules.xr@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.xr)
+    com.unity.modules.subsystems@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.subsystems)
+    com.unity.modules.hierarchycore@1.0.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.modules.hierarchycore)
+    com.unity.ext.nunit@2.0.5 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.ext.nunit@d8c07649098d)
+    com.unity.render-pipelines.core@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.core@6a60abc179f8)
+    com.unity.shadergraph@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.shadergraph@c6e5f4d3afa5)
+    com.unity.render-pipelines.universal-config@17.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.render-pipelines.universal-config@0db4263b9e6b)
+    com.unity.collections@6.4.0 (location: F:\PUN\Mundo aprendo tesis\Library\PackageCache\com.unity.collections@538ace9075bc)
+[Subsystems] No new subsystems found in resolved package list.
+[Package Manager] Done registering packages in 0.01 seconds
+[ScriptCompilation] Requested script compilation because: AssetDatabase observed changes in script compilation related files
+Starting: C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Data\Tools\BuildPipeline\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: F:/PUN/Mundo aprendo tesis
+DisplayProgressbar: Compiling Scripts
+ExitCode: 0 Duration: 2s127ms
+[714/908    0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[904/908    1s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll (+2 others)
+Assets\Mundo Aprendo\Scripts\MundoTamanos\Editor\SizeWorldSceneBuilder.cs(321,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+
+Assets\Mundo Aprendo\Scripts\MundoTamanos\Editor\SizeWorldSceneBuilder.cs(434,45): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+[905/908    0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp-Editor.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-Editor.dll, with 137 defines and 345 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[906/908    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.pdb
+[907/908    0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
+*** Tundra build success (2.11 seconds), 5 items updated, 908 evaluated
+Assets\Mundo Aprendo\Scripts\MundoTamanos\Editor\SizeWorldSceneBuilder.cs(321,13): warning CS0618: 'TMP_Text.enableWordWrapping' is obsolete: 'The enabledWordWrapping property is now obsolete. Please use the textWrappingMode property instead.'
+Assets\Mundo Aprendo\Scripts\MundoTamanos\Editor\SizeWorldSceneBuilder.cs(434,45): warning CS0618: 'Object.FindFirstObjectByType<T>()' is obsolete: 'FindFirstObjectByType has been deprecated because it relies on instance ID ordering. Use FindAnyObjectByType instead, which does not depend on ordering.'
+AssetDatabase: script compilation time: 2.511375s
+Begin MonoManager ReloadAssembly
+Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
+Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
+Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
+Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
+Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
+Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
+Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
+Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+ScheduleIndexationOnStartup MainProcess:True IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.019 seconds
+Domain Reload Profiling: 4064ms
+	BeginReloadAssembly (309ms)
+		DisableScriptedObjects (10ms)
+		CreateAndSetChildDomain (158ms)
+	RebuildCommonClasses (37ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (195ms)
+	LoadAllAssembliesAndSetupDomain (490ms)
+		LoadAssemblies (325ms)
+		AnalyzeDomain (256ms)
+			TypeCache.Refresh (182ms)
+				TypeCache.ScanAssembly (168ms)
+			BuildScriptInfoCaches (61ms)
+			ResolveRequiredComponents (12ms)
+	FinalizeReload (3019ms)
+		SetupLoadedEditorAssemblies (0ms)
+			InitializePlatformSupportModulesInManaged (33ms)
+			BeforeProcessingInitializeOnLoad (177ms)
+			ProcessInitializeOnLoadAttributes (2421ms)
+			ProcessInitializeOnLoadMethodAttributes (108ms)
+			AfterProcessingInitializeOnLoad (7ms)
+		AwakeInstancesAfterBackupRestoration (6ms)
+(Values over 0.050ms)
+Asset Pipeline Refresh (id=d3138be89aff3e34f86fa8c45c1d9a49): Total: 7.402 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=3527 ms
+		Asset DB Callback time: managed=240 ms, native=20 ms
+		Scripting: domain reloads=1, domain reload time=1048 ms, compile time=2513 ms, other=50 ms
+		Project Asset Count: scripts=1357, non-scripts=2581
+		Asset File Changes: new=0, changed=1, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokePackagesCallback: 17.312ms
+	ApplyChangesToAssetFolders: 0.580ms
+	Scan: 202.492ms
+	OnSourceAssetsModified: 1.249ms
+	CategorizeScriptCompilationAssets: 54.874ms
+	ProcessAssetsWithTransientArtifactChanges: 72.646ms
+	CategorizeAssets: 45.390ms
+	CompileScripts: 2512.612ms
+	ImportOutOfDateAssets: 3028.854ms (3026.991ms without children)
+		UnloadImportedAssets: 0.804ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.619ms
+		OnDemandSchedulerStart: 0.416ms
+	PostProcessAllAssets: 241.256ms
+		VCAutoAddAssetPostprocess 0.978ms
+		XRBuildSystem.XRAssetImported 0.337ms
+		MonoPostProcessAllAssets: 239.479ms
+			AssetPostprocessor.OnPostprocessAllAssets 165.597ms
+			StyleCatalogPostProcessor.OnPostprocessAllAssets 24.053ms
+			UniversalRenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 10.060ms
+			SyncVS.PostprocessSyncProject 9.936ms
+			BuilderAssetPostprocessor.OnPostprocessAllAssets 6.406ms
+			SpeedTree9Postprocessor.OnPostprocessAllAssets 1.945ms
+			WindowAssetPostprocessingWatcher.OnPostprocessAllAssets 1.740ms
+			AssetChangedListener.OnPostprocessAllAssets 1.387ms
+			ShaderGraphAssetPostProcessor.OnPostprocessAllAssets 1.330ms
+			RetainedModeAssetPostprocessor.OnPostprocessAllAssets 1.195ms
+			MaterialPostprocessor.OnPostprocessAllAssets 0.682ms
+			RenderPipelineGlobalSettingsPostprocessor.OnPostprocessAllAssets 0.646ms
+			ArtifactBrowserPostProcessor.OnPostprocessAllAssets 0.504ms
+			TMPro_TexturePostProcessor.OnPostprocessAllAssets 0.404ms
+			ReferencedClipsPostProcessor.OnPostprocessAllAssets 0.382ms
+			UVCSAssetPostprocessor.OnPostprocessAllAssets 0.354ms
+			InputActionAssetPostprocessor.OnPostprocessAllAssets 0.345ms
+			TextAssetPostProcessor.OnPostprocessAllAssets 0.340ms
+			AssetEvents.OnPostprocessAllAssets 0.302ms
+			PostProcessor.OnPostprocessAllAssets 0.295ms
+			AudioMixerPostprocessor.OnPostprocessAllAssets 0.284ms
+			InputActionJsonNameModifierAssetProcessor.OnPostprocessAllAssets 0.272ms
+			TerrainToolbarOverlayPostProcessor.OnPostprocessAllAssets 0.209ms
+			ProjectSettingsPostprocessor.OnPostprocessAllAssets 0.187ms
+			AssetDatabaseCallbacks.OnPostprocessAllAssets 0.169ms
+			SpeedTreePostProcessor.OnPostprocessAllAssets 0.160ms
+			ConfigAssetsTracker.OnPostprocessAllAssets 0.142ms
+			SamplePostprocessor.OnPostprocessAllAssets 0.138ms
+			ScenarioDriftAssetsTracker.OnPostprocessAllAssets 0.126ms
+			AudioContainerPostProcessor.OnPostprocessAllAssets 0.074ms
+	PostAssetChangesProfiler: 3.110ms
+	UnloadStreamsBegin: 2.859ms
+	PersistCurrentRevisions: 0.108ms
+	GenerateScriptTypeHashes: 2.593ms
+	GenerateScriptTypeSerializationHashes: 4.934ms
+	Untracked: 1216.397ms
+
+Application.AssetDatabase Initial Refresh End
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
+Scanning for USB devices : 2.908ms
+Initializing Unity extensions:
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-Mundo aprendo tesis
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6610 unused Assets / (7.0 MB). Loaded Objects now: 7458.
+Memory consumption went from 210.4 MB to 203.4 MB.
+Total: 12.411700 ms (FindLiveObjects: 0.958100 ms CreateObjectMapping: 1.511200 ms MarkObjects: 5.410800 ms  DeleteObjects: 4.529300 ms)
+
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Habitat_Selva.png using Guid(afe6c9ce222f19e4aa4a3a94bea13145) (TextureImporter) -> (Import Result ID: 'd08a07104a71510d946990adfe373673') in 0.0193401 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=8a0d9a59e458e028fff222f57a42f761 DependenciesID=610b26c6dd7f8249812627872041c96c StaticDependenciesID=0191d588ac85b3169b03294c07aee79f 
+Asset Pipeline Refresh (id=86a7ba551bb567449881ce457fbe56a2): Total: 0.096 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Habitat_Selva.png using Guid(afe6c9ce222f19e4aa4a3a94bea13145) (TextureImporter) -> (Import Result ID: 'd625d66541e3e9f8d214d1dfd3e5abcc') in 0.0294297 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=35f98a9a1d51c2282e561e3c2f6b0452 DependenciesID=4a902f939b38b04e7c5c429977658ed2 StaticDependenciesID=94a51dde1f0f11d81f6f4fd86d15aa22 
+Refreshing native plugins compatible for Editor in 2.08 ms, found 4 plugins.
+Asset Pipeline Refresh (id=b13e7fc3184d42241a0682e15bb0d435): Total: 0.087 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Habitat_Granja.png using Guid(38fb7dce4aff5ea47805153c9d602a66) (TextureImporter) -> (Import Result ID: 'dfbae11e614b8d180eff4b0ddab64e8b') in 0.0087497 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=31e18313fc014edb6fea65a681595a21 DependenciesID=afa64f7f3fc459cd8e57d968f4ee3e70 StaticDependenciesID=8ebffbe737f445f21a6d8090655c37af 
+Asset Pipeline Refresh (id=16cfdbed17c038f4cb0757746ab7c031): Total: 0.027 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Habitat_Granja.png using Guid(38fb7dce4aff5ea47805153c9d602a66) (TextureImporter) -> (Import Result ID: '80ef91d6e888b889436e5aeee3e14219') in 0.0249854 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a26198c769c1bef9ae44948e4ff41296 DependenciesID=4e4182eb1a3692532c2e810d6ed3b33f StaticDependenciesID=7dfd272569c9357bcd40e8f1585772a9 
+Asset Pipeline Refresh (id=764a3d45652209247a37eda4f98d1be5): Total: 0.070 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Habitat_Oceano.png using Guid(57cd35633b802484480c1bcb3d9abe51) (TextureImporter) -> (Import Result ID: '525058db05a5102343f624e09d229c6f') in 0.0080512 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=b5a4dff33e7cc953c3ce5d926d19af41 DependenciesID=d06d7db83f5026ff36bb6d37a9a60216 StaticDependenciesID=41a6f2168a55cc470711de19b5f3f47d 
+Asset Pipeline Refresh (id=c47b3bc609989d5438062b9bcd38eb21): Total: 0.026 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Habitat_Oceano.png using Guid(57cd35633b802484480c1bcb3d9abe51) (TextureImporter) -> (Import Result ID: '9de982bdd494a74dd3743c5b00ea53ce') in 0.0239466 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=26575ca8d62ab8e60838b701cd278fa7 DependenciesID=46bffaff7157723f8c65911b8b9802cf StaticDependenciesID=865870897325833b3bdea1efd60c2a6c 
+Asset Pipeline Refresh (id=573ce32ded46ee94680d21bde49358c5): Total: 0.068 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Elefante.png using Guid(5ab280044e8846842a41357bc8698319) (TextureImporter) -> (Import Result ID: '030784a91aeed4b812aee0fee78aa115') in 0.0051522 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=f472c5f39b16a9d81effe460d4e747b3 DependenciesID=548f74dea67ed8f09eff75f16cca5fef StaticDependenciesID=1beee2d65fd3392b1a747e40d5bbba7c 
+Asset Pipeline Refresh (id=957fe366aefe4a24d9e3c4e87a4add49): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Elefante.png using Guid(5ab280044e8846842a41357bc8698319) (TextureImporter) -> (Import Result ID: '0e153c8bbaed55b82c37df8ef58278be') in 0.0158731 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=144a9fe8cb42e125408283b017b03987 DependenciesID=fcfaa0536c1ee6b41bc6841c193ec85f StaticDependenciesID=03ae316d9314ccb286c172e1b5908541 
+Asset Pipeline Refresh (id=b23f3d8b741fd164cbde6a8790425543): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Jirafa.png using Guid(ecdd9414bf09b31409a27bc1aacfd0e9) (TextureImporter) -> (Import Result ID: '6fa966eb406fd9986be9648960684b14') in 0.0048175 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=222a8a7694342626e1055e26cd25616f DependenciesID=303ff9559ed1ac92afe4df70861e274a StaticDependenciesID=2d8d3655fccec8a9bfdcb6c5385387e3 
+Asset Pipeline Refresh (id=affe0badd01ab3c4aaf08a0f095c3cf1): Total: 0.020 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Jirafa.png using Guid(ecdd9414bf09b31409a27bc1aacfd0e9) (TextureImporter) -> (Import Result ID: '1c3ec4abeb190eedc9800791c09be2fe') in 0.0152066 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=5e3d8581a20e38bb9505a2b718f01aed DependenciesID=b189f82c4b658576c0693f89ba2306db StaticDependenciesID=01a44a35ad2f44602b5718293f4da5c4 
+Asset Pipeline Refresh (id=cb63fc98722bb124d9468ac751e36d04): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Mono.png using Guid(6876e390f57946a4598e217bd58e5f6a) (TextureImporter) -> (Import Result ID: 'c1b725be5c057da56b031360cc57b441') in 0.0052123 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2b6ede5a93c96bd9aaafd9529cc22823 DependenciesID=a9f67be07051ff45f5b391641febc3a6 StaticDependenciesID=ddcfd7dcff34986df06f6556c00f05e3 
+Asset Pipeline Refresh (id=eead2d9a6e98dd74fa4431df58f88c67): Total: 0.022 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Mono.png using Guid(6876e390f57946a4598e217bd58e5f6a) (TextureImporter) -> (Import Result ID: '6d5ce455648cf413c624f8480c6b43d0') in 0.0157988 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=71171a2eeecb52e0e9ef4820bfc7bdf7 DependenciesID=1bfae62d8a948dd8f8103e12076030bc StaticDependenciesID=ee75c844ac12679d25c62b60e2ff97b7 
+Asset Pipeline Refresh (id=a786a07a9eda6c949a6f36f2dee611bf): Total: 0.066 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Ave.png using Guid(1f60aeeb56e0d9d47b46c98d89a36fe6) (TextureImporter) -> (Import Result ID: '5d841fef54be5b70bbaa5505c87f0c9a') in 0.0050432 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=171be5bb28e91aff07428ee9bbce343c DependenciesID=3abc53d954ade30a754c88700686564a StaticDependenciesID=ecdd3dea0f673618cecf8f08300309f2 
+Asset Pipeline Refresh (id=9106f6c152ab9e149aacdc70abbb0585): Total: 0.020 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Ave.png using Guid(1f60aeeb56e0d9d47b46c98d89a36fe6) (TextureImporter) -> (Import Result ID: '6892e8c6dbe9ca59b746826b3bbb7c82') in 0.0170535 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=475964b00953557f74456f6da01f75e0 DependenciesID=ae5318e4dac9d58e691e00deb13abbcf StaticDependenciesID=112d2824fcbee3610b943e671c96c8bb 
+Asset Pipeline Refresh (id=6f1d2b5ccf1f65d478b2b3cfb9b6f592): Total: 0.072 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Caballo.png using Guid(cf031c9c4d35af545899c2ef6eaf88e6) (TextureImporter) -> (Import Result ID: '0493b77554f78e497ca4a4ccac960b9b') in 0.0049889 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=76370d2293e4f09b8a9a17a265d8457a DependenciesID=dc44b3315aa6d86f5f71a4b67f7b4e0c StaticDependenciesID=4fcaa8e032161dcc9ae51d0db276d5b9 
+Asset Pipeline Refresh (id=f559b946145e3d64a98e57638f8c507f): Total: 0.020 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Caballo.png using Guid(cf031c9c4d35af545899c2ef6eaf88e6) (TextureImporter) -> (Import Result ID: '94e4afc4e39c6dc4afc1d8131ae24140') in 0.0159276 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=47f65417d7c86e6524e6c4f2d0020825 DependenciesID=8bf7f9f6bff6b7ac21cafb68a7574045 StaticDependenciesID=9d1802afff019e2074049833353e9b7d 
+Asset Pipeline Refresh (id=02a709c6f492eb544af2a577d7c04cab): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Vaca.png using Guid(30dee768ce63bf341ab11a3c1d00585a) (TextureImporter) -> (Import Result ID: '892bd447a8956e2603258da9857eb782') in 0.0054221 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=4d7bffd101ab562ced9f95ff0c2e50c7 DependenciesID=558200714df445dfd3eeafb8444353b3 StaticDependenciesID=934653b464ee4e7e055058289897eb8e 
+Asset Pipeline Refresh (id=f463007c7d6d69b41992c47daa4d5770): Total: 0.022 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Vaca.png using Guid(30dee768ce63bf341ab11a3c1d00585a) (TextureImporter) -> (Import Result ID: 'fa223a99411b14715307648e45ed5f16') in 0.017484 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=eca44b8a88461671e7729e899439f678 DependenciesID=12d25af43b46b50dca20e25d1bc778b3 StaticDependenciesID=ff569e68c5d5cb9e939eab1b8132edba 
+Asset Pipeline Refresh (id=7b6d0c35031b9ba48afa7ecddcb394ef): Total: 0.070 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Conejo.png using Guid(1e258af19c96dae45bbbbfe4f60f920b) (TextureImporter) -> (Import Result ID: '4967b3903cdb3c90d6aa295cb9270c4e') in 0.0052993 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7c618b2a7764d9a5b1fa923df80b200f DependenciesID=050b44e996745d4b7897a8cefd954477 StaticDependenciesID=f28c2f05299b7c8016d085f761841ccd 
+Asset Pipeline Refresh (id=1b22bedfab1d06d46b3f819095261c4e): Total: 0.021 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Conejo.png using Guid(1e258af19c96dae45bbbbfe4f60f920b) (TextureImporter) -> (Import Result ID: 'd06962f2e1364b01e948661ee117d40e') in 0.0152597 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c5217d2e9a3fa93d7ad2f207e59c59c4 DependenciesID=eca9402b1192c4485e3e5ff789bdd34a StaticDependenciesID=211b4fc2516078c81bc9c7c8f7d95f52 
+Asset Pipeline Refresh (id=c16bea0e2121c0a4b942209b1f36d376): Total: 0.065 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Pollito.png using Guid(53a5549c5f1a3f846b171ecea37ec265) (TextureImporter) -> (Import Result ID: '4b3afb8f396e779d65ecb1b246ee2ed9') in 0.0051471 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ce2a82fa0b4ea814da5beb56c6a3f9ae DependenciesID=db93ffad80173f4318ab43a4c26ce351 StaticDependenciesID=9b6776f40bb06df4f0905fdd3f3d8748 
+Asset Pipeline Refresh (id=a0fd5fe216a96d14e9db5e43132645e1): Total: 0.021 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Pollito.png using Guid(53a5549c5f1a3f846b171ecea37ec265) (TextureImporter) -> (Import Result ID: 'f7f338ffd017cfa84f6b723ddbdefbf8') in 0.0151175 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=65c8c54669dcd3f281416c9b69622d10 DependenciesID=67b0eeb8ff09114bcf2db454d1a96834 StaticDependenciesID=4d29074463f2a6682c7172b161563e61 
+Asset Pipeline Refresh (id=f5e382e7b3f6cd24b81afa345cf98a7c): Total: 0.063 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Ballena.png using Guid(35585b4799582f642ae1090237b3ff01) (TextureImporter) -> (Import Result ID: '72b5e65cbcf3f16e773b5c8af77137d6') in 0.0045764 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=35fedd7e6f321269b912230f1ad10e74 DependenciesID=01586acbc538deca245dcf97690cdf54 StaticDependenciesID=a23368096cbefb51fe86bfa694c2f66d 
+Asset Pipeline Refresh (id=e9471d4745d5e704ca8f01d28e95e7f8): Total: 0.019 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Ballena.png using Guid(35585b4799582f642ae1090237b3ff01) (TextureImporter) -> (Import Result ID: '196762daf7715dbcdee151d0d6e5a67f') in 0.0154716 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=6d4d1f037d71499a51c256cdad5f306f DependenciesID=d0f11a13823d3f1c400eee512bf8e6c4 StaticDependenciesID=4ed64bad2baf4e53ba1cbd2ad14c6d35 
+Asset Pipeline Refresh (id=a1f5d9dba4a5da84d9b2cd7b54d01fef): Total: 0.060 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Tiburon.png using Guid(ed2bc1773ea6487478b34aa07906e9a9) (TextureImporter) -> (Import Result ID: '3f8f5693a00196b8e1a5b22ad077dafa') in 0.0049494 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=520384ccf5876b3876d16dcdd5425de8 DependenciesID=b9ed550b9bb80799c7639be221af7653 StaticDependenciesID=209c35b1de323d06eb3e091e551b9613 
+Asset Pipeline Refresh (id=9711fc14aea9f75418210469d53af8f2): Total: 0.019 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Tiburon.png using Guid(ed2bc1773ea6487478b34aa07906e9a9) (TextureImporter) -> (Import Result ID: 'e2977a068249ba1fc48995b8ee42a0ab') in 0.0166339 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3c4b6daf8e1bbb40246f27674cc30e8c DependenciesID=436b38d6977597e51f1d345ec24c3835 StaticDependenciesID=d29895d053d8adfd28a71038ff7723c8 
+Asset Pipeline Refresh (id=87ffe937c0b94114186328fa9c2b89b6): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Pez.png using Guid(72288a9df4ffd8c4fad2247bb0324b3c) (TextureImporter) -> (Import Result ID: '4e5cbef04cfa5dc1f5c9dd0518e4d195') in 0.0049902 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=ef61a6e590b07b644b6918bb22e4ab4a DependenciesID=36a51bf8b01ebd222131b10165dc49ab StaticDependenciesID=623300083e04a6f0db5fceb3bf490a88 
+Asset Pipeline Refresh (id=ce90928b609cc554db3fd971c37b675b): Total: 0.020 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Pez.png using Guid(72288a9df4ffd8c4fad2247bb0324b3c) (TextureImporter) -> (Import Result ID: '0d288581ebb85ae1281a30e61f52580c') in 0.0154578 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=c99df997ae2e9571a1ef0b7b287532e0 DependenciesID=1e87fd8a3c8d9551c374b0dc4117ba9a StaticDependenciesID=d32cb9180236a0cfb8e8cc7224fe003c 
+Asset Pipeline Refresh (id=19acd5387fc16ae4c902df2ca4d98ade): Total: 0.062 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Cangrejo.png using Guid(74f61acb72d490e4f87864bc34138d8a) (TextureImporter) -> (Import Result ID: '15764ef46d7160ded709eaa16b88de88') in 0.0047189 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=caf74121310bf61e2df74eb7d6a7050e DependenciesID=9fec8cd2ad4ee54ad083bdaa082f032b StaticDependenciesID=0240848b05f3f4f3ecdb38a40aa5e7b5 
+Asset Pipeline Refresh (id=c25710533d739a140802bb5f9b13bbda): Total: 0.020 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Start importing Assets/Mundo Aprendo/MundoTamanos/Arte/Animal_Cangrejo.png using Guid(74f61acb72d490e4f87864bc34138d8a) (TextureImporter) -> (Import Result ID: '7f99bee7359abcf7a3d50ea8bc3f45c5') in 0.0158078 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7ade80eb0b222ace1c2f5654550289e5 DependenciesID=79c9c154218219bf8193b5637910d83b StaticDependenciesID=89c85b333ae85de773090d69f844c3e0 
+Asset Pipeline Refresh (id=f55d8a3d98652e142950a5bb022e0a99): Total: 0.064 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 61 unused Assets / (27.9 KB). Loaded Objects now: 7465.
+Memory consumption went from 183.9 MB to 183.8 MB.
+Total: 7.119600 ms (FindLiveObjects: 0.455900 ms CreateObjectMapping: 0.384400 ms MarkObjects: 6.015800 ms  DeleteObjects: 0.261900 ms)
+
+Start importing Assets/Scenes/MundoTamanos.unity using Guid(af7c037977634694aaacfb010d89d78b) (DefaultImporter) -> (Import Result ID: '9cdc669fa960d08ae75567559f785d71') in 0.0012279 seconds [static dependencies only]. Details - ImportResultOutputID=12d6a3db28b4fa74f299c90f3b37669f DependenciesID=a1543433d712ad872f686b3e49a4723e StaticDependenciesID=693c41736f162302333d974ada8b200c 
+Asset Pipeline Refresh (id=a0cf4a6e45d806b4db450b3103e9044e): Total: 0.040 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Opening scene 'Assets/Scenes/SeleccionMundos.unity'
+Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Assets/Scenes/SeleccionMundos.unity'
+	Deserialize:            11.436 ms
+	Integration:            190.770 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.040 ms
+	Total Operation Time:   202.248 ms
+Unloading 203 unused Assets / (8.9 MB). Loaded Objects now: 7981.
+Memory consumption went from 213.6 MB to 204.6 MB.
+Total: 7.599500 ms (FindLiveObjects: 0.513600 ms CreateObjectMapping: 0.345000 ms MarkObjects: 6.294600 ms  DeleteObjects: 0.445200 ms)
+
+Start importing Assets/Scenes/SeleccionMundos.unity using Guid(1573d5a0267709b45a301ffda98e1fe8) (DefaultImporter) -> (Import Result ID: '05de1e614ce3d02abb182afe055189c7') in 0.0009728 seconds [static dependencies only]. Details - ImportResultOutputID=78d91bf60aac1876ab5a70ed958d191c DependenciesID=daad1341d6b4600eb1ca31e171506bd1 StaticDependenciesID=21f3f661663a1c882bc8b7951b536eef 
+Asset Pipeline Refresh (id=955e4a51e37491f49b18f7ea14ffc3c5): Total: 0.023 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+MundoTamanos preparado en Assets/Scenes/MundoTamanos.unity.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Bolin.Editor.SizeWorldSceneBuilder:Build () (at Assets/Mundo Aprendo/Scripts/MundoTamanos/Editor/SizeWorldSceneBuilder.cs:118)
+
+(Filename: Assets/Mundo Aprendo/Scripts/MundoTamanos/Editor/SizeWorldSceneBuilder.cs Line: 118)
+
+Batchmode quit successfully invoked - shutting down!
+Killing ADB server in 0.0258126 seconds.
+[Physics::Module] Cleanup current backend.
+[Physics::Module] Id: 0xf2b8ea05
+Input System module state changed to: ShutdownInProgress.
+Input Polling Thread exited.
+Input System module state changed to: Shutdown.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-6000.4.0-notifications channel disconnected successfully.
+[Licensing::IpcConnector] LicenseClient-Boloxdhd-6000.4.0 channel disconnected successfully.
+AcceleratorClientConnectionCallback - disconnected - :0
+Cleanup mono
+CodeReloadManager destroyed
+Exiting batchmode successfully now!
+Exiting without the bug reporter. Application will terminate with return code 0
