@@ -8,15 +8,20 @@ using UnityEngine.UI;
 
 namespace Assets.SurpriseBox.Scripts
 {
+    // Controla el mundo musical: reproduce secuencias, valida las teclas del alumno y guarda estrellas.
     public class MundoMusicalSequenceGame : MonoBehaviour
     {
         private const int WorldIndex = 0;
 
+        public event Action<bool> OnAnswerValidated;
+        public event Action<int> OnActivityCompleted;
+
         [Serializable]
+        // Datos de cada tecla: nombre visual, color y sonido propio o generado por frecuencia.
         public class PianoKeyConfig
         {
             public string id = "Do";
-            public string displayName = "DO";
+            public string displayName = "1";
             public Color normalColor = new(0.95f, 0.95f, 0.9f, 1f);
             public Color highlightColor = new(1f, 0.78f, 0.25f, 1f);
             public float toneFrequency = 261.63f;
@@ -24,12 +29,14 @@ namespace Assets.SurpriseBox.Scripts
         }
 
         [Serializable]
+        // Paso individual de una secuencia; apunta a una tecla por indice.
         public class PianoStep
         {
             [Min(0)] public int keyIndex;
         }
 
         [Serializable]
+        // Lista ordenada de notas que el jugador debe escuchar y repetir.
         public class PianoSequence
         {
             public string sequenceName = "Secuencia";
@@ -113,6 +120,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void Awake()
         {
+            // Prepara datos, referencias de escena, botones y estado inicial del mundo.
             EnsureDefaultData();
             ResolveMissingSceneReferences();
             ConfigureButtons();
@@ -145,6 +153,7 @@ namespace Assets.SurpriseBox.Scripts
 
         public void StartActivity()
         {
+            // Boton Iniciar: reinicia puntaje, muestra el piano y reproduce la primera secuencia.
             StopRunningRoutines();
 
             activityStarted = true;
@@ -173,6 +182,7 @@ namespace Assets.SurpriseBox.Scripts
 
         public void CompleteActivity()
         {
+            // Cierra la actividad, guarda progreso global y muestra el panel final con estrellas.
             if (activityFinished) return;
 
             StopRunningRoutines();
@@ -194,10 +204,12 @@ namespace Assets.SurpriseBox.Scripts
             }
 
             if (starDisplay != null) starDisplay.ShowStars(currentStars, true);
+            OnActivityCompleted?.Invoke(currentStars);
         }
 
         public void RegisterMistake()
         {
+            // Baja estrellas segun errores y refresca la UI compartida de estrellas.
             mistakeCount++;
             currentStars = Mathf.Clamp(3 - mistakeCount, 0, 3);
             UpdateStarsUi();
@@ -228,6 +240,7 @@ namespace Assets.SurpriseBox.Scripts
 
         public void ReturnToWorldSelection()
         {
+            // Boton Volver: usa el navegador central de escenas para regresar a seleccion.
             if (string.IsNullOrWhiteSpace(returnSceneName))
             {
                 Debug.LogWarning("No hay una escena de regreso configurada para Mundo Musical.");
@@ -239,6 +252,7 @@ namespace Assets.SurpriseBox.Scripts
 
         public void PlayCurrentSequence()
         {
+            // Reproduce la secuencia actual para que el alumno la escuche antes de responder.
             if (sequences.Count == 0)
             {
                 SetStatus("No hay secuencias configuradas.");
@@ -255,6 +269,7 @@ namespace Assets.SurpriseBox.Scripts
 
         public void NextSequence()
         {
+            // Avanza manualmente a la siguiente secuencia configurada.
             if (sequences.Count == 0) return;
 
             currentSequenceIndex = (currentSequenceIndex + 1) % sequences.Count;
@@ -265,6 +280,7 @@ namespace Assets.SurpriseBox.Scripts
 
         public void SelectSequence(int index)
         {
+            // Permite seleccionar una secuencia especifica desde botones o pruebas.
             if (index < 0 || index >= sequences.Count) return;
 
             currentSequenceIndex = index;
@@ -275,6 +291,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private IEnumerator PlaySequenceRoutine()
         {
+            // Ilumina y suena cada tecla, luego habilita la entrada del jugador.
             PianoSequence sequence = GetCurrentSequence();
             if (sequence == null || sequence.steps.Count == 0)
             {
@@ -307,6 +324,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void OnKeyPressed(int keyIndex)
         {
+            // Recibe el clic de una tecla, compara con el paso esperado y decide avance o error.
             if (keyIndex < 0 || keyIndex >= pianoKeys.Count) return;
             if (!activityStarted || activityFinished) return;
 
@@ -324,6 +342,7 @@ namespace Assets.SurpriseBox.Scripts
                 acceptingInput = false;
                 expectedStepIndex = 0;
                 RegisterMistake();
+                OnAnswerValidated?.Invoke(false);
                 SetStatus("Intenta otra vez");
                 UpdateSequenceProgress(false);
 
@@ -343,6 +362,7 @@ namespace Assets.SurpriseBox.Scripts
 
             acceptingInput = false;
             SetStatus("Muy bien");
+            OnAnswerValidated?.Invoke(true);
 
             if (autoAdvanceSequence)
             {
@@ -361,6 +381,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private IEnumerator AdvanceAfterSequenceCompleteRoutine()
         {
+            // Espera un momento y pasa a la siguiente secuencia o termina el mundo.
             SetButtonsInteractable(false);
             yield return new WaitForSeconds(delayBeforeNextSequence);
 
@@ -387,6 +408,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private IEnumerator ReplayAfterMistakeRoutine()
         {
+            // Tras un error, vuelve a tocar la secuencia para dar otra oportunidad.
             SetButtonsInteractable(false);
             yield return new WaitForSeconds(mistakeReplayDelay);
             PlayCurrentSequence();
@@ -394,6 +416,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private IEnumerator HighlightKeyRoutine(int keyIndex, float delay)
         {
+            // Hace sonar e ilumina una tecla durante la demostracion.
             PlayKeySound(keyIndex);
             SetKeyColor(keyIndex, true);
             yield return new WaitForSeconds(highlightDuration);
@@ -403,6 +426,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private IEnumerator FlashKeyRoutine(int keyIndex)
         {
+            // Da feedback visual inmediato cuando el alumno toca una tecla.
             SetKeyColor(keyIndex, true);
             yield return new WaitForSeconds(highlightDuration);
             SetKeyColor(keyIndex, false);
@@ -410,6 +434,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void EnsureDefaultData()
         {
+            // Crea teclas y secuencias basicas si el Inspector no trae datos.
             pianoKeys ??= new List<PianoKeyConfig>();
             sequences ??= new List<PianoSequence>();
 
@@ -417,13 +442,13 @@ namespace Assets.SurpriseBox.Scripts
             {
                 pianoKeys.AddRange(new[]
                 {
-                    new PianoKeyConfig { id = "Do", displayName = "DO", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.31f, 0.31f, 1f), toneFrequency = 261.63f },
-                    new PianoKeyConfig { id = "Re", displayName = "RE", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(1f, 0.58f, 0.22f, 1f), toneFrequency = 293.66f },
-                    new PianoKeyConfig { id = "Mi", displayName = "MI", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.89f, 0.24f, 1f), toneFrequency = 329.63f },
-                    new PianoKeyConfig { id = "Fa", displayName = "FA", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.35f, 0.78f, 0.45f, 1f), toneFrequency = 349.23f },
-                    new PianoKeyConfig { id = "Sol", displayName = "SOL", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(0.25f, 0.62f, 1f, 1f), toneFrequency = 392f },
-                    new PianoKeyConfig { id = "La", displayName = "LA", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.67f, 0.45f, 1f, 1f), toneFrequency = 440f },
-                    new PianoKeyConfig { id = "Si", displayName = "SI", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.42f, 0.78f, 1f), toneFrequency = 493.88f },
+                    new PianoKeyConfig { id = "Do", displayName = "1", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.31f, 0.31f, 1f), toneFrequency = 261.63f },
+                    new PianoKeyConfig { id = "Re", displayName = "2", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(1f, 0.58f, 0.22f, 1f), toneFrequency = 293.66f },
+                    new PianoKeyConfig { id = "Mi", displayName = "3", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.89f, 0.24f, 1f), toneFrequency = 329.63f },
+                    new PianoKeyConfig { id = "Fa", displayName = "4", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.35f, 0.78f, 0.45f, 1f), toneFrequency = 349.23f },
+                    new PianoKeyConfig { id = "Sol", displayName = "5", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(0.25f, 0.62f, 1f, 1f), toneFrequency = 392f },
+                    new PianoKeyConfig { id = "La", displayName = "6", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.67f, 0.45f, 1f, 1f), toneFrequency = 440f },
+                    new PianoKeyConfig { id = "Si", displayName = "7", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.42f, 0.78f, 1f), toneFrequency = 493.88f },
                 });
             }
 
@@ -441,6 +466,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void ResolveMissingSceneReferences()
         {
+            // Completa referencias opcionales buscando componentes en la propia escena.
             audioSource ??= GetComponent<AudioSource>();
 
             if (tmpKeyLabels.Count != keyButtons.Count)
@@ -455,6 +481,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void ConfigureButtons()
         {
+            // Conecta los botones del Inspector con las acciones de este controlador.
             if (startActivityButton != null)
             {
                 startActivityButton.onClick.RemoveAllListeners();
@@ -492,6 +519,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void RefreshUi()
         {
+            // Refresca titulos, estado, etiquetas de teclas e indicadores de progreso.
             PianoSequence sequence = GetCurrentSequence();
             if (tmpTitleText != null) tmpTitleText.text = "Mundo Musical";
             if (tmpSequenceText != null) tmpSequenceText.text = sequence != null ? $"Secuencia: {sequence.sequenceName}" : "Sin secuencias";
@@ -507,6 +535,8 @@ namespace Assets.SurpriseBox.Scripts
                 if (i < tmpKeyLabels.Count && tmpKeyLabels[i] != null && i < pianoKeys.Count)
                 {
                     tmpKeyLabels[i].text = pianoKeys[i].displayName;
+                    tmpKeyLabels[i].fontSize = Mathf.Max(tmpKeyLabels[i].fontSize, 54f);
+                    tmpKeyLabels[i].fontStyle |= FontStyles.Bold;
                 }
 
                 SetKeyColor(i, false);
@@ -515,6 +545,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void PrepareInitialState()
         {
+            // Deja visible el panel inicial y bloquea el piano hasta que se pulse Iniciar.
             activityStarted = false;
             activityFinished = false;
             acceptingInput = false;
@@ -537,6 +568,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void UpdateSequenceProgress(bool demonstrating, int demonstrationStep = -1)
         {
+            // Pinta cada paso como pendiente, actual o completado segun el avance.
             PianoSequence sequence = GetCurrentSequence();
             int stepCount = sequence?.steps?.Count ?? 0;
             for (int i = 0; i < sequenceStepIndicators.Length; i++)
@@ -571,11 +603,13 @@ namespace Assets.SurpriseBox.Scripts
 
         private void SaveProgress()
         {
+            // Registra el mejor resultado del mundo musical en el repositorio global.
             Bolin.WorldProgressRepository.SaveBestResult(WorldIndex, currentStars);
         }
 
         private void StopRunningRoutines()
         {
+            // Corta corutinas activas para evitar que una secuencia vieja siga modificando la UI.
             if (sequenceRoutine != null)
             {
                 StopCoroutine(sequenceRoutine);
@@ -621,6 +655,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private void PlayKeySound(int keyIndex)
         {
+            // Usa AudioClip asignado o genera un tono senoidal si no hay audio en la tecla.
             if (audioSource == null || keyIndex < 0 || keyIndex >= pianoKeys.Count) return;
 
             PianoKeyConfig key = pianoKeys[keyIndex];
@@ -633,6 +668,7 @@ namespace Assets.SurpriseBox.Scripts
 
         private AudioClip GetGeneratedTone(float frequency)
         {
+            // Genera y cachea tonos simples para que el piano funcione aun sin clips importados.
             if (generatedTones.TryGetValue(frequency, out AudioClip clip)) return clip;
 
             const int sampleRate = 44100;

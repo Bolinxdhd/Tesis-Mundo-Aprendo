@@ -1,11 +1,11 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revision 9237654'; Using compiler version '194234433'; Build Type 'Release'
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-06-25T12:30:05.8175416Z"
 OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32690 MB
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-07-13T06:17:14.4938276Z"
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
 Process architecture: x64
-Date: 2026-06-25T12:30:05Z
+Date: 2026-07-13T06:17:14Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
@@ -19,7 +19,7 @@ F:/PUN/Tesis-Mundo-Aprendo/Mundo aprendo tesis
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-60236
+61088
 -licensingIpc
 LicenseClient-Boloxdhd
 -force-d3d12
@@ -68,12 +68,12 @@ F:/PUN/Tesis-Mundo-Aprendo/Mundo aprendo tesis
     "memorysetup-job-temp-allocator-block-size=2097152"
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
-Player connection [10048]  Target information:
+Player connection [1660]  Target information:
 
-Player connection [10048]  * "[IP] 192.168.1.146 [Port] 0 [Flags] 2 [Guid] 354352389 [EditorId] 354352389 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NF6H5UD) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [1660]  * "[IP] 192.168.1.14 [Port] 0 [Flags] 2 [Guid] 3638227662 [EditorId] 3638227662 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-NF6H5UD) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [10048] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [10048] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [1660] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [1660] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -85,7 +85,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.97 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 3.55 ms, found 4 plugins.
 Initialize engine version: 6000.4.0f1 (8cf496087c8f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path F:/PUN/Tesis-Mundo-Aprendo/Mundo aprendo tesis/Assets
@@ -103,7 +103,7 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56788
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56084
 CodeReloadManager initialized
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
@@ -114,32 +114,27 @@ Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/E
 	ResponseStatus: Unsupported protocol version '1.18.1'.
 [Licensing::Module] Error: Failed to handshake to channel: "LicenseClient-Boloxdhd"
 [Licensing::IpcConnector] LicenseClient-Boloxdhd channel disconnected successfully.
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0" at "2026-06-25T12:30:06.9320657Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0" at "2026-07-13T06:17:15.746219Z"
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.18.1+9fbee8e
-  Session Id:              4d5794f2697243f28a60bf4ee66d9dc7
-  Correlation Id:          8f4c630b2bfa2a49432f90353fa2fcf1
-  External correlation Id: 6471694773989616711
+  Session Id:              aa27d54062474cddac80252f6e5c94c7
+  Correlation Id:          c6743a594433e2cbcda819fd0b18c6e7
+  External correlation Id: 9027695185402462383
   Machine Id:              CFi18PVxujarsjnwWQVdFlBCSK4=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Boloxdhd-6000.4.0" (connect: 0.00s, validation: 0.00s, handshake: 1.04s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0-notifications" at "2026-06-25T12:30:07.9751816Z"
-[Licensing::Module] Licensing Background thread has ended after 2.16s
-[Licensing::Module] Licensing is initialized (took 1.32s).
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-Boloxdhd-6000.4.0" (connect: 0.00s, validation: 0.00s, handshake: 1.13s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd-6000.4.0-notifications" at "2026-07-13T06:17:16.8754559Z"
+[Licensing::Module] Licensing Background thread has ended after 2.38s
+[Licensing::Module] Licensing is initialized (took 1.39s).
 [Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
 [Licensing::Module] License group:
   Id: 4673397952068-UnityPersXXXX
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.4.0f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-Registered in 1.321004 seconds.
+Registered in 1.397462 seconds.
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 163 ms
+Android Extension - Scanning For ADB Devices 170 ms
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
@@ -147,38 +142,28 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.584 seconds
-Domain Reload Profiling: 2393ms
-	BeginReloadAssembly (129ms)
-	RebuildCommonClasses (55ms)
-	RebuildNativeTypeToScriptingClass (16ms)
-	initialDomainReloadingComplete (1385ms)
-	LoadAllAssembliesAndSetupDomain (223ms)
-		LoadAssemblies (125ms)
-		AnalyzeDomain (214ms)
-			TypeCache.Refresh (213ms)
-				TypeCache.ScanAssembly (198ms)
-	FinalizeReload (585ms)
+- Finished resetting the current domain, in  0.608 seconds
+Domain Reload Profiling: 2546ms
+	BeginReloadAssembly (154ms)
+	RebuildCommonClasses (49ms)
+	RebuildNativeTypeToScriptingClass (21ms)
+	initialDomainReloadingComplete (1474ms)
+	LoadAllAssembliesAndSetupDomain (241ms)
+		LoadAssemblies (148ms)
+		AnalyzeDomain (232ms)
+			TypeCache.Refresh (231ms)
+				TypeCache.ScanAssembly (216ms)
+	FinalizeReload (608ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (246ms)
-			BeforeProcessingInitializeOnLoad (86ms)
-			ProcessInitializeOnLoadAttributes (115ms)
-			ProcessInitializeOnLoadMethodAttributes (75ms)
+			InitializePlatformSupportModulesInManaged (255ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (110ms)
+			ProcessInitializeOnLoadMethodAttributes (79ms)
 ========================================================================
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 4673397952068-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
 Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
 Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
 Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
@@ -208,7 +193,6 @@ Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Un
 Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
 Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
 Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
-Refreshing native plugins compatible for Editor in 2.01 ms, found 4 plugins.
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
@@ -219,122 +203,173 @@ Native extension for WindowsStandalone target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.786 seconds
-Domain Reload Profiling: 1718ms
-	BeginReloadAssembly (193ms)
+- Finished resetting the current domain, in  0.838 seconds
+Domain Reload Profiling: 1827ms
+	BeginReloadAssembly (207ms)
 		DisableScriptedObjects (6ms)
-		CreateAndSetChildDomain (30ms)
-	RebuildCommonClasses (69ms)
-	RebuildNativeTypeToScriptingClass (21ms)
-	initialDomainReloadingComplete (78ms)
-	LoadAllAssembliesAndSetupDomain (571ms)
-		LoadAssemblies (368ms)
-		AnalyzeDomain (305ms)
-			TypeCache.Refresh (217ms)
-				TypeCache.ScanAssembly (199ms)
-			BuildScriptInfoCaches (70ms)
-			ResolveRequiredComponents (17ms)
-	FinalizeReload (786ms)
+		CreateAndSetChildDomain (42ms)
+	RebuildCommonClasses (47ms)
+	RebuildNativeTypeToScriptingClass (18ms)
+	initialDomainReloadingComplete (81ms)
+	LoadAllAssembliesAndSetupDomain (636ms)
+		LoadAssemblies (386ms)
+		AnalyzeDomain (352ms)
+			TypeCache.Refresh (253ms)
+				TypeCache.ScanAssembly (230ms)
+			BuildScriptInfoCaches (81ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (838ms)
 		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (10ms)
-			BeforeProcessingInitializeOnLoad (142ms)
-			ProcessInitializeOnLoadAttributes (319ms)
-			ProcessInitializeOnLoadMethodAttributes (81ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			BeforeProcessingInitializeOnLoad (162ms)
+			ProcessInitializeOnLoadAttributes (325ms)
+			ProcessInitializeOnLoadMethodAttributes (83ms)
 			AfterProcessingInitializeOnLoad (7ms)
 		AwakeInstancesAfterBackupRestoration (7ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
 Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6622 unused Assets / (6.1 MB). Loaded Objects now: 7447.
-Memory consumption went from 160.8 MB to 154.7 MB.
-Total: 9.128100 ms (FindLiveObjects: 0.802600 ms CreateObjectMapping: 1.403900 ms MarkObjects: 4.242700 ms  DeleteObjects: 2.677300 ms)
+Unloading 6636 unused Assets / (6.5 MB). Loaded Objects now: 7461.
+Memory consumption went from 161.9 MB to 155.3 MB.
+Total: 14.173800 ms (FindLiveObjects: 0.924100 ms CreateObjectMapping: 1.918000 ms MarkObjects: 6.863700 ms  DeleteObjects: 4.465000 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 21031.615994 seconds.
-  path: Assets/Scenes/MundoCuentos_VozTest.unity
-  importAddress: Guid(fe78397ebc833764983c91fdbdc87212) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Scenes/MundoCuentos_VozTest.unity using Guid(fe78397ebc833764983c91fdbdc87212) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '8d9cde1a6572de3802dff478b69702c8') in 0.0692241 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a230a645dac201b2cd4a6f7dc7e4106b DependenciesID=e398e18471603f1ef56ddf41cf108955 StaticDependenciesID=405dde16bd0119e22c26aee95f2e9655 
+  Time since last request: 32890.631704 seconds.
+  path: Assets/Scenes/Menu.unity
+  importAddress: Guid(0a30dc9e534a4324ab7c3475af5151ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Menu.unity using Guid(0a30dc9e534a4324ab7c3475af5151ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: '203a817e6515b4a9090a8cf9dc13b6d6') in 0.0689428 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=3b6d5de5bb984908009c1e55c437b805 DependenciesID=07c85c9be5562b420c410689e7b41029 StaticDependenciesID=fa2cfb2f91efdd1c77b08d1003da7517 
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-FQE5-U6TU-H7W3-QSAD-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 4673397952068-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Assembly Assembly-CSharp-Editor-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll not valid. Loading of assembly skipped.
-Assembly Assembly-CSharp-firstpass.dll at Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll not valid. Loading of assembly skipped.
-Assembly DocCodeExamples.dll at Library/ScriptAssemblies/DocCodeExamples.dll not valid. Loading of assembly skipped.
-Assembly TestNewCustomAssembly.dll at Library/ScriptAssemblies/TestNewCustomAssembly.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.BurstCompatibilityGen.dll at Library/ScriptAssemblies/Unity.Collections.BurstCompatibilityGen.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.DocCodeSamples.dll at Library/ScriptAssemblies/Unity.Collections.DocCodeSamples.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.PerformanceTests.dll at Library/ScriptAssemblies/Unity.Collections.PerformanceTests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.Tests.dll at Library/ScriptAssemblies/Unity.Collections.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Collections.Tests.Playmode.dll at Library/ScriptAssemblies/Unity.Collections.Tests.Playmode.dll not valid. Loading of assembly skipped.
-Assembly Unity.InputSystem.IntegrationTests.dll at Library/ScriptAssemblies/Unity.InputSystem.IntegrationTests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Mathematics.Tests.dll at Library/ScriptAssemblies/Unity.Mathematics.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Multiplayer.Center.Editor.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Multiplayer.Center.Tests.dll at Library/ScriptAssemblies/Unity.Multiplayer.Center.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Nuget.Mono-Cecil.dll at Library/ScriptAssemblies/Unity.Nuget.Mono-Cecil.dll not valid. Loading of assembly skipped.
-Assembly Unity.PathTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.PathTracing.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.PathTracing.Runtime.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.RenderPipelines.Core.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.RenderPipelines.Core.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.RenderPipelines.Universal.Config.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Config.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.RenderPipelines.Universal.Editor.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.RenderPipelines.Universal.Runtime.Tests.dll at Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.Searcher.EditorTests.dll at Library/ScriptAssemblies/Unity.Searcher.EditorTests.dll not valid. Loading of assembly skipped.
-Assembly Unity.ShaderGraph.Editor.Tests.dll at Library/ScriptAssemblies/Unity.ShaderGraph.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.TextMeshPro.Editor.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.TextMeshPro.Tests.dll at Library/ScriptAssemblies/Unity.TextMeshPro.Tests.dll not valid. Loading of assembly skipped.
-Assembly Unity.UnifiedRayTracing.Editor.Tests.dll at Library/ScriptAssemblies/Unity.UnifiedRayTracing.Editor.Tests.dll not valid. Loading of assembly skipped.
-Assembly UnityEditor.UI.Common.Tests.dll at Library/ScriptAssemblies/UnityEditor.UI.Common.Tests.dll not valid. Loading of assembly skipped.
-Assembly UnityEditor.UI.EditorTests.dll at Library/ScriptAssemblies/UnityEditor.UI.EditorTests.dll not valid. Loading of assembly skipped.
-Assembly UnityEngine.UI.Tests.dll at Library/ScriptAssemblies/UnityEngine.UI.Tests.dll not valid. Loading of assembly skipped.
-Refreshing native plugins compatible for Editor in 2.18 ms, found 4 plugins.
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.774 seconds
-Domain Reload Profiling: 1566ms
-	BeginReloadAssembly (217ms)
-		DisableScriptedObjects (8ms)
-		CreateAndSetChildDomain (46ms)
-	RebuildCommonClasses (39ms)
-	RebuildNativeTypeToScriptingClass (15ms)
-	initialDomainReloadingComplete (61ms)
-	LoadAllAssembliesAndSetupDomain (461ms)
-		LoadAssemblies (343ms)
-		AnalyzeDomain (207ms)
-			TypeCache.Refresh (9ms)
-			BuildScriptInfoCaches (184ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (774ms)
-		SetupLoadedEditorAssemblies (0ms)
-			InitializePlatformSupportModulesInManaged (10ms)
-			BeforeProcessingInitializeOnLoad (169ms)
-			ProcessInitializeOnLoadAttributes (276ms)
-			ProcessInitializeOnLoadMethodAttributes (94ms)
-			AfterProcessingInitializeOnLoad (8ms)
-		AwakeInstancesAfterBackupRestoration (15ms)
-Unloading 24 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6618 unused Assets / (5.9 MB). Loaded Objects now: 7465.
-Memory consumption went from 169.8 MB to 163.9 MB.
-Total: 9.670400 ms (FindLiveObjects: 0.914300 ms CreateObjectMapping: 1.500700 ms MarkObjects: 4.587700 ms  DeleteObjects: 2.666800 ms)
+Received Import Request.
+  Time since last request: 708.895612 seconds.
+  path: Assets/Scenes/Menu.unity
+  importAddress: Guid(0a30dc9e534a4324ab7c3475af5151ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Menu.unity using Guid(0a30dc9e534a4324ab7c3475af5151ec) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (Import Result ID: 'ccd91aea47470504e7fedb703422e43d') in 0.0070315 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=fd4d092350add96501ee49a079a01f69 DependenciesID=dea76a965a8f5db1b6dd6841657179dc StaticDependenciesID=e74bada5aa72946183c2d315b80c6c3d 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
-Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 88.852620 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Pumpkin.png
+  importAddress: Guid(1115078e71713044eafdec3334eb6aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Pumpkin.png using Guid(1115078e71713044eafdec3334eb6aea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[Licensing::Client] Successfully resolved entitlement details
+ -> (Import Result ID: '265a458ccfa24c1555d252f342ee8ba4') in 0.0970219 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=e251a507a7250647f95e15152dde4fd5 DependenciesID=c5c34d10be2fca6a7753b752d6c5cf8b StaticDependenciesID=7054af368045b2edb949a04dd257a6f3 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Strength Up.png
+  importAddress: Guid(32d8155e173e5964394d50865767f726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Strength Up.png using Guid(32d8155e173e5964394d50865767f726) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '65aaf7f776d2071f7cd45fcd6c5e835d') in 0.0149708 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7cfc879d2a73eddeffc7dcfc546b598e DependenciesID=037c72e1b8411a3b3006bc4db2b2a249 StaticDependenciesID=e7a80ecec2689aea3a7e5ff6faa8f325 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Speed Boost 2.png
+  importAddress: Guid(f9f6ea2a2be745249a49d7efd36c4dbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Speed Boost 2.png using Guid(f9f6ea2a2be745249a49d7efd36c4dbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '778e10eabd45c9249946f0829ad141c2') in 0.0174884 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=195a70d157d939c0b5349936786d62f0 DependenciesID=827fff523df82e26f9e799a7c31373ee StaticDependenciesID=65e43390a76ebe55d44fede114c65bd9 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Shop 1.png
+  importAddress: Guid(8eb11ff26a1db344590f18226950449f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Shop 1.png using Guid(8eb11ff26a1db344590f18226950449f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '250fe0a598c1be7225cae4d5088dbeb0') in 0.0110532 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=d09b8dc1d67351790ffcb58928a8e4b9 DependenciesID=0f4fed5501a55d7b96253ff8891d71ac StaticDependenciesID=a8c287d3b8702ee05d3fd60d3715207a 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Space_Exploration_GUI_Kit/Picto_Icons/Dark_Purple/upload-256.png
+  importAddress: Guid(1537f7580ca126642b52b5e6baaedefa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space_Exploration_GUI_Kit/Picto_Icons/Dark_Purple/upload-256.png using Guid(1537f7580ca126642b52b5e6baaedefa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '7d9edb7f656159262b613cdef1bb57ab') in 0.0117297 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=a6cd7e88145ff45b0102125ca24cca12 DependenciesID=e144ea0a9df5af7e5dafb6aadb4479b3 StaticDependenciesID=6c326c7388fefe04dfa2bcc2ebd19325 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Planet.png
+  importAddress: Guid(bed7602ca5c91f54cb731b153a61715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Planet.png using Guid(bed7602ca5c91f54cb731b153a61715c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '4a308494f5d7e2170793fb5a3c0e61ee') in 0.0181639 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=51b07fc4a01f38a2cd93d964b1e98333 DependenciesID=d115382591fd0150735ba42743e97266 StaticDependenciesID=80ff15d973737bde797815cd22440a61 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Explosion 2.png
+  importAddress: Guid(c8d7b8a75c1978f46b508463920c0ec2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Explosion 2.png using Guid(c8d7b8a75c1978f46b508463920c0ec2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '972451dec504051c2a245c68496299a3') in 0.0134622 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=23fffb6a2ad26d25fc729c83252068e0 DependenciesID=147008afb549740d7c03dcf287af76bb StaticDependenciesID=5dd88b0e287fac38d9ba7523ebf1e215 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000051 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Play.png
+  importAddress: Guid(79f50101ed53d044084e7ba7f1485a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Play.png using Guid(79f50101ed53d044084e7ba7f1485a78) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: 'aa01a997c18051da7b6b09cda705dac6') in 0.0131434 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=7ec483362929f16010e53341a99c32f1 DependenciesID=760403daa1fe8efa6c723c07a0b3b334 StaticDependenciesID=47d2384996136e4cdc9cfc564d823b30 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Plus.png
+  importAddress: Guid(9610920fd80f6e148a68bce92deb4f9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Plus.png using Guid(9610920fd80f6e148a68bce92deb4f9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: 'c704648d1ad3c008a6155b1dc5230c4b') in 0.0146976 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=088b9dd2fad4d3cb514d1e0695f26cf3 DependenciesID=5d6c8e33f26f23bcba9b74fea7cab8a4 StaticDependenciesID=1e8a4361f3864c62eb3f6a78fd5e4f93 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Plus 2.png
+  importAddress: Guid(4879e0207f43b7944b31443181cae4aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Plus 2.png using Guid(4879e0207f43b7944b31443181cae4aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '2b4c51a643098589ab80c0b285a4320c') in 0.0340262 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=1f8f32fe4b2386dfd366f7fddb19f75f DependenciesID=76e1c3faec32b4032ec120a4bb062141 StaticDependenciesID=b0fcf338bc7d86ad452450344f727191 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Puzzle Piece.png
+  importAddress: Guid(16242e4f15ed25e40a6909e2210deec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/White Icons/White Icons/White Icons 2/White Puzzle Piece.png using Guid(16242e4f15ed25e40a6909e2210deec0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: 'ded1e48667d7bb4876bbdc8f40c8be82') in 0.0132962 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=108fdbbb4279b8a5b7437536d1f48bd7 DependenciesID=0180bdaf0bbe2bb101da21530d0c993c StaticDependenciesID=7d72dc6818f5dcaeb109458ac145042c 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Cartoon UI/Panels/Victory title bar Pink Purple.png
+  importAddress: Guid(d6e44db3d29f89449ba6a5592793c422) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Cartoon UI/Panels/Victory title bar Pink Purple.png using Guid(d6e44db3d29f89449ba6a5592793c422) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '2e2f10b714386baa0eacaedc28b01590') in 0.017521 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=0fe3f84bb2ab4bc07c840d4e055d7d4d DependenciesID=9224d0cd64d1f9dee3d711ad3a1e80ee StaticDependenciesID=c9f8d13b75aff53385865b3b7f98c9ff 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Space_Exploration_GUI_Kit/Picto_Icons/White/play-256.png
+  importAddress: Guid(3143b6424018a48488a67d7a415ff56c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space_Exploration_GUI_Kit/Picto_Icons/White/play-256.png using Guid(3143b6424018a48488a67d7a415ff56c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '55162bebfd354691d1ed45f40e468a7b') in 0.0103664 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=580bf4d53c1e7d447462f9d17a820643 DependenciesID=7a53c77d9b643b4ad3479a2728198aa7 StaticDependenciesID=86d10f22b6c75b48515a28db6fcc1521 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Space_Exploration_GUI_Kit/Picto_Icons/Light_Purple/play-128.png
+  importAddress: Guid(dcda9007084e10c45a43addaa81722ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space_Exploration_GUI_Kit/Picto_Icons/Light_Purple/play-128.png using Guid(dcda9007084e10c45a43addaa81722ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '822de4391278c93a96c81b4bd1baef2c') in 0.0095243 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=2c9cf2f28a10984714fef8caff83a8bf DependenciesID=4ac9226690fb9037b04dcd4888b6de87 StaticDependenciesID=fa357f3b87715fb42f6d5fdb57e6d53f 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Space_Exploration_GUI_Kit/Picto_Icons/Light_Purple/play-256.png
+  importAddress: Guid(d96c12db4cf36d540ae9c50f0b4f9e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Space_Exploration_GUI_Kit/Picto_Icons/Light_Purple/play-256.png using Guid(d96c12db4cf36d540ae9c50f0b4f9e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (Import Result ID: '443bb0a8fec7c9b2dc4d33455255d11a') in 0.0113279 seconds [static and dynamic dependencies]. Details - ImportResultOutputID=53d313c75e5312a6231c0ebb11ef7a72 DependenciesID=4909e4db51814203b9cb1a4868636fed StaticDependenciesID=1a9905d23589e02f89ce2c16b999cc50 
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

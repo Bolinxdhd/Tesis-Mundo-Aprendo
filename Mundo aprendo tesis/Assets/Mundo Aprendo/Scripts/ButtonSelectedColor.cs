@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,10 +12,21 @@ public class ButtonSelectedColor : ButtonSelected
 
     private void Start()
     {
-        originalColor = buttonImage.color; // Guardar el color original
+        if (buttonImage == null)
+        {
+            buttonImage = GetComponent<Image>();
+        }
+
+        if (buttonImage != null)
+        {
+            originalColor = buttonImage.color;
+        }
     }
+
     protected override void Event()
     {
+        if (buttonImage == null) return;
+
         IsZoomedIn = !IsZoomedIn;
         if (IsZoomedIn)
         {

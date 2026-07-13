@@ -70,7 +70,6 @@ namespace Bolin
             {
                 InitialAdjust();
                 SaveScreenSettings();
-                // Debug.Log($"[ManagerVideo] Video Creado: {GetCurrentVideoState()}");
             }
             SetResolutionScreen();
             ActiveVsync();
@@ -84,7 +83,6 @@ namespace Bolin
         {
             string json = JsonUtility.ToJson(settings, true);
             File.WriteAllText(filePath, json);
-            // Debug.Log($"[Video] Guardado JSON en: {filePath}\n{json}");
         }
 
 
@@ -123,18 +121,6 @@ namespace Bolin
             Screen.SetResolution(settings.Width, settings.Height, (FullScreenMode)settings.ScreenMode, newResolution.refreshRate);
 #endif
         }
-
-        /*
-        // Se emplea este metodo para poder actualizar y aplicar los cambios de monitor
-        public void ApplyChangeResolution(int index){
-            Resolution newResolution = resolutions[index];
-            // Se fija la resolucion de la pantalla y se guarda la configuracion
-            settings.Width = newResolution.width;
-            settings.Height = newResolution.height;
-            SaveScreenSettings();
-        }
-        */
-
 
         // Se emplea para fijar la resolucion de la pantalla
         private void SetResolutionScreen()
@@ -194,21 +180,9 @@ namespace Bolin
 #endif
         }
 
-
-        // Overload para currentResolution (por si lo quieres usar en retornos tempranos)
-        private static int GetHz(Resolution r, bool isCurrent)
-        {
-#if UNITY_2022_2_OR_NEWER
-            return Mathf.RoundToInt((float)r.refreshRateRatio.value);
-#else
-            return r.refreshRate;
-#endif
-        }
-
-
         public void SaveCurrentEffectiveStateToJson()
         {
-            var cur = GetCurrentVideoState(); // tu struct
+            var cur = GetCurrentVideoState();
             settings.Width = cur.width;
             settings.Height = cur.height;
             settings.ScreenMode = (int)cur.mode;
@@ -350,7 +324,6 @@ namespace Bolin
         // Permite gestionar si se encuentra habilitado o no el limite de FPS
         private void ActiveLimitFps()
         {
-            // Application.targetFrameRate = GetSettingScreen(4) == 0 ? -1 : 60;
             Application.targetFrameRate = settings.LimitFps ? 60 : -1;
         }
 

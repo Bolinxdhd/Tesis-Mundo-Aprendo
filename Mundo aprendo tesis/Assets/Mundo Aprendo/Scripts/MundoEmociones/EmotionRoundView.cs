@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Bolin
 {
+    // Emocion que puede mostrarse y seleccionarse en el mundo de emociones.
     public enum EmotionType
     {
         Joy,
@@ -13,6 +14,7 @@ namespace Bolin
     }
 
     [Serializable]
+    // Referencias de una ronda: personaje/expresion visible, animacion y audio opcional.
     public class EmotionRoundView
     {
         public EmotionType emotion;

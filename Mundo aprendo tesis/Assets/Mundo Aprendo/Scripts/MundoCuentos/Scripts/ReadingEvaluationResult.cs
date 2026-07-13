@@ -1,5 +1,6 @@
 namespace Bolin
 {
+    // Resultado inmutable que conecta ReadingEvaluator con VoiceRecognitionTest.
     public readonly struct ReadingEvaluationResult
     {
         public ReadingEvaluationResult(float similarity, int stars, int matchedWords, int expectedWords, int recognizedWords)

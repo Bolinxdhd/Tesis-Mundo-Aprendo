@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
+    // Boton de respuesta del mundo de emociones; envia su EmotionType al manager.
     public class EmotionAnswerButton : MonoBehaviour
     {
         [SerializeField] private EmotionGameManager gameManager;
@@ -23,21 +24,25 @@ namespace Bolin
 
         public void Submit()
         {
+            // Evento del boton: delega la validacion al EmotionGameManager.
             gameManager?.SubmitAnswer(emotion);
         }
 
         public void SetInteractable(bool interactable)
         {
+            // El manager lo usa para bloquear respuestas durante feedback o transiciones.
             if (button != null) button.interactable = interactable;
         }
 
         public void SetVisible(bool visible)
         {
+            // Permite ocultar respuestas opcionales como miedo.
             gameObject.SetActive(visible);
         }
 
         public void Pulse()
         {
+            // Feedback visual cuando el alumno toca esta respuesta.
             if (!isActiveAndEnabled || pulseTarget == null) return;
 
             if (pulseRoutine != null)
@@ -50,6 +55,7 @@ namespace Bolin
 
         private IEnumerator PulseRoutine()
         {
+            // Escala el boton hacia arriba y luego lo devuelve a su tamano normal.
             Vector3 baseScale = Vector3.one;
             Vector3 enlargedScale = Vector3.one * pulseScale;
             float elapsed = 0f;

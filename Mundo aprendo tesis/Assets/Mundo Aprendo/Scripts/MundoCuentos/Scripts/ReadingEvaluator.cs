@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Bolin
 {
+    // Compara el cuento esperado con lo reconocido y calcula similitud/estrellas.
     public class ReadingEvaluator
     {
         private readonly bool removeCommonWords;
@@ -17,9 +18,11 @@ namespace Bolin
 
         public ReadingEvaluator(bool removeCommonWords)
         {
+            // Define si palabras comunes como "el" o "de" cuentan en la comparacion.
             this.removeCommonWords = removeCommonWords;
         }
 
+        // Ejecuta la evaluacion completa y devuelve porcentajes, coincidencias y estrellas.
         public ReadingEvaluationResult Evaluate(
             string expected,
             string recognized,
@@ -58,6 +61,7 @@ namespace Bolin
 
         public int CountWords(string text)
         {
+            // Cuenta palabras despues de normalizar y aplicar el filtro configurado.
             return GetWords(text).Length;
         }
 
@@ -83,6 +87,7 @@ namespace Bolin
 
         public static string NormalizeText(string input)
         {
+            // Normaliza a minusculas, elimina tildes y reemplaza puntuacion por espacios.
             if (string.IsNullOrWhiteSpace(input)) return string.Empty;
 
             string lower = input.ToLowerInvariant().Normalize(NormalizationForm.FormD);
@@ -104,6 +109,7 @@ namespace Bolin
 
         public static string[] GetNormalizedWords(string input)
         {
+            // Devuelve palabras listas para comparar en otros scripts.
             string normalized = NormalizeText(input);
             return string.IsNullOrWhiteSpace(normalized)
                 ? new string[0]

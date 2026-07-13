@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Bolin
 {
+    // Guarda progreso por cuento y sincroniza el mundo de Cuentos con el progreso global.
     public class StoryProgressRepository
     {
         public const int WorldIndex = 1;
@@ -17,11 +18,13 @@ namespace Bolin
 
         public void Save(int stars, bool completeOnlyWithAtLeastOneStar)
         {
+            // Guarda el cuento por defecto usando las estrellas como puntaje aproximado.
             SaveStoryResult(DefaultStoryId, Mathf.RoundToInt(Mathf.Clamp01(stars / 3f) * 100f), stars, completeOnlyWithAtLeastOneStar);
         }
 
         public void SaveStoryResult(string cuentoId, int score, int stars, bool completeOnlyWithAtLeastOneStar)
         {
+            // Guarda mejores valores del cuento y actualiza WorldProgressRepository si corresponde.
             string safeId = NormalizeStoryId(cuentoId);
             int clampedStars = Mathf.Clamp(stars, 0, 3);
             int clampedScore = Mathf.Clamp(score, 0, 100);
@@ -68,6 +71,7 @@ namespace Bolin
 
         public static int CountCompletedStories(IEnumerable<CuentoData> cuentos)
         {
+            // Cuenta cuentos unicos completados segun los ids configurados en la escena.
             HashSet<string> counted = new();
             if (cuentos == null) return 0;
 
@@ -87,6 +91,7 @@ namespace Bolin
 
         public static bool HasUnlockedOtherWorlds(IEnumerable<CuentoData> cuentos, int requiredCompletedStories)
         {
+            // Regla de desbloqueo usada por el boton de otros mundos.
             return CountCompletedStories(cuentos) >= Mathf.Max(1, requiredCompletedStories);
         }
 
@@ -124,6 +129,7 @@ namespace Bolin
 
         public static void ResetAllStories(bool save = true)
         {
+            // Borra progreso individual de cuentos y limpia el registro de ids conocidos.
             foreach (string cuentoId in GetKnownStoryIds())
             {
                 ResetStory(cuentoId, false);

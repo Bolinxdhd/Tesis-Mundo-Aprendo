@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,11 +7,16 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
+    // Controla el mundo de emociones: muestra expresiones, valida respuestas y guarda estrellas.
     public class EmotionGameManager : MonoBehaviour
     {
         public const int WorldIndex = 3;
         public const string CompletedKey = "MundoAprendo_World_3_Completed";
         public const string StarsKey = "MundoAprendo_World_3_Stars";
+
+        public event Action<EmotionType> OnRoundStarted;
+        public event Action<bool> OnAnswerValidated;
+        public event Action<int> OnActivityCompleted;
 
         [Header("Rondas")]
         [SerializeField] private List<EmotionRoundView> emotionViews = new();
@@ -76,12 +82,21 @@ namespace Bolin
 
         private void Awake()
         {
+            // Deja visibles los paneles correctos antes de que el alumno pulse Iniciar.
             PrepareInitialState();
         }
 
         private void Start()
         {
-            if (nunaRoot != null) nunaRoutine = StartCoroutine(NunaFloatRoutine());
+            // Activa la animacion decorativa de Nuna y arranca la musica ambiental.
+            if (nunaRoot != null)
+            {
+                nunaRoutine = StartCoroutine(EmotionGameAnimationController.FloatAnchoredPosition(
+                    nunaRoot,
+                    nunaFloatDistance,
+                    nunaFloatSpeed));
+            }
+
             StartAmbientMusic();
         }
 
@@ -97,6 +112,7 @@ namespace Bolin
 
         public void StartActivity()
         {
+            // Boton Iniciar: reinicia rondas, errores y abre el panel de juego.
             StopFlowRoutines();
 
             completedRounds = 0;
@@ -127,6 +143,7 @@ namespace Bolin
 
         public void SubmitAnswer(EmotionType selectedEmotion)
         {
+            // Recibe la emocion elegida desde un EmotionAnswerButton y la compara con la ronda actual.
             if (!acceptingAnswer || activityFinished || currentView == null) return;
 
             acceptingAnswer = false;
@@ -134,7 +151,10 @@ namespace Bolin
             PulseAnswerButton(selectedEmotion);
             PlaySfx(buttonClip);
 
-            if (selectedEmotion == currentView.emotion)
+            bool isCorrect = selectedEmotion == currentView.emotion;
+            OnAnswerValidated?.Invoke(isCorrect);
+
+            if (isCorrect)
             {
                 correctAnswers++;
                 ShowFeedback("Muy bien", "Muy bien. Reconociste la emocion.", correctIconSprite);
@@ -151,24 +171,17 @@ namespace Bolin
 
         public void ReturnToWorldSelection()
         {
+            // Boton Volver: regresa a seleccion de mundos usando el navegador central.
             SceneNavigation.LoadScene(MundoAprendoSceneNames.WorldSelection, this);
         }
 
         private IEnumerator BeginActivityRoutine()
         {
+            // Hace fade del panel de juego antes de mostrar la primera ronda.
             if (gamePanelCanvasGroup != null)
             {
                 gamePanelCanvasGroup.alpha = 0f;
-                float elapsed = 0f;
-                const float duration = 0.3f;
-                while (elapsed < duration)
-                {
-                    elapsed += Time.deltaTime;
-                    gamePanelCanvasGroup.alpha = Mathf.Clamp01(elapsed / duration);
-                    yield return null;
-                }
-
-                gamePanelCanvasGroup.alpha = 1f;
+                yield return EmotionGameAnimationController.FadeCanvasGroup(gamePanelCanvasGroup, 1f, 0.3f);
             }
 
             ShowNextRound();
@@ -177,6 +190,7 @@ namespace Bolin
 
         private void ShowNextRound()
         {
+            // Escoge una emocion disponible, actualiza progreso y habilita botones.
             BuildAvailableViews();
             if (availableViews.Count == 0)
             {
@@ -200,12 +214,15 @@ namespace Bolin
             acceptingAnswer = true;
 
             if (currentView.instructionAudio != null) PlaySfx(currentView.instructionAudio);
+            OnRoundStarted?.Invoke(currentView.emotion);
+
             if (emotionAnimationRoutine != null) StopCoroutine(emotionAnimationRoutine);
             emotionAnimationRoutine = StartCoroutine(AnimateEmotionEntranceRoutine(currentView));
         }
 
         private IEnumerator CorrectAnswerRoutine()
         {
+            // Mantiene el feedback de acierto y luego avanza o finaliza la actividad.
             if (correctFeedbackDuration > 0f) yield return new WaitForSeconds(correctFeedbackDuration);
             yield return FadeFeedbackRoutine(0f);
 
@@ -225,6 +242,7 @@ namespace Bolin
 
         private IEnumerator RetryAnswerRoutine()
         {
+            // Tras un error, oculta feedback y devuelve el control al alumno.
             if (retryFeedbackDuration > 0f) yield return new WaitForSeconds(retryFeedbackDuration);
             yield return FadeFeedbackRoutine(0f);
 
@@ -239,6 +257,7 @@ namespace Bolin
 
         private void CompleteActivity()
         {
+            // Calcula estrellas, guarda progreso y muestra el panel final.
             activityFinished = true;
             acceptingAnswer = false;
             SetAnswerButtonsInteractable(false);
@@ -252,20 +271,24 @@ namespace Bolin
 
             if (gamePanel != null) gamePanel.SetActive(false);
             resultPanel?.Show(correctAnswers, mistakes, stars, sfxSource, starClip);
+            OnActivityCompleted?.Invoke(stars);
         }
 
         private int CalculateStars(int errorCount)
         {
+            // Usa la regla compartida de estrellas segun cantidad de errores.
             return StarRatingCalculator.FromMistakes(errorCount, threeStarMaxErrors, twoStarMaxErrors, oneStarMaxErrors);
         }
 
         private void SaveProgress(int stars)
         {
+            // Conecta este mundo con WorldProgressRepository.
             WorldProgressRepository.SaveBestResult(WorldIndex, stars);
         }
 
         private void BuildAvailableViews()
         {
+            // Filtra emociones configuradas y respeta si miedo esta habilitado.
             availableViews.Clear();
             foreach (EmotionRoundView view in emotionViews)
             {
@@ -277,9 +300,10 @@ namespace Bolin
 
         private EmotionRoundView PickNextView()
         {
+            // Elige una emocion aleatoria evitando repetir la anterior cuando sea posible.
             if (availableViews.Count == 1) return availableViews[0];
 
-            int startIndex = Random.Range(0, availableViews.Count);
+            int startIndex = UnityEngine.Random.Range(0, availableViews.Count);
             for (int offset = 0; offset < availableViews.Count; offset++)
             {
                 EmotionRoundView candidate = availableViews[(startIndex + offset) % availableViews.Count];
@@ -291,35 +315,20 @@ namespace Bolin
 
         private IEnumerator AnimateEmotionEntranceRoutine(EmotionRoundView view)
         {
+            // Delegado visual: entra la expresion con escala/fade.
             if (view?.animatedRect == null)
             {
                 emotionAnimationRoutine = null;
                 yield break;
             }
 
-            Vector3 startScale = Vector3.one * 0.86f;
-            Vector3 endScale = Vector3.one;
-            view.animatedRect.localScale = startScale;
-            if (view.canvasGroup != null) view.canvasGroup.alpha = 0f;
-
-            float elapsed = 0f;
-            const float duration = 0.3f;
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
-                view.animatedRect.localScale = Vector3.Lerp(startScale, endScale, t);
-                if (view.canvasGroup != null) view.canvasGroup.alpha = t;
-                yield return null;
-            }
-
-            view.animatedRect.localScale = endScale;
-            if (view.canvasGroup != null) view.canvasGroup.alpha = 1f;
+            yield return EmotionGameAnimationController.PlayEmotionEntrance(view, 0.3f);
             emotionAnimationRoutine = null;
         }
 
         private void ShowFeedback(string message, string nunaMessage, Sprite icon)
         {
+            // Muestra texto/icono de acierto o reintento y actualiza el dialogo de Nuna.
             if (feedbackPanel != null) feedbackPanel.SetActive(true);
             if (feedbackText != null) feedbackText.text = message;
             if (feedbackIcon != null)
@@ -334,19 +343,8 @@ namespace Bolin
 
         private IEnumerator FadeFeedbackRoutine(float targetAlpha)
         {
-            if (feedbackCanvasGroup == null) yield break;
-
-            float startAlpha = feedbackCanvasGroup.alpha;
-            float elapsed = 0f;
-            const float duration = 0.2f;
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                feedbackCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, Mathf.Clamp01(elapsed / duration));
-                yield return null;
-            }
-
-            feedbackCanvasGroup.alpha = targetAlpha;
+            // Reutiliza el controlador de animacion para ocultar o mostrar feedback.
+            yield return EmotionGameAnimationController.FadeCanvasGroup(feedbackCanvasGroup, targetAlpha, 0.2f);
         }
 
         private void HideFeedbackImmediate()
@@ -358,6 +356,7 @@ namespace Bolin
 
         private void HideAllEmotionViews()
         {
+            // Apaga todas las expresiones antes de activar la ronda actual.
             foreach (EmotionRoundView view in emotionViews)
             {
                 if (view?.rootObject != null) view.rootObject.SetActive(false);
@@ -366,6 +365,7 @@ namespace Bolin
 
         private void ConfigureFearVisibility()
         {
+            // Oculta el boton de miedo si la escena no debe incluir esa emocion.
             foreach (EmotionAnswerButton answerButton in answerButtons)
             {
                 if (answerButton == null) continue;
@@ -375,6 +375,7 @@ namespace Bolin
 
         private void SetAnswerButtonsInteractable(bool interactable)
         {
+            // Bloquea o libera los botones segun el estado de la ronda.
             foreach (EmotionAnswerButton answerButton in answerButtons)
             {
                 if (answerButton == null) continue;
@@ -385,6 +386,7 @@ namespace Bolin
 
         private void PulseAnswerButton(EmotionType emotion)
         {
+            // Da feedback visual sobre el boton que el alumno acaba de tocar.
             foreach (EmotionAnswerButton answerButton in answerButtons)
             {
                 if (answerButton != null && answerButton.Emotion == emotion)
@@ -395,20 +397,9 @@ namespace Bolin
             }
         }
 
-        private IEnumerator NunaFloatRoutine()
-        {
-            yield return null;
-            Vector2 basePosition = nunaRoot.anchoredPosition;
-            while (true)
-            {
-                float offset = Mathf.Sin(Time.unscaledTime * nunaFloatSpeed) * nunaFloatDistance;
-                nunaRoot.anchoredPosition = basePosition + Vector2.up * offset;
-                yield return null;
-            }
-        }
-
         private void StartAmbientMusic()
         {
+            // Conecta el AudioSource de musica con el clip ambiental configurado.
             if (musicSource == null || ambientMusic == null) return;
             musicSource.clip = ambientMusic;
             musicSource.loop = true;
@@ -427,6 +418,7 @@ namespace Bolin
 
         private void PrepareInitialState()
         {
+            // Estado inicial: panel de inicio activo, juego oculto y progreso en cero.
             StopFlowRoutines();
             completedRounds = 0;
             correctAnswers = 0;
@@ -451,6 +443,7 @@ namespace Bolin
 
         private void StopFlowRoutines()
         {
+            // Cancela corutinas activas para evitar que una ronda anterior siga corriendo.
             if (gameFlowRoutine != null)
             {
                 StopCoroutine(gameFlowRoutine);

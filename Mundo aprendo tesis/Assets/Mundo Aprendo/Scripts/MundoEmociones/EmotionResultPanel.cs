@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
+    // Panel final del mundo de emociones: muestra aciertos, errores y estrellas.
     public class EmotionResultPanel : MonoBehaviour
     {
         [SerializeField] private GameObject rootObject;
@@ -22,6 +23,7 @@ namespace Bolin
 
         public void Show(int correctAnswers, int mistakes, int stars, AudioSource sfxSource, AudioClip starClip)
         {
+            // Lo llama EmotionGameManager al completar la actividad.
             if (rootObject == null) return;
 
             rootObject.SetActive(true);
@@ -37,6 +39,7 @@ namespace Bolin
 
         public void Hide()
         {
+            // Oculta el resultado y detiene la animacion de estrellas si seguia activa.
             if (showRoutine != null)
             {
                 StopCoroutine(showRoutine);
@@ -48,6 +51,7 @@ namespace Bolin
 
         private IEnumerator ShowRoutine(int stars, AudioSource sfxSource, AudioClip starClip)
         {
+            // Anima entrada del panel y aparicion escalonada de estrellas.
             if (starDisplay != null)
             {
                 starDisplay.ShowStars(stars, true);

@@ -7,6 +7,7 @@ using UnityEngine.Windows.Speech;
 
 namespace Bolin
 {
+    // Implementa reconocimiento de voz con DictationRecognizer y emite eventos al controlador.
     public class WindowsDictationSpeechService : ISpeechToTextService
     {
         public event Action<string> OnPartialResult;
@@ -24,6 +25,7 @@ namespace Bolin
 
         public void StartListening()
         {
+            // Valida microfono y arranca el dictado de Windows.
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
             if (disposed)
             {
@@ -86,6 +88,7 @@ namespace Bolin
 
         public void StopListening()
         {
+            // Detiene el recognizer y notifica que ya no escucha.
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
             stopRequested = true;
             SafeStopRecognizer();
@@ -99,6 +102,7 @@ namespace Bolin
 
         public void DisposeService()
         {
+            // Desuscribe eventos y libera DictationRecognizer.
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
             if (disposed) return;
 
@@ -134,6 +138,7 @@ namespace Bolin
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
         private void EnsureRecognizer()
         {
+            // Crea el recognizer una sola vez y conecta callbacks de Windows.
             if (dictationRecognizer != null) return;
 
             dictationRecognizer = new DictationRecognizer(ConfidenceLevel.Low, DictationTopicConstraint.Dictation)
@@ -149,6 +154,7 @@ namespace Bolin
 
         private void HandleDictationHypothesis(string text)
         {
+            // Texto parcial: se muestra, pero aun no cuenta como final.
             if (string.IsNullOrWhiteSpace(text)) return;
             Debug.Log($"WindowsDictationSpeechService: parcial '{text}'.");
             OnPartialResult?.Invoke(text);
@@ -156,6 +162,7 @@ namespace Bolin
 
         private void HandleDictationResult(string text, ConfidenceLevel confidence)
         {
+            // Texto final: se envia a VoiceRecognitionTest para acumularlo.
             if (string.IsNullOrWhiteSpace(text)) return;
             Debug.Log($"WindowsDictationSpeechService: final '{text}', confianza {confidence}.");
             OnFinalResult?.Invoke(text);
@@ -163,6 +170,7 @@ namespace Bolin
 
         private void HandleDictationComplete(DictationCompletionCause cause)
         {
+            // Traduce finalizaciones de Windows a mensajes amigables.
             IsListening = false;
 
             if (stopRequested || cause == DictationCompletionCause.Complete)

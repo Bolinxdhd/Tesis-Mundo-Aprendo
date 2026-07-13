@@ -14,6 +14,7 @@ using UnityEngine.UI;
 
 namespace Bolin.Editor
 {
+    // Herramienta de editor que crea la escena MundoTamanos y deja conectado su controlador.
     public static class SizeWorldSceneBuilder
     {
         private const string ScenePath = "Assets/Scenes/MundoTamanos.unity";
@@ -28,6 +29,7 @@ namespace Bolin.Editor
         [MenuItem("Tools/Mundo Aprendo/Preparar Mundo de Tamanos")]
         public static void Build()
         {
+            // Menu de Unity: genera arte base, UI, controlador y registra la escena en Build Settings.
             EnsureFolders();
             SizeWorldSprites sprites = LoadOrCreateSprites();
 
@@ -125,6 +127,7 @@ namespace Bolin.Editor
             Button backButton,
             Image[] stars)
         {
+            // Escribe por SerializedObject las referencias que SizeWorldController usa en juego.
             SerializedObject serializedController = new(controller);
 
             SerializedProperty habitats = serializedController.FindProperty("habitats");
@@ -187,6 +190,7 @@ namespace Bolin.Editor
 
         private static void ConfigureHabitat(SerializedProperty habitatProperty, string name, Sprite background, IReadOnlyList<AnimalConfig> animals)
         {
+            // Carga nombre, fondo y animales de un habitat dentro del componente serializado.
             habitatProperty.FindPropertyRelative("habitatName").stringValue = name;
             habitatProperty.FindPropertyRelative("backgroundSprite").objectReferenceValue = background;
 
@@ -206,6 +210,7 @@ namespace Bolin.Editor
 
         private static GameObject CreateResultPanel(Transform parent, SizeWorldController controller, out TMP_Text resultText)
         {
+            // Construye el panel final y conecta sus botones con reintento y retorno.
             GameObject panel = CreateUiObject("Panel-resultado", parent, typeof(Image));
             Image image = panel.GetComponent<Image>();
             image.color = new Color(0.06f, 0.12f, 0.18f, 0.72f);
@@ -246,6 +251,7 @@ namespace Bolin.Editor
 
         private static Canvas CreateCanvas()
         {
+            // Crea el Canvas principal con escalado consistente para distintas resoluciones.
             GameObject canvasObject = new("Canvas - Mundo Tamanos", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             Canvas canvas = canvasObject.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -259,6 +265,7 @@ namespace Bolin.Editor
 
         private static void CreateCamera()
         {
+            // Camara simple para que la escena se vea aunque toda la UI sea Screen Space.
             GameObject cameraObject = new("Main Camera", typeof(Camera), typeof(AudioListener));
             cameraObject.tag = "MainCamera";
             Camera camera = cameraObject.GetComponent<Camera>();
@@ -268,6 +275,7 @@ namespace Bolin.Editor
 
         private static void CreateEventSystem()
         {
+            // EventSystem compatible con el nuevo Input System para recibir clics/taps.
             GameObject eventSystem = new("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
             eventSystem.GetComponent<InputSystemUIInputModule>().AssignDefaultActions();
         }
@@ -299,6 +307,7 @@ namespace Bolin.Editor
 
         private static Button CreateAnimalOptionOverlay(string objectName, RectTransform parent, Vector2 anchorMin, Vector2 anchorMax)
         {
+            // Crea un boton transparente encima del animal para capturar la seleccion.
             GameObject overlay = CreateUiObject(objectName, parent, typeof(Image), typeof(Button), typeof(UIButtonFeedback));
             RectTransform rect = overlay.GetComponent<RectTransform>();
             SetAnchors(rect, anchorMin, anchorMax, Vector2.zero, Vector2.zero);
@@ -436,6 +445,7 @@ namespace Bolin.Editor
 
         private static void UpdateWorldSelectionScene()
         {
+            // Actualiza el registro del mundo de tamanos en la escena de seleccion.
             if (!File.Exists(WorldSelectionScenePath)) return;
 
             Scene activeScene = EditorSceneManager.GetActiveScene();
@@ -469,6 +479,7 @@ namespace Bolin.Editor
 
         private static void AddSceneToBuildSettings(string scenePath)
         {
+            // Asegura que MundoTamanos quede incluido al compilar el juego.
             List<EditorBuildSettingsScene> scenes = new(EditorBuildSettings.scenes);
             foreach (EditorBuildSettingsScene scene in scenes)
             {
@@ -481,6 +492,7 @@ namespace Bolin.Editor
 
         private static void EnsureFolders()
         {
+            // Prepara carpetas donde se guardan sprites generados por la herramienta.
             EnsureFolder("Assets/Mundo Aprendo", "MundoTamanos");
             EnsureFolder("Assets/Mundo Aprendo/MundoTamanos", "Arte");
         }
@@ -496,6 +508,7 @@ namespace Bolin.Editor
 
         private static SizeWorldSprites LoadOrCreateSprites()
         {
+            // Carga estrellas existentes y genera fondos/animales si aun no existen.
             return new SizeWorldSprites
             {
                 fullStar = LoadSprite("Assets/Mundo Aprendo/Imagenes/Prefabs/Star_Full.png"),
@@ -525,6 +538,7 @@ namespace Bolin.Editor
 
         private static Sprite CreateBackgroundSprite(string name, Color top, Color bottom, int variant)
         {
+            // Dibuja fondos PNG sencillos para selva, granja u oceano.
             string path = $"{ArtFolder}/{name}.png";
             Sprite existing = LoadSprite(path);
             if (existing != null) return existing;
@@ -570,6 +584,7 @@ namespace Bolin.Editor
 
         private static Sprite CreateAnimalSprite(string name, Color primary, Color secondary, AnimalShape shape)
         {
+            // Dibuja sprites PNG basicos de animales para que la escena sea jugable sin arte externo.
             string path = $"{ArtFolder}/{name}.png";
             Sprite existing = LoadSprite(path);
             if (existing != null) return existing;
@@ -680,6 +695,7 @@ namespace Bolin.Editor
 
         private static Sprite SaveTextureAsSprite(Texture2D texture, string path, float pixelsPerUnit)
         {
+            // Guarda la textura como PNG e importa el asset configurado como Sprite.
             texture.Apply();
             File.WriteAllBytes(path, texture.EncodeToPNG());
             AssetDatabase.ImportAsset(path);
@@ -708,6 +724,7 @@ namespace Bolin.Editor
 
         private static void DrawRect(Texture2D texture, int x, int y, int width, int height, Color color)
         {
+            // Primitiva de dibujo usada para construir fondos y animales.
             int minX = Mathf.Clamp(x, 0, texture.width - 1);
             int maxX = Mathf.Clamp(x + width, 0, texture.width);
             int minY = Mathf.Clamp(y, 0, texture.height - 1);
@@ -723,6 +740,7 @@ namespace Bolin.Editor
 
         private static void DrawCircle(Texture2D texture, int centerX, int centerY, int radius, Color color)
         {
+            // Primitiva circular usada para cuerpos, cabezas y detalles.
             int radiusSquared = radius * radius;
             for (int y = centerY - radius; y <= centerY + radius; y++)
             {
@@ -742,6 +760,7 @@ namespace Bolin.Editor
 
         private static void DrawTriangle(Texture2D texture, Vector2 a, Vector2 b, Vector2 c, Color color)
         {
+            // Primitiva triangular usada para picos, aletas, techos y colas.
             int minX = Mathf.Clamp(Mathf.FloorToInt(Mathf.Min(a.x, b.x, c.x)), 0, texture.width - 1);
             int maxX = Mathf.Clamp(Mathf.CeilToInt(Mathf.Max(a.x, b.x, c.x)), 0, texture.width - 1);
             int minY = Mathf.Clamp(Mathf.FloorToInt(Mathf.Min(a.y, b.y, c.y)), 0, texture.height - 1);

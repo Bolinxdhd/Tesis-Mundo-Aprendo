@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
+    // Tipo pedagogico que se usa para comparar animales dentro del mundo de tamanos.
     public enum AnimalSizeType
     {
         Pequeno,
@@ -14,6 +15,7 @@ namespace Bolin
     }
 
     [Serializable]
+    // Datos de un animal jugable: sprite, nombre, tamano correcto y escala visual.
     public class AnimalData
     {
         public string animalName;
@@ -26,6 +28,7 @@ namespace Bolin
     }
 
     [Serializable]
+    // Agrupa fondo y animales para armar rondas por habitat.
     public class HabitatData
     {
         public string habitatName;
@@ -33,9 +36,14 @@ namespace Bolin
         public List<AnimalData> animals = new();
     }
 
+    // Controla el mundo de tamanos: elige animales, valida respuestas, anima rondas y guarda progreso.
     public class SizeWorldController : MonoBehaviour
     {
         private const int WorldIndex = 2;
+
+        public event Action OnRoundStarted;
+        public event Action<bool> OnAnswerValidated;
+        public event Action<int> OnActivityCompleted;
 
         [Header("Habitats")]
         [SerializeField] private List<HabitatData> habitats = new();
@@ -96,6 +104,7 @@ namespace Bolin
 
         private void Awake()
         {
+            // Conecta botones y deja lista la escena antes de iniciar rondas.
             ConfigureButtons();
             PrepareInitialState();
         }
@@ -115,6 +124,7 @@ namespace Bolin
 
         public void StartActivity()
         {
+            // Reinicia contadores/estrellas y comienza la primera ronda.
             StopRoundRoutine();
 
             completedRounds = 0;
@@ -135,16 +145,19 @@ namespace Bolin
 
         public void SelectLeftAnimal()
         {
+            // Boton del animal izquierdo: envia su AnimalData como respuesta.
             SubmitAnimalChoice(leftRoundAnimal);
         }
 
         public void SelectRightAnimal()
         {
+            // Boton del animal derecho: envia su AnimalData como respuesta.
             SubmitAnimalChoice(rightRoundAnimal);
         }
 
         public void ReturnToWorldSelection()
         {
+            // Boton Volver: regresa a la escena de seleccion usando SceneNavigation.
             if (string.IsNullOrWhiteSpace(returnSceneName))
             {
                 Debug.LogWarning("SizeWorldController: no hay escena de retorno configurada.");
@@ -156,6 +169,7 @@ namespace Bolin
 
         public void RegisterMistake()
         {
+            // Cada error resta una estrella y actualiza la UI.
             mistakeCount++;
             currentStars = Mathf.Clamp(3 - mistakeCount, 0, 3);
             UpdateStarsUi();
@@ -163,6 +177,7 @@ namespace Bolin
 
         public void CompleteActivity()
         {
+            // Finaliza el mundo, guarda el mejor resultado y muestra el panel de cierre.
             if (activityFinished) return;
 
             StopRoundRoutine();
@@ -186,16 +201,20 @@ namespace Bolin
             {
                 resultPanel.SetActive(true);
             }
+
+            OnActivityCompleted?.Invoke(currentStars);
         }
 
         private void SubmitAnimalChoice(AnimalData selectedAnimal)
         {
+            // Compara el animal tocado con el objetivo grande/pequeno de la ronda.
             if (!acceptingAnswer || activityFinished || selectedAnimal == null || targetAnimal == null) return;
 
             acceptingAnswer = false;
             SetAnswerButtonsInteractable(false);
 
             bool isCorrect = ReferenceEquals(selectedAnimal, targetAnimal);
+            OnAnswerValidated?.Invoke(isCorrect);
             lastSelectedImage = ReferenceEquals(selectedAnimal, leftRoundAnimal) ? leftAnimalImage : rightAnimalImage;
             ShowSelectionOutline(selectedAnimal, isCorrect);
             if (isCorrect)
@@ -225,6 +244,7 @@ namespace Bolin
 
         private IEnumerator CorrectAnswerRoutine()
         {
+            // Pulsa el animal correcto y decide si pasar de ronda o completar la actividad.
             yield return PulseTargetAnimalRoutine();
             yield return new WaitForSeconds(delayBeforeNextRound);
 
@@ -242,6 +262,7 @@ namespace Bolin
 
         private IEnumerator EnableRetryRoutine()
         {
+            // Sacude el animal elegido, espera un poco y reactiva botones para reintentar.
             yield return ShakeSelectedAnimalRoutine();
             yield return new WaitForSeconds(Mathf.Max(0f, delayBeforeNextRound - 0.3f));
 
@@ -257,6 +278,7 @@ namespace Bolin
 
         private void StartNextRound()
         {
+            // Selecciona habitat y dos animales comparables, formula pregunta y lanza la entrada animada.
             if (activityFinished) return;
 
             HabitatData habitat = GetRandomPlayableHabitat();
@@ -299,6 +321,7 @@ namespace Bolin
             if (leftAnimalNameText != null) leftAnimalNameText.text = leftAnimal.animalName;
             if (rightAnimalNameText != null) rightAnimalNameText.text = rightAnimal.animalName;
             HideSelectionOutlines();
+            OnRoundStarted?.Invoke();
 
             Vector2 leftPosition = GetAnimalPosition(true);
             Vector2 rightPosition = GetAnimalPosition(false);
@@ -311,6 +334,7 @@ namespace Bolin
 
         private IEnumerator AnimateRoundEntranceRoutine(Vector2 leftPosition, Vector2 rightPosition)
         {
+            // Bloquea respuestas mientras los animales entran desde fuera de pantalla.
             acceptingAnswer = false;
             SetAnswerButtonsInteractable(false);
 
@@ -324,25 +348,13 @@ namespace Bolin
                 yield break;
             }
 
-            Vector2 leftStart = new(leftPosition.x - offscreenPadding, leftPosition.y);
-            Vector2 rightStart = new(rightPosition.x + offscreenPadding, rightPosition.y);
-            leftRect.anchoredPosition = leftStart;
-            rightRect.anchoredPosition = rightStart;
-
-            float elapsed = 0f;
-            while (elapsed < entranceDuration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / entranceDuration);
-                float eased = Mathf.SmoothStep(0f, 1f, t);
-
-                leftRect.anchoredPosition = Vector2.Lerp(leftStart, leftPosition, eased);
-                rightRect.anchoredPosition = Vector2.Lerp(rightStart, rightPosition, eased);
-                yield return null;
-            }
-
-            leftRect.anchoredPosition = leftPosition;
-            rightRect.anchoredPosition = rightPosition;
+            yield return SizeWorldAnimationController.PlayRoundEntrance(
+                leftRect,
+                rightRect,
+                leftPosition,
+                rightPosition,
+                offscreenPadding,
+                entranceDuration);
             acceptingAnswer = true;
             SetAnswerButtonsInteractable(true);
             roundRoutine = null;
@@ -350,53 +362,26 @@ namespace Bolin
 
         private IEnumerator PulseTargetAnimalRoutine()
         {
+            // Feedback positivo conectado al controlador de animacion de Tamanos.
             Image targetImage = GetTargetImage();
             RectTransform targetRect = GetRect(targetImage);
             if (targetRect == null) yield break;
 
-            Vector3 baseScale = targetRect.localScale;
-            Vector3 pulseScale = baseScale * 1.08f;
-            float elapsed = 0f;
-
-            while (elapsed < correctPulseDuration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / correctPulseDuration);
-                targetRect.localScale = Vector3.Lerp(baseScale, pulseScale, Mathf.SmoothStep(0f, 1f, t));
-                yield return null;
-            }
-
-            elapsed = 0f;
-            while (elapsed < correctPulseDuration)
-            {
-                elapsed += Time.deltaTime;
-                float t = Mathf.Clamp01(elapsed / correctPulseDuration);
-                targetRect.localScale = Vector3.Lerp(pulseScale, baseScale, Mathf.SmoothStep(0f, 1f, t));
-                yield return null;
-            }
-
-            targetRect.localScale = baseScale;
+            yield return SizeWorldAnimationController.Pulse(targetRect, correctPulseDuration, 1.08f);
         }
 
         private IEnumerator ShakeSelectedAnimalRoutine()
         {
+            // Feedback de error sobre el ultimo animal seleccionado.
             RectTransform rect = GetRect(lastSelectedImage);
             if (rect == null) yield break;
-            Vector2 basePosition = rect.anchoredPosition;
-            const float duration = 0.3f;
-            float elapsed = 0f;
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                float strength = 10f * (1f - Mathf.Clamp01(elapsed / duration));
-                rect.anchoredPosition = basePosition + Vector2.right * (Mathf.Sin(elapsed * 42f) * strength);
-                yield return null;
-            }
-            rect.anchoredPosition = basePosition;
+
+            yield return SizeWorldAnimationController.ShakeHorizontal(rect, 0.3f, 10f, 42f);
         }
 
         private void ShowSelectionOutline(AnimalData selectedAnimal, bool correct)
         {
+            // Enmarca la opcion tocada con color verde si acerto o naranja si fallo.
             HideSelectionOutlines();
             Outline outline = ReferenceEquals(selectedAnimal, leftRoundAnimal) ? leftSelectionOutline : rightSelectionOutline;
             if (outline == null) return;
@@ -413,6 +398,7 @@ namespace Bolin
 
         private HabitatData GetRandomPlayableHabitat()
         {
+            // Busca habitats que tengan al menos un animal grande y uno pequeno con sprite.
             List<HabitatData> playableHabitats = new();
             foreach (HabitatData habitat in habitats)
             {
@@ -447,6 +433,7 @@ namespace Bolin
 
         private static void PickTwoComparableAnimals(HabitatData habitat, out AnimalData firstAnimal, out AnimalData secondAnimal)
         {
+            // Escoge una pareja grande/pequena para que la pregunta tenga una respuesta clara.
             List<AnimalData> bigAnimals = new();
             List<AnimalData> smallAnimals = new();
             foreach (AnimalData animal in habitat.animals)
@@ -507,6 +494,7 @@ namespace Bolin
 
         private void ConfigureAnimalImage(Image image, AnimalData animal)
         {
+            // Aplica sprite y tamano base antes de posicionar el animal en el area segura.
             if (image == null) return;
 
             image.sprite = animal.animalSprite;
@@ -518,6 +506,7 @@ namespace Bolin
 
         private void ClampAnimalRectSize(Image image)
         {
+            // Evita que sprites grandes se salgan del area jugable.
             RectTransform rect = GetRect(image);
             if (rect == null || animalSafeArea == null) return;
 
@@ -532,6 +521,7 @@ namespace Bolin
 
         private Vector2 GetAnimalPosition(bool leftSide)
         {
+            // Calcula una posicion aleatoria controlada para cada lado de la pantalla.
             Rect area = GetSafePlayAreaRect();
 
             float halfWidth = area.width * 0.5f;
@@ -569,15 +559,18 @@ namespace Bolin
 
         private void ApplyDepthScale(Image image, AnimalData animal, float yPosition)
         {
+            // Simula profundidad: mas abajo se ve mas grande, mas arriba se ve mas pequeno.
             RectTransform rect = GetRect(image);
             if (rect == null) return;
 
-            float normalizedDepth = Mathf.InverseLerp(verticalPositionRange.y, verticalPositionRange.x, yPosition);
-            float animalMin = Mathf.Max(0.1f, animal.minScale);
-            float animalMax = Mathf.Max(animalMin, animal.maxScale);
-            float scale = Mathf.Lerp(animalMin, animalMax, normalizedDepth);
-            scale = Mathf.Clamp(scale, globalMinScale, globalMaxScale);
-            rect.localScale = Vector3.one * scale;
+            SizeWorldAnimationController.ApplyDepthScale(
+                rect,
+                yPosition,
+                verticalPositionRange,
+                animal.minScale,
+                animal.maxScale,
+                globalMinScale,
+                globalMaxScale);
         }
 
         private Image GetTargetImage()
@@ -602,6 +595,7 @@ namespace Bolin
 
         private void ConfigureButtons()
         {
+            // Une los botones de respuesta y retorno con los metodos publicos del controlador.
             if (leftAnimalButton == null && leftAnimalImage != null)
             {
                 leftAnimalButton = leftAnimalImage.GetComponent<Button>();
@@ -633,6 +627,7 @@ namespace Bolin
 
         private void PrepareInitialState()
         {
+            // Estado de reposo: sin ronda activa, sin resultado visible y estrellas completas.
             currentStars = 3;
             mistakeCount = 0;
             completedRounds = 0;
@@ -653,6 +648,7 @@ namespace Bolin
 
         private void UpdateStarsUi()
         {
+            // Sincroniza estrellas manuales o UIStarDisplay segun lo configurado en escena.
             if (starDisplay != null) starDisplay.SetImmediate(currentStars);
             if (starImages == null) return;
 
@@ -676,6 +672,7 @@ namespace Bolin
 
         private void SaveProgress()
         {
+            // Guarda el mejor puntaje del mundo de tamanos en el progreso global.
             int bestStars = WorldProgressRepository.SaveBestResult(WorldIndex, currentStars);
             Debug.Log($"SizeWorldController: progreso guardado. Estrellas actuales: {currentStars}. Mejor puntaje: {bestStars}.");
         }
@@ -696,6 +693,7 @@ namespace Bolin
 
         private void StopRoundRoutine()
         {
+            // Detiene animaciones/esperas pendientes de la ronda actual.
             if (roundRoutine == null) return;
 
             StopCoroutine(roundRoutine);

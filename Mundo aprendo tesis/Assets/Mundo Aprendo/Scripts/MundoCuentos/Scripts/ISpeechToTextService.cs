@@ -2,6 +2,7 @@ using System;
 
 namespace Bolin
 {
+    // Contrato que permite cambiar el motor de voz sin tocar VoiceRecognitionTest.
     public interface ISpeechToTextService
     {
         event Action<string> OnPartialResult;

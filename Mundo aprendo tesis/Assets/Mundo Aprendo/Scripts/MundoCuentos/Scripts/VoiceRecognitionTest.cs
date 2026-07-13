@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
+    // Guarda una palabra reconocida para pintarla en pantalla y retirarla si fue incorrecta.
     [Serializable]
     public class PalabraReconocida
     {
@@ -18,6 +19,7 @@ namespace Bolin
         public float tiempoCreacion;
     }
 
+    // Datos editables de un cuento: id estable, textos e icono.
     [Serializable]
     public class CuentoData
     {
@@ -30,6 +32,7 @@ namespace Bolin
         public Sprite icono;
     }
 
+    // Une una tarjeta visual de seleccion con el id del cuento que debe abrir.
     [Serializable]
     public class CuentoCardView
     {
@@ -41,8 +44,11 @@ namespace Bolin
         public TMP_Text starsText;
     }
 
+    // Controla el mundo de cuentos: selecciona cuento, escucha voz, valida lectura y guarda progreso.
     public class VoiceRecognitionTest : MonoBehaviour
     {
+        public event Action<bool> OnReadingValidated;
+
         [Header("Paneles")]
         [SerializeField] private GameObject storySelectionPanel;
         [SerializeField] private GameObject readingPanel;
@@ -152,6 +158,7 @@ namespace Bolin
 
         private void Awake()
         {
+            // Crea servicios de lectura/voz y prepara la UI inicial del mundo.
             readingEvaluator = new ReadingEvaluator(removeCommonWords);
             progressRepository = new StoryProgressRepository();
             speechService = new WindowsDictationSpeechService();
@@ -187,6 +194,7 @@ namespace Bolin
 
         private void Update()
         {
+            // Vigila silencios/tiempo maximo y mantiene visible el indicador de microfono.
             CheckListeningTimeouts();
             if (microphoneListeningIndicator != null)
             {
@@ -194,6 +202,7 @@ namespace Bolin
             }
         }
 
+        // Boton Iniciar: valida microfono, hace cuenta regresiva y activa reconocimiento.
         public void StartListening()
         {
             if (validationProcessed)
@@ -221,11 +230,13 @@ namespace Bolin
             countdownRoutine = StartCoroutine(StartListeningAfterCountdownRoutine());
         }
 
+        // Boton Detener: corta el reconocimiento y deja la lectura lista para validar.
         public void StopListening()
         {
             StopListeningInternal(true);
         }
 
+        // Boton Repetir: limpia lo reconocido y vuelve a leer el mismo cuento.
         public void RetryReading()
         {
             StopListeningInternal(false);
@@ -235,6 +246,7 @@ namespace Bolin
             StartListening();
         }
 
+        // Boton Limpiar: borra texto reconocido, parciales, finales y palabras temporales.
         public void ClearRecognizedText()
         {
             finalRecognizedText = string.Empty;
@@ -256,6 +268,7 @@ namespace Bolin
             ResetRecognizedScrollToTop();
         }
 
+        // Boton Validar: compara lectura esperada vs reconocida y guarda el resultado.
         public void ValidateReading()
         {
             if (validationProcessed)
@@ -279,6 +292,7 @@ namespace Bolin
                 UpdateValidationUi(0f, "No escuche suficiente. Intenta leer nuevamente.");
                 UpdateStarsUi(0);
                 SetStatus("No escuche suficiente. Intenta leer nuevamente.");
+                OnReadingValidated?.Invoke(false);
                 return;
             }
 
@@ -298,8 +312,10 @@ namespace Bolin
             RefreshStoryCards();
             MostrarResultado(score, result.Stars);
             SetStatus(GetStarsResultMessage(result.Stars));
+            OnReadingValidated?.Invoke(result.Stars > 0);
         }
 
+        // Boton Regresar: carga la escena configurada como retorno.
         public void ReturnToMenu()
         {
             StopListeningInternal(false);
@@ -315,6 +331,7 @@ namespace Bolin
             SceneNavigation.LoadScene(returnSceneName, this);
         }
 
+        // Vuelve al panel de seleccion de cuentos sin salir de la escena.
         public void MostrarSeleccionCuentos()
         {
             StopListeningInternal(false);
@@ -332,6 +349,7 @@ namespace Bolin
             RefreshSelectionProgress();
         }
 
+        // Abre un cuento usando el id enviado desde la tarjeta o boton del Inspector.
         public void OpenStoryById(string storyId)
         {
             CuentoData selected = cuentosDisponibles.Find(item => item != null && item.id == storyId);
@@ -344,6 +362,7 @@ namespace Bolin
             MostrarLectura(selected);
         }
 
+        // Intenta abrir otros mundos; requiere cuentos completados suficientes.
         public void OpenOtherWorlds()
         {
             if (!StoryProgressRepository.HasUnlockedOtherWorlds(cuentosDisponibles, requiredCompletedStoriesToUnlock))
@@ -357,6 +376,7 @@ namespace Bolin
 
         private void MostrarLectura(CuentoData cuento)
         {
+            // Cambia de seleccion a lectura y aplica texto/icono del cuento elegido.
             StopListeningInternal(false);
             CancelPendingResultReturn();
             validationProcessed = false;
@@ -375,6 +395,7 @@ namespace Bolin
 
         private void MostrarResultado(int score, int stars)
         {
+            // Activa el panel final y programa el retorno automatico a seleccion.
             if (storySelectionPanel != null) storySelectionPanel.SetActive(false);
             if (readingPanel != null) readingPanel.SetActive(true);
             if (resultPanel != null) resultPanel.SetActive(true);
@@ -401,6 +422,7 @@ namespace Bolin
 
         private IEnumerator StartListeningAfterCountdownRoutine()
         {
+            // Cuenta atras, prueba senal del microfono y arranca el servicio de voz.
             SetStartButtonInteractable(false);
             SetStatus("Prepara tu voz.");
 
@@ -481,6 +503,7 @@ namespace Bolin
 
         private void SubscribeSpeechService()
         {
+            // Conecta eventos del servicio de voz con este controlador de escena.
             speechService.OnPartialResult += HandlePartialResult;
             speechService.OnFinalResult += HandleFinalResult;
             speechService.OnError += HandleSpeechError;
@@ -489,6 +512,7 @@ namespace Bolin
 
         private void DisposeSpeechService()
         {
+            // Desconecta eventos y libera el recognizer para evitar llamadas despues de cerrar.
             if (speechService == null) return;
 
             speechService.OnPartialResult -= HandlePartialResult;
@@ -501,6 +525,7 @@ namespace Bolin
 
         private void HandlePartialResult(string text)
         {
+            // Muestra una hipotesis temporal sin guardarla todavia como lectura final.
             if (string.IsNullOrWhiteSpace(text) || validationProcessed) return;
 
             partialRecognizedCandidate = text;
@@ -513,6 +538,7 @@ namespace Bolin
 
         private void HandleFinalResult(string text)
         {
+            // Agrega texto final al resultado acumulado y refresca la vista.
             if (string.IsNullOrWhiteSpace(text) || validationProcessed) return;
 
             partialRecognizedCandidate = string.Empty;
@@ -526,6 +552,7 @@ namespace Bolin
 
         private void HandleSpeechError(string message)
         {
+            // Recibe errores del servicio y desbloquea el boton de inicio.
             isListeningSession = false;
             SetStartButtonInteractable(true);
             SetCountdownText(string.Empty);
@@ -543,6 +570,7 @@ namespace Bolin
 
         private void CheckListeningTimeouts()
         {
+            // Si hay silencio o se agota el tiempo, detiene la escucha sin perder texto.
             if (!isListeningSession || speechService == null || !speechService.IsListening) return;
 
             if (Time.time - listeningStartedAt >= maxListeningTime)
@@ -585,6 +613,7 @@ namespace Bolin
 
         private IEnumerator CheckSelectedMicrophoneSignal(Action<bool> onComplete)
         {
+            // Mide volumen real con Microphone antes de pedir dictado a Windows.
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
             string selectedDevice = MicrophoneSettings.GetAvailableSelectedDevice();
             if (string.IsNullOrWhiteSpace(selectedDevice))
@@ -663,6 +692,7 @@ namespace Bolin
 
         private void PromotePartialCandidate()
         {
+            // Convierte la ultima hipotesis parcial en texto final antes de validar.
             if (string.IsNullOrWhiteSpace(partialRecognizedCandidate)) return;
 
             AppendFinalRecognizedFragment(partialRecognizedCandidate);
@@ -673,6 +703,7 @@ namespace Bolin
 
         private void StopListeningInternal(bool updateStatus)
         {
+            // Detiene countdown, servicio de voz e indicador sin cambiar de panel.
             if (countdownRoutine != null)
             {
                 StopCoroutine(countdownRoutine);
@@ -705,6 +736,7 @@ namespace Bolin
 
         private void ApplyInitialText()
         {
+            // Carga el cuento inicial y deja limpios los textos de resultado.
             if (currentStory != null) ApplyStoryData(currentStory);
             else if (storyText != null) storyText.text = story;
             else Debug.LogWarning("VoiceRecognitionTest: falta asignar Story Text.");
@@ -728,6 +760,7 @@ namespace Bolin
 
         private void EnsureDefaultStories()
         {
+            // Asegura cuentos basicos para que la escena no quede vacia si falta configuracion.
             if (cuentosDisponibles.Count == 0)
             {
                 cuentosDisponibles.Add(new CuentoData
@@ -756,6 +789,7 @@ namespace Bolin
 
         private void ApplyStoryData(CuentoData cuento)
         {
+            // Copia datos del cuento seleccionado a los textos e iconos de lectura.
             if (cuento == null) return;
 
             story = cuento.textoCompleto;
@@ -772,6 +806,7 @@ namespace Bolin
 
         private void WireOptionalButtons()
         {
+            // Conecta botones por codigo solo si no tienen eventos persistentes del Inspector.
             WireButtonIfEmpty(stopButton, StopListening);
             WireButtonIfEmpty(retryButton, RetryReading);
             WireButtonIfEmpty(clearButton, ClearRecognizedText);
@@ -807,6 +842,7 @@ namespace Bolin
 
         private void PreviewReading()
         {
+            // Muestra una evaluacion provisional mientras llega texto reconocido.
             ReadingEvaluationResult result = readingEvaluator.Evaluate(
                 story,
                 finalRecognizedText,
@@ -824,6 +860,7 @@ namespace Bolin
 
         private void RefreshRecognizedTextUi()
         {
+            // Reconstruye el texto visible combinando palabras finales y parcial actual.
             string combinedText = BuildDisplayedWordsText(partialRecognizedCandidate);
 
             SetText(recognizedText, combinedText);
@@ -841,6 +878,7 @@ namespace Bolin
 
         private void AppendFinalRecognizedFragment(string fragment)
         {
+            // Agrega palabras definitivas y marca en color las que no coinciden con el cuento.
             if (string.IsNullOrWhiteSpace(fragment)) return;
 
             finalRecognizedText = string.IsNullOrWhiteSpace(finalRecognizedText)
@@ -879,6 +917,7 @@ namespace Bolin
 
         private bool MatchExpectedWord(string normalizedWord)
         {
+            // Compara contra la palabra esperada y permite pequeno salto si el alumno omitio una.
             if (expectedStoryWords == null || expectedStoryWords.Length == 0) return false;
             if (nextExpectedWordIndex >= expectedStoryWords.Length) return false;
 
@@ -903,6 +942,7 @@ namespace Bolin
 
         private IEnumerator RemoveIncorrectWordAfterDelay(int wordId)
         {
+            // Retira automaticamente palabras incorrectas para no saturar el panel.
             yield return new WaitForSecondsRealtime(incorrectWordLifetime);
 
             int index = palabrasMostradas.FindIndex(word => word.id == wordId);
@@ -1059,6 +1099,7 @@ namespace Bolin
 
         private void RefreshStoryCards()
         {
+            // Actualiza tarjetas con completado, mejor puntaje y estrellas por cuento.
             foreach (CuentoCardView card in cuentoCards)
             {
                 if (card == null || string.IsNullOrWhiteSpace(card.cuentoId)) continue;
@@ -1082,6 +1123,7 @@ namespace Bolin
 
         private void RefreshSelectionProgress()
         {
+            // Actualiza desbloqueo de otros mundos segun cuentos completados.
             int completed = StoryProgressRepository.CountCompletedStories(cuentosDisponibles);
             int required = Mathf.Max(1, requiredCompletedStoriesToUnlock);
             bool unlocked = completed >= required;
