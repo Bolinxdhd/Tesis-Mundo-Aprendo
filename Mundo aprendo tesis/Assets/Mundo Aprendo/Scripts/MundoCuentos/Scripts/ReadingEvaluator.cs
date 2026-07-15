@@ -90,11 +90,20 @@ namespace Bolin
             // Normaliza a minusculas, elimina tildes y reemplaza puntuacion por espacios.
             if (string.IsNullOrWhiteSpace(input)) return string.Empty;
 
-            string lower = input.ToLowerInvariant().Normalize(NormalizationForm.FormD);
+            // La normalizacion debe quitar acentos, pero nunca convertir la ñ en n.
+            // Se protege temporalmente antes de descomponer los caracteres Unicode.
+            const char enyeMarker = '\uE000';
+            string lower = input.ToLowerInvariant().Replace('ñ', enyeMarker).Normalize(NormalizationForm.FormD);
             StringBuilder builder = new();
 
             foreach (char character in lower)
             {
+                if (character == enyeMarker)
+                {
+                    builder.Append('ñ');
+                    continue;
+                }
+
                 UnicodeCategory category = CharUnicodeInfo.GetUnicodeCategory(character);
                 if (category == UnicodeCategory.NonSpacingMark) continue;
 

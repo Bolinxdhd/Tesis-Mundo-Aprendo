@@ -203,6 +203,12 @@ namespace Bolin.Editor
 
         private static void PatchMusicWorld(Scene scene)
         {
+            if (ComponentsInScene<Transform>(scene).Any(item => item.name == "MusicalUI"))
+            {
+                Debug.Log("MundoAprendoVisualUpgradeSetup: se conserva la reconstruccion especializada de Mundo Musical.");
+                return;
+            }
+
             Canvas canvas = EnsureCanvas(scene, "Canvas - Mundo Musical");
             EnsureBackground(canvas.transform, "FondoMundoMusicalNuevo", LoadSprite(MusicBackgroundPath), Color.white, false);
             StyleSceneButtons(scene);

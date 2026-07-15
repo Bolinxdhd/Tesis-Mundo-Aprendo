@@ -9,6 +9,12 @@ namespace Bolin
         private const string CompletedKeyFormat = "MundoAprendo_World_{0}_Completed";
         private const string StarsKeyFormat = "MundoAprendo_World_{0}_Stars";
 
+        /// <summary>
+        /// Raised after a persisted world-progress change.  Selection UIs subscribe to
+        /// this rather than relying on a scene reload to redraw locks and stars.
+        /// </summary>
+        public static event Action ProgressChanged;
+
         public static int GetStars(int worldIndex)
         {
             ValidateWorldIndex(worldIndex);
@@ -36,6 +42,7 @@ namespace Bolin
             if (markCompleted) PlayerPrefs.SetInt(GetCompletedKey(worldIndex), 1);
             PlayerPrefs.SetInt(GetStarsKey(worldIndex), bestStars);
             PlayerPrefs.Save();
+            NotifyProgressChanged();
             return bestStars;
         }
 
@@ -44,14 +51,21 @@ namespace Bolin
             ValidateWorldIndex(worldIndex);
             PlayerPrefs.DeleteKey(GetCompletedKey(worldIndex));
             PlayerPrefs.DeleteKey(GetStarsKey(worldIndex));
-            if (save) PlayerPrefs.Save();
+            if (!save) return;
+
+            PlayerPrefs.Save();
+            NotifyProgressChanged();
         }
 
         public static void ResetAll()
         {
             for (int i = 0; i < WorldCount; i++) ResetWorld(i, false);
             StoryProgressRepository.ResetAllStories(false);
+            StoryProgressRepository.ResetTutorialState(false);
+            MusicalTutorialController.ResetTutorialState(false);
+            SizeWorldTutorialController.ResetTutorialState(false);
             PlayerPrefs.Save();
+            NotifyProgressChanged();
         }
 
         public static string GetCompletedKey(int worldIndex)
@@ -72,6 +86,11 @@ namespace Bolin
             {
                 throw new ArgumentOutOfRangeException(nameof(worldIndex), worldIndex, $"El indice debe estar entre 0 y {WorldCount - 1}.");
             }
+        }
+
+        private static void NotifyProgressChanged()
+        {
+            ProgressChanged?.Invoke();
         }
     }
 }

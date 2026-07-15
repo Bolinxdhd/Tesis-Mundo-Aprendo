@@ -359,6 +359,8 @@ namespace Bolin.Editor
 
         private static void ConfigureMusicalProgress(Scene scene)
         {
+            if (ComponentsInScene<Transform>(scene).Any(item => item.name == "MusicalUI")) return;
+
             MundoMusicalSequenceGame manager = FirstComponentInScene<MundoMusicalSequenceGame>(scene);
             Canvas canvas = ComponentsInScene<Canvas>(scene).FirstOrDefault(item => item.isRootCanvas);
             if (manager == null || canvas == null) return;
@@ -613,6 +615,8 @@ namespace Bolin.Editor
 
         private static void MigrateMusicalTexts(Scene scene)
         {
+            if (ComponentsInScene<Transform>(scene).Any(item => item.name == "MusicalUI")) return;
+
             MundoMusicalSequenceGame manager = FirstComponentInScene<MundoMusicalSequenceGame>(scene);
             if (manager == null) return;
 

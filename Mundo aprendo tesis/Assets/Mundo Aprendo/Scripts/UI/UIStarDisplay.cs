@@ -15,6 +15,7 @@ namespace Bolin
         [SerializeField, Range(1f, 1.4f)] private float overshootScale = 1.18f;
         [SerializeField, Range(0f, 20f)] private float entryRotation = 10f;
         [SerializeField, Range(0.2f, 1f)] private float unearnedAlpha = 0.45f;
+        [SerializeField] private RatingStarCelebration celebration;
 
         private Coroutine animationRoutine;
 
@@ -34,6 +35,7 @@ namespace Bolin
             }
 
             if (animationRoutine != null) StopCoroutine(animationRoutine);
+            if (celebration != null) celebration.Play(clamped);
             animationRoutine = StartCoroutine(AnimateRoutine(clamped));
         }
 
@@ -44,6 +46,8 @@ namespace Bolin
                 StopCoroutine(animationRoutine);
                 animationRoutine = null;
             }
+
+            if (celebration != null) celebration.StopAndReset();
 
             int clamped = Mathf.Clamp(earnedStars, 0, 3);
             for (int i = 0; i < stars.Length; i++) ApplyState(stars[i], i < clamped, true);
@@ -110,6 +114,7 @@ namespace Bolin
         {
             if (animationRoutine != null) StopCoroutine(animationRoutine);
             animationRoutine = null;
+            if (celebration != null) celebration.StopAndReset();
         }
     }
 }

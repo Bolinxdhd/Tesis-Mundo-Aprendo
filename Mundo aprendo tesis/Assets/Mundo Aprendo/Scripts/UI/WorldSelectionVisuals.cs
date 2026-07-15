@@ -23,7 +23,13 @@ namespace Bolin
 
         private void OnEnable()
         {
+            WorldProgressRepository.ProgressChanged += Refresh;
             Refresh();
+        }
+
+        private void OnDisable()
+        {
+            WorldProgressRepository.ProgressChanged -= Refresh;
         }
 
         private void Update()

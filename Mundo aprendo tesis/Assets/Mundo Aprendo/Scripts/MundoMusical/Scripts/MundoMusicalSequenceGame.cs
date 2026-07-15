@@ -20,7 +20,9 @@ namespace Assets.SurpriseBox.Scripts
         // Datos de cada tecla: nombre visual, color y sonido propio o generado por frecuencia.
         public class PianoKeyConfig
         {
-            public string id = "Do";
+            public string id = "DO";
+            // This is presentation only: sequences continue to address the key by
+            // index, while children see a simple numerical piano (1 through 7).
             public string displayName = "1";
             public Color normalColor = new(0.95f, 0.95f, 0.9f, 1f);
             public Color highlightColor = new(1f, 0.78f, 0.25f, 1f);
@@ -89,6 +91,7 @@ namespace Assets.SurpriseBox.Scripts
         [SerializeField] private Sprite fullStarSprite;
         [SerializeField] private Sprite emptyStarSprite;
         [SerializeField] private Bolin.UIStarDisplay starDisplay;
+        [SerializeField] private Bolin.UIStarDisplay topStarDisplay;
 
         [Header("Progreso visual de la secuencia")]
         [SerializeField] private Image[] sequenceStepIndicators = Array.Empty<Image>();
@@ -96,6 +99,13 @@ namespace Assets.SurpriseBox.Scripts
         [SerializeField] private Color completedStepColor = new(0.32f, 0.76f, 0.46f, 1f);
         [SerializeField] private Color currentStepColor = new(1f, 0.76f, 0.2f, 1f);
         [SerializeField] private Color pendingStepColor = new(0.68f, 0.72f, 0.78f, 0.8f);
+
+        [Header("Presentacion musical")]
+        [SerializeField] private TMP_Text tmpErrorsText;
+        [SerializeField] private Bolin.MusicalTutorialController tutorialController;
+        [SerializeField] private Bolin.MusicalLevelAnimationController levelAnimationController;
+        [SerializeField] private Bolin.MusicalListenButtonGuide listenButtonGuide;
+        [SerializeField] private string nextWorldSceneName = "MundoCuentos_VozTest";
 
         private readonly Dictionary<float, AudioClip> generatedTones = new();
         private Coroutine sequenceRoutine;
@@ -107,6 +117,7 @@ namespace Assets.SurpriseBox.Scripts
         private bool acceptingInput;
         private bool activityStarted;
         private bool activityFinished;
+        private bool tutorialSubscribed;
 
         private void Reset()
         {
@@ -128,32 +139,49 @@ namespace Assets.SurpriseBox.Scripts
             PrepareInitialState();
         }
 
+        private void OnEnable()
+        {
+            SubscribeTutorial();
+        }
+
         private void Start()
         {
-            if (playSequenceOnStart)
+            if (tutorialController != null)
             {
-                StartActivity();
+                if (Bolin.MusicalTutorialController.IsTutorialCompleted())
+                {
+                    PrepareActivityForListening();
+                }
+
+                return;
             }
+
+            if (playSequenceOnStart) StartActivity();
         }
 
         private void OnDisable()
         {
-            if (sequenceRoutine != null)
-            {
-                StopCoroutine(sequenceRoutine);
-                sequenceRoutine = null;
-            }
-
-            if (advanceRoutine != null)
-            {
-                StopCoroutine(advanceRoutine);
-                advanceRoutine = null;
-            }
+            StopRunningRoutines();
+            if (audioSource != null) audioSource.Stop();
+            UnsubscribeTutorial();
         }
 
         public void StartActivity()
         {
-            // Boton Iniciar: reinicia puntaje, muestra el piano y reproduce la primera secuencia.
+            BeginActivity(true);
+        }
+
+        private void PrepareActivityForListening()
+        {
+            // Used after the tutorial (or on a returning player): the piano is ready,
+            // but the child explicitly starts the first demonstration with Escuchar.
+            BeginActivity(false);
+        }
+
+        private void BeginActivity(bool playImmediately)
+        {
+            // Boton Iniciar/repetir: reinicia puntaje y deja lista la primera secuencia.
+            if (IsTutorialBlocking()) return;
             StopRunningRoutines();
 
             activityStarted = true;
@@ -167,15 +195,54 @@ namespace Assets.SurpriseBox.Scripts
             if (startPanel != null) startPanel.SetActive(false);
             if (pianoPanel != null) pianoPanel.SetActive(true);
             if (resultPanel != null) resultPanel.SetActive(false);
-            if (startButton != null) startButton.gameObject.SetActive(false);
+            levelAnimationController?.StopResultPresentation();
+            if (startButton != null) startButton.gameObject.SetActive(true);
             if (nextButton != null) nextButton.gameObject.SetActive(false);
 
             UpdateStarsUi();
             RefreshUi();
-            PlayCurrentSequence();
+            levelAnimationController?.PlayInitialEntrance();
+
+            if (playImmediately)
+            {
+                listenButtonGuide?.HideGuide();
+                PlayCurrentSequence();
+                return;
+            }
+
+            SetButtonsInteractable(false);
+            if (startButton != null) startButton.interactable = true;
+            listenButtonGuide?.ShowGuide();
+            SetStatus("Presiona Escuchar para oir la secuencia");
         }
 
         public void RestartActivity()
+        {
+            StartActivity();
+        }
+
+        /// <summary>
+        /// Replays only the current sequence attempt. The score and completed
+        /// sequences remain intact, so this never modifies musical game rules.
+        /// </summary>
+        public void RestartCurrentAttempt()
+        {
+            if (IsTutorialBlocking()) return;
+            if (!activityStarted || activityFinished)
+            {
+                StartActivity();
+                return;
+            }
+
+            StopRunningRoutines();
+            acceptingInput = false;
+            expectedStepIndex = 0;
+            RefreshUi();
+            PlayCurrentSequence();
+        }
+
+        /// <summary>Public result-panel action; equivalent to beginning a fresh activity.</summary>
+        public void ReplayActivity()
         {
             StartActivity();
         }
@@ -203,7 +270,10 @@ namespace Assets.SurpriseBox.Scripts
                 resultPanel.SetActive(true);
             }
 
+            if (pianoPanel != null) pianoPanel.SetActive(false);
+
             if (starDisplay != null) starDisplay.ShowStars(currentStars, true);
+            levelAnimationController?.PlayResult(currentStars);
             OnActivityCompleted?.Invoke(currentStars);
         }
 
@@ -217,6 +287,8 @@ namespace Assets.SurpriseBox.Scripts
 
         public void UpdateStarsUi()
         {
+            if (tmpErrorsText != null) tmpErrorsText.text = $"Errores: {mistakeCount}";
+            if (topStarDisplay != null) topStarDisplay.SetImmediate(currentStars);
             if (starDisplay != null) starDisplay.SetImmediate(currentStars);
             if (starImages == null) return;
 
@@ -247,21 +319,53 @@ namespace Assets.SurpriseBox.Scripts
                 return;
             }
 
+            StopRunningRoutines();
+            if (audioSource != null) audioSource.Stop();
+            levelAnimationController?.StopResultPresentation();
             Bolin.SceneNavigation.LoadScene(returnSceneName, this);
+        }
+
+        /// <summary>Transitions from the result panel to the next world in the learning path.</summary>
+        public void OpenNextWorld()
+        {
+            if (string.IsNullOrWhiteSpace(nextWorldSceneName))
+            {
+                Debug.LogWarning("No hay una escena siguiente configurada para Mundo Musical.");
+                return;
+            }
+
+            StopRunningRoutines();
+            if (audioSource != null) audioSource.Stop();
+            levelAnimationController?.StopResultPresentation();
+            Bolin.SceneNavigation.LoadScene(nextWorldSceneName, this);
         }
 
         public void PlayCurrentSequence()
         {
+            StartSequencePlayback(true);
+        }
+
+        private void StartSequencePlayback(bool cancelPendingAdvance)
+        {
             // Reproduce la secuencia actual para que el alumno la escuche antes de responder.
+            if (IsTutorialBlocking() || !activityStarted || activityFinished) return;
+            listenButtonGuide?.HideGuide();
             if (sequences.Count == 0)
             {
                 SetStatus("No hay secuencias configuradas.");
                 return;
             }
 
+            if (cancelPendingAdvance && advanceRoutine != null)
+            {
+                StopCoroutine(advanceRoutine);
+                advanceRoutine = null;
+            }
+
             if (sequenceRoutine != null)
             {
                 StopCoroutine(sequenceRoutine);
+                sequenceRoutine = null;
             }
 
             sequenceRoutine = StartCoroutine(PlaySequenceRoutine());
@@ -302,8 +406,10 @@ namespace Assets.SurpriseBox.Scripts
             acceptingInput = false;
             expectedStepIndex = 0;
             SetButtonsInteractable(false);
+            if (startButton != null) startButton.interactable = false;
             SetStatus("Escucha la secuencia");
             UpdateSequenceProgress(true, -1);
+            levelAnimationController?.PlaySequenceCue();
 
             yield return new WaitForSeconds(0.25f);
 
@@ -317,6 +423,7 @@ namespace Assets.SurpriseBox.Scripts
 
             acceptingInput = true;
             SetButtonsInteractable(true);
+            if (startButton != null) startButton.interactable = true;
             SetStatus("Repite la secuencia");
             UpdateSequenceProgress(false);
             sequenceRoutine = null;
@@ -326,22 +433,25 @@ namespace Assets.SurpriseBox.Scripts
         {
             // Recibe el clic de una tecla, compara con el paso esperado y decide avance o error.
             if (keyIndex < 0 || keyIndex >= pianoKeys.Count) return;
-            if (!activityStarted || activityFinished) return;
-
-            PlayKeySound(keyIndex);
-            StartCoroutine(FlashKeyRoutine(keyIndex));
-
-            if (!acceptingInput) return;
+            if (!activityStarted || activityFinished || !acceptingInput || IsTutorialBlocking()) return;
 
             PianoSequence sequence = GetCurrentSequence();
             if (sequence == null || expectedStepIndex >= sequence.steps.Count) return;
 
             int expectedKey = Mathf.Clamp(sequence.steps[expectedStepIndex].keyIndex, 0, pianoKeys.Count - 1);
+            bool correct = keyIndex == expectedKey;
+            PlayKeySound(keyIndex);
+            Bolin.MusicalKeyVisual keyVisual = GetKeyVisual(keyIndex);
+            if (keyVisual != null) keyVisual.PlayAttempt(correct);
+            else StartCoroutine(FlashKeyRoutine(keyIndex));
+
             if (keyIndex != expectedKey)
             {
                 acceptingInput = false;
                 expectedStepIndex = 0;
                 RegisterMistake();
+                levelAnimationController?.PlayMistakeFeedback();
+                SetButtonsInteractable(false, true);
                 OnAnswerValidated?.Invoke(false);
                 SetStatus("Intenta otra vez");
                 UpdateSequenceProgress(false);
@@ -355,6 +465,7 @@ namespace Assets.SurpriseBox.Scripts
             }
 
             expectedStepIndex++;
+            levelAnimationController?.PlayCorrectFeedback();
             SetStatus($"{expectedStepIndex}/{sequence.steps.Count}");
             UpdateSequenceProgress(false);
 
@@ -366,6 +477,8 @@ namespace Assets.SurpriseBox.Scripts
 
             if (autoAdvanceSequence)
             {
+                SetButtonsInteractable(false, true);
+                if (startButton != null) startButton.interactable = false;
                 if (advanceRoutine != null)
                 {
                     StopCoroutine(advanceRoutine);
@@ -382,7 +495,8 @@ namespace Assets.SurpriseBox.Scripts
         private IEnumerator AdvanceAfterSequenceCompleteRoutine()
         {
             // Espera un momento y pasa a la siguiente secuencia o termina el mundo.
-            SetButtonsInteractable(false);
+            SetButtonsInteractable(false, true);
+            if (startButton != null) startButton.interactable = false;
             yield return new WaitForSeconds(delayBeforeNextSequence);
 
             if (activityFinished)
@@ -396,7 +510,7 @@ namespace Assets.SurpriseBox.Scripts
                 currentSequenceIndex++;
                 expectedStepIndex = 0;
                 RefreshUi();
-                PlayCurrentSequence();
+                StartSequencePlayback(false);
             }
             else
             {
@@ -409,9 +523,10 @@ namespace Assets.SurpriseBox.Scripts
         private IEnumerator ReplayAfterMistakeRoutine()
         {
             // Tras un error, vuelve a tocar la secuencia para dar otra oportunidad.
-            SetButtonsInteractable(false);
+            SetButtonsInteractable(false, true);
             yield return new WaitForSeconds(mistakeReplayDelay);
-            PlayCurrentSequence();
+            sequenceRoutine = null;
+            StartSequencePlayback(false);
         }
 
         private IEnumerator HighlightKeyRoutine(int keyIndex, float delay)
@@ -442,13 +557,13 @@ namespace Assets.SurpriseBox.Scripts
             {
                 pianoKeys.AddRange(new[]
                 {
-                    new PianoKeyConfig { id = "Do", displayName = "1", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.31f, 0.31f, 1f), toneFrequency = 261.63f },
-                    new PianoKeyConfig { id = "Re", displayName = "2", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(1f, 0.58f, 0.22f, 1f), toneFrequency = 293.66f },
-                    new PianoKeyConfig { id = "Mi", displayName = "3", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.89f, 0.24f, 1f), toneFrequency = 329.63f },
-                    new PianoKeyConfig { id = "Fa", displayName = "4", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.35f, 0.78f, 0.45f, 1f), toneFrequency = 349.23f },
-                    new PianoKeyConfig { id = "Sol", displayName = "5", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(0.25f, 0.62f, 1f, 1f), toneFrequency = 392f },
-                    new PianoKeyConfig { id = "La", displayName = "6", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.67f, 0.45f, 1f, 1f), toneFrequency = 440f },
-                    new PianoKeyConfig { id = "Si", displayName = "7", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.42f, 0.78f, 1f), toneFrequency = 493.88f },
+                    new PianoKeyConfig { id = "DO", displayName = "1", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.31f, 0.31f, 1f), toneFrequency = 261.63f },
+                    new PianoKeyConfig { id = "RE", displayName = "2", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(1f, 0.58f, 0.22f, 1f), toneFrequency = 293.66f },
+                    new PianoKeyConfig { id = "MI", displayName = "3", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.89f, 0.24f, 1f), toneFrequency = 329.63f },
+                    new PianoKeyConfig { id = "FA", displayName = "4", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.35f, 0.78f, 0.45f, 1f), toneFrequency = 349.23f },
+                    new PianoKeyConfig { id = "SOL", displayName = "5", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(0.25f, 0.62f, 1f, 1f), toneFrequency = 392f },
+                    new PianoKeyConfig { id = "LA", displayName = "6", normalColor = new Color(0.95f, 0.95f, 0.95f, 1f), highlightColor = new Color(0.67f, 0.45f, 1f, 1f), toneFrequency = 440f },
+                    new PianoKeyConfig { id = "SI", displayName = "7", normalColor = new Color(0.96f, 0.96f, 0.9f, 1f), highlightColor = new Color(1f, 0.42f, 0.78f, 1f), toneFrequency = 493.88f },
                 });
             }
 
@@ -535,8 +650,6 @@ namespace Assets.SurpriseBox.Scripts
                 if (i < tmpKeyLabels.Count && tmpKeyLabels[i] != null && i < pianoKeys.Count)
                 {
                     tmpKeyLabels[i].text = pianoKeys[i].displayName;
-                    tmpKeyLabels[i].fontSize = Mathf.Max(tmpKeyLabels[i].fontSize, 54f);
-                    tmpKeyLabels[i].fontStyle |= FontStyles.Bold;
                 }
 
                 SetKeyColor(i, false);
@@ -557,6 +670,7 @@ namespace Assets.SurpriseBox.Scripts
             if (startPanel != null) startPanel.SetActive(true);
             if (pianoPanel != null) pianoPanel.SetActive(false);
             if (resultPanel != null) resultPanel.SetActive(false);
+            levelAnimationController?.StopResultPresentation();
             if (startButton != null) startButton.gameObject.SetActive(false);
             if (nextButton != null) nextButton.gameObject.SetActive(false);
 
@@ -635,11 +749,14 @@ namespace Assets.SurpriseBox.Scripts
             if (tmpStatusText != null) tmpStatusText.text = message;
         }
 
-        private void SetButtonsInteractable(bool interactable)
+        private void SetButtonsInteractable(bool interactable, bool preserveVisualFeedback = false)
         {
             foreach (Button keyButton in keyButtons)
             {
-                if (keyButton != null) keyButton.interactable = interactable;
+                if (keyButton == null) continue;
+                keyButton.interactable = interactable;
+                Bolin.MusicalKeyVisual keyVisual = keyButton.GetComponent<Bolin.MusicalKeyVisual>();
+                if (keyVisual != null) keyVisual.SetLocked(!interactable, preserveVisualFeedback);
             }
         }
 
@@ -647,10 +764,43 @@ namespace Assets.SurpriseBox.Scripts
         {
             if (keyIndex < 0 || keyIndex >= keyButtons.Count || keyIndex >= pianoKeys.Count) return;
 
+            Bolin.MusicalKeyVisual keyVisual = GetKeyVisual(keyIndex);
+            if (keyVisual != null)
+            {
+                if (highlighted) keyVisual.PlayDemonstration();
+                else keyVisual.RestoreIdle();
+                return;
+            }
+
             Image image = keyButtons[keyIndex] != null ? keyButtons[keyIndex].GetComponent<Image>() : null;
             if (image == null) return;
 
             image.color = highlighted ? pianoKeys[keyIndex].highlightColor : pianoKeys[keyIndex].normalColor;
+        }
+
+        private Bolin.MusicalKeyVisual GetKeyVisual(int keyIndex)
+        {
+            if (keyIndex < 0 || keyIndex >= keyButtons.Count || keyButtons[keyIndex] == null) return null;
+            return keyButtons[keyIndex].GetComponent<Bolin.MusicalKeyVisual>();
+        }
+
+        private bool IsTutorialBlocking()
+        {
+            return tutorialController != null && tutorialController.IsActive;
+        }
+
+        private void SubscribeTutorial()
+        {
+            if (tutorialSubscribed || tutorialController == null) return;
+            tutorialController.TutorialCompleted += PrepareActivityForListening;
+            tutorialSubscribed = true;
+        }
+
+        private void UnsubscribeTutorial()
+        {
+            if (!tutorialSubscribed || tutorialController == null) return;
+            tutorialController.TutorialCompleted -= PrepareActivityForListening;
+            tutorialSubscribed = false;
         }
 
         private void PlayKeySound(int keyIndex)

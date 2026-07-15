@@ -49,7 +49,13 @@ namespace Bolin
 
         private void OnEnable()
         {
+            WorldProgressRepository.ProgressChanged += RefreshWorlds;
             RefreshWorlds();
+        }
+
+        private void OnDisable()
+        {
+            WorldProgressRepository.ProgressChanged -= RefreshWorlds;
         }
 
         private void OnValidate()
@@ -216,6 +222,12 @@ namespace Bolin
             }
         }
 
+        /// <summary>Explicit refresh hook for scene transitions and Inspector buttons.</summary>
+        public void RefreshWorldSelectionUI()
+        {
+            RefreshWorlds();
+        }
+
         private void ConfigureWorldButtons()
         {
             if (!configureWorldButtonsOnAwake || worlds == null) return;
@@ -254,7 +266,7 @@ namespace Bolin
 
             if (world.worldButton != null)
             {
-                world.worldButton.interactable = true;
+                world.worldButton.interactable = isUnlocked;
             }
             else
             {

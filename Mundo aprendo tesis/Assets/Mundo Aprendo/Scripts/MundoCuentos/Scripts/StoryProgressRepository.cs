@@ -10,6 +10,7 @@ namespace Bolin
         public const string DefaultStoryId = "tres_cerditos";
         public const string CompletedKey = "MundoAprendo_World_1_Completed";
         public const string StarsKey = "MundoAprendo_World_1_Stars";
+        public const string TutorialSeenKey = "MundoCuentos_TutorialVisto";
 
         private const string StoryCompletedKeyFormat = "MundoCuentos_Completado_{0}";
         private const string StoryScoreKeyFormat = "MundoCuentos_Puntaje_{0}";
@@ -137,6 +138,23 @@ namespace Bolin
 
             ResetStory(DefaultStoryId, false);
             PlayerPrefs.DeleteKey(KnownStoryIdsKey);
+            if (save) PlayerPrefs.Save();
+        }
+
+        public static bool IsTutorialCompleted()
+        {
+            return PlayerPrefs.GetInt(TutorialSeenKey, 0) == 1;
+        }
+
+        public static void MarkTutorialCompleted(bool save = true)
+        {
+            PlayerPrefs.SetInt(TutorialSeenKey, 1);
+            if (save) PlayerPrefs.Save();
+        }
+
+        public static void ResetTutorialState(bool save = true)
+        {
+            PlayerPrefs.DeleteKey(TutorialSeenKey);
             if (save) PlayerPrefs.Save();
         }
 

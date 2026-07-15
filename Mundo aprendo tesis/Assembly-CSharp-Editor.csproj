@@ -51,16 +51,26 @@
   <ItemGroup>
     <Compile Include="Assets\Space_Exploration_GUI_Kit\Editor\SpaceGameGUIWelcome.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
+    <Compile Include="Assets\Editor\MundoTamanosSafariReconstructionSetup.cs" />
     <Compile Include="Assets\Editor\MundoAprendoTestApiRunner.cs" />
+    <Compile Include="Assets\Editor\MundoMusicalVisualRefreshSetup.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoTamanos\Editor\SizeWorldSceneBuilder.cs" />
+    <Compile Include="Assets\Editor\MundoMusicalListenOutlineAssetSetup.cs" />
     <Compile Include="Assets\Editor\MundoCuentosExpansionSetup.cs" />
     <Compile Include="Assets\Editor\MundoAprendoRequestedCorrections.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\WorldSelection\Editor\WorldSelectionSceneBuilder.cs" />
+    <Compile Include="Assets\Editor\MundoMusicalResultPanelFromTamanosSetup.cs" />
+    <Compile Include="Assets\Editor\MundoMusicalReconstructionSetup.cs" />
     <Compile Include="Assets\Editor\MundoAprendoVisualUpgradeSetup.cs" />
     <Compile Include="Assets\Editor\Tests\WorldProgressRepositoryTests.cs" />
+    <Compile Include="Assets\Editor\MundoTamanosGeneratedUiAssets.cs" />
+    <Compile Include="Assets\Editor\MundoTamanosAnimalAssetSetup.cs" />
     <Compile Include="Assets\Editor\Tests\SceneConfigurationTests.cs" />
+    <Compile Include="Assets\Editor\WorldSelectionProgressRepairSetup.cs" />
     <Compile Include="Assets\Mundo Aprendo\Editor\MundoAprendoWorldDesignSetup.cs" />
+    <Compile Include="Assets\Editor\MundoMusicalGeneratedUiAssets.cs" />
     <Compile Include="Assets\Mundo Aprendo\Editor\MundoAprendoPolishSetup.cs" />
+    <Compile Include="Assets\Editor\MundoTamanosRequestedFixSetup.cs" />
     <Compile Include="Assets\Editor\MundoAprendoUrgentVisualCorrection.cs" />
     <Compile Include="Assets\Mundo Aprendo\Editor\MundoAprendoProjectSetup.cs" />
   </ItemGroup>

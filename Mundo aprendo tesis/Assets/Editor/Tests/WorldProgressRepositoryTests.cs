@@ -19,6 +19,13 @@ namespace Bolin.Editor.Tests
                 Backup(WorldProgressRepository.GetStarsKey(i));
                 WorldProgressRepository.ResetWorld(i, false);
             }
+
+            Backup(StoryProgressRepository.TutorialSeenKey);
+            StoryProgressRepository.ResetTutorialState(false);
+            Backup(MusicalTutorialController.TutorialSeenKey);
+            MusicalTutorialController.ResetTutorialState(false);
+            Backup(SizeWorldTutorialController.TutorialSeenKey);
+            SizeWorldTutorialController.ResetTutorialState(false);
         }
 
         [TearDown]
@@ -80,6 +87,45 @@ namespace Bolin.Editor.Tests
                 Assert.AreEqual(0, WorldProgressRepository.GetStars(i));
                 Assert.IsFalse(WorldProgressRepository.IsCompleted(i));
             }
+        }
+
+        [Test]
+        public void ResetAll_RemovesStoryTutorialState()
+        {
+            StoryProgressRepository.MarkTutorialCompleted(false);
+            Assert.IsTrue(StoryProgressRepository.IsTutorialCompleted());
+
+            WorldProgressRepository.ResetAll();
+
+            Assert.IsFalse(StoryProgressRepository.IsTutorialCompleted());
+        }
+
+        [Test]
+        public void ResetAll_RemovesMusicalTutorialState()
+        {
+            MusicalTutorialController.MarkTutorialCompleted(false);
+            Assert.IsTrue(MusicalTutorialController.IsTutorialCompleted());
+
+            WorldProgressRepository.ResetAll();
+
+            Assert.IsFalse(MusicalTutorialController.IsTutorialCompleted());
+        }
+
+        [Test]
+        public void ResetAll_RemovesSizeWorldTutorialState()
+        {
+            SizeWorldTutorialController.MarkTutorialCompleted(false);
+            Assert.IsTrue(SizeWorldTutorialController.IsTutorialCompleted());
+
+            WorldProgressRepository.ResetAll();
+
+            Assert.IsFalse(SizeWorldTutorialController.IsTutorialCompleted());
+        }
+
+        [Test]
+        public void NormalizeText_RemovesAccentsButPreservesEnye()
+        {
+            Assert.AreEqual("el niño llego al cañon", ReadingEvaluator.NormalizeText("El niño llegó al cañón."));
         }
 
         [TestCase(0, 3)]

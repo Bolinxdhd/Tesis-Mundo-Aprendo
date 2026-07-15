@@ -75,13 +75,18 @@ namespace Bolin
         [SerializeField, Min(0.05f)] private float entranceDuration = 0.65f;
         [SerializeField, Min(0.05f)] private float correctPulseDuration = 0.18f;
         [SerializeField, Min(0f)] private float delayBeforeNextRound = 1f;
+        [Tooltip("Pausa visual exclusiva tras un acierto. No altera la validacion ni el calculo de estrellas.")]
+        [SerializeField, Min(0f)] private float correctAnswerDelay = 3f;
 
-        [Header("Posicion y escala")]
-        [SerializeField] private Vector2 verticalPositionRange = new(-190f, 170f);
-        [SerializeField, Min(0.1f)] private float globalMinScale = 0.55f;
-        [SerializeField, Min(0.1f)] private float globalMaxScale = 1.25f;
-        [SerializeField, Min(0f)] private float horizontalPadding = 130f;
-        [SerializeField, Min(0f)] private float verticalPadding = 80f;
+        [Header("Transform fijo de animales")]
+        [Tooltip("Destino persistente del animal izquierdo dentro de Area-animales-segura.")]
+        [SerializeField] private Vector2 leftAnimalAnchoredPosition = new(-336f, -8f);
+        [Tooltip("Destino persistente del animal derecho dentro de Area-animales-segura.")]
+        [SerializeField] private Vector2 rightAnimalAnchoredPosition = new(336f, -8f);
+        [Tooltip("Escala de reposo única para ambos animales. No depende del hábitat, altura ni especie.")]
+        [SerializeField, Min(0.1f)] private float fixedAnimalScale = 1f;
+
+        [Header("Entrada visual")]
         [SerializeField, Min(0f)] private float offscreenPadding = 420f;
 
         [Header("Flujo")]
@@ -246,7 +251,7 @@ namespace Bolin
         {
             // Pulsa el animal correcto y decide si pasar de ronda o completar la actividad.
             yield return PulseTargetAnimalRoutine();
-            yield return new WaitForSeconds(delayBeforeNextRound);
+            yield return new WaitForSeconds(correctAnswerDelay);
 
             if (completedRounds >= roundsToComplete)
             {
@@ -325,8 +330,8 @@ namespace Bolin
 
             Vector2 leftPosition = GetAnimalPosition(true);
             Vector2 rightPosition = GetAnimalPosition(false);
-            ApplyDepthScale(leftAnimalImage, leftAnimal, leftPosition.y);
-            ApplyDepthScale(rightAnimalImage, rightAnimal, rightPosition.y);
+            ApplyFixedAnimalScale(leftAnimalImage);
+            ApplyFixedAnimalScale(rightAnimalImage);
 
             StopRoundRoutine();
             roundRoutine = StartCoroutine(AnimateRoundEntranceRoutine(leftPosition, rightPosition));
@@ -521,56 +526,18 @@ namespace Bolin
 
         private Vector2 GetAnimalPosition(bool leftSide)
         {
-            // Calcula una posicion aleatoria controlada para cada lado de la pantalla.
-            Rect area = GetSafePlayAreaRect();
-
-            float halfWidth = area.width * 0.5f;
-            float minX = area.xMin + horizontalPadding;
-            float maxX = area.xMax - horizontalPadding;
-            float x;
-            if (leftSide)
-            {
-                float leftMax = Mathf.Min(maxX, Mathf.Min(-horizontalPadding, -halfWidth * 0.12f));
-                x = minX <= leftMax ? UnityEngine.Random.Range(minX, leftMax) : area.center.x - area.width * 0.25f;
-            }
-            else
-            {
-                float rightMin = Mathf.Max(minX, Mathf.Max(horizontalPadding, halfWidth * 0.12f));
-                x = rightMin <= maxX ? UnityEngine.Random.Range(rightMin, maxX) : area.center.x + area.width * 0.25f;
-            }
-
-            float minY = Mathf.Max(area.yMin + verticalPadding, verticalPositionRange.x);
-            float maxY = Mathf.Min(area.yMax - verticalPadding, verticalPositionRange.y);
-            if (minY > maxY)
-            {
-                minY = area.yMin + verticalPadding;
-                maxY = area.yMax - verticalPadding;
-            }
-
-            float y = UnityEngine.Random.Range(minY, maxY);
-            return new Vector2(x, y);
+            // La jerarquía define dos destinos claros, uno por tarjeta.  El contenido de
+            // la ronda sigue siendo aleatorio; solo su Transform permanece estable.
+            return leftSide ? leftAnimalAnchoredPosition : rightAnimalAnchoredPosition;
         }
 
-        private Rect GetSafePlayAreaRect()
+        private void ApplyFixedAnimalScale(Image image)
         {
-            Rect area = animalSafeArea != null ? animalSafeArea.rect : new Rect(-960f, -540f, 1920f, 1080f);
-            return area;
-        }
-
-        private void ApplyDepthScale(Image image, AnimalData animal, float yPosition)
-        {
-            // Simula profundidad: mas abajo se ve mas grande, mas arriba se ve mas pequeno.
+            // No se usa la altura ni el rango propio de cada especie para alterar el
+            // RectTransform. La respuesta pedagógica la conserva AnimalSizeType.
             RectTransform rect = GetRect(image);
             if (rect == null) return;
-
-            SizeWorldAnimationController.ApplyDepthScale(
-                rect,
-                yPosition,
-                verticalPositionRange,
-                animal.minScale,
-                animal.maxScale,
-                globalMinScale,
-                globalMaxScale);
+            rect.localScale = Vector3.one * fixedAnimalScale;
         }
 
         private Image GetTargetImage()

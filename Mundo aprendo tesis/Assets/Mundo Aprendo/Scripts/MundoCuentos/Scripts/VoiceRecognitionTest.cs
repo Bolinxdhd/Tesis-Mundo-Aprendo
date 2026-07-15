@@ -30,6 +30,10 @@ namespace Bolin
         public string textoCompleto;
 
         public Sprite icono;
+        [Min(0)] public int orden;
+        public bool disponible = true;
+        [Tooltip("Clave de progreso existente asociada al cuento. Se deja visible para mantener los datos auditables desde el Inspector.")]
+        public string claveProgreso;
     }
 
     // Une una tarjeta visual de seleccion con el id del cuento que debe abrir.
@@ -81,6 +85,10 @@ namespace Bolin
         [SerializeField] private TMP_Text resultScoreText;
         [SerializeField] private TMP_Text resultStarsText;
         [SerializeField] private TMP_Text resultMessageText;
+        [SerializeField] private Button resultRepeatButton;
+        [SerializeField] private Button resultNextStoryButton;
+        [SerializeField] private Button resultBackToStoriesButton;
+        [SerializeField] private Button resultBackToWorldsButton;
 
         [Header("Botones UI")]
         [SerializeField] private Button startButton;
@@ -100,6 +108,11 @@ namespace Bolin
         [SerializeField] private Sprite emptyStarSprite;
         [SerializeField] private UIStarDisplay starDisplay;
         [SerializeField] private GameObject microphoneListeningIndicator;
+
+        [Header("Tutorial y animaciones")]
+        [SerializeField] private StoryTutorialAnimationController tutorialController;
+        [SerializeField] private StoryLevelAnimationController levelAnimationController;
+        [SerializeField] private StoryResultStarAnimation resultStarAnimation;
 
         [Header("Configuracion")]
         [SerializeField, TextArea(4, 10)] private string story =
@@ -143,10 +156,11 @@ namespace Bolin
         private string finalRecognizedText = string.Empty;
         private string partialRecognizedCandidate = string.Empty;
         private string[] expectedStoryWords = Array.Empty<string>();
+        private readonly HashSet<string> selectedStoryVocabulary = new(StringComparer.Ordinal);
+        private readonly List<string> finalRecognizedNormalizedWords = new();
         private readonly List<PalabraReconocida> palabrasMostradas = new();
         private readonly Dictionary<int, Coroutine> eliminacionesPendientes = new();
         private int nextRecognizedWordId;
-        private int nextExpectedWordIndex;
         private CuentoData currentStory;
         private float listeningStartedAt;
         private float lastSpeechAt;
@@ -155,6 +169,19 @@ namespace Bolin
         private bool isShuttingDown;
         private bool microphoneSignalDetectedBeforeListening;
         private bool validationProcessed;
+        private bool IsTutorialActive => tutorialController != null && tutorialController.IsActive;
+
+        private readonly struct FilteredStoryWord
+        {
+            public readonly string original;
+            public readonly string normalized;
+
+            public FilteredStoryWord(string original, string normalized)
+            {
+                this.original = original;
+                this.normalized = normalized;
+            }
+        }
 
         private void Awake()
         {
@@ -174,6 +201,11 @@ namespace Bolin
             ApplyInitialText();
             RefreshStoryCards();
             MostrarSeleccionCuentos();
+        }
+
+        private void Start()
+        {
+            tutorialController?.ShowIfNeeded();
         }
 
         private void OnDisable()
@@ -205,6 +237,8 @@ namespace Bolin
         // Boton Iniciar: valida microfono, hace cuenta regresiva y activa reconocimiento.
         public void StartListening()
         {
+            if (BlockActionDuringTutorial()) return;
+
             if (validationProcessed)
             {
                 SetStatus("Ya se mostro el resultado. Vuelve a elegir un cuento para leer otra vez.");
@@ -239,11 +273,55 @@ namespace Bolin
         // Boton Repetir: limpia lo reconocido y vuelve a leer el mismo cuento.
         public void RetryReading()
         {
+            if (BlockActionDuringTutorial()) return;
+
+            RestartReading();
+            StartListening();
+        }
+
+        // Boton Reiniciar: conserva el cuento, pero detiene la voz y deja una lectura limpia.
+        public void RestartReading()
+        {
+            if (BlockActionDuringTutorial()) return;
+
             StopListeningInternal(false);
             ClearRecognizedText();
             validationProcessed = false;
             SetReadingButtonsInteractable(true);
-            StartListening();
+            SetStatus("Lectura reiniciada. Presiona Iniciar cuando estes listo.");
+        }
+
+        // Boton Repetir de resultado: vuelve al mismo cuento sin reactivar el microfono.
+        public void RepeatCurrentStory()
+        {
+            if (BlockActionDuringTutorial()) return;
+            if (currentStory == null)
+            {
+                MostrarSeleccionCuentos();
+                return;
+            }
+
+            MostrarLectura(currentStory);
+        }
+
+        // Boton Siguiente cuento: respeta el orden configurado en los datos de cada cuento.
+        public void OpenNextStory()
+        {
+            if (BlockActionDuringTutorial()) return;
+
+            CuentoData next = GetNextAvailableStory();
+            if (next == null)
+            {
+                MostrarSeleccionCuentos();
+                return;
+            }
+
+            MostrarLectura(next);
+        }
+
+        public void ReturnToWorldsFromResult()
+        {
+            ReturnToMenu();
         }
 
         // Boton Limpiar: borra texto reconocido, parciales, finales y palabras temporales.
@@ -251,9 +329,9 @@ namespace Bolin
         {
             finalRecognizedText = string.Empty;
             partialRecognizedCandidate = string.Empty;
-            nextExpectedWordIndex = 0;
             nextRecognizedWordId = 0;
             CancelPendingWordRemovals();
+            finalRecognizedNormalizedWords.Clear();
             palabrasMostradas.Clear();
 
             SetText(recognizedText, string.Empty);
@@ -271,6 +349,8 @@ namespace Bolin
         // Boton Validar: compara lectura esperada vs reconocida y guarda el resultado.
         public void ValidateReading()
         {
+            if (BlockActionDuringTutorial()) return;
+
             if (validationProcessed)
             {
                 SetStatus("La lectura ya fue validada. Espera el resultado.");
@@ -318,6 +398,8 @@ namespace Bolin
         // Boton Regresar: carga la escena configurada como retorno.
         public void ReturnToMenu()
         {
+            if (BlockActionDuringTutorial()) return;
+
             StopListeningInternal(false);
             DisposeSpeechService();
 
@@ -337,6 +419,7 @@ namespace Bolin
             StopListeningInternal(false);
             CancelPendingWordRemovals();
             CancelPendingResultReturn();
+            resultStarAnimation?.StopAndReset();
             ClearRecognizedText();
             validationProcessed = false;
             SetReadingButtonsInteractable(true);
@@ -347,15 +430,24 @@ namespace Bolin
 
             RefreshStoryCards();
             RefreshSelectionProgress();
+            levelAnimationController?.PlaySelectionEntrance();
         }
 
         // Abre un cuento usando el id enviado desde la tarjeta o boton del Inspector.
         public void OpenStoryById(string storyId)
         {
+            if (BlockActionDuringTutorial()) return;
+
             CuentoData selected = cuentosDisponibles.Find(item => item != null && item.id == storyId);
             if (selected == null)
             {
                 SetStatus($"No se encontro el cuento {storyId}.");
+                return;
+            }
+
+            if (!selected.disponible)
+            {
+                SetStatus("Este cuento aun no esta disponible.");
                 return;
             }
 
@@ -365,6 +457,8 @@ namespace Bolin
         // Intenta abrir otros mundos; requiere cuentos completados suficientes.
         public void OpenOtherWorlds()
         {
+            if (BlockActionDuringTutorial()) return;
+
             if (!StoryProgressRepository.HasUnlockedOtherWorlds(cuentosDisponibles, requiredCompletedStoriesToUnlock))
             {
                 RefreshSelectionProgress();
@@ -391,6 +485,7 @@ namespace Bolin
             if (resultPanel != null) resultPanel.SetActive(false);
 
             SetStatus("Presiona Iniciar para comenzar.");
+            levelAnimationController?.PlayReadingEntrance();
         }
 
         private void MostrarResultado(int score, int stars)
@@ -404,10 +499,20 @@ namespace Bolin
             SetText(resultStoryTitleText, title);
             SetText(resultScoreText, $"Puntaje: {score} puntos");
             SetText(resultStarsText, BuildStarsText(stars));
-            SetText(resultMessageText, $"{GetStarsResultMessage(stars)}\n\nRegresando a los cuentos...");
+            string headline = stars > 0 ? "Muy bien!" : "Sigue intentando.";
+            SetText(resultMessageText, $"{headline}\n{GetStarsResultMessage(stars)}\nElige que quieres hacer ahora.");
+            UpdateStarsUi(stars, true);
+            levelAnimationController?.PlayResultEntrance();
+            resultStarAnimation?.Play(stars);
+
+            if (resultNextStoryButton != null)
+            {
+                CuentoData nextStory = GetNextAvailableStory();
+                SetButtonLabel(resultNextStoryButton, nextStory != null ? "SIGUIENTE CUENTO" : "VOLVER A CUENTOS");
+            }
 
             CancelPendingResultReturn();
-            if (isActiveAndEnabled)
+            if (!HasResultNavigationButtons() && isActiveAndEnabled)
             {
                 resultReturnRoutine = StartCoroutine(ReturnToSelectionAfterResultRoutine());
             }
@@ -418,6 +523,51 @@ namespace Bolin
             yield return new WaitForSecondsRealtime(resultReturnDelay);
             resultReturnRoutine = null;
             MostrarSeleccionCuentos();
+        }
+
+        private bool HasResultNavigationButtons()
+        {
+            return resultRepeatButton != null
+                || resultNextStoryButton != null
+                || resultBackToStoriesButton != null
+                || resultBackToWorldsButton != null;
+        }
+
+        private CuentoData GetNextAvailableStory()
+        {
+            List<CuentoData> availableStories = GetAvailableStories();
+            if (availableStories.Count == 0) return null;
+
+            int currentIndex = currentStory == null ? -1 : availableStories.IndexOf(currentStory);
+            if (currentIndex >= 0 && currentIndex < availableStories.Count - 1)
+            {
+                return availableStories[currentIndex + 1];
+            }
+
+            return null;
+        }
+
+        private List<CuentoData> GetAvailableStories()
+        {
+            List<CuentoData> availableStories = new();
+            foreach (CuentoData cuento in cuentosDisponibles)
+            {
+                if (cuento != null && cuento.disponible) availableStories.Add(cuento);
+            }
+
+            availableStories.Sort((left, right) =>
+            {
+                int order = left.orden.CompareTo(right.orden);
+                return order != 0 ? order : string.CompareOrdinal(left.id, right.id);
+            });
+            return availableStories;
+        }
+
+        private static void SetButtonLabel(Button button, string value)
+        {
+            if (button == null) return;
+            TMP_Text label = button.GetComponentInChildren<TMP_Text>(true);
+            if (label != null) label.text = value;
         }
 
         private IEnumerator StartListeningAfterCountdownRoutine()
@@ -476,6 +626,7 @@ namespace Bolin
             else
             {
                 SetStatus("MICROFONO ACTIVO");
+                levelAnimationController?.PlayMicrophoneActivation();
             }
 
             countdownRoutine = null;
@@ -499,6 +650,15 @@ namespace Bolin
 
             return string.Empty;
 #endif
+        }
+
+        private bool BlockActionDuringTutorial()
+        {
+            if (!IsTutorialActive) return false;
+
+            StopListeningInternal(false);
+            SetStatus("Termina el tutorial de Biblio para comenzar.");
+            return true;
         }
 
         private void SubscribeSpeechService()
@@ -525,12 +685,12 @@ namespace Bolin
 
         private void HandlePartialResult(string text)
         {
-            // Muestra una hipotesis temporal sin guardarla todavia como lectura final.
+            // Muestra una hipotesis temporal filtrada sin guardarla todavia como lectura final.
             if (string.IsNullOrWhiteSpace(text) || validationProcessed) return;
 
-            partialRecognizedCandidate = text;
+            partialRecognizedCandidate = BuildFilteredPartialCandidate(text);
             lastSpeechAt = Time.time;
-            SetText(partialRecognizedText, text);
+            SetText(partialRecognizedText, partialRecognizedCandidate);
             RefreshRecognizedTextUi();
             ScheduleScrollToEnd();
             SetStatus("Escuchando...");
@@ -794,6 +954,11 @@ namespace Bolin
 
             story = cuento.textoCompleto;
             expectedStoryWords = ReadingEvaluator.GetNormalizedWords(story);
+            selectedStoryVocabulary.Clear();
+            foreach (string word in expectedStoryWords)
+            {
+                if (!string.IsNullOrWhiteSpace(word)) selectedStoryVocabulary.Add(word);
+            }
             SetText(selectedStoryTitleText, cuento.titulo);
             SetText(storyText, cuento.textoCompleto);
 
@@ -814,6 +979,10 @@ namespace Bolin
             WireButtonIfEmpty(backToSelectionButton, MostrarSeleccionCuentos);
             WireButtonIfEmpty(backToPreviousMenuButton, ReturnToMenu);
             WireButtonIfEmpty(otherWorldsButton, OpenOtherWorlds);
+            WireButtonIfEmpty(resultRepeatButton, RepeatCurrentStory);
+            WireButtonIfEmpty(resultNextStoryButton, OpenNextStory);
+            WireButtonIfEmpty(resultBackToStoriesButton, MostrarSeleccionCuentos);
+            WireButtonIfEmpty(resultBackToWorldsButton, ReturnToWorldsFromResult);
 
             foreach (CuentoCardView card in cuentoCards)
             {
@@ -878,66 +1047,97 @@ namespace Bolin
 
         private void AppendFinalRecognizedFragment(string fragment)
         {
-            // Agrega palabras definitivas y marca en color las que no coinciden con el cuento.
+            // Conserva unicamente palabras del vocabulario del cuento actual.
+            // Windows puede reenviar frases acumuladas, por eso se agrega solo la parte nueva.
             if (string.IsNullOrWhiteSpace(fragment)) return;
 
-            finalRecognizedText = string.IsNullOrWhiteSpace(finalRecognizedText)
-                ? fragment.Trim()
-                : $"{finalRecognizedText}\n{fragment.Trim()}";
-
-            string[] originalWords = fragment.Split(
-                new[] { ' ', '\n', '\r', '\t' },
-                StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string originalWord in originalWords)
+            List<FilteredStoryWord> allowedWords = GetAllowedWords(fragment);
+            int firstNewWordIndex = GetFirstNewWordIndex(allowedWords);
+            for (int index = firstNewWordIndex; index < allowedWords.Count; index++)
             {
-                string normalizedWord = ReadingEvaluator.NormalizeText(originalWord);
-                if (string.IsNullOrWhiteSpace(normalizedWord)) continue;
-
-                bool isCorrect = MatchExpectedWord(normalizedWord);
+                FilteredStoryWord allowedWord = allowedWords[index];
                 PalabraReconocida word = new()
                 {
                     id = ++nextRecognizedWordId,
-                    textoOriginal = originalWord.Trim(),
-                    textoNormalizado = normalizedWord,
-                    esCorrecta = isCorrect,
+                    textoOriginal = allowedWord.original,
+                    textoNormalizado = allowedWord.normalized,
+                    esCorrecta = true,
                     tiempoCreacion = Time.unscaledTime
                 };
 
                 palabrasMostradas.Add(word);
-                if (!isCorrect)
-                {
-                    eliminacionesPendientes[word.id] = StartCoroutine(RemoveIncorrectWordAfterDelay(word.id));
-                }
+                finalRecognizedNormalizedWords.Add(allowedWord.normalized);
             }
 
+            RebuildFinalRecognizedText();
             RefreshRecognizedTextUi();
             ScheduleScrollToEnd();
         }
 
-        private bool MatchExpectedWord(string normalizedWord)
+        private string BuildFilteredPartialCandidate(string fragment)
         {
-            // Compara contra la palabra esperada y permite pequeno salto si el alumno omitio una.
-            if (expectedStoryWords == null || expectedStoryWords.Length == 0) return false;
-            if (nextExpectedWordIndex >= expectedStoryWords.Length) return false;
-
-            if (expectedStoryWords[nextExpectedWordIndex] == normalizedWord)
+            List<FilteredStoryWord> allowedWords = GetAllowedWords(fragment);
+            int firstNewWordIndex = GetFirstNewWordIndex(allowedWords);
+            StringBuilder builder = new();
+            for (int index = firstNewWordIndex; index < allowedWords.Count; index++)
             {
-                nextExpectedWordIndex++;
-                return true;
+                if (builder.Length > 0) builder.Append(' ');
+                builder.Append(allowedWords[index].original);
+            }
+            return builder.ToString();
+        }
+
+        private List<FilteredStoryWord> GetAllowedWords(string fragment)
+        {
+            List<FilteredStoryWord> allowedWords = new();
+            if (string.IsNullOrWhiteSpace(fragment) || selectedStoryVocabulary.Count == 0) return allowedWords;
+
+            string[] rawWords = fragment.Split(
+                new[] { ' ', '\n', '\r', '\t' },
+                StringSplitOptions.RemoveEmptyEntries);
+            foreach (string rawWord in rawWords)
+            {
+                string[] normalizedWords = ReadingEvaluator.GetNormalizedWords(rawWord);
+                foreach (string normalizedWord in normalizedWords)
+                {
+                    if (!selectedStoryVocabulary.Contains(normalizedWord)) continue;
+                    string displayWord = normalizedWords.Length == 1 ? rawWord.Trim() : normalizedWord;
+                    allowedWords.Add(new FilteredStoryWord(displayWord, normalizedWord));
+                }
+            }
+            return allowedWords;
+        }
+
+        private int GetFirstNewWordIndex(List<FilteredStoryWord> incomingWords)
+        {
+            int maximumOverlap = Mathf.Min(finalRecognizedNormalizedWords.Count, incomingWords.Count);
+            for (int overlap = maximumOverlap; overlap > 0; overlap--)
+            {
+                bool matches = true;
+                int finalStart = finalRecognizedNormalizedWords.Count - overlap;
+                for (int index = 0; index < overlap; index++)
+                {
+                    if (finalRecognizedNormalizedWords[finalStart + index] == incomingWords[index].normalized) continue;
+                    matches = false;
+                    break;
+                }
+
+                if (matches) return overlap;
             }
 
-            int lookAheadLimit = Mathf.Min(expectedStoryWords.Length, nextExpectedWordIndex + 4);
-            for (int index = nextExpectedWordIndex + 1; index < lookAheadLimit; index++)
+            return 0;
+        }
+
+        private void RebuildFinalRecognizedText()
+        {
+            StringBuilder builder = new();
+            foreach (PalabraReconocida word in palabrasMostradas)
             {
-                if (expectedStoryWords[index] != normalizedWord) continue;
-
-                nextExpectedWordIndex = index + 1;
-                return true;
+                if (word == null || string.IsNullOrWhiteSpace(word.textoOriginal)) continue;
+                if (builder.Length > 0) builder.Append(' ');
+                builder.Append(word.textoOriginal);
             }
-
-            nextExpectedWordIndex++;
-            return false;
+            finalRecognizedText = builder.ToString();
         }
 
         private IEnumerator RemoveIncorrectWordAfterDelay(int wordId)
@@ -1067,11 +1267,15 @@ namespace Bolin
             SetText(readingResultText, result);
         }
 
-        private void UpdateStarsUi(int stars)
+        private void UpdateStarsUi(int stars, bool animate = false)
         {
             currentStars = Mathf.Clamp(stars, 0, 3);
             SetText(starsResultText, string.Empty);
-            if (starDisplay != null) starDisplay.SetImmediate(currentStars);
+            if (starDisplay != null)
+            {
+                if (animate) starDisplay.ShowStars(currentStars, true);
+                else starDisplay.SetImmediate(currentStars);
+            }
 
             if (starImages == null || starImages.Length == 0) return;
 
@@ -1111,6 +1315,14 @@ namespace Bolin
                 {
                     card.iconImage.sprite = cuento.icono;
                     card.iconImage.enabled = cuento.icono != null;
+                }
+
+                if (card.button != null) card.button.interactable = cuento.disponible;
+                if (!cuento.disponible)
+                {
+                    SetText(card.completedText, "Muy pronto");
+                    SetText(card.starsText, string.Empty);
+                    continue;
                 }
 
                 bool completed = StoryProgressRepository.IsStoryCompleted(cuento.id);
