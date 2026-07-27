@@ -52,6 +52,7 @@
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoTamanos\SizeWorldTutorialController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\Navigation\MundoAprendoSceneNames.cs" />
+    <Compile Include="Assets\Mundo Aprendo\Scripts\WorldSelection\SelectionWorldsUIAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\Options\MicrophoneSettings.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoCuentos\Scripts\ReadingEvaluator.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoMusical\Scripts\MusicalTutorialController.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\UISceneTransition.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoEmociones\EmotionResultPanel.cs" />
+    <Compile Include="Assets\Mundo Aprendo\Scripts\WorldSelection\WorldCardAnimator.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoEmociones\EmotionGameAnimationController.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoEmociones\EmotionRoundView.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\CharacterDialogueController.cs" />
@@ -78,8 +80,8 @@
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\UIStarDisplay.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\ButtonSelected.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoMusical\Scripts\MundoMusicalSequenceGame.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoCuentos\Scripts\WindowsDictationSpeechService.cs" />
+    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Assets\Mundo Aprendo\Scripts\ButtonUI.cs" />
     <Compile Include="Assets\Jsgaona\Accesibilidad\Scripts\XRColorAccessibilityController.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\UIStaggeredEntrance.cs" />
+    <Compile Include="Assets\Mundo Aprendo\Scripts\WorldSelection\WorldCardView.cs" />
     <Compile Include="Assets\Space_Exploration_GUI_Kit\Scripts\Scene_Controller.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\RatingStarCelebration.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoCuentos\Scripts\VoiceRecognitionTest.cs" />
+    <Compile Include="Assets\Mundo Aprendo\Scripts\WorldSelection\WorldStarsPanelView.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\UIFloatingAnimation.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
@@ -147,6 +151,7 @@
     <Compile Include="Assets\Mundo Aprendo\Scripts\SizeWorldController.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoMusical\Scripts\MusicalLevelAnimationController.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\MundoTamanos\SizeWorldPresentationController.cs" />
+    <Compile Include="Assets\Mundo Aprendo\Scripts\WorldSelection\UIButtonScaleFeedback.cs" />
     <Compile Include="Assets\Mundo Aprendo\Scripts\UI\WorldSelectionVisuals.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +179,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Space_Exploration_GUI_Kit\Fonts\OFL.txt" />
+    <None Include="Assets\Mundo Aprendo\Shaders\UI\SaturnoColorDualUI.shader" />
     <None Include="Assets\Jsgaona\Accesibilidad\Scripts\ColorBlindAccessibility.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Space_Exploration_GUI_Kit\README.TXT" />
@@ -183,6 +189,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Assets\AssistantCustomInstructions.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -745,6 +752,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@8bed5ad90189\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@4dfd81071c64\Runtime\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@ecb9724e46ff\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
@@ -1253,6 +1264,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEditor.UI.Analytics">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.Analytics.dll</HintPath>
       <Private>False</Private>
@@ -1273,8 +1288,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Assistant.Agent.Dynamic.Extension.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Agent.Dynamic.Extension.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Assistant.API.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.API.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Editor.Overrides">
@@ -1301,12 +1324,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.PathTracing.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Assistant.Integrations.Profiler.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Integrations.Profiler.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Assistant.Tools.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Tools.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
@@ -1333,12 +1364,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.MCP.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.MCP.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.UnifiedRayTracing.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.UnifiedRayTracing.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Assistant.Bridge.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Bridge.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
@@ -1357,6 +1396,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Assistant.Annotations.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Annotations.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
       <Private>False</Private>
@@ -1365,12 +1408,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.AI.Assistant.Runtime">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Assistant.Runtime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.Tracing">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.Tracing.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.SurfaceCache.Runtime">
@@ -1405,12 +1456,12 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Multiplayer.Center.Common">
       <HintPath>Library\ScriptAssemblies\Unity.Multiplayer.Center.Common.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Burst">
@@ -1419,6 +1470,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HFDownloader">
+      <HintPath>Library\ScriptAssemblies\HFDownloader.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.004">
@@ -1471,6 +1526,10 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.AI.MCP.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.AI.MCP.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

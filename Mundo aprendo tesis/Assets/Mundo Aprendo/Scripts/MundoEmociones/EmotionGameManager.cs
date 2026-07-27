@@ -83,6 +83,7 @@ namespace Bolin
         private void Awake()
         {
             // Deja visibles los paneles correctos antes de que el alumno pulse Iniciar.
+            WireSceneButtons();
             PrepareInitialState();
         }
 
@@ -173,6 +174,32 @@ namespace Bolin
         {
             // Boton Volver: regresa a seleccion de mundos usando el navegador central.
             SceneNavigation.LoadScene(MundoAprendoSceneNames.WorldSelection, this);
+        }
+
+        private void WireSceneButtons()
+        {
+            // Estos enlaces se mantienen aunque una escena haya perdido eventos
+            // persistentes del Inspector. Si existen, se respetan para no duplicar
+            // acciones configuradas manualmente.
+            WireButtonIfEmpty("StartButton", StartActivity);
+            WireButtonIfEmpty("RetryButton", RestartActivity);
+            WireButtonIfEmpty("WorldsButton", ReturnToWorldSelection);
+            WireButtonIfEmpty("BackButton", ReturnToWorldSelection);
+        }
+
+        private static void WireButtonIfEmpty(string objectName, UnityEngine.Events.UnityAction action)
+        {
+            Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include);
+            foreach (Button button in buttons)
+            {
+                if (button == null || button.name != objectName) continue;
+                if (button.onClick.GetPersistentEventCount() == 0)
+                {
+                    button.onClick.AddListener(action);
+                }
+
+                return;
+            }
         }
 
         private IEnumerator BeginActivityRoutine()

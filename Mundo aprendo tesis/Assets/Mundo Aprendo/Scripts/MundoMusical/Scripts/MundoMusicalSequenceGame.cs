@@ -152,6 +152,12 @@ namespace Assets.SurpriseBox.Scripts
                 {
                     PrepareActivityForListening();
                 }
+                else if (!tutorialController.gameObject.activeSelf)
+                {
+                    // The tutorial overlay is authored inactive so it cannot flash
+                    // during scene loading; activate it only for a first-time player.
+                    tutorialController.gameObject.SetActive(true);
+                }
 
                 return;
             }

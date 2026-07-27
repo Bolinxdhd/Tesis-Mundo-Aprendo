@@ -972,6 +972,7 @@ namespace Bolin
         private void WireOptionalButtons()
         {
             // Conecta botones por codigo solo si no tienen eventos persistentes del Inspector.
+            WireButtonIfEmpty(startButton, StartListening);
             WireButtonIfEmpty(stopButton, StopListening);
             WireButtonIfEmpty(retryButton, RetryReading);
             WireButtonIfEmpty(clearButton, ClearRecognizedText);

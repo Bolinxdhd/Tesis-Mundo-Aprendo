@@ -22,6 +22,22 @@ namespace Bolin
         public EmotionType Emotion => emotion;
         public Button Button => button;
 
+        private void Awake()
+        {
+            // La escena puede llegar sin eventos persistentes; cada respuesta se
+            // conecta a si misma para que el boton siempre entregue su emocion.
+            if (button == null) button = GetComponent<Button>();
+            if (pulseTarget == null) pulseTarget = transform as RectTransform;
+            if (iconImage == null) iconImage = transform.Find("Icon")?.GetComponent<Image>();
+            if (labelText == null) labelText = GetComponentInChildren<TMP_Text>(true);
+            if (gameManager == null) gameManager = FindAnyObjectByType<EmotionGameManager>(FindObjectsInactive.Include);
+
+            if (button != null && button.onClick.GetPersistentEventCount() == 0)
+            {
+                button.onClick.AddListener(Submit);
+            }
+        }
+
         public void Submit()
         {
             // Evento del boton: delega la validacion al EmotionGameManager.

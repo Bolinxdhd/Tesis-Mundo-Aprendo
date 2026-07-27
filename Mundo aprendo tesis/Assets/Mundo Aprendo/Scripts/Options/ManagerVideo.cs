@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Bolin
@@ -45,6 +46,8 @@ namespace Bolin
         // Constructor sin parametros
         private void Awake()
         {
+            ResolveMissingUiReferences();
+
             // Se obtiene todas las posibles resoluciones de pantalla del monitor
             resolutions = Screen.resolutions;
             filePath = Application.persistentDataPath + filePathVideo;
@@ -264,7 +267,7 @@ namespace Bolin
         // Se emplea para poder activar/Descativar la sincornizacion vertical
         public void SetV_Sync()
         {
-            SetV_Sync(vSyncToggle == null ? GetSettingScreen(3) == 0 : vSyncToggle.isOn);
+            SetV_Sync(vSyncToggle == null ? QualitySettings.vSyncCount == 0 : vSyncToggle.isOn);
         }
 
         public void SetV_Sync(bool enabled)
@@ -272,12 +275,13 @@ namespace Bolin
             QualitySettings.vSyncCount = enabled ? 1 : 0;
             settings.V_Sync = QualitySettings.vSyncCount;
             SaveScreenSettings();
+            SyncVideoToggles();
         }
 
 
         public void SetLimitFps()
         {
-            SetLimitFps(limitFpsToggle == null ? !settings.LimitFps : limitFpsToggle.isOn);
+            SetLimitFps(limitFpsToggle == null ? Application.targetFrameRate <= 0 : limitFpsToggle.isOn);
         }
 
         public void SetLimitFps(bool enabled)
@@ -285,6 +289,7 @@ namespace Bolin
             Application.targetFrameRate = enabled ? 60 : -1;
             settings.LimitFps = enabled;
             SaveScreenSettings();
+            SyncVideoToggles();
         }
 
 
@@ -339,6 +344,39 @@ namespace Bolin
             {
                 limitFpsToggle.SetIsOnWithoutNotify(settings.LimitFps);
             }
+        }
+
+        private void ResolveMissingUiReferences()
+        {
+            Transform videoSettingsPanel = FindInActiveScene("Panel-ajustevideo");
+            if (videoSettingsPanel == null) return;
+
+            if (vSyncToggle == null) vSyncToggle = FindComponentInNamedChild<Toggle>(videoSettingsPanel, "Panel_option1");
+            if (limitFpsToggle == null) limitFpsToggle = FindComponentInNamedChild<Toggle>(videoSettingsPanel, "Panel_option2");
+        }
+
+        private static Transform FindInActiveScene(string objectName)
+        {
+            foreach (GameObject root in SceneManager.GetActiveScene().GetRootGameObjects())
+            {
+                foreach (Transform candidate in root.GetComponentsInChildren<Transform>(true))
+                {
+                    if (candidate.name == objectName) return candidate;
+                }
+            }
+
+            return null;
+        }
+
+        private static T FindComponentInNamedChild<T>(Transform parent, string objectName) where T : Component
+        {
+            foreach (Transform candidate in parent.GetComponentsInChildren<Transform>(true))
+            {
+                if (candidate.name != objectName) continue;
+                return candidate.GetComponent<T>() ?? candidate.GetComponentInChildren<T>(true);
+            }
+
+            return null;
         }
     }
 }

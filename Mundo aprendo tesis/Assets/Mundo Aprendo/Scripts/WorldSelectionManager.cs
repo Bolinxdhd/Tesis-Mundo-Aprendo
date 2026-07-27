@@ -107,6 +107,17 @@ namespace Bolin
 
         public void RequestResetProgress()
         {
+            // The confirmation panel is serialized before the visual selection roots in
+            // SeleccionMundos.  A UI Canvas renders later siblings on top, so it must be
+            // promoted before being enabled or the opaque background hides the dialog.
+            Transform confirmationTransform = resetConfirmationTransition != null
+                ? resetConfirmationTransition.transform
+                : resetConfirmationPanel != null ? resetConfirmationPanel.transform : null;
+            if (confirmationTransform != null && confirmationTransform.parent != null)
+            {
+                confirmationTransform.SetAsLastSibling();
+            }
+
             if (resetConfirmationTransition != null)
             {
                 resetConfirmationTransition.Show();

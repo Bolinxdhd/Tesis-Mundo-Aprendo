@@ -28,6 +28,8 @@ namespace Bolin
 
         private void Awake()
         {
+            ResolveMissingUiReferences();
+
             float masterVolume = PlayerPrefs.GetFloat(AudioManager.MasterVolumeKey, 1f);
             float musicVolume = PlayerPrefs.GetFloat(AudioManager.MusicVolumeKey, 1f);
 
@@ -62,11 +64,7 @@ namespace Bolin
 
         private void OnEnable()
         {
-            if (masterSlider != null) masterSlider.onValueChanged.AddListener(SetMasterVolume);
-            if (musicSlider != null) musicSlider.onValueChanged.AddListener(SetMusicVolume);
-            if (microphoneDropdown != null) microphoneDropdown.onValueChanged.AddListener(SetMicrophoneByIndex);
-            if (refreshMicrophonesButton != null) refreshMicrophonesButton.onClick.AddListener(RefreshMicrophoneList);
-            if (testMicrophoneButton != null) testMicrophoneButton.onClick.AddListener(StartMicrophoneFrequencyTest);
+            BindUiEvents();
         }
 
         private void OnDisable()
@@ -86,14 +84,24 @@ namespace Bolin
 
         public void SetMasterVolume(float volume)
         {
+            volume = Mathf.Clamp01(volume);
             ApplyMasterVolume(volume);
-            PlayerPrefs.SetFloat(AudioManager.MasterVolumeKey, volume);
+            if (AudioManager.Instance == null)
+            {
+                PlayerPrefs.SetFloat(AudioManager.MasterVolumeKey, volume);
+                PlayerPrefs.Save();
+            }
         }
 
         public void SetMusicVolume(float volume)
         {
+            volume = Mathf.Clamp01(volume);
             ApplyMusicVolume(volume);
-            PlayerPrefs.SetFloat(AudioManager.MusicVolumeKey, volume);
+            if (AudioManager.Instance == null)
+            {
+                PlayerPrefs.SetFloat(AudioManager.MusicVolumeKey, volume);
+                PlayerPrefs.Save();
+            }
         }
 
         public void RefreshMicrophoneList()
@@ -101,7 +109,6 @@ namespace Bolin
             if (microphoneDropdown == null) return;
 
             string[] devices = Microphone.devices;
-            microphoneDropdown.onValueChanged.RemoveListener(SetMicrophoneByIndex);
             microphoneDropdown.options.Clear();
 
             if (devices == null || devices.Length == 0)
@@ -113,7 +120,6 @@ namespace Bolin
                 SetMicrophoneFrequencyText("Frecuencia: -- Hz");
                 SetMicrophoneLevel(0f);
                 microphoneDropdown.RefreshShownValue();
-                microphoneDropdown.onValueChanged.AddListener(SetMicrophoneByIndex);
                 return;
             }
 
@@ -136,8 +142,79 @@ namespace Bolin
 
             microphoneDropdown.SetValueWithoutNotify(selectedIndex);
             microphoneDropdown.RefreshShownValue();
-            microphoneDropdown.onValueChanged.AddListener(SetMicrophoneByIndex);
             SetMicrophoneStatus($"Microfono seleccionado: {devices[selectedIndex]}");
+        }
+
+        private void ResolveMissingUiReferences()
+        {
+            Transform soundSettingsPanel = FindInActiveScene("Panel-ajustesonido");
+            if (soundSettingsPanel == null) return;
+
+            if (masterSlider == null) masterSlider = FindComponentInNamedChild<Slider>(soundSettingsPanel, "Panel_option1");
+            if (musicSlider == null) musicSlider = FindComponentInNamedChild<Slider>(soundSettingsPanel, "Panel_option2");
+            if (microphoneDropdown == null) microphoneDropdown = FindComponentInNamedChild<TMP_Dropdown>(soundSettingsPanel, "DropdownMicrofono");
+            if (refreshMicrophonesButton == null) refreshMicrophonesButton = FindComponentInNamedChild<Button>(soundSettingsPanel, "BotonActualizarMicrofonos");
+            if (testMicrophoneButton == null) testMicrophoneButton = FindComponentInNamedChild<Button>(soundSettingsPanel, "BotonProbarMicrofono");
+            if (microphoneLevelSlider == null) microphoneLevelSlider = FindComponentInNamedChild<Slider>(soundSettingsPanel, "SliderNivelMicrofono");
+            if (microphoneStatusText == null) microphoneStatusText = FindComponentInNamedChild<TMP_Text>(soundSettingsPanel, "TextoEstadoMicrofono");
+            if (microphoneFrequencyText == null) microphoneFrequencyText = FindComponentInNamedChild<TMP_Text>(soundSettingsPanel, "TextoFrecuenciaMicrofono");
+        }
+
+        private void BindUiEvents()
+        {
+            if (masterSlider != null)
+            {
+                masterSlider.onValueChanged.RemoveListener(SetMasterVolume);
+                masterSlider.onValueChanged.AddListener(SetMasterVolume);
+            }
+
+            if (musicSlider != null)
+            {
+                musicSlider.onValueChanged.RemoveListener(SetMusicVolume);
+                musicSlider.onValueChanged.AddListener(SetMusicVolume);
+            }
+
+            if (microphoneDropdown != null)
+            {
+                microphoneDropdown.onValueChanged.RemoveListener(SetMicrophoneByIndex);
+                microphoneDropdown.onValueChanged.AddListener(SetMicrophoneByIndex);
+            }
+
+            if (refreshMicrophonesButton != null)
+            {
+                refreshMicrophonesButton.onClick.RemoveListener(RefreshMicrophoneList);
+                refreshMicrophonesButton.onClick.AddListener(RefreshMicrophoneList);
+            }
+
+            if (testMicrophoneButton != null)
+            {
+                testMicrophoneButton.onClick.RemoveListener(StartMicrophoneFrequencyTest);
+                testMicrophoneButton.onClick.AddListener(StartMicrophoneFrequencyTest);
+            }
+        }
+
+        private static Transform FindInActiveScene(string objectName)
+        {
+            foreach (GameObject root in SceneManager.GetActiveScene().GetRootGameObjects())
+            {
+                foreach (Transform candidate in root.GetComponentsInChildren<Transform>(true))
+                {
+                    if (candidate.name == objectName) return candidate;
+                }
+            }
+
+            return null;
+        }
+
+        private static T FindComponentInNamedChild<T>(Transform parent, string objectName) where T : Component
+        {
+            foreach (Transform candidate in parent.GetComponentsInChildren<Transform>(true))
+            {
+                if (candidate.name != objectName) continue;
+                return candidate.GetComponent<T>() ?? candidate.GetComponentInChildren<T>(true);
+            }
+
+            return null;
         }
 
         public void SetMicrophoneByIndex(int index)

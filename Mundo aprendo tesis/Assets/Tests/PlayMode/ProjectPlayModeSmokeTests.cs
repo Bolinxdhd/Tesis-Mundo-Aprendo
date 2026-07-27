@@ -702,15 +702,34 @@ namespace MundoAprendo.PlayModeTests
                     .Invoke(null, new object[] { 0, 2, true });
                 yield return null;
                 Assert.IsTrue(stories.interactable, "Completar Musical debe desbloquear Cuentos sin recargar la escena.");
-                Image[] starImages = (Image[])worlds.GetValue(0).GetType().GetField("starImages").GetValue(worlds.GetValue(0));
-                Sprite fullStar = (Sprite)worlds.GetValue(0).GetType().GetField("fullStarSprite").GetValue(worlds.GetValue(0));
+                Type sharedPanelType = Type.GetType("Bolin.WorldStarsPanelView, Assembly-CSharp");
+                Type displayType = Type.GetType("Bolin.UIStarDisplay, Assembly-CSharp");
+                Assert.NotNull(sharedPanelType);
+                Assert.NotNull(displayType);
+                Component sharedPanel = SceneManager.GetActiveScene().GetRootGameObjects()
+                    .SelectMany(root => root.GetComponentsInChildren(sharedPanelType, true))
+                    .Cast<Component>().Single();
+                Component sharedDisplay = sharedPanel.GetComponent(displayType);
+                Assert.NotNull(sharedDisplay, "La seleccion debe usar un unico UIStarDisplay compartido.");
+                sharedPanelType.GetMethod("FocusWorld").Invoke(sharedPanel, new object[] { 0 });
+                yield return null;
+                Image[] starImages = (Image[])GetPrivateField(sharedDisplay, "stars");
+                Sprite fullStar = (Sprite)GetPrivateField(sharedDisplay, "earnedSprite");
                 Assert.AreEqual(fullStar, starImages[0].sprite);
                 Assert.AreEqual(fullStar, starImages[1].sprite);
+
+                sharedPanelType.GetMethod("FocusWorld").Invoke(sharedPanel, new object[] { 2 });
+                yield return null;
+                Sprite emptyStar = (Sprite)GetPrivateField(sharedDisplay, "unearnedSprite");
+                Assert.IsTrue(starImages.All(item => item.sprite == emptyStar), "Un mundo bloqueado muestra las tres estrellas vacias.");
 
                 repositoryType.GetMethod("ResetWorld", new[] { typeof(int), typeof(bool) }).Invoke(null, new object[] { 0, true });
                 yield return null;
                 Assert.IsTrue(musical.interactable);
                 Assert.IsFalse(stories.interactable, "Al borrar Musical, Cuentos debe volver a bloquearse inmediatamente.");
+                sharedPanelType.GetMethod("FocusWorld").Invoke(sharedPanel, new object[] { 1 });
+                yield return null;
+                Assert.IsTrue(starImages.All(item => item.sprite == emptyStar), "El panel compartido se vacia cuando el foco vuelve a un mundo bloqueado.");
             }
             finally
             {

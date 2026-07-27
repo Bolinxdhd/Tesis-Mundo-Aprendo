@@ -73,6 +73,7 @@ namespace Bolin
             float clamped = Mathf.Clamp01(volume);
             AudioListener.volume = clamped;
             PlayerPrefs.SetFloat(MasterVolumeKey, clamped);
+            PlayerPrefs.Save();
         }
 
         public void SetMusicVolume(float volume)
@@ -80,6 +81,7 @@ namespace Bolin
             float clamped = Mathf.Clamp01(volume);
             if (musicSource != null) musicSource.volume = clamped;
             PlayerPrefs.SetFloat(MusicVolumeKey, clamped);
+            PlayerPrefs.Save();
         }
 
         public void ApplySavedVolumes()

@@ -15,9 +15,8 @@ namespace Bolin
     }
 
     /// <summary>
-    /// Controls the one-time, non-highlighted introduction for Mundo Musical.
-    /// It only owns presentation and input blocking; musical gameplay remains in
-    /// MundoMusicalSequenceGame.
+    /// Controls the one-time introduction for Mundo Musical. Its entrance and
+    /// dialogue rhythm intentionally match the tutorial used in Mundo Tamaños.
     /// </summary>
     public class MusicalTutorialController : MonoBehaviour
     {
@@ -30,6 +29,7 @@ namespace Bolin
         [Header("Personaje y dialogo")]
         [SerializeField] private RectTransform characterRoot;
         [SerializeField] private Image characterImage;
+        [SerializeField] private RectTransform bubbleRoot;
         [SerializeField] private TMP_Text tutorialText;
         [SerializeField] private TMP_Text stepCounterText;
         [SerializeField] private Button nextButton;
@@ -38,15 +38,23 @@ namespace Bolin
         [Header("Pasos")]
         [SerializeField] private List<MusicalTutorialStep> tutorialSteps = new();
 
-        [Header("Transicion")]
-        [SerializeField, Min(0.05f)] private float fadeDuration = 0.22f;
+        [Header("Animacion")]
+        [SerializeField, Min(1f)] private float typewriterCharactersPerSecond = 42f;
+        [SerializeField, Min(0f)] private float characterEntryDistance = 120f;
+        [SerializeField, Min(0.05f)] private float entryDuration = 0.28f;
+        [SerializeField, Min(0f)] private float waveDegrees = 4f;
 
-        private Coroutine visibilityRoutine;
+        private Coroutine typeRoutine;
+        private Coroutine entryRoutine;
+        private string currentFullText = string.Empty;
         private int currentStepIndex;
+        private bool isTyping;
         private bool gameplayStateCaptured;
         private bool gameplayInteractable;
         private bool gameplayBlocksRaycasts;
-        private bool completionRequested;
+        private Vector2 characterBasePosition;
+        private Vector3 characterBaseRotation;
+        private Vector3 bubbleBaseScale = Vector3.one;
 
         public bool IsActive { get; private set; }
         public event Action TutorialCompleted;
@@ -72,11 +80,13 @@ namespace Bolin
         {
             if (overlayGroup == null) overlayGroup = GetComponent<CanvasGroup>();
             if (characterImage == null && characterRoot != null) characterImage = characterRoot.GetComponent<Image>();
+            if (bubbleRoot == null && tutorialText != null) bubbleRoot = tutorialText.transform.parent as RectTransform;
 
             if (nextButton != null) nextButton.onClick.AddListener(NextStep);
             if (startButton != null) startButton.onClick.AddListener(CompleteTutorial);
 
             EnsureDefaultSteps();
+            CaptureBaseState();
             HideImmediate(false);
         }
 
@@ -112,16 +122,23 @@ namespace Bolin
             }
 
             gameObject.SetActive(true);
+            StopRunningRoutines();
             IsActive = true;
             currentStepIndex = 0;
             BlockGameplay();
+            SetOverlayState(1f, true);
             ApplyCurrentStep();
-            StartVisibilityRoutine(true);
+            PlayEntryAnimation();
         }
 
         public void NextStep()
         {
-            if (!IsActive || currentStepIndex >= tutorialSteps.Count - 1) return;
+            if (!IsActive || tutorialSteps.Count == 0) return;
+
+            // A click may reveal the pending text and continue, keeping the
+            // existing five-button flow usable for keyboard and accessibility input.
+            if (isTyping) FinishTyping();
+            if (currentStepIndex >= tutorialSteps.Count - 1) return;
 
             currentStepIndex++;
             ApplyCurrentStep();
@@ -131,11 +148,11 @@ namespace Bolin
         {
             if (!IsActive || tutorialSteps.Count == 0 || currentStepIndex != tutorialSteps.Count - 1) return;
 
-            // The key is deliberately written only from the final Comenzar action.
+            if (isTyping) FinishTyping();
             MarkTutorialCompleted();
-            completionRequested = true;
             SetButtonsInteractable(false);
-            StartVisibilityRoutine(false);
+            HideImmediate(true);
+            TutorialCompleted?.Invoke();
         }
 
         public void HideImmediate()
@@ -145,8 +162,10 @@ namespace Bolin
 
         private void HideImmediate(bool deactivateObject)
         {
-            StopVisibilityRoutine();
+            StopRunningRoutines();
             IsActive = false;
+            ResetPresentationState();
+            if (tutorialText != null) tutorialText.text = string.Empty;
             SetOverlayState(0f, false);
             RestoreGameplay();
 
@@ -158,7 +177,7 @@ namespace Bolin
             if (tutorialSteps.Count == 0) return;
 
             MusicalTutorialStep step = tutorialSteps[Mathf.Clamp(currentStepIndex, 0, tutorialSteps.Count - 1)];
-            if (tutorialText != null) tutorialText.text = step.text ?? string.Empty;
+            StartTyping(step.text);
             if (stepCounterText != null) stepCounterText.text = $"{currentStepIndex + 1}/{tutorialSteps.Count}";
 
             if (characterImage != null)
@@ -174,39 +193,111 @@ namespace Bolin
             SetButtonsInteractable(true);
         }
 
-        private void StartVisibilityRoutine(bool show)
+        private void StartTyping(string message)
         {
-            StopVisibilityRoutine();
-            visibilityRoutine = StartCoroutine(VisibilityRoutine(show));
+            currentFullText = message ?? string.Empty;
+            if (typeRoutine != null) StopCoroutine(typeRoutine);
+            typeRoutine = StartCoroutine(TypeRoutine());
         }
 
-        private IEnumerator VisibilityRoutine(bool show)
+        private IEnumerator TypeRoutine()
         {
-            if (show) SetOverlayState(0f, true);
+            isTyping = true;
+            if (tutorialText != null) tutorialText.text = string.Empty;
 
-            float startAlpha = overlayGroup != null ? overlayGroup.alpha : (show ? 0f : 1f);
-            float targetAlpha = show ? 1f : 0f;
+            if (string.IsNullOrEmpty(currentFullText) || typewriterCharactersPerSecond <= 0f)
+            {
+                FinishTyping();
+                yield break;
+            }
+
+            float delay = 1f / typewriterCharactersPerSecond;
             float elapsed = 0f;
-            while (elapsed < fadeDuration)
+            int visibleCharacters = 0;
+            while (visibleCharacters < currentFullText.Length)
             {
                 elapsed += Time.unscaledDeltaTime;
-                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / fadeDuration));
-                SetOverlayState(Mathf.Lerp(startAlpha, targetAlpha, t), true);
+                int targetCount = Mathf.Min(currentFullText.Length, Mathf.FloorToInt(elapsed / delay));
+                if (targetCount > visibleCharacters)
+                {
+                    visibleCharacters = targetCount;
+                    if (tutorialText != null) tutorialText.text = currentFullText.Substring(0, visibleCharacters);
+                }
+
                 yield return null;
             }
 
-            visibilityRoutine = null;
-            if (show)
+            FinishTyping();
+        }
+
+        private void FinishTyping()
+        {
+            if (typeRoutine != null)
             {
-                SetOverlayState(1f, true);
+                StopCoroutine(typeRoutine);
+                typeRoutine = null;
             }
-            else
+
+            isTyping = false;
+            if (tutorialText != null) tutorialText.text = currentFullText;
+        }
+
+        private void PlayEntryAnimation()
+        {
+            if (entryRoutine != null) StopCoroutine(entryRoutine);
+            if (!isActiveAndEnabled || (characterRoot == null && bubbleRoot == null)) return;
+            entryRoutine = StartCoroutine(EntryRoutine());
+        }
+
+        private IEnumerator EntryRoutine()
+        {
+            Vector2 startPosition = characterBasePosition + Vector2.left * characterEntryDistance;
+            Vector3 startBubble = bubbleBaseScale * 0.92f;
+            float elapsed = 0f;
+
+            if (characterRoot != null) characterRoot.anchoredPosition = startPosition;
+            if (bubbleRoot != null) bubbleRoot.localScale = startBubble;
+
+            while (elapsed < entryDuration)
             {
-                bool notifyCompletion = completionRequested;
-                completionRequested = false;
-                HideImmediate(true);
-                if (notifyCompletion) TutorialCompleted?.Invoke();
+                elapsed += Time.unscaledDeltaTime;
+                float t = Mathf.Clamp01(elapsed / entryDuration);
+                float eased = 1f - Mathf.Pow(1f - t, 3f);
+
+                if (characterRoot != null)
+                {
+                    characterRoot.anchoredPosition = Vector2.LerpUnclamped(startPosition, characterBasePosition, eased);
+                    characterRoot.localEulerAngles = characterBaseRotation + Vector3.forward * (Mathf.Sin(t * Mathf.PI * 2f) * waveDegrees);
+                }
+
+                if (bubbleRoot != null) bubbleRoot.localScale = Vector3.LerpUnclamped(startBubble, bubbleBaseScale, eased);
+                yield return null;
             }
+
+            ResetPresentationState();
+            entryRoutine = null;
+        }
+
+        private void CaptureBaseState()
+        {
+            if (characterRoot != null)
+            {
+                characterBasePosition = characterRoot.anchoredPosition;
+                characterBaseRotation = characterRoot.localEulerAngles;
+            }
+
+            if (bubbleRoot != null) bubbleBaseScale = bubbleRoot.localScale;
+        }
+
+        private void ResetPresentationState()
+        {
+            if (characterRoot != null)
+            {
+                characterRoot.anchoredPosition = characterBasePosition;
+                characterRoot.localEulerAngles = characterBaseRotation;
+            }
+
+            if (bubbleRoot != null) bubbleRoot.localScale = bubbleBaseScale;
         }
 
         private void BlockGameplay()
@@ -253,10 +344,13 @@ namespace Bolin
             if (button != null) button.gameObject.SetActive(visible);
         }
 
-        private void StopVisibilityRoutine()
+        private void StopRunningRoutines()
         {
-            if (visibilityRoutine != null) StopCoroutine(visibilityRoutine);
-            visibilityRoutine = null;
+            if (typeRoutine != null) StopCoroutine(typeRoutine);
+            if (entryRoutine != null) StopCoroutine(entryRoutine);
+            typeRoutine = null;
+            entryRoutine = null;
+            isTyping = false;
         }
 
         private void EnsureDefaultSteps()
@@ -273,7 +367,7 @@ namespace Bolin
 
         private void OnDisable()
         {
-            StopVisibilityRoutine();
+            StopRunningRoutines();
             if (IsActive)
             {
                 IsActive = false;

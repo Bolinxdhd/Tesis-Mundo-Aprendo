@@ -12,20 +12,21 @@ namespace Bolin
     {
         [TextArea(2, 4)] public string text;
         public Sprite biblioSprite;
-        public RectTransform highlightedElement;
         public Vector2 dialogueAnchoredPosition;
         [Min(0f)] public float minimumVisibleSeconds;
         public Sprite iconSprite;
     }
 
+    /// <summary>
+    /// One-time story tutorial. Its presentation intentionally uses the same
+    /// entrance rhythm as Mundo Tamaños, without a target highlight or idle float.
+    /// </summary>
     public class StoryTutorialAnimationController : MonoBehaviour
     {
         [Header("Overlay")]
         [SerializeField] private CanvasGroup overlayGroup;
         [SerializeField] private CanvasGroup inputBlockerGroup;
         [SerializeField] private Image darkBackground;
-        [SerializeField] private RectTransform highlightArea;
-        [SerializeField] private Image highlightImage;
 
         [Header("Biblio")]
         [SerializeField] private RectTransform guideCharacter;
@@ -51,19 +52,17 @@ namespace Bolin
         [SerializeField] private List<TutorialStepData> tutorialSteps = new();
 
         [Header("Animacion")]
-        [SerializeField, Min(0.05f)] private float fadeDuration = 0.22f;
-        [SerializeField, Min(0.05f)] private float entryDuration = 0.35f;
-        [SerializeField, Min(0f)] private float entryDistance = 130f;
-        [SerializeField, Min(0f)] private float idleFloatDistance = 8f;
-        [SerializeField, Min(0f)] private float idleRotationDegrees = 3f;
-        [SerializeField, Min(0f)] private float highlightPadding = 20f;
+        [SerializeField, Min(1f)] private float typewriterCharactersPerSecond = 42f;
+        [SerializeField, Min(0f)] private float characterEntryDistance = 120f;
+        [SerializeField, Min(0.05f)] private float entryDuration = 0.28f;
+        [SerializeField, Min(0f)] private float waveDegrees = 4f;
 
-        private readonly Vector3[] highlightCorners = new Vector3[4];
-        private Coroutine visibilityRoutine;
-        private Coroutine motionRoutine;
+        private Coroutine typeRoutine;
+        private Coroutine entryRoutine;
+        private string currentFullText = string.Empty;
         private int currentStepIndex;
+        private bool isTyping;
         private Vector2 guideBasePosition;
-        private Vector3 guideBaseScale = Vector3.one;
         private Quaternion guideBaseRotation = Quaternion.identity;
         private Vector2 dialogueBasePosition;
         private Vector3 dialogueBaseScale = Vector3.one;
@@ -81,7 +80,7 @@ namespace Bolin
             if (nextButton != null) nextButton.onClick.AddListener(NextStep);
             if (finishButton != null) finishButton.onClick.AddListener(CompleteTutorial);
             if (skipButton != null) skipButton.onClick.AddListener(RequestSkip);
-            if (confirmSkipButton != null) confirmSkipButton.onClick.AddListener(CompleteTutorial);
+            if (confirmSkipButton != null) confirmSkipButton.onClick.AddListener(SkipTutorial);
             if (cancelSkipButton != null) cancelSkipButton.onClick.AddListener(CancelSkip);
 
             EnsureDefaultSteps();
@@ -111,19 +110,22 @@ namespace Bolin
             }
 
             gameObject.SetActive(true);
+            StopRunningRoutines();
             IsActive = true;
             currentStepIndex = 0;
             CancelSkip();
             CaptureBaseState();
+            SetGroup(overlayGroup, 1f, true);
+            SetGroup(inputBlockerGroup, 1f, true);
             ApplyCurrentStep();
-            StartVisibilityRoutine(true);
-            StartMotionRoutine();
+            PlayEntryAnimation();
         }
 
         public void NextStep()
         {
             if (!CanAdvanceStep()) return;
 
+            if (isTyping) FinishTyping();
             if (currentStepIndex < tutorialSteps.Count - 1)
             {
                 currentStepIndex++;
@@ -138,14 +140,18 @@ namespace Bolin
         {
             if (!IsActive || currentStepIndex <= 0) return;
 
+            if (isTyping) FinishTyping();
             currentStepIndex--;
             ApplyCurrentStep();
         }
 
         public void CompleteTutorial()
         {
+            if (!IsActive) return;
+
+            if (isTyping) FinishTyping();
             StoryProgressRepository.MarkTutorialCompleted();
-            StartVisibilityRoutine(false);
+            HideImmediate();
         }
 
         public void RequestSkip()
@@ -154,7 +160,7 @@ namespace Bolin
 
             if (skipConfirmationRoot == null)
             {
-                CompleteTutorial();
+                SkipTutorial();
                 return;
             }
 
@@ -173,21 +179,30 @@ namespace Bolin
             HideImmediate(true);
         }
 
+        private void SkipTutorial()
+        {
+            if (!IsActive) return;
+
+            StoryProgressRepository.MarkTutorialCompleted();
+            HideImmediate();
+        }
+
         private void HideImmediate(bool deactivateObject)
         {
             StopRunningRoutines();
             IsActive = false;
+            ResetPresentationState();
+            if (tutorialText != null) tutorialText.text = string.Empty;
             SetGroup(overlayGroup, 0f, false);
             SetGroup(inputBlockerGroup, 0f, false);
             SetGroup(skipConfirmationGroup, 0f, false);
-            if (highlightArea != null) highlightArea.gameObject.SetActive(false);
             if (skipConfirmationRoot != null) skipConfirmationRoot.SetActive(false);
             if (deactivateObject) gameObject.SetActive(false);
         }
 
         private bool CanAdvanceStep()
         {
-            if (!IsActive) return false;
+            if (!IsActive || tutorialSteps.Count == 0) return false;
             TutorialStepData step = tutorialSteps[Mathf.Clamp(currentStepIndex, 0, tutorialSteps.Count - 1)];
             return Time.unscaledTime - stepShownAt >= Mathf.Max(0f, step.minimumVisibleSeconds);
         }
@@ -197,7 +212,7 @@ namespace Bolin
             TutorialStepData step = tutorialSteps[Mathf.Clamp(currentStepIndex, 0, tutorialSteps.Count - 1)];
             stepShownAt = Time.unscaledTime;
 
-            if (tutorialText != null) tutorialText.text = step.text ?? string.Empty;
+            StartTyping(step.text);
             if (stepCounterText != null) stepCounterText.text = $"{currentStepIndex + 1}/{tutorialSteps.Count}";
 
             if (guideCharacterImage != null)
@@ -223,137 +238,100 @@ namespace Bolin
             SetButtonVisible(previousButton, currentStepIndex > 0);
             SetButtonVisible(nextButton, currentStepIndex < tutorialSteps.Count - 1);
             SetButtonVisible(finishButton, currentStepIndex == tutorialSteps.Count - 1);
-            UpdateHighlight(step);
         }
 
-        private void UpdateHighlight(TutorialStepData step)
+        private void StartTyping(string message)
         {
-            if (highlightArea == null) return;
+            currentFullText = message ?? string.Empty;
+            if (typeRoutine != null) StopCoroutine(typeRoutine);
+            typeRoutine = StartCoroutine(TypeRoutine());
+        }
 
-            bool showHighlight = step.highlightedElement != null && step.highlightedElement.gameObject.activeInHierarchy;
-            highlightArea.gameObject.SetActive(showHighlight);
-            if (!showHighlight) return;
+        private IEnumerator TypeRoutine()
+        {
+            isTyping = true;
+            if (tutorialText != null) tutorialText.text = string.Empty;
 
-            RectTransform parent = highlightArea.parent as RectTransform;
-            if (parent == null) return;
-
-            step.highlightedElement.GetWorldCorners(highlightCorners);
-            Vector2 min = WorldToLocal(parent, highlightCorners[0]);
-            Vector2 max = WorldToLocal(parent, highlightCorners[2]);
-            Vector2 size = max - min;
-            highlightArea.anchoredPosition = min + size * 0.5f;
-            highlightArea.sizeDelta = new Vector2(Mathf.Abs(size.x), Mathf.Abs(size.y)) + Vector2.one * highlightPadding;
-
-            if (highlightImage != null)
+            if (string.IsNullOrEmpty(currentFullText) || typewriterCharactersPerSecond <= 0f)
             {
-                Color color = highlightImage.color;
-                color.a = 0.24f;
-                highlightImage.color = color;
-            }
-        }
-
-        private static Vector2 WorldToLocal(RectTransform parent, Vector3 worldPosition)
-        {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                parent,
-                RectTransformUtility.WorldToScreenPoint(null, worldPosition),
-                null,
-                out Vector2 localPoint);
-            return localPoint;
-        }
-
-        private void StartVisibilityRoutine(bool show)
-        {
-            if (visibilityRoutine != null) StopCoroutine(visibilityRoutine);
-            visibilityRoutine = StartCoroutine(VisibilityRoutine(show));
-        }
-
-        private IEnumerator VisibilityRoutine(bool show)
-        {
-            if (show)
-            {
-                SetGroup(overlayGroup, 0f, true);
-                SetGroup(inputBlockerGroup, 0f, true);
+                FinishTyping();
+                yield break;
             }
 
-            float startAlpha = overlayGroup != null ? overlayGroup.alpha : (show ? 0f : 1f);
-            float targetAlpha = show ? 1f : 0f;
+            float delay = 1f / typewriterCharactersPerSecond;
             float elapsed = 0f;
-            while (elapsed < fadeDuration)
+            int visibleCharacters = 0;
+            while (visibleCharacters < currentFullText.Length)
             {
                 elapsed += Time.unscaledDeltaTime;
-                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / fadeDuration));
-                float alpha = Mathf.Lerp(startAlpha, targetAlpha, t);
-                SetGroup(overlayGroup, alpha, true);
-                SetGroup(inputBlockerGroup, alpha, true);
+                int targetCount = Mathf.Min(currentFullText.Length, Mathf.FloorToInt(elapsed / delay));
+                if (targetCount > visibleCharacters)
+                {
+                    visibleCharacters = targetCount;
+                    if (tutorialText != null) tutorialText.text = currentFullText.Substring(0, visibleCharacters);
+                }
+
                 yield return null;
             }
 
-            if (!show)
-            {
-                HideImmediate();
-            }
-            else
-            {
-                SetGroup(overlayGroup, 1f, true);
-                SetGroup(inputBlockerGroup, 1f, true);
-            }
-
-            visibilityRoutine = null;
+            FinishTyping();
         }
 
-        private void StartMotionRoutine()
+        private void FinishTyping()
         {
-            if (motionRoutine != null) StopCoroutine(motionRoutine);
-            motionRoutine = StartCoroutine(MotionRoutine());
-        }
-
-        private IEnumerator MotionRoutine()
-        {
-            if (guideCharacter != null)
+            if (typeRoutine != null)
             {
-                guideCharacter.anchoredPosition = guideBasePosition + Vector2.down * entryDistance;
-                guideCharacter.localScale = guideBaseScale * 0.88f;
+                StopCoroutine(typeRoutine);
+                typeRoutine = null;
             }
 
-            if (dialoguePanel != null) dialoguePanel.localScale = dialogueBaseScale * 0.92f;
+            isTyping = false;
+            if (tutorialText != null) tutorialText.text = currentFullText;
+        }
 
+        private void PlayEntryAnimation()
+        {
+            if (entryRoutine != null) StopCoroutine(entryRoutine);
+            if (!isActiveAndEnabled || (guideCharacter == null && dialoguePanel == null)) return;
+            entryRoutine = StartCoroutine(EntryRoutine());
+        }
+
+        private IEnumerator EntryRoutine()
+        {
+            Vector2 startPosition = guideBasePosition + Vector2.left * characterEntryDistance;
+            Vector3 startBubble = dialogueBaseScale * 0.92f;
             float elapsed = 0f;
+
+            if (guideCharacter != null) guideCharacter.anchoredPosition = startPosition;
+            if (dialoguePanel != null) dialoguePanel.localScale = startBubble;
+
             while (elapsed < entryDuration)
             {
                 elapsed += Time.unscaledDeltaTime;
-                float t = 1f - Mathf.Pow(1f - Mathf.Clamp01(elapsed / entryDuration), 3f);
+                float t = Mathf.Clamp01(elapsed / entryDuration);
+                float eased = 1f - Mathf.Pow(1f - t, 3f);
+
                 if (guideCharacter != null)
                 {
-                    guideCharacter.anchoredPosition = Vector2.LerpUnclamped(guideBasePosition + Vector2.down * entryDistance, guideBasePosition, t);
-                    guideCharacter.localScale = Vector3.LerpUnclamped(guideBaseScale * 0.88f, guideBaseScale, t);
+                    guideCharacter.anchoredPosition = Vector2.LerpUnclamped(startPosition, guideBasePosition, eased);
+                    guideCharacter.localRotation = guideBaseRotation * Quaternion.Euler(0f, 0f, Mathf.Sin(t * Mathf.PI * 2f) * waveDegrees);
                 }
 
-                if (dialoguePanel != null) dialoguePanel.localScale = Vector3.LerpUnclamped(dialogueBaseScale * 0.92f, dialogueBaseScale, t);
+                if (dialoguePanel != null) dialoguePanel.localScale = Vector3.LerpUnclamped(startBubble, dialogueBaseScale, eased);
                 yield return null;
             }
 
-            while (IsActive)
-            {
-                float wave = Mathf.Sin(Time.unscaledTime * 1.8f);
-                if (guideCharacter != null)
-                {
-                    guideCharacter.anchoredPosition = guideBasePosition + Vector2.up * (wave * idleFloatDistance);
-                    guideCharacter.localRotation = guideBaseRotation * Quaternion.Euler(0f, 0f, wave * idleRotationDegrees);
-                }
-
-                yield return null;
-            }
-
-            motionRoutine = null;
+            ResetPresentationState();
+            entryRoutine = null;
         }
 
         private void StopRunningRoutines()
         {
-            if (visibilityRoutine != null) StopCoroutine(visibilityRoutine);
-            if (motionRoutine != null) StopCoroutine(motionRoutine);
-            visibilityRoutine = null;
-            motionRoutine = null;
+            if (typeRoutine != null) StopCoroutine(typeRoutine);
+            if (entryRoutine != null) StopCoroutine(entryRoutine);
+            typeRoutine = null;
+            entryRoutine = null;
+            isTyping = false;
         }
 
         private void CaptureBaseState()
@@ -361,7 +339,6 @@ namespace Bolin
             if (guideCharacter != null)
             {
                 guideBasePosition = guideCharacter.anchoredPosition;
-                guideBaseScale = guideCharacter.localScale;
                 guideBaseRotation = guideCharacter.localRotation;
             }
 
@@ -370,6 +347,17 @@ namespace Bolin
                 dialogueBasePosition = dialoguePanel.anchoredPosition;
                 dialogueBaseScale = dialoguePanel.localScale;
             }
+        }
+
+        private void ResetPresentationState()
+        {
+            if (guideCharacter != null)
+            {
+                guideCharacter.anchoredPosition = guideBasePosition;
+                guideCharacter.localRotation = guideBaseRotation;
+            }
+
+            if (dialoguePanel != null) dialoguePanel.localScale = dialogueBaseScale;
         }
 
         private void EnsureDefaultSteps()
@@ -400,6 +388,7 @@ namespace Bolin
         private void OnDisable()
         {
             StopRunningRoutines();
+            IsActive = false;
         }
     }
 }
