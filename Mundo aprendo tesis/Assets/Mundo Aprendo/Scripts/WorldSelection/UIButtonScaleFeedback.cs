@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Bolin
 {
     /// <summary>Small unscaled hover/press response used by the two bottom controls.</summary>
     public sealed class UIButtonScaleFeedback : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
-        IPointerDownHandler, IPointerUpHandler, ISelectHandler, IDeselectHandler
+        IPointerDownHandler, IPointerUpHandler, IPointerClickHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
+        [SerializeField] private Button button;
         [SerializeField] private RectTransform target;
         [SerializeField, Range(1f, 1.15f)] private float hoverScale = 1.04f;
         [SerializeField, Range(0.8f, 1f)] private float pressedScale = 0.96f;
@@ -18,6 +20,7 @@ namespace Bolin
 
         private void Awake()
         {
+            if (button == null) button = GetComponent<Button>();
             if (target == null) target = transform as RectTransform;
         }
 
@@ -32,8 +35,15 @@ namespace Bolin
         public void OnPointerExit(PointerEventData eventData) { highlighted = false; AnimateTo(1f); }
         public void OnPointerDown(PointerEventData eventData) { AnimateTo(pressedScale); }
         public void OnPointerUp(PointerEventData eventData) { AnimateTo(highlighted ? hoverScale : 1f); }
+        public void OnPointerClick(PointerEventData eventData) { PlayClickIfInteractable(); }
         public void OnSelect(BaseEventData eventData) { highlighted = true; AnimateTo(hoverScale); }
         public void OnDeselect(BaseEventData eventData) { highlighted = false; AnimateTo(1f); }
+        public void OnSubmit(BaseEventData eventData) { PlayClickIfInteractable(); }
+
+        private void PlayClickIfInteractable()
+        {
+            if (button != null && button.IsInteractable()) AudioManager.TryPlayUiClick();
+        }
 
         private void AnimateTo(float scale)
         {

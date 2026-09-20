@@ -1,14 +1,18 @@
 # Unity generated folders
-/Library/
-/Temp/
-/Obj/
-/Logs/
-/UserSettings/
-/MemoryCaptures/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+MemoryCaptures/
+/tmp/
 
 # Unity build/cache files
 *.csproj
 *.sln
+*.slnx
 *.user
 *.pidb
 *.booproj
@@ -17,6 +21,7 @@
 *.mdb
 *.opendb
 *.VC.db
+*.log
 
 # OS/editor noise
 .DS_Store
@@ -24,7 +29,8 @@ Thumbs.db
 .vs/
 .vscode/
 .idea/
+.agents/
+.codex/
 
 # Crash reports
 /sysinfo.txt
-

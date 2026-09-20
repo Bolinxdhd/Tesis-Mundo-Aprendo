@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba8b7374b517f94d83dee2b68b16318, type: 3}
+  m_Name: Cuento_Milo
+  m_EditorClassIdentifier: Assembly-CSharp::Bolin.CuentoData
+  id: milo
+  titulo: "Milo y la linterna de la valent\xEDa"
+  portada: {fileID: 21300000, guid: e610e1f1a08a72c419704095fbca8945, type: 3}
+  narracionTexto: "Milo, un gatito gris, ten\xEDa miedo a la oscuridad. Cada noche,
+    encend\xEDa una linterna peque\xF1a para no asustarse. Una noche, escuch\xF3
+    a su amiga Rana llorar porque se hab\xEDa perdido entre los arbustos. Milo estaba
+    asustado, pero encendi\xF3 su linterna y sigui\xF3 las huellas mojadas de Rana.
+    Cuando la encontr\xF3, ella le dijo: \u201CGracias por ser valiente\u201D. Milo
+    comprendi\xF3 que la valent\xEDa no es no tener miedo, sino ayudar, aunque el
+    miedo est\xE9 ah\xED."
+  narracionAudio: {fileID: 0}
+  pictogramas:
+  - id: gatito
+    imagen: {fileID: 21300000, guid: e610e1f1a08a72c419704095fbca8945, type: 3}
+    concepto: gatito
+    respuestasAceptadas:
+    - gatito
+    - gato
+    - milo
+    ayuda: "Es un gato peque\xF1o. Empieza con GA\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: linterna
+    imagen: {fileID: 21300000, guid: 122be0799db300e4fbe602293f2b19f6, type: 3}
+    concepto: linterna
+    respuestasAceptadas:
+    - linterna
+    ayuda: "Sirve para alumbrar. Empieza con LIN\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: oscuridad
+    imagen: {fileID: 21300000, guid: 176e99a0c7d96d6458dcf72ee954e955, type: 3}
+    concepto: oscuridad
+    respuestasAceptadas:
+    - oscuridad
+    - noche
+    ayuda: "Aparece cuando no hay luz. Empieza con OS\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: rana
+    imagen: {fileID: 21300000, guid: d4d33d6608295d04a94b0a39d86113e0, type: 3}
+    concepto: rana
+    respuestasAceptadas:
+    - rana
+    ayuda: "Es verde y salta. Empieza con RA\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: arbustos
+    imagen: {fileID: 21300000, guid: 6325631e3c0e31c408fd38f8564ee9e2, type: 3}
+    concepto: arbustos
+    respuestasAceptadas:
+    - arbustos
+    - arbusto
+    ayuda: "Son plantas m\xE1s peque\xF1as que los \xE1rboles. Empieza con AR\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: huellas
+    imagen: {fileID: 21300000, guid: 6be82e4d2373e004d82b366e618c6a3d, type: 3}
+    concepto: huellas
+    respuestasAceptadas:
+    - huellas
+    - huella
+    ayuda: "Son marcas de los pasos. Empieza con HUE\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: corazon
+    imagen: {fileID: 21300000, guid: 11ad7ed641fd4ec4894c73e20e182896, type: 3}
+    concepto: "coraz\xF3n"
+    respuestasAceptadas:
+    - "coraz\xF3n"
+    - corazon
+    - "valent\xEDa"
+    - valentia
+    ayuda: "Representa la valent\xEDa. Empieza con COR\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: ayudar
+    imagen: {fileID: 21300000, guid: eaa33d4c3eab9c24898cbd4e1e8a61f0, type: 3}
+    concepto: ayudar
+    respuestasAceptadas:
+    - ayudar
+    - ayuda
+    ayuda: "Es hacer algo bueno por otra persona. Empieza con AY\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}

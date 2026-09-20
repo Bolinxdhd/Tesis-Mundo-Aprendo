@@ -3,24 +3,23 @@ Built from '6000.4/staging' branch; Version is '6000.4.0f1 (8cf496087c8f) revisi
 OS: 'Windows 10  (10.0.19045) 64bit Professional' Language: 'es' Physical Memory: 32690 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
 System  architecture: x64
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-07-14T05:44:00.9373472Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-Boloxdhd" at "2026-09-09T00:51:24.3991725Z"
 Process architecture: x64
-Date: 2026-07-14T05:44:00Z
+Date: 2026-09-09T00:51:24Z
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\6000.4.0f1\Editor\Unity.exe
 -batchmode
--nographics
+-quit
 -projectPath
 F:\PUN\Tesis-Mundo-Aprendo\Mundo
 aprendo
 tesis
 -executeMethod
-Bolin.Editor.MundoTamanosSafariReconstructionSetup.Apply
--quit
+Bolin.EditorTools.StoryLibraryVisualBuilder.InspectSelectionFromCommandLine
 -logFile
 F:\PUN\Tesis-Mundo-Aprendo\Mundo
 aprendo
-tesis\Temp\MundoTamanosCustomUiApply.log
+tesis\Temp\story-library-inspect.log
 Couldn't set project path to: F:/PUN/Tesis-Mundo-Aprendo/Mundo aprendo tesis/F:/PUN/Tesis-Mundo-Aprendo/Mundo
 Exiting without the bug reporter. Application will terminate with return code 1

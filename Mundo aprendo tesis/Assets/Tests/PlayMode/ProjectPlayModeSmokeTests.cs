@@ -154,7 +154,7 @@ namespace MundoAprendo.PlayModeTests
         }
 
         [UnityTest]
-        public IEnumerator MenuMusic_IsScopedToMenuAndDoesNotDuplicate()
+        public IEnumerator SceneMusic_IsScopedAndDoesNotDuplicate()
         {
             yield return SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
             yield return null;
@@ -178,7 +178,9 @@ namespace MundoAprendo.PlayModeTests
             Assert.AreEqual(1, selectionManagers.Length);
             AudioSource selectionMusic = selectionManagers[0].GetComponentsInChildren<AudioSource>(true)
                 .Single(source => source.gameObject.name == "MusicSource");
-            Assert.IsNull(selectionMusic.clip);
+            Assert.NotNull(selectionMusic.clip);
+            Assert.AreEqual("BGM_SeleccionMundos_ChildsPlay", selectionMusic.clip.name);
+            Assert.IsTrue(selectionMusic.loop);
 
             yield return SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
             yield return null;
@@ -187,108 +189,24 @@ namespace MundoAprendo.PlayModeTests
         }
 
         [UnityTest]
-        public IEnumerator StoryVoiceFilter_RejectsForeignWordsAndRepeatedFinalFragments()
+        public IEnumerator MenuExitButton_HasApplicationQuitAction()
         {
-            yield return SceneManager.LoadSceneAsync("MundoCuentos_VozTest", LoadSceneMode.Single);
+            yield return SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Single);
             yield return null;
 
-            Type managerType = Type.GetType("Bolin.VoiceRecognitionTest, Assembly-CSharp");
-            Type wordType = Type.GetType("Bolin.PalabraReconocida, Assembly-CSharp");
-            Assert.NotNull(managerType);
-            Assert.NotNull(wordType);
-            Component manager = SceneManager.GetActiveScene().GetRootGameObjects()
-                .SelectMany(root => root.GetComponentsInChildren(managerType, true))
-                .Cast<Component>().Single();
-            Assert.NotNull(manager);
-            managerType.GetMethod("ClearRecognizedText").Invoke(manager, null);
+            Button exitButton = SceneManager.GetActiveScene().GetRootGameObjects()
+                .SelectMany(root => root.GetComponentsInChildren<Button>(true))
+                .Single(button => button.name == "Button/Salir");
+            Type quitActionType = Type.GetType("Bolin.ApplicationQuitButton, Assembly-CSharp");
+            Assert.NotNull(quitActionType);
 
-            MethodInfo append = managerType.GetMethod(
-                "AppendFinalRecognizedFragment",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-            FieldInfo wordsField = managerType.GetField(
-                "palabrasMostradas",
-                BindingFlags.Instance | BindingFlags.NonPublic);
-            Assert.NotNull(append);
-            Assert.NotNull(wordsField);
+            Component quitAction = exitButton.GetComponent(quitActionType);
+            Assert.NotNull(quitAction, "El boton Salir debe incluir la accion de cerrar la aplicacion.");
 
-            append.Invoke(manager, new object[] { "Habia una vez cuatro cerditos" });
-            IList words = (IList)wordsField.GetValue(manager);
-            FieldInfo isCorrectField = wordType.GetField("esCorrecta");
-            Assert.NotNull(isCorrectField);
-            Assert.AreEqual(4, words.Count);
-            Assert.IsTrue(words.Cast<object>().All(word => (bool)isCorrectField.GetValue(word)));
-            Assert.IsFalse(words.Cast<object>().Select(word => wordType.GetField("textoNormalizado").GetValue(word).ToString()).Contains("cuatro"));
-
-            managerType.GetMethod("ClearRecognizedText").Invoke(manager, null);
-            append.Invoke(manager, new object[] { "Habia una vez tres cerditos" });
-            int countAfterFirstFinal = words.Count;
-            append.Invoke(manager, new object[] { "Habia una vez tres cerditos" });
-            Assert.AreEqual(countAfterFirstFinal, words.Count);
-
-            append.Invoke(manager, new object[] { "ruido" });
-            Assert.AreEqual(countAfterFirstFinal, words.Count);
-        }
-
-        [UnityTest]
-        public IEnumerator StoryVoiceFilter_RebuildsVocabularyForEveryConfiguredStory()
-        {
-            yield return SceneManager.LoadSceneAsync("MundoCuentos_VozTest", LoadSceneMode.Single);
-            yield return null;
-
-            Type managerType = Type.GetType("Bolin.VoiceRecognitionTest, Assembly-CSharp");
-            Type storyType = Type.GetType("Bolin.CuentoData, Assembly-CSharp");
-            Type evaluatorType = Type.GetType("Bolin.ReadingEvaluator, Assembly-CSharp");
-            Type wordType = Type.GetType("Bolin.PalabraReconocida, Assembly-CSharp");
-            Assert.NotNull(managerType);
-            Assert.NotNull(storyType);
-            Assert.NotNull(evaluatorType);
-            Assert.NotNull(wordType);
-
-            Component manager = SceneManager.GetActiveScene().GetRootGameObjects()
-                .SelectMany(root => root.GetComponentsInChildren(managerType, true))
-                .Cast<Component>().Single();
-            FieldInfo storiesField = managerType.GetField("cuentosDisponibles", BindingFlags.Instance | BindingFlags.NonPublic);
-            FieldInfo wordsField = managerType.GetField("palabrasMostradas", BindingFlags.Instance | BindingFlags.NonPublic);
-            MethodInfo showReading = managerType.GetMethod("MostrarLectura", BindingFlags.Instance | BindingFlags.NonPublic);
-            MethodInfo clear = managerType.GetMethod("ClearRecognizedText");
-            MethodInfo append = managerType.GetMethod("AppendFinalRecognizedFragment", BindingFlags.Instance | BindingFlags.NonPublic);
-            MethodInfo getNormalizedWords = evaluatorType.GetMethod("GetNormalizedWords", BindingFlags.Public | BindingFlags.Static);
-            Assert.NotNull(storiesField);
-            Assert.NotNull(wordsField);
-            Assert.NotNull(showReading);
-            Assert.NotNull(clear);
-            Assert.NotNull(append);
-            Assert.NotNull(getNormalizedWords);
-
-            IList stories = (IList)storiesField.GetValue(manager);
-            Assert.GreaterOrEqual(stories.Count, 3);
-            FieldInfo id = storyType.GetField("id");
-            FieldInfo text = storyType.GetField("textoCompleto");
-            FieldInfo normalizedText = wordType.GetField("textoNormalizado");
-            Assert.NotNull(id);
-            Assert.NotNull(text);
-            Assert.NotNull(normalizedText);
-
-            for (int index = 0; index < stories.Count; index++)
-            {
-                object selectedStory = stories[index];
-                object otherStory = stories[(index + 1) % stories.Count];
-                string[] selectedWords = (string[])getNormalizedWords.Invoke(null, new[] { text.GetValue(selectedStory) });
-                string[] otherWords = (string[])getNormalizedWords.Invoke(null, new[] { text.GetValue(otherStory) });
-                string allowedWord = selectedWords.First();
-                string foreignWord = otherWords.First(word => Array.IndexOf(selectedWords, word) < 0);
-
-                showReading.Invoke(manager, new[] { selectedStory });
-                clear.Invoke(manager, null);
-                append.Invoke(manager, new object[] { $"{allowedWord} {foreignWord}" });
-
-                IList recognizedWords = (IList)wordsField.GetValue(manager);
-                string[] recognizedNormalized = recognizedWords.Cast<object>()
-                    .Select(word => normalizedText.GetValue(word).ToString())
-                    .ToArray();
-                Assert.Contains(allowedWord, recognizedNormalized, $"{id.GetValue(selectedStory)} debe conservar su vocabulario.");
-                Assert.IsFalse(recognizedNormalized.Contains(foreignWord), $"{id.GetValue(selectedStory)} no debe aceptar vocabulario de otro cuento.");
-            }
+            bool hasQuitListener = Enumerable.Range(0, exitButton.onClick.GetPersistentEventCount())
+                .Any(index => exitButton.onClick.GetPersistentTarget(index) == quitAction
+                    && exitButton.onClick.GetPersistentMethodName(index) == "QuitApplication");
+            Assert.IsTrue(hasQuitListener, "El evento OnClick de Salir debe invocar QuitApplication.");
         }
 
         [UnityTest]
@@ -364,11 +282,6 @@ namespace MundoAprendo.PlayModeTests
                 Assert.NotNull(overlayGroup);
                 Assert.IsTrue(overlayGroup.blocksRaycasts);
 
-                Component manager = FindSingleInActiveScene("Bolin.VoiceRecognitionTest");
-                manager.GetType().GetMethod("StartListening").Invoke(manager, null);
-                yield return null;
-                Assert.IsFalse((bool)GetPrivateField(manager, "isListeningSession"));
-
                 tutorial.GetType().GetMethod("CompleteTutorial").Invoke(tutorial, null);
                 yield return new WaitForSecondsRealtime(0.35f);
                 Assert.AreEqual(1, PlayerPrefs.GetInt(key, 0));
@@ -390,7 +303,7 @@ namespace MundoAprendo.PlayModeTests
         }
 
         [UnityTest]
-        public IEnumerator MusicalTutorial_AppearsOnceAndPreparesPianoWithoutAutoPlaying()
+        public IEnumerator MusicalTutorial_AppearsOnceAndStartsFirstSequence()
         {
             const string key = "MundoMusical_TutorialVisto";
             bool hadKey = PlayerPrefs.HasKey(key);
@@ -419,23 +332,18 @@ namespace MundoAprendo.PlayModeTests
                 Assert.IsFalse(tutorial.gameObject.activeSelf);
                 Assert.IsTrue((bool)GetPrivateField(game, "activityStarted"));
                 Assert.IsFalse((bool)GetPrivateField(game, "acceptingInput"));
-                Assert.IsNull(GetPrivateField(game, "sequenceRoutine"), "El tutorial solo prepara el piano; no debe reproducir automaticamente.");
+                Assert.NotNull(GetPrivateField(game, "sequenceRoutine"), "Al terminar el tutorial debe comenzar automaticamente la primera secuencia.");
 
                 IList keys = (IList)GetPrivateField(game, "keyButtons");
                 Assert.IsTrue(keys.Cast<Button>().All(button => !button.interactable));
                 Button listen = (Button)GetPrivateField(game, "startButton");
-                Assert.IsTrue(listen.gameObject.activeInHierarchy && listen.interactable);
+                Assert.IsTrue(listen.gameObject.activeInHierarchy);
+                Assert.IsFalse(listen.interactable, "Escuchar debe permanecer bloqueado mientras suena la secuencia automatica.");
                 Component listenGuide = listen.GetComponent(Type.GetType("Bolin.MusicalListenButtonGuide, Assembly-CSharp"));
-                Assert.NotNull(listenGuide, "ESCUCHAR debe tener una guía visual persistente tras el tutorial.");
+                Assert.NotNull(listenGuide);
                 Image listenGlow = (Image)GetPrivateField(listenGuide, "glowImage");
-                Assert.IsTrue((bool)GetPublicProperty(listenGuide, "IsGuiding"));
-                Assert.IsTrue(listenGlow.gameObject.activeInHierarchy);
-                Assert.Greater(listenGlow.color.a, 0.05f);
-
-                game.GetType().GetMethod("PlayCurrentSequence").Invoke(game, null);
-                yield return null;
-                Assert.NotNull(GetPrivateField(game, "sequenceRoutine"));
-                Assert.IsFalse(listenGlow.gameObject.activeSelf, "El brillo debe detenerse al pulsar Escuchar.");
+                Assert.IsFalse((bool)GetPublicProperty(listenGuide, "IsGuiding"));
+                Assert.IsFalse(listenGlow.gameObject.activeSelf, "La guia de Escuchar no debe mostrarse cuando la secuencia ya inicio.");
 
                 yield return SceneManager.LoadSceneAsync("MundoMusical", LoadSceneMode.Single);
                 yield return new WaitForSecondsRealtime(0.28f);
@@ -889,14 +797,14 @@ namespace MundoAprendo.PlayModeTests
                 yield return SceneManager.LoadSceneAsync("MundoCuentos_VozTest", LoadSceneMode.Single);
                 yield return null;
 
-                Component manager = FindSingleInActiveScene("Bolin.VoiceRecognitionTest");
+                Component manager = FindSingleInActiveScene("Bolin.MundoCuentosController");
                 string defaultStoryId = (string)progressType.GetField("DefaultStoryId").GetRawConstantValue();
                 manager.GetType().GetMethod("OpenStoryById").Invoke(manager, new object[] { defaultStoryId });
                 yield return null;
 
-                MethodInfo showResult = manager.GetType().GetMethod("MostrarResultado", BindingFlags.Instance | BindingFlags.NonPublic);
-                Assert.NotNull(showResult);
-                showResult.Invoke(manager, new object[] { 90, 3 });
+                MethodInfo completeStory = manager.GetType().GetMethod("CompleteStory", BindingFlags.Instance | BindingFlags.NonPublic);
+                Assert.NotNull(completeStory);
+                completeStory.Invoke(manager, null);
                 yield return null;
 
                 Component animation = FindSingleInActiveScene("Bolin.StoryResultStarAnimation");

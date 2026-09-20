@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
-    public class UIButtonFeedback : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+    public class UIButtonFeedback : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler,
+        IPointerUpHandler, IPointerClickHandler, ISubmitHandler
     {
         [SerializeField] private Button button;
         [SerializeField] private RectTransform target;
@@ -43,12 +44,21 @@ namespace Bolin
         {
             if (!IsInteractable()) return;
             AnimateTo(baseScale * pressedScale);
-            AudioManager.TryPlaySfx(clickClip);
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
             AnimateTo(pointerInside && IsInteractable() ? baseScale * hoverScale : baseScale);
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (IsInteractable()) AudioManager.TryPlayUiClick(clickClip);
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            if (IsInteractable()) AudioManager.TryPlayUiClick(clickClip);
         }
 
         private bool IsInteractable()

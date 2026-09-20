@@ -10,7 +10,7 @@ namespace Bolin
     /// the single owner of selection mechanics.
     /// </summary>
     public sealed class WorldCardView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
-        IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, ISelectHandler, IDeselectHandler
+        IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, ISelectHandler, IDeselectHandler, ISubmitHandler
     {
         [SerializeField, Range(0, WorldProgressRepository.WorldCount - 1)] private int worldIndex;
         [SerializeField] private Button worldButton;
@@ -74,6 +74,7 @@ namespace Bolin
         public void OnPointerClick(PointerEventData eventData)
         {
             Focus(true);
+            PlayClickIfInteractable();
             if (!WorldProgressRepository.IsUnlocked(worldIndex))
             {
                 cardAnimator?.PlayLockedFeedback();
@@ -100,6 +101,16 @@ namespace Bolin
         {
             selected = false;
             UpdateHoverState();
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+            PlayClickIfInteractable();
+        }
+
+        private void PlayClickIfInteractable()
+        {
+            if (worldButton != null && worldButton.IsInteractable()) AudioManager.TryPlayUiClick();
         }
 
         private void Focus(bool animate)

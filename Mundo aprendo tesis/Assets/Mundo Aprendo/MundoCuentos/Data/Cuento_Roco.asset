@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba8b7374b517f94d83dee2b68b16318, type: 3}
+  m_Name: Cuento_Roco
+  m_EditorClassIdentifier: Assembly-CSharp::Bolin.CuentoData
+  id: roco
+  titulo: "Roco, el perrito que pidi\xF3 perd\xF3n"
+  portada: {fileID: 21300000, guid: 33dbb81ae53325a409ed7e1516684590, type: 3}
+  narracionTexto: "Roco era un perrito juguet\xF3n que a veces corr\xEDa muy r\xE1pido
+    sin mirar. Un d\xEDa, mientras jugaba, choc\xF3 con su amiga Gata y le desorden\xF3
+    todos sus dibujos. Gata se enoj\xF3 mucho. Roco se sinti\xF3 triste y no sab\xEDa
+    qu\xE9 hacer. Pens\xF3 un momento y decidi\xF3 acercarse despacito: \u201CPerd\xF3n,
+    no quise hacerlo\u201D. Gata respir\xF3, sonri\xF3 y dijo: \u201CGracias por
+    decirlo, podemos arreglarlo juntos\u201D. Y pasaron la tarde dibujando nuevamente."
+  narracionAudio: {fileID: 0}
+  pictogramas:
+  - id: perrito
+    imagen: {fileID: 21300000, guid: 33dbb81ae53325a409ed7e1516684590, type: 3}
+    concepto: perrito
+    respuestasAceptadas:
+    - perrito
+    - perro
+    - roco
+    ayuda: "Es un perro peque\xF1o. Empieza con PE\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: gata
+    imagen: {fileID: 21300000, guid: 1fd7a345c059de64ea9c2585f37206b0, type: 3}
+    concepto: gata
+    respuestasAceptadas:
+    - gata
+    - gato
+    ayuda: "Es la amiga de Roco. Empieza con GA\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: dibujos
+    imagen: {fileID: 21300000, guid: 26b29d69f0ac59b408df886acc5bf7ae, type: 3}
+    concepto: dibujos
+    respuestasAceptadas:
+    - dibujos
+    - dibujo
+    - hojas
+    - hoja
+    ayuda: "Est\xE1n hechos sobre hojas. Empieza con DI\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: jugar
+    imagen: {fileID: 21300000, guid: 967c0a339dcb7514c93ddbe3ee83b75f, type: 3}
+    concepto: jugar
+    respuestasAceptadas:
+    - jugar
+    - correr
+    - corre
+    ayuda: "Es divertirse y correr. Empieza con JU\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: choque
+    imagen: {fileID: 21300000, guid: 4c407778a6004064fb14e22c27d9bbd4, type: 3}
+    concepto: choque
+    respuestasAceptadas:
+    - choque
+    - chocar
+    - "choc\xF3"
+    - choco
+    ayuda: "Ocurre cuando dos cosas se golpean. Empieza con CHO\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: cara_triste
+    imagen: {fileID: 21300000, guid: 37596946bdd68874bb1f2419815ecd1d, type: 3}
+    concepto: cara triste
+    respuestasAceptadas:
+    - cara triste
+    - triste
+    - tristeza
+    ayuda: "Muestra que alguien est\xE1 triste. Empieza con CA\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}

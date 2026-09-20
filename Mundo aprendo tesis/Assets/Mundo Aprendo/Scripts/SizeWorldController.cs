@@ -61,15 +61,13 @@ namespace Bolin
         [SerializeField] private Outline leftSelectionOutline;
         [SerializeField] private Outline rightSelectionOutline;
         [SerializeField] private RectTransform animalSafeArea;
-        [SerializeField] private GameObject resultPanel;
-        [SerializeField] private TextMeshProUGUI resultText;
-        [SerializeField] private Button returnButton;
+        [SerializeField, Tooltip("Boton Volver de la barra superior.")] private Button topBarReturnButton;
+        [SerializeField, Tooltip("Panel de resultado compartido por todos los mundos.")] private WorldResultPanel resultPanelView;
 
         [Header("Estrellas")]
         [SerializeField] private Image[] starImages = new Image[3];
         [SerializeField] private Sprite fullStarSprite;
         [SerializeField] private Sprite emptyStarSprite;
-        [SerializeField] private UIStarDisplay starDisplay;
 
         [Header("Animacion")]
         [SerializeField, Min(0.05f)] private float entranceDuration = 0.65f;
@@ -111,6 +109,7 @@ namespace Bolin
         {
             // Conecta botones y deja lista la escena antes de iniciar rondas.
             ConfigureButtons();
+            ConfigureResultPanel();
             PrepareInitialState();
         }
 
@@ -138,7 +137,7 @@ namespace Bolin
             acceptingAnswer = false;
             activityFinished = false;
 
-            if (resultPanel != null) resultPanel.SetActive(false);
+            if (resultPanelView != null) resultPanelView.HideImmediate();
             UpdateStarsUi();
             StartNextRound();
         }
@@ -197,17 +196,32 @@ namespace Bolin
                 feedbackText.text = "Actividad completada";
             }
 
-            if (resultText != null)
-            {
-                resultText.text = $"Actividad completada\nEstrellas obtenidas: {currentStars}/3";
-            }
-
-            if (resultPanel != null)
-            {
-                resultPanel.SetActive(true);
-            }
-
+            ShowResultPanel();
             OnActivityCompleted?.Invoke(currentStars);
+        }
+
+        /// <summary>Declara al panel compartido que acciones ofrece Mundo de Tamanos.</summary>
+        private void ConfigureResultPanel()
+        {
+            if (resultPanelView == null) return;
+
+            resultPanelView.Bind(WorldResultPanel.ResultAction.Retry, RestartActivity);
+            resultPanelView.Bind(WorldResultPanel.ResultAction.Next, null);
+            resultPanelView.Bind(WorldResultPanel.ResultAction.BackToList, null);
+            resultPanelView.Bind(WorldResultPanel.ResultAction.WorldSelection, ReturnToWorldSelection);
+            resultPanelView.SetLabel(WorldResultPanel.ResultAction.Retry, "REINTENTAR");
+            resultPanelView.SetLabel(WorldResultPanel.ResultAction.WorldSelection, "VOLVER A MUNDOS");
+        }
+
+        private void ShowResultPanel()
+        {
+            if (resultPanelView == null)
+            {
+                Debug.LogWarning("Mundo de Tamanos: falta asignar el panel de resultado compartido.", this);
+                return;
+            }
+
+            resultPanelView.Show(currentStars, $"Estrellas obtenidas: {currentStars}/3", "Actividad completada");
         }
 
         private void SubmitAnimalChoice(AnimalData selectedAnimal)
@@ -585,10 +599,10 @@ namespace Bolin
                 rightAnimalButton.onClick.AddListener(SelectRightAnimal);
             }
 
-            if (returnButton != null)
+            if (topBarReturnButton != null)
             {
-                returnButton.onClick.RemoveAllListeners();
-                returnButton.onClick.AddListener(ReturnToWorldSelection);
+                topBarReturnButton.onClick.RemoveAllListeners();
+                topBarReturnButton.onClick.AddListener(ReturnToWorldSelection);
             }
         }
 
@@ -607,16 +621,15 @@ namespace Bolin
                 feedbackText.text = string.Empty;
             }
 
-            if (resultPanel != null)
+            if (resultPanelView != null)
             {
-                resultPanel.SetActive(false);
+                resultPanelView.HideImmediate();
             }
         }
 
         private void UpdateStarsUi()
         {
             // Sincroniza estrellas manuales o UIStarDisplay segun lo configurado en escena.
-            if (starDisplay != null) starDisplay.SetImmediate(currentStars);
             if (starImages == null) return;
 
             for (int i = 0; i < starImages.Length; i++)

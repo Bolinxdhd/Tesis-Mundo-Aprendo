@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -79,18 +80,15 @@ namespace Assets.SurpriseBox.Scripts
         [Header("Flujo de actividad")]
         [SerializeField] private GameObject startPanel;
         [SerializeField] private GameObject pianoPanel;
-        [SerializeField] private GameObject resultPanel;
         [SerializeField] private Button startActivityButton;
-        [SerializeField] private Button returnButton;
-        [SerializeField] private TMP_Text tmpResultText;
-        [SerializeField, HideInInspector, FormerlySerializedAs("resultText")] private Text legacyResultText;
+        [SerializeField, Tooltip("Boton Volver de la barra superior (TopBar).")] private Button topBarReturnButton;
+        [SerializeField, Tooltip("Panel de resultado compartido por todos los mundos.")] private Bolin.WorldResultPanel resultPanelView;
         [SerializeField] private string returnSceneName = "SeleccionMundos";
 
         [Header("Estrellas")]
         [SerializeField] private Image[] starImages = new Image[3];
         [SerializeField] private Sprite fullStarSprite;
         [SerializeField] private Sprite emptyStarSprite;
-        [SerializeField] private Bolin.UIStarDisplay starDisplay;
         [SerializeField] private Bolin.UIStarDisplay topStarDisplay;
 
         [Header("Progreso visual de la secuencia")]
@@ -118,6 +116,7 @@ namespace Assets.SurpriseBox.Scripts
         private bool activityStarted;
         private bool activityFinished;
         private bool tutorialSubscribed;
+        private bool leavingScene;
 
         private void Reset()
         {
@@ -135,6 +134,7 @@ namespace Assets.SurpriseBox.Scripts
             EnsureDefaultData();
             ResolveMissingSceneReferences();
             ConfigureButtons();
+            ConfigureResultPanel();
             RefreshUi();
             PrepareInitialState();
         }
@@ -200,7 +200,7 @@ namespace Assets.SurpriseBox.Scripts
 
             if (startPanel != null) startPanel.SetActive(false);
             if (pianoPanel != null) pianoPanel.SetActive(true);
-            if (resultPanel != null) resultPanel.SetActive(false);
+            if (resultPanelView != null) resultPanelView.HideImmediate();
             levelAnimationController?.StopResultPresentation();
             if (startButton != null) startButton.gameObject.SetActive(true);
             if (nextButton != null) nextButton.gameObject.SetActive(false);
@@ -266,21 +266,36 @@ namespace Assets.SurpriseBox.Scripts
             SaveProgress();
             UpdateStarsUi();
 
-            if (tmpResultText != null)
-            {
-                tmpResultText.text = $"Actividad completada\nEstrellas obtenidas: {currentStars}/3";
-            }
-
-            if (resultPanel != null)
-            {
-                resultPanel.SetActive(true);
-            }
-
             if (pianoPanel != null) pianoPanel.SetActive(false);
 
-            if (starDisplay != null) starDisplay.ShowStars(currentStars, true);
             levelAnimationController?.PlayResult(currentStars);
+            ShowResultPanel();
             OnActivityCompleted?.Invoke(currentStars);
+        }
+
+        /// <summary>Declara al panel compartido que acciones ofrece Mundo Musical.</summary>
+        private void ConfigureResultPanel()
+        {
+            if (resultPanelView == null) return;
+
+            resultPanelView.Bind(Bolin.WorldResultPanel.ResultAction.Retry, ReplayActivity);
+            resultPanelView.Bind(Bolin.WorldResultPanel.ResultAction.Next, OpenNextWorld);
+            resultPanelView.Bind(Bolin.WorldResultPanel.ResultAction.BackToList, null);
+            resultPanelView.Bind(Bolin.WorldResultPanel.ResultAction.WorldSelection, ReturnToWorldSelection);
+            resultPanelView.SetLabel(Bolin.WorldResultPanel.ResultAction.Retry, "REINTENTAR");
+            resultPanelView.SetLabel(Bolin.WorldResultPanel.ResultAction.Next, "SIGUIENTE MUNDO");
+            resultPanelView.SetLabel(Bolin.WorldResultPanel.ResultAction.WorldSelection, "VOLVER A MUNDOS");
+        }
+
+        private void ShowResultPanel()
+        {
+            if (resultPanelView == null)
+            {
+                Debug.LogWarning("Mundo Musical: falta asignar el panel de resultado compartido.", this);
+                return;
+            }
+
+            resultPanelView.Show(currentStars, $"Estrellas obtenidas: {currentStars}/3", "Actividad completada");
         }
 
         public void RegisterMistake()
@@ -295,7 +310,6 @@ namespace Assets.SurpriseBox.Scripts
         {
             if (tmpErrorsText != null) tmpErrorsText.text = $"Errores: {mistakeCount}";
             if (topStarDisplay != null) topStarDisplay.SetImmediate(currentStars);
-            if (starDisplay != null) starDisplay.SetImmediate(currentStars);
             if (starImages == null) return;
 
             for (int i = 0; i < starImages.Length; i++)
@@ -318,32 +332,32 @@ namespace Assets.SurpriseBox.Scripts
 
         public void ReturnToWorldSelection()
         {
-            // Boton Volver: usa el navegador central de escenas para regresar a seleccion.
-            if (string.IsNullOrWhiteSpace(returnSceneName))
-            {
-                Debug.LogWarning("No hay una escena de regreso configurada para Mundo Musical.");
-                return;
-            }
-
-            StopRunningRoutines();
-            if (audioSource != null) audioSource.Stop();
-            levelAnimationController?.StopResultPresentation();
-            Bolin.SceneNavigation.LoadScene(returnSceneName, this);
+            // Boton Volver (barra superior y panel de resultado): regresa a la seleccion de mundos.
+            LeaveScene(returnSceneName, "No hay una escena de regreso configurada para Mundo Musical.");
         }
 
         /// <summary>Transitions from the result panel to the next world in the learning path.</summary>
         public void OpenNextWorld()
         {
-            if (string.IsNullOrWhiteSpace(nextWorldSceneName))
+            LeaveScene(nextWorldSceneName, "No hay una escena siguiente configurada para Mundo Musical.");
+        }
+
+        /// <summary>Detiene la actividad y navega a otra escena una sola vez.</summary>
+        private void LeaveScene(string sceneName, string missingSceneWarning)
+        {
+            // Un unico punto de salida evita dobles cargas si el nino pulsa dos veces.
+            if (leavingScene) return;
+
+            if (string.IsNullOrWhiteSpace(sceneName))
             {
-                Debug.LogWarning("No hay una escena siguiente configurada para Mundo Musical.");
+                Debug.LogWarning(missingSceneWarning, this);
                 return;
             }
 
             StopRunningRoutines();
             if (audioSource != null) audioSource.Stop();
             levelAnimationController?.StopResultPresentation();
-            Bolin.SceneNavigation.LoadScene(nextWorldSceneName, this);
+            leavingScene = Bolin.SceneNavigation.LoadScene(sceneName, this);
         }
 
         public void PlayCurrentSequence()
@@ -603,39 +617,28 @@ namespace Assets.SurpriseBox.Scripts
         private void ConfigureButtons()
         {
             // Conecta los botones del Inspector con las acciones de este controlador.
-            if (startActivityButton != null)
-            {
-                startActivityButton.onClick.RemoveAllListeners();
-                startActivityButton.onClick.AddListener(StartActivity);
-            }
-
-            if (startButton != null)
-            {
-                startButton.onClick.RemoveAllListeners();
-                startButton.onClick.AddListener(PlayCurrentSequence);
-            }
-
-            if (nextButton != null)
-            {
-                nextButton.onClick.RemoveAllListeners();
-                nextButton.onClick.AddListener(NextSequence);
-            }
+            BindClick(startActivityButton, StartActivity);
+            BindClick(startButton, PlayCurrentSequence);
+            BindClick(nextButton, NextSequence);
 
             for (int i = 0; i < keyButtons.Count; i++)
             {
-                Button keyButton = keyButtons[i];
-                if (keyButton == null) continue;
-
                 int index = i;
-                keyButton.onClick.RemoveAllListeners();
-                keyButton.onClick.AddListener(() => OnKeyPressed(index));
+                BindClick(keyButtons[i], () => OnKeyPressed(index));
             }
 
-            if (returnButton != null)
-            {
-                returnButton.onClick.RemoveAllListeners();
-                returnButton.onClick.AddListener(ReturnToWorldSelection);
-            }
+            // El Volver del resultado lo gestiona WorldResultPanel; aqui queda
+            // solo el de la barra superior.
+            BindClick(topBarReturnButton, ReturnToWorldSelection);
+        }
+
+        /// <summary>Asigna una accion a un boton opcional sin duplicar listeners.</summary>
+        private static void BindClick(Button button, UnityAction action)
+        {
+            if (button == null) return;
+
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(action);
         }
 
         private void RefreshUi()
@@ -675,7 +678,7 @@ namespace Assets.SurpriseBox.Scripts
 
             if (startPanel != null) startPanel.SetActive(true);
             if (pianoPanel != null) pianoPanel.SetActive(false);
-            if (resultPanel != null) resultPanel.SetActive(false);
+            if (resultPanelView != null) resultPanelView.HideImmediate();
             levelAnimationController?.StopResultPresentation();
             if (startButton != null) startButton.gameObject.SetActive(false);
             if (nextButton != null) nextButton.gameObject.SetActive(false);
@@ -798,14 +801,14 @@ namespace Assets.SurpriseBox.Scripts
         private void SubscribeTutorial()
         {
             if (tutorialSubscribed || tutorialController == null) return;
-            tutorialController.TutorialCompleted += PrepareActivityForListening;
+            tutorialController.TutorialCompleted += StartActivity;
             tutorialSubscribed = true;
         }
 
         private void UnsubscribeTutorial()
         {
             if (!tutorialSubscribed || tutorialController == null) return;
-            tutorialController.TutorialCompleted -= PrepareActivityForListening;
+            tutorialController.TutorialCompleted -= StartActivity;
             tutorialSubscribed = false;
         }
 

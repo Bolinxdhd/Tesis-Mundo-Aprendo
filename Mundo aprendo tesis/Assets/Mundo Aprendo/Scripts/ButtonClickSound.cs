@@ -13,7 +13,7 @@ namespace Bolin
 
         public void PlayClick()
         {
-            AudioManager.TryPlaySfx(clickSound);
+            AudioManager.TryPlayUiClick(clickSound);
         }
     }
 }

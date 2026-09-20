@@ -7,7 +7,7 @@ namespace Bolin
     public class StoryProgressRepository
     {
         public const int WorldIndex = 1;
-        public const string DefaultStoryId = "tres_cerditos";
+        public const string DefaultStoryId = "luna";
         public const string CompletedKey = "MundoAprendo_World_1_Completed";
         public const string StarsKey = "MundoAprendo_World_1_Stars";
         public const string TutorialSeenKey = "MundoCuentos_TutorialVisto";
@@ -52,7 +52,7 @@ namespace Bolin
             }
 
             PlayerPrefs.Save();
-            Debug.Log($"StoryProgressRepository: cuento {safeId} guardado. Puntaje {clampedScore}, estrellas {clampedStars}, mejores {bestScore}/{bestStars}.");
+            Debug.Log($"[MundoCuentos/Progress] Cuento {safeId} guardado. Puntaje {clampedScore}, estrellas {clampedStars}, mejores {bestScore}/{bestStars}.");
         }
 
         public static bool IsStoryCompleted(string cuentoId)
@@ -78,9 +78,9 @@ namespace Bolin
 
             foreach (CuentoData cuento in cuentos)
             {
-                if (cuento == null || string.IsNullOrWhiteSpace(cuento.id)) continue;
+                if (cuento == null || string.IsNullOrWhiteSpace(cuento.Id)) continue;
 
-                string safeId = NormalizeStoryId(cuento.id);
+                string safeId = NormalizeStoryId(cuento.Id);
                 if (counted.Contains(safeId)) continue;
                 if (!IsStoryCompleted(safeId)) continue;
 
@@ -137,6 +137,7 @@ namespace Bolin
             }
 
             ResetStory(DefaultStoryId, false);
+            ResetStory("tres_cerditos", false);
             PlayerPrefs.DeleteKey(KnownStoryIdsKey);
             if (save) PlayerPrefs.Save();
         }
@@ -188,7 +189,7 @@ namespace Bolin
 
         private static string NormalizeStoryId(string cuentoId)
         {
-            return string.IsNullOrWhiteSpace(cuentoId) ? DefaultStoryId : ReadingEvaluator.NormalizeText(cuentoId).Replace(' ', '_');
+            return string.IsNullOrWhiteSpace(cuentoId) ? DefaultStoryId : SpeechAnswerValidator.NormalizeText(cuentoId).Replace(' ', '_');
         }
     }
 }

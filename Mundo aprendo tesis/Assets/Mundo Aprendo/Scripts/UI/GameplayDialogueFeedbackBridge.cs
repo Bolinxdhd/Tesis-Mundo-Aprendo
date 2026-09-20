@@ -9,7 +9,7 @@ namespace Bolin
         [SerializeField] private SizeWorldController sizeWorldController;
         [SerializeField] private EmotionGameManager emotionGameManager;
         [SerializeField] private MundoMusicalSequenceGame musicalGame;
-        [SerializeField] private VoiceRecognitionTest storyController;
+        [SerializeField] private MundoCuentosController storyController;
         [SerializeField] private bool showSuccessFeedback = true;
         [SerializeField] private bool showRetryFeedback = true;
 
@@ -28,7 +28,7 @@ namespace Bolin
                 musicalGame.OnActivityCompleted += HandleActivityCompleted;
             }
 
-            if (storyController != null) storyController.OnReadingValidated += HandleAnswerValidated;
+            if (storyController != null) storyController.OnAnswerValidated += HandleAnswerValidated;
         }
 
         private void OnDisable()
@@ -41,7 +41,7 @@ namespace Bolin
                 musicalGame.OnActivityCompleted -= HandleActivityCompleted;
             }
 
-            if (storyController != null) storyController.OnReadingValidated -= HandleAnswerValidated;
+            if (storyController != null) storyController.OnAnswerValidated -= HandleAnswerValidated;
         }
 
         private void HandleAnswerValidated(bool wasCorrect)

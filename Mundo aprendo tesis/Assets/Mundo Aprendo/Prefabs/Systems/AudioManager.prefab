@@ -148,6 +148,8 @@ MonoBehaviour:
   timeTransition: 0.5
   musicSource: {fileID: 2487904855235670948}
   sfxSource: {fileID: 6074951554868196539}
+  uiClickClip: {fileID: 8300000, guid: 7533a4bdb0de4055b091a74502ae9ba6, type: 3}
+  uiClickVolume: 0.45
 --- !u!114 &2022095395141270455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +166,16 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   musicClip: {fileID: 8300000, guid: 3d0166502af741645b047cb8ad458d26, type: 3}
   musicSource: {fileID: 2487904855235670948}
+  worldSelectionMusic: {fileID: 8300000, guid: 3a948ab72f704c35a1f68e6bcb43b209, type: 3}
+  musicalWorldMusic: {fileID: 8300000, guid: 5fe59683546549d0bed6733a1de8cfad, type: 3}
+  storiesWorldMusic: {fileID: 8300000, guid: 20aa8c322a674da696f5f7d0b600e290, type: 3}
+  sizesWorldMusic: {fileID: 8300000, guid: 6a72897ecada493f954b2c4ba38fc517, type: 3}
+  emotionsWorldMusic: {fileID: 8300000, guid: 7c058ef30fde4bff9b054fdf0eea25ee, type: 3}
+  worldSelectionVolume: 0.27
+  musicalWorldVolume: 0.27
+  storiesWorldVolume: 0.12
+  sizesWorldVolume: 0.27
+  emotionsWorldVolume: 0.22
   microphoneDropdown: {fileID: 0}
   refreshMicrophonesButton: {fileID: 0}
   testMicrophoneButton: {fileID: 0}

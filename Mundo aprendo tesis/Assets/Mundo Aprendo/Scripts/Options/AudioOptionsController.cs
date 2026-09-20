@@ -13,6 +13,18 @@ namespace Bolin
         [SerializeField] private AudioClip musicClip;
         [SerializeField] private AudioSource musicSource;
 
+        [Header("Musica por escena")]
+        [SerializeField] private AudioClip worldSelectionMusic;
+        [SerializeField] private AudioClip musicalWorldMusic;
+        [SerializeField] private AudioClip storiesWorldMusic;
+        [SerializeField] private AudioClip sizesWorldMusic;
+        [SerializeField] private AudioClip emotionsWorldMusic;
+        [SerializeField, Range(0f, 1f)] private float worldSelectionVolume = 0.27f;
+        [SerializeField, Range(0f, 1f)] private float musicalWorldVolume = 0.27f;
+        [SerializeField, Range(0f, 1f)] private float storiesWorldVolume = 0.12f;
+        [SerializeField, Range(0f, 1f)] private float sizesWorldVolume = 0.27f;
+        [SerializeField, Range(0f, 1f)] private float emotionsWorldVolume = 0.22f;
+
         [Header("Microfono")]
         [SerializeField] private TMP_Dropdown microphoneDropdown;
         [SerializeField] private Button refreshMicrophonesButton;
@@ -38,28 +50,63 @@ namespace Bolin
             ApplyMasterVolume(masterVolume);
             ApplyMusicVolume(musicVolume);
 
-            bool isMenuScene = SceneManager.GetActiveScene().name == MundoAprendoSceneNames.Menu;
-            if (AudioManager.Instance != null && isMenuScene)
+            ConfigureSceneMusic(musicVolume);
+
+            RefreshMicrophoneList();
+        }
+
+        private void ConfigureSceneMusic(float userMusicVolume)
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            AudioClip sceneMusic = null;
+            float baseVolume = 1f;
+
+            switch (sceneName)
             {
-                AudioManager.Instance.PlayMusic(musicClip, true);
+                case MundoAprendoSceneNames.Menu:
+                    sceneMusic = musicClip;
+                    break;
+                case MundoAprendoSceneNames.WorldSelection:
+                    sceneMusic = worldSelectionMusic;
+                    baseVolume = worldSelectionVolume;
+                    break;
+                case MundoAprendoSceneNames.MusicalWorld:
+                    sceneMusic = musicalWorldMusic;
+                    baseVolume = musicalWorldVolume;
+                    break;
+                case MundoAprendoSceneNames.StoriesWorld:
+                    sceneMusic = storiesWorldMusic;
+                    baseVolume = storiesWorldVolume;
+                    break;
+                case MundoAprendoSceneNames.SizesWorld:
+                    sceneMusic = sizesWorldMusic;
+                    baseVolume = sizesWorldVolume;
+                    break;
+                case MundoAprendoSceneNames.EmotionsWorld:
+                    sceneMusic = emotionsWorldMusic;
+                    baseVolume = emotionsWorldVolume;
+                    break;
             }
-            else if (AudioManager.Instance != null)
+
+            if (AudioManager.Instance != null)
             {
-                AudioManager.Instance.StopMusic();
+                if (sceneMusic != null) AudioManager.Instance.PlayMusic(sceneMusic, baseVolume, true);
+                else AudioManager.Instance.StopMusic();
+                return;
             }
-            else if (isMenuScene && musicSource != null && musicClip != null)
-            {
-                musicSource.clip = musicClip;
-                musicSource.loop = true;
-                musicSource.Play();
-            }
-            else if (musicSource != null)
+
+            if (musicSource == null) return;
+            if (sceneMusic == null)
             {
                 musicSource.Stop();
                 musicSource.clip = null;
+                return;
             }
 
-            RefreshMicrophoneList();
+            musicSource.clip = sceneMusic;
+            musicSource.loop = true;
+            musicSource.volume = baseVolume * Mathf.Clamp01(userMusicVolume);
+            musicSource.Play();
         }
 
         private void OnEnable()

@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba8b7374b517f94d83dee2b68b16318, type: 3}
+  m_Name: Cuento_Luna
+  m_EditorClassIdentifier: Assembly-CSharp::Bolin.CuentoData
+  id: luna
+  titulo: "Luna, la coneja que compart\xEDa su zanahoria"
+  portada: {fileID: 21300000, guid: b5b58c3fd721c0d4a9616c99712720a3, type: 3}
+  narracionTexto: "Luna era una coneja blanca que ten\xEDa una zanahoria muy grande
+    y muy anaranjada. La cuidaba todos los d\xEDas y la llevaba a todas partes. Un
+    d\xEDa, encontr\xF3 a su amigo Rat\xF3n, que estaba triste porque no hab\xEDa
+    encontrado comida. Luna mir\xF3 su zanahoria, pens\xF3 un momento y decidi\xF3
+    partirla en dos. Rat\xF3n sonri\xF3 y juntos comieron felices bajo un \xE1rbol.
+    Esa tarde, Luna descubri\xF3 que compartir hac\xEDa la comida m\xE1s dulce y
+    el d\xEDa m\xE1s bonito."
+  narracionAudio: {fileID: 0}
+  pictogramas:
+  - id: coneja
+    imagen: {fileID: 21300000, guid: b5b58c3fd721c0d4a9616c99712720a3, type: 3}
+    concepto: coneja
+    respuestasAceptadas:
+    - coneja
+    - conejita
+    - luna
+    ayuda: "Es una conejita. Empieza con CO\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: zanahoria
+    imagen: {fileID: 21300000, guid: 8d7d8fdef6dd16548af470081e79299b, type: 3}
+    concepto: zanahoria
+    respuestasAceptadas:
+    - zanahoria
+    ayuda: "Es naranja y empieza con ZA\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: raton
+    imagen: {fileID: 21300000, guid: 36d7a6e7aad2d3346877312f1661200b, type: 3}
+    concepto: "rat\xF3n"
+    respuestasAceptadas:
+    - "rat\xF3n"
+    - raton
+    ayuda: "Es un animal peque\xF1o. Empieza con RA\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: arbol
+    imagen: {fileID: 21300000, guid: 0e732ab35da27c9418f7a6ac18229f8c, type: 3}
+    concepto: "\xE1rbol"
+    respuestasAceptadas:
+    - "\xE1rbol"
+    - arbol
+    ayuda: "Tiene tronco y hojas. Empieza con \xC1R\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: mitad
+    imagen: {fileID: 21300000, guid: 0485c1018c9aab54594b07595221fe72, type: 3}
+    concepto: mitad
+    respuestasAceptadas:
+    - mitad
+    - partir
+    - partido
+    - partida
+    ayuda: "Es una de dos partes iguales. Empieza con MI\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: sonrisa
+    imagen: {fileID: 21300000, guid: a6b31af6b3f078c428290b82bf22c98b, type: 3}
+    concepto: sonrisa
+    respuestasAceptadas:
+    - sonrisa
+    - amigos
+    - amigo
+    - amistad
+    ayuda: "Aparece cuando estamos felices. Empieza con SON\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: compartir
+    imagen: {fileID: 21300000, guid: b85859b58eb858042bb443f0aa5fde09, type: 3}
+    concepto: compartir
+    respuestasAceptadas:
+    - compartir
+    - comparte
+    - compartiendo
+    ayuda: "Es dar una parte a otra persona. Empieza con COM\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}

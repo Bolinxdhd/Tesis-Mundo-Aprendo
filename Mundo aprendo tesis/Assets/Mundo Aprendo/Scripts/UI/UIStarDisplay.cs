@@ -10,6 +10,7 @@ namespace Bolin
         [SerializeField] private Sprite earnedSprite;
         [SerializeField] private Sprite unearnedSprite;
         [SerializeField] private AudioClip revealClip;
+        [SerializeField, Range(0f, 1f)] private float revealVolume = 0.5f;
         [SerializeField, Min(0f)] private float delayBetweenStars = 0.16f;
         [SerializeField, Min(0.05f)] private float revealDuration = 0.28f;
         [SerializeField, Range(1f, 1.4f)] private float overshootScale = 1.18f;
@@ -55,6 +56,8 @@ namespace Bolin
 
         private IEnumerator AnimateRoutine(int earnedStars)
         {
+            if (earnedStars > 0) AudioManager.TryPlaySfx(revealClip, revealVolume);
+
             for (int i = 0; i < stars.Length; i++)
             {
                 Image star = stars[i];
@@ -67,8 +70,6 @@ namespace Bolin
             {
                 Image star = stars[i];
                 if (star == null) continue;
-                bool earned = i < earnedStars;
-                if (earned) AudioManager.TryPlaySfx(revealClip);
                 yield return RevealStarRoutine(star);
                 if (delayBetweenStars > 0f) yield return new WaitForSecondsRealtime(delayBetweenStars);
             }

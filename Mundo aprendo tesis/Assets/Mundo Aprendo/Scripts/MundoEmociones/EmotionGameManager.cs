@@ -37,7 +37,7 @@ namespace Bolin
         [SerializeField] private CanvasGroup gamePanelCanvasGroup;
         [SerializeField] private GameObject feedbackPanel;
         [SerializeField] private CanvasGroup feedbackCanvasGroup;
-        [SerializeField] private EmotionResultPanel resultPanel;
+        [SerializeField, Tooltip("Panel de resultado compartido por todos los mundos.")] private WorldResultPanel resultPanelView;
 
         [Header("Textos existentes")]
         [SerializeField] private TMP_Text instructionText;
@@ -84,6 +84,7 @@ namespace Bolin
         {
             // Deja visibles los paneles correctos antes de que el alumno pulse Iniciar.
             WireSceneButtons();
+            ConfigureResultPanel();
             PrepareInitialState();
         }
 
@@ -126,7 +127,7 @@ namespace Bolin
 
             if (startPanel != null) startPanel.SetActive(false);
             if (gamePanel != null) gamePanel.SetActive(true);
-            resultPanel?.Hide();
+            if (resultPanelView != null) resultPanelView.HideImmediate();
             HideAllEmotionViews();
             HideFeedbackImmediate();
             ConfigureFearVisibility();
@@ -182,8 +183,6 @@ namespace Bolin
             // persistentes del Inspector. Si existen, se respetan para no duplicar
             // acciones configuradas manualmente.
             WireButtonIfEmpty("StartButton", StartActivity);
-            WireButtonIfEmpty("RetryButton", RestartActivity);
-            WireButtonIfEmpty("WorldsButton", ReturnToWorldSelection);
             WireButtonIfEmpty("BackButton", ReturnToWorldSelection);
         }
 
@@ -297,8 +296,33 @@ namespace Bolin
             SetNunaDialogue("Terminaste. Estoy orgullosa de ti.");
 
             if (gamePanel != null) gamePanel.SetActive(false);
-            resultPanel?.Show(correctAnswers, mistakes, stars, sfxSource, starClip);
+            ShowResultPanel(stars);
             OnActivityCompleted?.Invoke(stars);
+        }
+
+        /// <summary>Declara al panel compartido que acciones ofrece Mundo de Emociones.</summary>
+        private void ConfigureResultPanel()
+        {
+            if (resultPanelView == null) return;
+
+            resultPanelView.Bind(WorldResultPanel.ResultAction.Retry, RestartActivity);
+            resultPanelView.Bind(WorldResultPanel.ResultAction.Next, null);
+            resultPanelView.Bind(WorldResultPanel.ResultAction.BackToList, null);
+            resultPanelView.Bind(WorldResultPanel.ResultAction.WorldSelection, ReturnToWorldSelection);
+            resultPanelView.SetLabel(WorldResultPanel.ResultAction.Retry, "REINTENTAR");
+            resultPanelView.SetLabel(WorldResultPanel.ResultAction.WorldSelection, "VOLVER A MUNDOS");
+        }
+
+        private void ShowResultPanel(int stars)
+        {
+            if (resultPanelView == null)
+            {
+                Debug.LogWarning("Mundo de Emociones: falta asignar el panel de resultado compartido.", this);
+                return;
+            }
+
+            PlaySfx(starClip);
+            resultPanelView.Show(stars, $"Aciertos: {correctAnswers}    Errores: {mistakes}", "Actividad completada");
         }
 
         private int CalculateStars(int errorCount)
@@ -457,7 +481,7 @@ namespace Bolin
 
             if (startPanel != null) startPanel.SetActive(true);
             if (gamePanel != null) gamePanel.SetActive(false);
-            resultPanel?.Hide();
+            if (resultPanelView != null) resultPanelView.HideImmediate();
             HideAllEmotionViews();
             HideFeedbackImmediate();
             ConfigureFearVisibility();
@@ -499,7 +523,7 @@ namespace Bolin
 
             if (startPanel == null) Debug.LogWarning("EmotionGameManager: falta StartPanel.", this);
             if (gamePanel == null) Debug.LogWarning("EmotionGameManager: falta GamePanel.", this);
-            if (resultPanel == null) Debug.LogWarning("EmotionGameManager: falta EmotionResultPanel.", this);
+            if (resultPanelView == null) Debug.LogWarning("EmotionGameManager: falta el panel de resultado compartido.", this);
         }
     }
 }

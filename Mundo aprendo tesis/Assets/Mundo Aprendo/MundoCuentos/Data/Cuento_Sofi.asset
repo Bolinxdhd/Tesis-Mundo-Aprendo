@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ba8b7374b517f94d83dee2b68b16318, type: 3}
+  m_Name: Cuento_Sofi
+  m_EditorClassIdentifier: Assembly-CSharp::Bolin.CuentoData
+  id: sofi
+  titulo: "Sofi, la ardilla que cuid\xF3 el bosque"
+  portada: {fileID: 21300000, guid: 79a96c856f3e60a42b925f069ea674e9, type: 3}
+  narracionTexto: "Sofi viv\xEDa en un bosque lleno de hojas verdes. Un d\xEDa encontr\xF3
+    basura tirada: papeles, latas y una botella. Ella no sab\xEDa qui\xE9n lo hizo,
+    pero s\xED sab\xEDa que el bosque era su hogar. Llam\xF3 a sus amigos Loro, Tortuga
+    y Conejo, y juntos recogieron todo. Cuando terminaron, el bosque volvi\xF3 a
+    brillar. Sofi dijo: \u201CCuidar lo que es nuestro es cuidar de nosotros mismos\u201D.
+    Desde entonces, todos ense\xF1aban a los dem\xE1s a mantener el bosque limpio."
+  narracionAudio: {fileID: 0}
+  pictogramas:
+  - id: ardilla
+    imagen: {fileID: 21300000, guid: 79a96c856f3e60a42b925f069ea674e9, type: 3}
+    concepto: ardilla
+    respuestasAceptadas:
+    - ardilla
+    - sofi
+    ayuda: "Tiene una cola grande. Empieza con AR\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: bosque
+    imagen: {fileID: 21300000, guid: 44f15938ee0dc994aa1752cbdc1aa9a2, type: 3}
+    concepto: bosque
+    respuestasAceptadas:
+    - bosque
+    - "\xE1rboles"
+    - arboles
+    ayuda: "Tiene muchos \xE1rboles. Empieza con BOS\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: basura
+    imagen: {fileID: 21300000, guid: 1abcdbd9b8fa9c048a0885e997d24c42, type: 3}
+    concepto: basura
+    respuestasAceptadas:
+    - basura
+    - papeles
+    - papel
+    - botella
+    - lata
+    ayuda: "Son cosas que debemos botar correctamente. Empieza con BAS\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: amigos
+    imagen: {fileID: 21300000, guid: 02917a9b635fcab4994df84785358870, type: 3}
+    concepto: amigos
+    respuestasAceptadas:
+    - amigos
+    - amigo
+    - loro
+    - tortuga
+    - conejo
+    ayuda: "Son quienes ayudan a Sofi. Empieza con A\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: recoger
+    imagen: {fileID: 21300000, guid: 26aa22efae1b78445a9df008de6ca2b4, type: 3}
+    concepto: recoger
+    respuestasAceptadas:
+    - recoger
+    - limpieza
+    - limpiar
+    ayuda: "Es levantar y limpiar. Empieza con RE\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: bolsa_basura
+    imagen: {fileID: 21300000, guid: a340a08e2f6bdd642b5a00c0856b19f6, type: 3}
+    concepto: bolsa de basura
+    respuestasAceptadas:
+    - bolsa de basura
+    - bolsa
+    ayuda: "Sirve para guardar la basura. Empieza con BOL\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}
+  - id: ambiente
+    imagen: {fileID: 21300000, guid: 66f0b0839d2ac724089c21ee5770bf64, type: 3}
+    concepto: cuidado del ambiente
+    respuestasAceptadas:
+    - cuidado del ambiente
+    - ambiente
+    - hoja verde
+    - hoja
+    ayuda: "Protege nuestro hogar y la naturaleza. Empieza con CUI\u2026"
+    preguntaAudio: {fileID: 0}
+    feedbackCorrecto: {fileID: 0}

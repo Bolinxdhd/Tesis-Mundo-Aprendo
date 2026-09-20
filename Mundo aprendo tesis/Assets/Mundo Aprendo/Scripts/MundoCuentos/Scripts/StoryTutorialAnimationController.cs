@@ -365,11 +365,11 @@ namespace Bolin
             if (tutorialSteps == null) tutorialSteps = new List<TutorialStepData>();
             if (tutorialSteps.Count > 0) return;
 
-            tutorialSteps.Add(new TutorialStepData { text = "Hola! Soy Biblio. Aqui vamos a leer cuentos juntos." });
-            tutorialSteps.Add(new TutorialStepData { text = "Elige uno de estos libros para comenzar." });
-            tutorialSteps.Add(new TutorialStepData { text = "Cuando veas la historia, presiona el microfono y leela en voz alta." });
-            tutorialSteps.Add(new TutorialStepData { text = "Cuando termines, presiona Validar para descubrir tus estrellas." });
-            tutorialSteps.Add(new TutorialStepData { text = "Muy bien! Puedes repetir los cuentos todas las veces que quieras." });
+            tutorialSteps.Add(new TutorialStepData { text = "¡Hola! Soy Biblio. Aquí vamos a escuchar cuentos y descubrir pictogramas." });
+            tutorialSteps.Add(new TutorialStepData { text = "Elige uno de estos libros para comenzar. Los cuentos se desbloquean en orden." });
+            tutorialSteps.Add(new TutorialStepData { text = "Observa cada pictograma y escucha la pregunta. El micrófono se encenderá después." });
+            tutorialSteps.Add(new TutorialStepData { text = "Di el concepto que ves. También puedes responder con una frase, por ejemplo: yo veo una zanahoria." });
+            tutorialSteps.Add(new TutorialStepData { text = "Si necesitas ayuda, Biblio te dará pistas. ¡Completa todos los pictogramas para ganar estrellas!" });
         }
 
         private static void SetButtonVisible(Button button, bool visible)
