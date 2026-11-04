@@ -58,6 +58,7 @@ namespace Bolin
         private bool isProcessingAnswer;
         private bool listenWhenReady;
         private bool listenersBound;
+        private bool musicPausedForNarration;
 
         public event Action<bool> OnAnswerValidated;
         public event Action<CuentoData> OnStoryCompleted;
@@ -123,20 +124,20 @@ namespace Bolin
             SetState(MundoCuentosState.StoryIntro);
             uiController?.ShowStoryIntro(currentStory);
             Debug.Log($"{LogPrefix} Cuento seleccionado: {currentStory.Id}", this);
-
-            if (currentStory.NarracionAudio != null)
-            {
-                narrationRoutine = StartCoroutine(PlayNarrationRoutine());
-            }
         }
 
         public void BeginActivity()
         {
-            if (currentStory == null) return;
-            if (State != MundoCuentosState.StoryIntro && State != MundoCuentosState.Narrating) return;
+            if (currentStory == null || State != MundoCuentosState.StoryIntro) return;
+            if (currentStory.NarracionAudio == null || activityAudioSource == null)
+            {
+                Debug.LogWarning($"{LogPrefix} Falta narración o AudioSource para '{currentStory.Id}'.", this);
+                uiController?.ShowNarrationUnavailable();
+                return;
+            }
 
-            StopNarration();
-            ShowCurrentPictogram();
+            SetState(MundoCuentosState.Narrating);
+            narrationRoutine = StartCoroutine(PlayNarrationRoutine());
         }
 
         public void ShowLibrary()
@@ -212,9 +213,30 @@ namespace Bolin
         private IEnumerator PlayNarrationRoutine()
         {
             voiceRecognition?.StopListening();
-            SetState(MundoCuentosState.Narrating);
+            for (int seconds = 5; seconds >= 1; seconds--)
+            {
+                uiController?.ShowNarrationCountdown(seconds);
+                yield return new WaitForSecondsRealtime(1f);
+            }
+
+            musicPausedForNarration = AudioManager.Instance != null && AudioManager.Instance.PauseMusic();
             uiController?.ShowNarrating();
-            yield return PlayClipRoutine(currentStory.NarracionAudio);
+            activityAudioSource.Stop();
+            activityAudioSource.clip = currentStory.NarracionAudio;
+            activityAudioSource.loop = false;
+            activityAudioSource.Play();
+            if (!activityAudioSource.isPlaying)
+            {
+                Debug.LogWarning($"{LogPrefix} No se pudo reproducir la narración de '{currentStory.Id}'.", this);
+                ResumeNarrationMusic();
+                narrationRoutine = null;
+                SetState(MundoCuentosState.StoryIntro);
+                uiController?.ShowNarrationUnavailable();
+                yield break;
+            }
+
+            while (activityAudioSource != null && activityAudioSource.isPlaying) yield return null;
+            ResumeNarrationMusic();
             narrationRoutine = null;
 
             if (State == MundoCuentosState.Narrating) ShowCurrentPictogram();
@@ -576,9 +598,20 @@ namespace Bolin
 
         private void StopNarration()
         {
-            if (narrationRoutine == null) return;
-            StopCoroutine(narrationRoutine);
-            narrationRoutine = null;
+            if (narrationRoutine != null)
+            {
+                StopCoroutine(narrationRoutine);
+                narrationRoutine = null;
+            }
+
+            ResumeNarrationMusic();
+        }
+
+        private void ResumeNarrationMusic()
+        {
+            if (!musicPausedForNarration) return;
+            AudioManager.Instance?.ResumeMusic();
+            musicPausedForNarration = false;
         }
 
         private void StopQuestion()

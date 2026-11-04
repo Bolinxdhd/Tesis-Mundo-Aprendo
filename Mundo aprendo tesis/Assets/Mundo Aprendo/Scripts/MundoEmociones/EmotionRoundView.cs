@@ -24,4 +24,11 @@ namespace Bolin
         public string displayName;
         public AudioClip instructionAudio;
     }
+
+    [Serializable]
+    public class EmotionSituation
+    {
+        public Sprite illustration;
+        public EmotionType emotion;
+    }
 }

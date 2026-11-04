@@ -220,15 +220,15 @@ namespace Bolin
 
             SetText(storyTitleText, story != null ? story.Titulo : "Cuento");
             SetText(narrationText, story != null ? story.NarracionTexto : string.Empty);
-            SetText(questionText, "Escucha o lee el cuento antes de comenzar.");
+            SetText(questionText, "Escucha o lee el cuento.");
             SetText(pictogramProgressText, string.Empty);
             SetText(recognizedText, string.Empty);
             SetText(feedbackText, string.Empty);
             SetText(hintText, string.Empty);
             SetText(errorText, string.Empty);
             SetText(statusText, story != null && story.NarracionAudio != null
-                ? "Escucha la narración."
-                : "Cuando estés listo, comienza la actividad.");
+                ? "Pulsa Iniciar para escuchar el cuento."
+                : "Falta la narración de este cuento.");
 
             if (pictogramImage != null)
             {
@@ -237,9 +237,26 @@ namespace Bolin
             }
 
             SetText(pictogramPlaceholderText, string.Empty);
-            SetActionButton(primaryButton, story == null || story.NarracionAudio == null, "Comenzar actividad");
+            SetActionButton(primaryButton, story != null && story.NarracionAudio != null, "Iniciar");
             SetActionButton(secondaryButton, false, string.Empty);
             animationController?.PlayReadingEntrance();
+        }
+
+        public void ShowNarrationCountdown(int seconds)
+        {
+            SetActive(narrationContainer, true);
+            SetActive(pictogramContainer, false);
+            SetText(statusText, $"La narración comienza en {seconds}");
+            SetText(questionText, string.Empty);
+            SetActionButton(primaryButton, false, string.Empty);
+            SetActionButton(secondaryButton, false, string.Empty);
+            SetMicrophoneIndicator(false);
+        }
+
+        public void ShowNarrationUnavailable()
+        {
+            SetText(statusText, "No se pudo iniciar la narración.");
+            SetActionButton(primaryButton, false, string.Empty);
         }
 
         public void ShowNarrating()

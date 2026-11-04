@@ -95,6 +95,18 @@ namespace Bolin
             musicSource.clip = null;
         }
 
+        public bool PauseMusic()
+        {
+            if (musicSource == null || !musicSource.isPlaying) return false;
+            musicSource.Pause();
+            return true;
+        }
+
+        public void ResumeMusic()
+        {
+            if (musicSource != null) musicSource.UnPause();
+        }
+
         public void SetMasterVolume(float volume)
         {
             float clamped = Mathf.Clamp01(volume);

@@ -13,6 +13,7 @@ namespace Assets.SurpriseBox.Scripts
     public class MundoMusicalSequenceGame : MonoBehaviour
     {
         private const int WorldIndex = 0;
+        private const int TutorialStartDelaySeconds = 5;
 
         public event Action<bool> OnAnswerValidated;
         public event Action<int> OnActivityCompleted;
@@ -108,6 +109,7 @@ namespace Assets.SurpriseBox.Scripts
         private readonly Dictionary<float, AudioClip> generatedTones = new();
         private Coroutine sequenceRoutine;
         private Coroutine advanceRoutine;
+        private Coroutine tutorialCountdownRoutine;
         private int currentSequenceIndex;
         private int expectedStepIndex;
         private int currentStars = 3;
@@ -117,6 +119,7 @@ namespace Assets.SurpriseBox.Scripts
         private bool activityFinished;
         private bool tutorialSubscribed;
         private bool leavingScene;
+        private bool musicPausedForPiano;
 
         private void Reset()
         {
@@ -169,18 +172,41 @@ namespace Assets.SurpriseBox.Scripts
         {
             StopRunningRoutines();
             if (audioSource != null) audioSource.Stop();
+            ResumeSceneMusic();
             UnsubscribeTutorial();
         }
 
         public void StartActivity()
         {
+            if (tutorialCountdownRoutine != null) return;
             BeginActivity(true);
+        }
+
+        private void StartAfterTutorial()
+        {
+            BeginActivity(false);
+            if (!activityStarted) return;
+
+            listenButtonGuide?.HideGuide();
+            if (startButton != null) startButton.interactable = false;
+            tutorialCountdownRoutine = StartCoroutine(TutorialCountdownRoutine());
+        }
+
+        private IEnumerator TutorialCountdownRoutine()
+        {
+            for (int seconds = TutorialStartDelaySeconds; seconds > 0; seconds--)
+            {
+                SetStatus($"Comenzamos en {seconds}...");
+                yield return new WaitForSecondsRealtime(1f);
+            }
+
+            tutorialCountdownRoutine = null;
+            if (activityStarted && !activityFinished && !IsTutorialBlocking()) PlayCurrentSequence();
         }
 
         private void PrepareActivityForListening()
         {
-            // Used after the tutorial (or on a returning player): the piano is ready,
-            // but the child explicitly starts the first demonstration with Escuchar.
+            // On later visits, the child starts the first demonstration with Escuchar.
             BeginActivity(false);
         }
 
@@ -259,6 +285,7 @@ namespace Assets.SurpriseBox.Scripts
             if (activityFinished) return;
 
             StopRunningRoutines();
+            ResumeSceneMusic();
             activityFinished = true;
             acceptingInput = false;
             SetButtonsInteractable(false);
@@ -356,6 +383,7 @@ namespace Assets.SurpriseBox.Scripts
 
             StopRunningRoutines();
             if (audioSource != null) audioSource.Stop();
+            ResumeSceneMusic();
             levelAnimationController?.StopResultPresentation();
             leavingScene = Bolin.SceneNavigation.LoadScene(sceneName, this);
         }
@@ -368,7 +396,7 @@ namespace Assets.SurpriseBox.Scripts
         private void StartSequencePlayback(bool cancelPendingAdvance)
         {
             // Reproduce la secuencia actual para que el alumno la escuche antes de responder.
-            if (IsTutorialBlocking() || !activityStarted || activityFinished) return;
+            if (IsTutorialBlocking() || tutorialCountdownRoutine != null || !activityStarted || activityFinished) return;
             listenButtonGuide?.HideGuide();
             if (sequences.Count == 0)
             {
@@ -388,6 +416,7 @@ namespace Assets.SurpriseBox.Scripts
                 sequenceRoutine = null;
             }
 
+            PauseSceneMusic();
             sequenceRoutine = StartCoroutine(PlaySequenceRoutine());
         }
 
@@ -744,6 +773,25 @@ namespace Assets.SurpriseBox.Scripts
                 StopCoroutine(advanceRoutine);
                 advanceRoutine = null;
             }
+
+            if (tutorialCountdownRoutine != null)
+            {
+                StopCoroutine(tutorialCountdownRoutine);
+                tutorialCountdownRoutine = null;
+            }
+        }
+
+        private void PauseSceneMusic()
+        {
+            if (!musicPausedForPiano && Bolin.AudioManager.Instance != null)
+                musicPausedForPiano = Bolin.AudioManager.Instance.PauseMusic();
+        }
+
+        private void ResumeSceneMusic()
+        {
+            if (!musicPausedForPiano) return;
+            Bolin.AudioManager.Instance?.ResumeMusic();
+            musicPausedForPiano = false;
         }
 
         private PianoSequence GetCurrentSequence()
@@ -801,14 +849,14 @@ namespace Assets.SurpriseBox.Scripts
         private void SubscribeTutorial()
         {
             if (tutorialSubscribed || tutorialController == null) return;
-            tutorialController.TutorialCompleted += StartActivity;
+            tutorialController.TutorialCompleted += StartAfterTutorial;
             tutorialSubscribed = true;
         }
 
         private void UnsubscribeTutorial()
         {
             if (!tutorialSubscribed || tutorialController == null) return;
-            tutorialController.TutorialCompleted -= StartActivity;
+            tutorialController.TutorialCompleted -= StartAfterTutorial;
             tutorialSubscribed = false;
         }
 

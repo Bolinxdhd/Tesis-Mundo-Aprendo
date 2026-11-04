@@ -362,7 +362,7 @@ namespace Bolin
             tutorialSteps.Add(new MusicalTutorialStep { text = "Primero escucha y observa las teclas que se iluminan." });
             tutorialSteps.Add(new MusicalTutorialStep { text = "Después, toca las mismas teclas en el mismo orden." });
             tutorialSteps.Add(new MusicalTutorialStep { text = "Escucha con atención y recuerda la secuencia." });
-            tutorialSteps.Add(new MusicalTutorialStep { text = "¡Listo! Presiona Comenzar para tocar." });
+            tutorialSteps.Add(new MusicalTutorialStep { text = "¡Listo! Presiona Comenzar y espera la cuenta regresiva." });
         }
 
         private void OnDisable()

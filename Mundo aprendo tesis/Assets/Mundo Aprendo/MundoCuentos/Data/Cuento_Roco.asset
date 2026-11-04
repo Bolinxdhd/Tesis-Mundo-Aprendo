@@ -21,7 +21,7 @@ MonoBehaviour:
     qu\xE9 hacer. Pens\xF3 un momento y decidi\xF3 acercarse despacito: \u201CPerd\xF3n,
     no quise hacerlo\u201D. Gata respir\xF3, sonri\xF3 y dijo: \u201CGracias por
     decirlo, podemos arreglarlo juntos\u201D. Y pasaron la tarde dibujando nuevamente."
-  narracionAudio: {fileID: 0}
+  narracionAudio: {fileID: 8300000, guid: 3cc2035987ab474aa1bdf1f0a7b11707, type: 3}
   pictogramas:
   - id: perrito
     imagen: {fileID: 21300000, guid: 33dbb81ae53325a409ed7e1516684590, type: 3}

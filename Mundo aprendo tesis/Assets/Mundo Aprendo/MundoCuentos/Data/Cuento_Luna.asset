@@ -22,7 +22,7 @@ MonoBehaviour:
     partirla en dos. Rat\xF3n sonri\xF3 y juntos comieron felices bajo un \xE1rbol.
     Esa tarde, Luna descubri\xF3 que compartir hac\xEDa la comida m\xE1s dulce y
     el d\xEDa m\xE1s bonito."
-  narracionAudio: {fileID: 0}
+  narracionAudio: {fileID: 8300000, guid: eec7afc15f234be8bf5c395b8e93355d, type: 3}
   pictogramas:
   - id: coneja
     imagen: {fileID: 21300000, guid: b5b58c3fd721c0d4a9616c99712720a3, type: 3}

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Bolin
 {
-    // Controla el mundo de emociones: muestra expresiones, valida respuestas y guarda estrellas.
+    // Controla el mundo de emociones: muestra situaciones, valida respuestas y guarda estrellas.
     public class EmotionGameManager : MonoBehaviour
     {
         public const int WorldIndex = 3;
@@ -20,6 +20,7 @@ namespace Bolin
 
         [Header("Rondas")]
         [SerializeField] private List<EmotionRoundView> emotionViews = new();
+        [SerializeField] private List<EmotionSituation> situations = new();
         [SerializeField] private List<EmotionAnswerButton> answerButtons = new();
         [SerializeField] private bool includeFear;
         [SerializeField, Min(1)] private int totalRounds = 8;
@@ -41,6 +42,7 @@ namespace Bolin
 
         [Header("Textos existentes")]
         [SerializeField] private TMP_Text instructionText;
+        [SerializeField] private Image situationImage;
         [SerializeField] private TMP_Text progressText;
         [SerializeField] private UIProgressBar roundProgressBar;
         [SerializeField] private TMP_Text feedbackText;
@@ -70,9 +72,9 @@ namespace Bolin
         private readonly List<EmotionRoundView> availableViews = new();
         private Coroutine gameFlowRoutine;
         private Coroutine feedbackRoutine;
-        private Coroutine emotionAnimationRoutine;
         private Coroutine nunaRoutine;
         private EmotionRoundView currentView;
+        private EmotionSituation currentSituation;
         private EmotionType? previousEmotion;
         private int completedRounds;
         private int correctAnswers;
@@ -82,6 +84,7 @@ namespace Bolin
 
         private void Awake()
         {
+            if (situations != null && situations.Count > 0) totalRounds = situations.Count;
             // Deja visibles los paneles correctos antes de que el alumno pulse Iniciar.
             WireSceneButtons();
             ConfigureResultPanel();
@@ -122,6 +125,7 @@ namespace Bolin
             mistakes = 0;
             previousEmotion = null;
             currentView = null;
+            currentSituation = null;
             acceptingAnswer = false;
             activityFinished = false;
 
@@ -129,10 +133,11 @@ namespace Bolin
             if (gamePanel != null) gamePanel.SetActive(true);
             if (resultPanelView != null) resultPanelView.HideImmediate();
             HideAllEmotionViews();
+            if (situationImage != null) situationImage.enabled = false;
             HideFeedbackImmediate();
             ConfigureFearVisibility();
             SetAnswerButtonsInteractable(false);
-            SetNunaDialogue("Mira la expresion y selecciona como se siente.");
+            SetNunaDialogue("Mira la situación y elige cómo se siente.");
             PlaySfx(startClip);
 
             gameFlowRoutine = StartCoroutine(BeginActivityRoutine());
@@ -153,20 +158,20 @@ namespace Bolin
             PulseAnswerButton(selectedEmotion);
             PlaySfx(buttonClip);
 
-            bool isCorrect = selectedEmotion == currentView.emotion;
+            bool isCorrect = selectedEmotion == (currentSituation?.emotion ?? currentView.emotion);
             OnAnswerValidated?.Invoke(isCorrect);
 
             if (isCorrect)
             {
                 correctAnswers++;
-                ShowFeedback("Muy bien", "Muy bien. Reconociste la emocion.", correctIconSprite);
+                ShowFeedback("¡Muy bien!", "¡Muy bien! Reconociste la emoción.", correctIconSprite);
                 PlaySfx(correctClip);
                 gameFlowRoutine = StartCoroutine(CorrectAnswerRoutine());
                 return;
             }
 
             mistakes++;
-            ShowFeedback("Intentalo otra vez", "No pasa nada, intentalo otra vez.", retryIconSprite);
+            ShowFeedback("Inténtalo otra vez", "No pasa nada, inténtalo otra vez.", retryIconSprite);
             PlaySfx(incorrectClip);
             feedbackRoutine = StartCoroutine(RetryAnswerRoutine());
         }
@@ -225,16 +230,43 @@ namespace Bolin
                 return;
             }
 
-            EmotionRoundView nextView = PickNextView();
+            EmotionRoundView nextView;
+            currentSituation = null;
+            if (situations != null && situations.Count > 0)
+            {
+                currentSituation = situations[completedRounds];
+                if (currentSituation == null || currentSituation.illustration == null)
+                {
+                    Debug.LogError($"EmotionGameManager: falta la ilustración de la situación {completedRounds + 1}.", this);
+                    SetNunaDialogue("Falta una situación por configurar.");
+                    return;
+                }
+
+                nextView = availableViews.Find(view => view.emotion == currentSituation.emotion);
+                if (nextView == null)
+                {
+                    Debug.LogError($"EmotionGameManager: falta la expresión de {currentSituation.emotion}.", this);
+                    return;
+                }
+            }
+            else
+            {
+                nextView = PickNextView();
+            }
             HideAllEmotionViews();
             currentView = nextView;
             previousEmotion = nextView.emotion;
 
-            if (currentView.rootObject != null) currentView.rootObject.SetActive(true);
-            if (instructionText != null) instructionText.text = "Como se siente?";
+            if (situationImage != null)
+            {
+                situationImage.sprite = currentSituation?.illustration;
+                situationImage.preserveAspect = true;
+                situationImage.enabled = currentSituation != null;
+            }
+            if (instructionText != null) instructionText.text = "¿Cómo se siente?";
             if (progressText != null) progressText.text = $"{completedRounds + 1} / {totalRounds}";
             roundProgressBar?.SetProgress((completedRounds + 1f) / totalRounds, $"Ronda {completedRounds + 1} de {totalRounds}");
-            SetNunaDialogue("Mira la expresion del personaje.");
+            SetNunaDialogue("Mira la situación y elige cómo se siente.");
             HideFeedbackImmediate();
             SetAnswerButtonsInteractable(true);
             acceptingAnswer = true;
@@ -242,8 +274,6 @@ namespace Bolin
             if (currentView.instructionAudio != null) PlaySfx(currentView.instructionAudio);
             OnRoundStarted?.Invoke(currentView.emotion);
 
-            if (emotionAnimationRoutine != null) StopCoroutine(emotionAnimationRoutine);
-            emotionAnimationRoutine = StartCoroutine(AnimateEmotionEntranceRoutine(currentView));
         }
 
         private IEnumerator CorrectAnswerRoutine()
@@ -364,19 +394,6 @@ namespace Bolin
             return availableViews[startIndex];
         }
 
-        private IEnumerator AnimateEmotionEntranceRoutine(EmotionRoundView view)
-        {
-            // Delegado visual: entra la expresion con escala/fade.
-            if (view?.animatedRect == null)
-            {
-                emotionAnimationRoutine = null;
-                yield break;
-            }
-
-            yield return EmotionGameAnimationController.PlayEmotionEntrance(view, 0.3f);
-            emotionAnimationRoutine = null;
-        }
-
         private void ShowFeedback(string message, string nunaMessage, Sprite icon)
         {
             // Muestra texto/icono de acierto o reintento y actualiza el dialogo de Nuna.
@@ -477,18 +494,20 @@ namespace Bolin
             acceptingAnswer = false;
             activityFinished = false;
             currentView = null;
+            currentSituation = null;
             previousEmotion = null;
 
             if (startPanel != null) startPanel.SetActive(true);
             if (gamePanel != null) gamePanel.SetActive(false);
             if (resultPanelView != null) resultPanelView.HideImmediate();
             HideAllEmotionViews();
+            if (situationImage != null) situationImage.enabled = false;
             HideFeedbackImmediate();
             ConfigureFearVisibility();
             SetAnswerButtonsInteractable(false);
             if (progressText != null) progressText.text = $"0 / {totalRounds}";
             roundProgressBar?.SetProgress(0f, $"0 de {totalRounds}");
-            if (instructionText != null) instructionText.text = "Como se siente?";
+            if (instructionText != null) instructionText.text = "¿Cómo se siente?";
             SetNunaDialogue("Hola. Soy Nuna. Vamos a reconocer emociones.");
         }
 
@@ -507,11 +526,6 @@ namespace Bolin
                 feedbackRoutine = null;
             }
 
-            if (emotionAnimationRoutine != null)
-            {
-                StopCoroutine(emotionAnimationRoutine);
-                emotionAnimationRoutine = null;
-            }
         }
 
         private void OnValidate()

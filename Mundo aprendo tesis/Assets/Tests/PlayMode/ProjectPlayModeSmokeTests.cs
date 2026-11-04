@@ -303,7 +303,7 @@ namespace MundoAprendo.PlayModeTests
         }
 
         [UnityTest]
-        public IEnumerator MusicalTutorial_AppearsOnceAndStartsFirstSequence()
+        public IEnumerator MusicalTutorial_WaitsFiveSecondsBeforeFirstSequence()
         {
             const string key = "MundoMusical_TutorialVisto";
             bool hadKey = PlayerPrefs.HasKey(key);
@@ -332,18 +332,29 @@ namespace MundoAprendo.PlayModeTests
                 Assert.IsFalse(tutorial.gameObject.activeSelf);
                 Assert.IsTrue((bool)GetPrivateField(game, "activityStarted"));
                 Assert.IsFalse((bool)GetPrivateField(game, "acceptingInput"));
-                Assert.NotNull(GetPrivateField(game, "sequenceRoutine"), "Al terminar el tutorial debe comenzar automaticamente la primera secuencia.");
+                Assert.IsNull(GetPrivateField(game, "sequenceRoutine"), "La primera secuencia debe esperar cinco segundos.");
+                Assert.NotNull(GetPrivateField(game, "tutorialCountdownRoutine"));
+                TMPro.TMP_Text status = (TMPro.TMP_Text)GetPrivateField(game, "tmpStatusText");
+                StringAssert.Contains("Comenzamos en", status.text);
 
                 IList keys = (IList)GetPrivateField(game, "keyButtons");
                 Assert.IsTrue(keys.Cast<Button>().All(button => !button.interactable));
                 Button listen = (Button)GetPrivateField(game, "startButton");
                 Assert.IsTrue(listen.gameObject.activeInHierarchy);
-                Assert.IsFalse(listen.interactable, "Escuchar debe permanecer bloqueado mientras suena la secuencia automatica.");
+                Assert.IsFalse(listen.interactable, "Escuchar debe permanecer bloqueado durante la cuenta regresiva.");
+                game.GetType().GetMethod("PlayCurrentSequence").Invoke(game, null);
+                Assert.IsNull(GetPrivateField(game, "sequenceRoutine"), "Escuchar no debe saltarse la cuenta regresiva.");
                 Component listenGuide = listen.GetComponent(Type.GetType("Bolin.MusicalListenButtonGuide, Assembly-CSharp"));
                 Assert.NotNull(listenGuide);
                 Image listenGlow = (Image)GetPrivateField(listenGuide, "glowImage");
                 Assert.IsFalse((bool)GetPublicProperty(listenGuide, "IsGuiding"));
-                Assert.IsFalse(listenGlow.gameObject.activeSelf, "La guia de Escuchar no debe mostrarse cuando la secuencia ya inicio.");
+                Assert.IsFalse(listenGlow.gameObject.activeSelf, "La guia de Escuchar no debe mostrarse durante la cuenta regresiva.");
+
+                yield return new WaitForSecondsRealtime(3.9f);
+                Assert.IsNull(GetPrivateField(game, "sequenceRoutine"));
+                yield return new WaitForSecondsRealtime(0.9f);
+                Assert.NotNull(GetPrivateField(game, "sequenceRoutine"), "La primera secuencia debe comenzar tras cinco segundos.");
+                Assert.IsNull(GetPrivateField(game, "tutorialCountdownRoutine"));
 
                 yield return SceneManager.LoadSceneAsync("MundoMusical", LoadSceneMode.Single);
                 yield return new WaitForSecondsRealtime(0.28f);
@@ -358,6 +369,51 @@ namespace MundoAprendo.PlayModeTests
             {
                 if (hadKey) PlayerPrefs.SetInt(key, previousValue);
                 else PlayerPrefs.DeleteKey(key);
+                PlayerPrefs.Save();
+            }
+        }
+
+        [UnityTest]
+        public IEnumerator MusicalPiano_PausesBackgroundMusicAndRestoresItAtResult()
+        {
+            const string tutorialKey = "MundoMusical_TutorialVisto";
+            const string completedKey = "MundoAprendo_World_0_Completed";
+            const string starsKey = "MundoAprendo_World_0_Stars";
+            string[] keys = { tutorialKey, completedKey, starsKey };
+            bool[] existed = keys.Select(PlayerPrefs.HasKey).ToArray();
+            int[] values = keys.Select(key => PlayerPrefs.GetInt(key, 0)).ToArray();
+
+            try
+            {
+                PlayerPrefs.SetInt(tutorialKey, 1);
+                PlayerPrefs.Save();
+                yield return SceneManager.LoadSceneAsync("MundoMusical", LoadSceneMode.Single);
+                yield return new WaitForSecondsRealtime(0.35f);
+
+                Component game = FindSingleInActiveScene("Assets.SurpriseBox.Scripts.MundoMusicalSequenceGame");
+                Component manager = FindSingleInActiveScene("Bolin.AudioManager");
+                AudioSource music = (AudioSource)GetPrivateField(manager, "musicSource");
+                AudioSource piano = (AudioSource)GetPrivateField(game, "audioSource");
+                Assert.NotNull(music.clip);
+                Assert.AreNotSame(music, piano);
+                if (!music.isPlaying) music.Play();
+                Assert.IsTrue(music.isPlaying, "La musica del mundo debe estar disponible antes del piano.");
+
+                game.GetType().GetMethod("PlayCurrentSequence").Invoke(game, null);
+                Assert.IsFalse(music.isPlaying, "La musica debe pausarse al comenzar las teclas.");
+                yield return new WaitForSecondsRealtime(0.35f);
+                Assert.IsTrue(piano.isPlaying, "La demostracion debe hacer sonar las teclas.");
+
+                game.GetType().GetMethod("CompleteActivity").Invoke(game, null);
+                Assert.IsTrue(music.isPlaying, "La musica debe regresar al mostrar el resultado.");
+            }
+            finally
+            {
+                for (int index = 0; index < keys.Length; index++)
+                {
+                    if (existed[index]) PlayerPrefs.SetInt(keys[index], values[index]);
+                    else PlayerPrefs.DeleteKey(keys[index]);
+                }
                 PlayerPrefs.Save();
             }
         }

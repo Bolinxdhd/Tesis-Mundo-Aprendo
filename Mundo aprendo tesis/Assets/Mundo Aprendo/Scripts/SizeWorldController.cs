@@ -327,8 +327,8 @@ namespace Bolin
             bool askForBiggerAnimal = UnityEngine.Random.value < 0.5f;
             targetAnimal = askForBiggerAnimal ? biggerAnimal : smallerAnimal;
             SetQuestion(askForBiggerAnimal
-                ? $"Que animal es mas grande que {smallerAnimal.animalName}?"
-                : $"Que animal es mas pequeno que {biggerAnimal.animalName}?");
+                ? $"¿Qué animal es más grande que {smallerAnimal.animalName}?"
+                : $"¿Qué animal es más pequeño que {biggerAnimal.animalName}?");
 
             if (feedbackText != null)
             {

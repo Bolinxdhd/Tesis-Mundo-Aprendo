@@ -21,7 +21,7 @@ MonoBehaviour:
     y Conejo, y juntos recogieron todo. Cuando terminaron, el bosque volvi\xF3 a
     brillar. Sofi dijo: \u201CCuidar lo que es nuestro es cuidar de nosotros mismos\u201D.
     Desde entonces, todos ense\xF1aban a los dem\xE1s a mantener el bosque limpio."
-  narracionAudio: {fileID: 0}
+  narracionAudio: {fileID: 8300000, guid: 5bc04e01d97d48edbbd24db79a846fa0, type: 3}
   pictogramas:
   - id: ardilla
     imagen: {fileID: 21300000, guid: 79a96c856f3e60a42b925f069ea674e9, type: 3}

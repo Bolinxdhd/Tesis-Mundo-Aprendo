@@ -22,7 +22,7 @@ MonoBehaviour:
     Cuando la encontr\xF3, ella le dijo: \u201CGracias por ser valiente\u201D. Milo
     comprendi\xF3 que la valent\xEDa no es no tener miedo, sino ayudar, aunque el
     miedo est\xE9 ah\xED."
-  narracionAudio: {fileID: 0}
+  narracionAudio: {fileID: 8300000, guid: f79fd45f702b4c0ca251e31944be1f34, type: 3}
   pictogramas:
   - id: gatito
     imagen: {fileID: 21300000, guid: e610e1f1a08a72c419704095fbca8945, type: 3}
